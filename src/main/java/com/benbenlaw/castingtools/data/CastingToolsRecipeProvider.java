@@ -1,0 +1,61 @@
+package com.benbenlaw.castingtools.data;
+
+import com.benbenlaw.casting.block.CastingBlocks;
+import com.benbenlaw.casting.data.custom.SolidifierRecipeBuilder;
+import com.benbenlaw.casting.fluid.FluidData;
+import com.benbenlaw.casting.item.CastingItems;
+import com.benbenlaw.castingtools.CastingTools;
+import com.benbenlaw.castingtools.block.CastingToolsBlocks;
+import com.benbenlaw.core.tag.ResourceType;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.world.level.ItemLike;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
+import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+
+import static com.benbenlaw.casting.data.custom.FluidStackTemplateHelper.getFluidIngredient;
+
+public class CastingToolsRecipeProvider extends RecipeProvider {
+
+    public CastingToolsRecipeProvider(HolderLookup.Provider provider, RecipeOutput output) {
+        super(provider, output);
+    }
+
+    public static class Runner extends RecipeProvider.Runner {
+        public Runner(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> provider) {
+            super(packOutput, provider);
+        }
+
+        @Override
+        protected @NotNull RecipeProvider createRecipeProvider(HolderLookup.@NotNull Provider provider, @NotNull RecipeOutput recipeOutput) {
+            return new CastingToolsRecipeProvider(provider, recipeOutput);
+        }
+
+        @Override
+        public @NotNull String getName() {
+            return CastingTools.MOD_ID + " Recipes";
+        }
+    }
+
+
+    @Override
+    protected void buildRecipes() {
+
+        //Modifier
+        shaped(RecipeCategory.MISC, CastingToolsBlocks.MODIFIER)
+                .pattern("AAA")
+                .pattern("B B")
+                .pattern("AAA")
+                .define('A', CastingBlocks.BLACK_BRICKS)
+                .define('B', CastingBlocks.SOLIDIFIER)
+                .unlockedBy("has_clay", has(CastingItems.BLACK_BRICK))
+                .save(output, "castingtools:crafting/modifier");
+    }
+}

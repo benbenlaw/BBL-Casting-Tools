@@ -1,0 +1,185 @@
+package com.benbenlaw.castingtools.utils;
+
+import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
+import com.benbenlaw.castingtools.item.ModifierComponent;
+import com.benbenlaw.castingtools.modifier.Modifier;
+import com.benbenlaw.castingtools.modifier.ModifierRegistry;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+import static com.benbenlaw.castingtools.modifier.ModifierRegistry.EXCAVATION;
+import static com.benbenlaw.castingtools.modifier.ModifierRegistry.REGISTRY;
+
+public class ModifierUtils {
+
+    public static void breakBlockWithCasting(Level level, Player player, BlockPos pos, ItemStack tool) {
+        if (level.isClientSide()) return;
+
+        BlockState state = level.getBlockState(pos);
+        if (state.isAir() || state.getDestroySpeed(level, pos) < 0) return;
+
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        AtomicBoolean isSilkTouch = new AtomicBoolean(false);
+
+        //Prepare Fake Tool for Silk Touch and Fortune as these affects drops
+        ItemStack fakeItemStack = tool.copy();
+        ModifierComponent comp = tool.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        if (comp != null) {
+            comp.modifiers().forEach((key, modifierLevel) -> {
+                Modifier modifier = REGISTRY.getValue(key);
+                if (modifier != null) {
+                    modifier.onCalculateDrops(fakeItemStack, modifierLevel, level);
+                }
+                if (modifier == ModifierRegistry.SILK_TOUCH.get()) {
+                    isSilkTouch.set(true);
+                }
+
+
+            });
+        }
+
+        //Get Experience Drop
+        int blockExperience = 0;
+        if (state.getBlock() instanceof DropExperienceBlock experienceBlock) {
+            blockExperience = experienceBlock.getExpDrop(state, level, pos, blockEntity, player, fakeItemStack);
+        }
+
+        //Get and Spawn Drops
+        List<ItemStack> drops = Block.getDrops(state, (ServerLevel) level, pos, blockEntity, player, fakeItemStack);
+        for (ItemStack drop : drops) {
+            Block.popResource(level, pos, drop);
+        }
+
+        //Remove Block
+        level.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
+        level.destroyBlock(pos, true, player);
+
+        //Drop Experience
+        if (blockExperience > 0 && !isSilkTouch.get()) {
+            level.addFreshEntity(new ExperienceOrb(level, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, blockExperience));
+        }
+
+        //Damage Tool
+        tool.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+    }
+
+
+    public static List<BlockPos> getExcavationPlane(BlockPos origin, Direction face, int level) {
+        List<BlockPos> positions = new ArrayList<>();
+
+        Direction.Axis axis = face.getAxis();
+        Direction.Axis axis1;
+        Direction.Axis axis2;
+
+        switch (axis) {
+            case X -> {
+                axis1 = Direction.Axis.Y;
+                axis2 = Direction.Axis.Z;
+            }
+            case Y -> {
+                axis1 = Direction.Axis.X;
+                axis2 = Direction.Axis.Z;
+            }
+            case Z -> {
+                axis1 = Direction.Axis.X;
+                axis2 = Direction.Axis.Y;
+            }
+            default -> throw new IllegalStateException("Unexpected axis: " + axis);
+        }
+
+        for (int i = -level; i <= level; i++) {
+            for (int j = -level; j <= level; j++) {
+                BlockPos offset = origin;
+
+                // Apply offset based on the perpendicular axes
+                offset = offset.relative(Direction.fromAxisAndDirection(axis1, i >= 0 ? Direction.AxisDirection.POSITIVE : Direction.AxisDirection.NEGATIVE), Math.abs(i));
+                offset = offset.relative(Direction.fromAxisAndDirection(axis2, j >= 0 ? Direction.AxisDirection.POSITIVE : Direction.AxisDirection.NEGATIVE), Math.abs(j));
+
+                positions.add(offset);
+            }
+        }
+
+        return positions;
+    }
+
+
+    public static int getModifierLevel(ItemStack stack, Modifier modifier) {
+        ModifierComponent comp = stack.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        if (comp != null) {
+            Integer level = comp.modifiers().get(modifier.getId());
+            if (level != null && level > 0) {
+                return level;
+            }
+        }
+        return 0;
+    }
+
+    public static Modifier getMatchingModifier(ItemStack toolStack, ItemStack ingredientStack) {
+        for (Modifier modifier : REGISTRY) {
+            if (modifier.isValid(toolStack)) {
+                var itemIngOpt = modifier.getIngredient();
+
+                // Case A: Modifier requires an item
+                if (itemIngOpt.isPresent()) {
+                    if (itemIngOpt.get().test(ingredientStack)) {
+                        return modifier;
+                    }
+                }
+                // Case B: Modifier is "Fluid Only" (No item anchor)
+                else {
+                    // Only return this if the item slot is actually empty
+                    // (Prevents accidentally using diamonds to get Silk Touch)
+                    if (ingredientStack.isEmpty()) {
+                        return modifier;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    public static void setModifierLevel(ItemStack stack, Modifier modifier, int level) {
+        ModifierComponent comp = stack.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        Map<Identifier, Integer> map = (comp == null) ? new HashMap<>() : new HashMap<>(comp.modifiers());
+        map.put(modifier.getId(), level);
+        stack.set(CastingToolsDataComponent.MODIFIER_COMPONENT, new ModifierComponent(map));
+    }
+
+    public static boolean hasConflict(ItemStack stack, Modifier newModifier) {
+        ModifierComponent comp = stack.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        if (comp != null) {
+            for (Identifier modifierId : comp.modifiers().keySet()) {
+                Modifier existingModifier = REGISTRY.getValue(modifierId);
+                if (existingModifier != null) {
+                    // Check if the new modifier is incompatible with any existing modifier
+                    if (existingModifier.getIncompatibleModifiers().contains(newModifier) ||
+                        newModifier.getIncompatibleModifiers().contains(existingModifier)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+
+}

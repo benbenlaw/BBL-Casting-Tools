@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "castingtools:block/modifier_front",
+    "side": "castingtools:block/modifier_side",
+    "top": "castingtools:block/modifier_top"
+  }
+}

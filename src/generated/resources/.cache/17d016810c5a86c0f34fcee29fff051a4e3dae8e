@@ -1,0 +1,7 @@
+// 26.1-pre-3	2026-04-01T15:17:38.7922173	Model Definitions - castingtools
+ece0bfd32709fbc4eac6a180eeaac590a210301e assets/castingtools/blockstates/modifier.json
+707ea26c1b3684bbc3bfde839689fc562f277f27 assets/castingtools/items/modifier.json
+ebe3c01aaa372fcde6fc401102a0e94b74a06132 assets/castingtools/models/block/modifier.json
+36d398c76b3bf2a977ac5733e7549af1e2d63ad6 assets/castingtools/models/block/modifier_vertical.json
+0444b465b0a435a92818d9a88f23a42d6873b526 assets/castingtools/models/block/modifier_working.json
+0e2607eea56feec26480c2bfaa65526acb62a445 assets/castingtools/models/block/modifier_working_vertical.json
