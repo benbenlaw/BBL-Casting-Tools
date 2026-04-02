@@ -2,6 +2,7 @@ package com.benbenlaw.castingtools.modifier.weapon;
 
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.castingtools.modifier.Modifier;
+import com.benbenlaw.castingtools.utils.CastingToolsTags;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.ItemTags;
@@ -28,7 +29,9 @@ public class SharpnessModifier extends Modifier {
         return maxLevel.get();
     }
 
+    @Override
     public void onPreHit(LivingDamageEvent.Pre event, int level) {
+
         int effectiveLevel = Math.min(level, maxLevel.get());
         if (effectiveLevel <= 0) return;
 
@@ -37,11 +40,11 @@ public class SharpnessModifier extends Modifier {
         event.setNewDamage(event.getOriginalDamage() + bonus);
     }
 
+
     @Override
     public Set<TagKey<Item>> getValidTags() {
         return Set.of(
-                ItemTags.SWORDS,
-                ItemTags.AXES
+                CastingToolsTags.Items.ALL_MELEE_WEAPONS
         );
     }
 

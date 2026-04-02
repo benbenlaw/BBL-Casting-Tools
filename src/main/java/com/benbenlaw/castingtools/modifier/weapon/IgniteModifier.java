@@ -2,6 +2,7 @@ package com.benbenlaw.castingtools.modifier.weapon;
 
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.castingtools.modifier.Modifier;
+import com.benbenlaw.castingtools.utils.CastingToolsTags;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -40,7 +41,7 @@ public class IgniteModifier extends Modifier {
     @Override
     public Set<TagKey<Item>> getValidTags() {
         return Set.of(
-                ItemTags.SWORDS
+                CastingToolsTags.Items.ALL_MELEE_WEAPONS
         );
     }
 

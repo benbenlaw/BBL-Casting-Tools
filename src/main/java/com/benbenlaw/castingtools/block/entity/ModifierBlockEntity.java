@@ -26,6 +26,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.component.DataComponentMap;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
@@ -47,6 +48,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.transfer.ResourceHandler;
@@ -58,6 +60,7 @@ import net.neoforged.neoforge.transfer.transaction.Transaction;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
 
@@ -79,6 +82,30 @@ public class ModifierBlockEntity extends SyncableBlockEntity implements MenuProv
     }
 
     public void tick() {
+        if (level == null || level.isClientSide()) return;
+
+        List<Player> players = level.getEntitiesOfClass(Player.class, new AABB(worldPosition).move(0, 1, 0));
+        Fluid expFluid = BuiltInRegistries.FLUID.getValue(Identifier.fromNamespaceAndPath("casting", "molten_experience"));
+        FluidResource expResource = FluidResource.of(expFluid);
+
+        for (Player player : players) {
+            if (player.totalExperience > 0 && inputFluidHandler.getAmountAsInt(0) < inputFluidHandler.getCapacityAsInt(0, expResource)) {
+
+                int xpToDrain = 10;
+                int fluidAmount = 250;
+                if (player.totalExperience < xpToDrain) continue;
+
+                try (Transaction tx = Transaction.open(null)) {
+                    int accepted = inputFluidHandler.insert(expResource, fluidAmount, tx);
+
+                    if (accepted >= fluidAmount) {
+                        tx.commit();
+                        player.giveExperiencePoints(-xpToDrain);
+                        this.setChanged();
+                    }
+                }
+            }
+        }
     }
 
     public boolean onPlayerUse(Player player, InteractionHand hand) {

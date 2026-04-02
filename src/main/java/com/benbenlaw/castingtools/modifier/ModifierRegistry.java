@@ -3,17 +3,11 @@ package com.benbenlaw.castingtools.modifier;
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.config.ToolModifiersConfig;
 import com.benbenlaw.castingtools.config.WeaponModifiersConfig;
-import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
-import com.benbenlaw.castingtools.item.ModifierComponent;
-import com.benbenlaw.castingtools.modifier.tool.ExcavationModifier;
-import com.benbenlaw.castingtools.modifier.tool.FortuneModifier;
-import com.benbenlaw.castingtools.modifier.tool.SilkTouchModifier;
+import com.benbenlaw.castingtools.modifier.tool.*;
 import com.benbenlaw.castingtools.modifier.weapon.IgniteModifier;
 import com.benbenlaw.castingtools.modifier.weapon.SharpnessModifier;
 import net.minecraft.core.Registry;
-import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -47,33 +41,17 @@ public class ModifierRegistry {
     public static final DeferredHolder<Modifier, ExcavationModifier> EXCAVATION = MODIFIERS.register("excavation", () ->
             new ExcavationModifier(ToolModifiersConfig.excavationMaxLevel));
 
+    public static final DeferredHolder<Modifier, EfficiencyModifier> EFFICIENCY = MODIFIERS.register("efficiency", () ->
+            new EfficiencyModifier(ToolModifiersConfig.efficiencyMiningSpeedPerLevel, ToolModifiersConfig.efficiencyMaxLevel));
 
+    public static final DeferredHolder<Modifier, UnbreakingModifier> UNBREAKING = MODIFIERS.register("unbreaking", () ->
+            new UnbreakingModifier(ToolModifiersConfig.unbreakingChancePerLevel, ToolModifiersConfig.unbreakingMaxLevel));
 
-    //Helper
-    public static Modifier getMatchingModifier(ItemStack toolStack, ItemStack ingredientStack) {
-        // 1. First, check if the tool already has a modifier (Upgrade Logic)
-        ModifierComponent comp = toolStack.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
-        if (comp != null && !comp.modifiers().isEmpty()) {
-            for (Identifier id : comp.modifiers().keySet()) {
-                Modifier modifier = REGISTRY.getValue(id);
-                if (modifier != null && modifier.isValid(toolStack)) {
-                    // Check if the ingredient matches this specific existing modifier
-                    if (modifier.getIngredient().isPresent() && modifier.getIngredient().get().test(ingredientStack)) {
-                        return modifier;
-                    }
-                }
-            }
-        }
+    public static final DeferredHolder<Modifier, RepairingModifier> REPAIRING = MODIFIERS.register("repairing", () ->
+            new RepairingModifier(ToolModifiersConfig.repairingBaseTickAtFirstLevel, ToolModifiersConfig.repairingTickReductionMaxLevel, ToolModifiersConfig.repairingMaxLevel));
 
-        // 2. If no existing modifier matches, check for NEW modifiers (Initial Application)
-        for (Modifier modifier : REGISTRY) {
-            if (modifier.isValid(toolStack)) {
-                if (modifier.getIngredient().isPresent() && modifier.getIngredient().get().test(ingredientStack)) {
-                    return modifier;
-                }
-            }
-        }
+    public static final DeferredHolder<Modifier, TorchPlacerModifier> TORCH_PLACER = MODIFIERS.register("torch_placer", TorchPlacerModifier::new);
 
-        return null;
-    }
+    public static final DeferredHolder<Modifier, LootingModifier> LOOTING = MODIFIERS.register("looting", () ->
+            new LootingModifier(ToolModifiersConfig.lootingMaxLevel));
 }

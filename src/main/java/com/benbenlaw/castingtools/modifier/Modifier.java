@@ -1,6 +1,5 @@
 package com.benbenlaw.castingtools.modifier;
 
-import com.benbenlaw.castingtools.CastingTools;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
@@ -9,11 +8,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 
-import java.awt.*;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -25,13 +26,38 @@ public abstract class Modifier {
     public void onPostHit(LivingDamageEvent.Post event, int level) {}
 
     //Used to modify the damage being dealt or taken, for example sharpness
-    public void onDamageCalculate(LivingDamageEvent.Pre event, int level) {}
+    public void onPreHit(LivingDamageEvent.Pre event, int level) {}
 
     //Used to apply modifier after breaking a block, fortune and silk touch for example
     public void onBlockBreak(BlockEvent.BreakEvent event, int level) {}
 
     //Calculates drops for blocks, used for fortune
     public void onCalculateDrops(ItemStack fakeStack, int level, Level world) {}
+
+    //Speed bonus used for block breaking, efficiency for example
+    public void onBreakSpeed(PlayerEvent.BreakSpeed event, int level) {
+    }
+
+    //Used on left-clicking a block
+    public void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event, int level) {
+    }
+
+    //Used on right-clicking a block
+    public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event, int level) {
+    }
+
+    //Used to do stuff every x ticks on the player post
+    public void onPlayerTick(PlayerTickEvent.Post event, ItemStack stack, int level) {
+    }
+
+    //Effect mob drops
+    public void onMobDrops(LivingDropsEvent event, int level) {
+    }
+
+    //Effect loot tables
+    public boolean overridesLootTable(ItemStack stack, int level) {
+        return false;
+    }
 
     //Sized Ingredient for this modifier
     public Optional<SizedIngredient> getIngredient() {

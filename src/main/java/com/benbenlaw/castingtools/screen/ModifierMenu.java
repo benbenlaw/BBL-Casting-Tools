@@ -96,7 +96,7 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
             return;
         }
 
-        Modifier modifier = ModifierUtils.getMatchingModifier(toolStack, ingredientStack);
+        Modifier modifier = ModifierUtils.getMatchingModifier(toolStack, ingredientStack, FluidUtil.getStack(blockEntity.getInputFluidHandler(), 1));
 
         if (modifier == null || !modifier.isValid(toolStack)) {
             if (!currentOutput.isEmpty()) {

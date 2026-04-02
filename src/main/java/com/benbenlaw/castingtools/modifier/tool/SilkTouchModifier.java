@@ -52,6 +52,4 @@ public class SilkTouchModifier extends Modifier {
                 ModifierRegistry.FORTUNE.get()
         );
     }
-
-
 }

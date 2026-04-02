@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.benbenlaw.castingtools.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ItemStackMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+
+}

@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -133,27 +134,47 @@ public class ModifierUtils {
         return 0;
     }
 
-    public static Modifier getMatchingModifier(ItemStack toolStack, ItemStack ingredientStack) {
-        for (Modifier modifier : REGISTRY) {
-            if (modifier.isValid(toolStack)) {
-                var itemIngOpt = modifier.getIngredient();
+    public static Modifier getMatchingModifier(ItemStack toolStack, ItemStack ingredientStack, FluidStack tankFluid) {
 
-                // Case A: Modifier requires an item
-                if (itemIngOpt.isPresent()) {
-                    if (itemIngOpt.get().test(ingredientStack)) {
-                        return modifier;
-                    }
-                }
-                // Case B: Modifier is "Fluid Only" (No item anchor)
-                else {
-                    // Only return this if the item slot is actually empty
-                    // (Prevents accidentally using diamonds to get Silk Touch)
-                    if (ingredientStack.isEmpty()) {
-                        return modifier;
-                    }
+        for (Modifier modifier : REGISTRY) {
+            if (!modifier.isValid(toolStack)) continue;
+
+            var itemIng = modifier.getIngredient();
+            var fluidIng = modifier.getFluidIngredient();
+
+            if (itemIng.isPresent() && fluidIng.isPresent()) {
+                if (itemIng.get().test(ingredientStack) && fluidIng.get().test(tankFluid)) {
+                    return modifier;
                 }
             }
         }
+
+        for (Modifier modifier : REGISTRY) {
+            if (!modifier.isValid(toolStack)) continue;
+
+            var itemIng = modifier.getIngredient();
+            var fluidIng = modifier.getFluidIngredient();
+
+            if (itemIng.isPresent() && fluidIng.isEmpty()) {
+                if (itemIng.get().test(ingredientStack)) {
+                    return modifier;
+                }
+            }
+        }
+
+        for (Modifier modifier : REGISTRY) {
+            if (!modifier.isValid(toolStack)) continue;
+
+            var itemIng = modifier.getIngredient();
+            var fluidIng = modifier.getFluidIngredient();
+
+            if (fluidIng.isPresent() && itemIng.isEmpty()) {
+                if (fluidIng.get().test(tankFluid) && ingredientStack.isEmpty()) {
+                    return modifier;
+                }
+            }
+        }
+
         return null;
     }
 

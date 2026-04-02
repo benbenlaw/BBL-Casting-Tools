@@ -11,9 +11,12 @@ import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import com.benbenlaw.castingtools.screen.ModifierScreen;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.registration.*;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -55,6 +58,9 @@ public class JEICastingToolsPlugin implements IModPlugin {
         }
 
         registration.addRecipes(ModifierRecipeCategory.RECIPE_TYPE, recipes);
+
+        registration.addIngredientInfo(new ItemStack(CastingToolsBlocks.MODIFIER), VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.castingtools.modifier.information"));
 
     }
 

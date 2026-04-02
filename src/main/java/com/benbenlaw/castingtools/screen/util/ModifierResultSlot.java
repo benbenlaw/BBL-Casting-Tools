@@ -47,7 +47,7 @@ public class ModifierResultSlot extends ResultSlot {
         ItemStack ingredientStack = ItemUtil.getStack(inputHandler, 0);
         ItemStack toolStack = ItemUtil.getStack(inputHandler, 1);
 
-        Modifier modifier = ModifierUtils.getMatchingModifier(toolStack, ingredientStack);
+        Modifier modifier = ModifierUtils.getMatchingModifier(toolStack, ingredientStack, FluidUtil.getStack(fluidHandler, 1));
 
         if (modifier != null) {
             try (Transaction tx = Transaction.open(null)) {

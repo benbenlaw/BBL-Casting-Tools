@@ -5,22 +5,22 @@ import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
 import com.benbenlaw.castingtools.item.ModifierComponent;
 import com.benbenlaw.castingtools.modifier.Modifier;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
-import com.benbenlaw.castingtools.modifier.weapon.SharpnessModifier;
 import com.benbenlaw.castingtools.utils.ModifierUtils;
+import com.benbenlaw.castingtools.utils.TriConsumer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
@@ -40,33 +40,63 @@ public class ModifierEvents {
 
     @SubscribeEvent
     public static void onLivingDamagePre(LivingDamageEvent.Pre event) {
-        handleModifiers(event.getSource().getEntity(), (modifier, level) -> {
-            if (modifier instanceof SharpnessModifier sharp) {
-                sharp.onPreHit(event, level);
-            }
-        });
+        if (event.getSource().getEntity() instanceof LivingEntity attacker) {
+            handleModifiers(attacker, (modifier, level) -> {
+                modifier.onPreHit(event, level);
+            });
+        }
     }
 
     @SubscribeEvent
     public static void onLivingDamagePost(LivingDamageEvent.Post event) {
-        handleModifiers(event.getSource().getEntity(), (modifier, level) -> {
-            modifier.onPostHit(event, level);
-        });
+        if (event.getSource().getEntity() instanceof LivingEntity attacker) {
+            handleModifiers(attacker, (modifier, level) -> {
+                modifier.onPostHit(event, level);
+            });
+        }
     }
 
     @SubscribeEvent
     public static void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
-        Player player = event.getEntity();
-        ItemStack tool = player.getMainHandItem();
-        Level level = player.level();
-        Direction face = event.getFace();
-        ModifierComponent comp = tool.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        if (event.getLevel().isClientSide()) return;
+        handleModifiers(event.getEntity(), (modifier, level) -> {
+            modifier.onLeftClickBlock(event, level);
+        });
+    }
 
-        if (level.isClientSide()) return;
-        if (comp != null) {
-            if (comp.modifiers().containsKey(EXCAVATION.get().getId())) {
-                lastHitDirectionMap.put(player.getUUID(), face);
-            }
+    @SubscribeEvent
+    public static void onBreakSpeed(PlayerEvent.BreakSpeed event) {
+        handleModifiers(event.getEntity(), (modifier, level) -> {
+            modifier.onBreakSpeed(event, level);
+        });
+    }
+
+    @SubscribeEvent
+    public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+        handleModifiers(event.getEntity(), (modifier, level) -> {
+            modifier.onRightClickBlock(event, level);
+        });
+    }
+
+    @SubscribeEvent
+    public static void onPlayerTick(PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
+        if (player.level().isClientSide()) return;
+
+        if (player.level().getGameTime() % 20 == 0) {
+            handleAllInventoryModifiers(player, (modifier, stack, level) -> {
+                modifier.onPlayerTick(event, stack, level);
+            });
+        }
+    }
+
+    @SubscribeEvent
+    public static void onEntityDrops(LivingDropsEvent event) {
+        Entity killer = event.getEntity().getKillCredit();
+        if (killer instanceof LivingEntity attacker) {
+            handleModifiers(attacker, (modifier, level) -> {
+                modifier.onMobDrops(event, level);
+            });
         }
     }
 
@@ -103,17 +133,18 @@ public class ModifierEvents {
                     ModifierUtils.breakBlockWithCasting(level, player, targetPos, tool);
                 }
                 ModifierUtils.breakBlockWithCasting(level, player, originPos, tool);
-                event.setCanceled(true);
             } else {
                 ModifierUtils.breakBlockWithCasting(level, player, originPos, tool);
             }
+            event.setCanceled(true);
         }
     }
 
-    private static void handleModifiers(Entity attacker, BiConsumer<Modifier, Integer> action) {
-        if (!(attacker instanceof LivingEntity livingAttacker)) return;
 
-        ItemStack stack = livingAttacker.getMainHandItem();
+
+    //Held Item Modifier Handling Helper
+    private static void handleModifiers(LivingEntity entity, BiConsumer<Modifier, Integer> action) {
+        ItemStack stack = entity.getMainHandItem();
         ModifierComponent comp = stack.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
         if (comp == null) return;
 
@@ -123,6 +154,34 @@ public class ModifierEvents {
                 action.accept(modifier, level);
             }
         });
+    }
+
+    //Inventory-wide Modifier Handling Helper
+    private static void handleAllInventoryModifiers(Player player, TriConsumer<Modifier, ItemStack, Integer> action) {
+        Inventory inventory = player.getInventory();
+
+        for (ItemStack stack : inventory.getNonEquipmentItems()) {
+            processStack(stack, action);
+        }
+
+        for (int slotId : Inventory.EQUIPMENT_SLOT_MAPPING.keySet()) {
+            ItemStack stack = inventory.getItem(slotId);
+            processStack(stack, action);
+        }
+    }
+
+    private static void processStack(ItemStack stack, TriConsumer<Modifier, ItemStack, Integer> action) {
+        if (stack.isEmpty()) return;
+
+        ModifierComponent comp = stack.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        if (comp != null) {
+            comp.modifiers().forEach((id, level) -> {
+                Modifier modifier = ModifierRegistry.REGISTRY.getValue(id);
+                if (modifier != null) {
+                    action.accept(modifier, stack, level);
+                }
+            });
+        }
     }
 
 }

@@ -14,7 +14,7 @@ public class CastingToolsLangProvider extends LanguageProvider {
     protected void addTranslations() {
 
         //Creative Tab
-        add("itemGroup.castingmb", "Casting - Multiblocks");
+        add("itemGroup.castingtools", "Casting - Tools");
 
         //Blocks
         add("block.castingtools.modifier", "Modifier");
@@ -24,7 +24,8 @@ public class CastingToolsLangProvider extends LanguageProvider {
         add("modifier.castingtools.max_level", "Max Level %s");
 
         //JEI
-        add("jei.castingtools.modifier_applying", "Applying %s Modifier");
+        add("jei.castingtools.modifier", "Modifier");
+        add("jei.castingtools.modifier.information", "The Modifier can be used to make your tools and equipment more powerful.\n\nThe modifier uses Molten Experience as a fuel as well as either another fluid, an item or a Fluid and Item to apply a modifier.\n\nStanding on the Modifier will consume your experience and insert into the internal experience tank");
 
         //Modifiers
         add("modifier.castingtools.excavation", "Excavation");
@@ -32,6 +33,9 @@ public class CastingToolsLangProvider extends LanguageProvider {
         add("modifier.castingtools.fortune", "Fortune");
         add("modifier.castingtools.sharpness", "Sharpness");
         add("modifier.castingtools.ignite", "Ignite");
+        add("modifier.castingtools.efficiency", "Efficiency");
+        add("modifier.castingtools.unbreaking", "Unbreaking");
+        add("modifier.castingtools.repairing", "Repairing");
 
         //Modifier Descriptions
         add("modifier.castingtools.silk_touch.description", "Allows you to mine blocks and receive the block itself instead of its usual drops, such as mining stone and receiving a stone block instead of cobblestone");
@@ -39,5 +43,9 @@ public class CastingToolsLangProvider extends LanguageProvider {
         add("modifier.castingtools.fortune.description", "Increases the chance of receiving more items when mining certain block, like Ores");
         add("modifier.castingtools.sharpness.description", "Increases the damage dealt to mobs");
         add("modifier.castingtools.ignite.description", "Sets mobs on fire when hit");
+        add("modifier.castingtools.efficiency.description", "Increases mining speed");
+        add("modifier.castingtools.unbreaking.description", "Reduces the chance of you tool taking damage when used");
+        add("modifier.castingtools.repairing.description", "Repairs your tools and equipment over time");
+
     }
 }

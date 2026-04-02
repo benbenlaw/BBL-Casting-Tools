@@ -1,1 +1,6 @@
-// 26.1-pre-3	2026-04-01T15:17:38.7942672	Tags for minecraft:item mod id castingtools
+// 26.1-pre-3	2026-04-02T10:05:47.0585617	Tags for minecraft:item mod id castingtools
+db1e03703684ff6ecc870c39cf9dca92dce328d5 data/castingtools/tags/item/all_armors.json
+a8e0ff288e153d2f9106bec123957ef3a0596bb7 data/castingtools/tags/item/all_melee_weapons.json
+de75671f136ad29ecb1fee30fc8326bbb0cce33f data/castingtools/tags/item/all_ranged_weapons.json
+cc226d087fa5e9c99c8fa5d4b1c0826df7906d76 data/castingtools/tags/item/all_tools.json
+305ae9dd5e3b81ccfa33d881b60c94e2a07781e8 data/castingtools/tags/item/all_weapons.json
