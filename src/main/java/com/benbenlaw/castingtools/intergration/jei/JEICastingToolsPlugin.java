@@ -53,15 +53,16 @@ public class JEICastingToolsPlugin implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registration) {
         List<ModifierRecipe> recipes = new ArrayList<>();
 
-        for (Modifier modifier : ModifierRegistry.REGISTRY) {
-            recipes.add(new ModifierRecipe(modifier));
+        for (Modifier modifier : ModifierRegistry.MODIFIER_REGISTRY) {
+            if (modifier.getData() != null) {
+                recipes.add(new ModifierRecipe(modifier));
+            }
         }
 
         registration.addRecipes(ModifierRecipeCategory.RECIPE_TYPE, recipes);
 
         registration.addIngredientInfo(new ItemStack(CastingToolsBlocks.MODIFIER), VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.castingtools.modifier.information"));
-
     }
 
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {

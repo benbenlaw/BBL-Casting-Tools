@@ -47,7 +47,6 @@ public class CastingToolsRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes() {
-
         //Reset
         shapeless(RecipeCategory.MISC, CastingToolsBlocks.MODIFIER).requires(CastingToolsBlocks.MODIFIER);
 

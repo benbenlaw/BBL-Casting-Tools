@@ -1,0 +1,16 @@
+{
+  "description": "modifier.castingtools.unbreaking.description",
+  "display_name": "modifier.castingtools.unbreaking",
+  "experience_cost": 4000,
+  "fluid": "casting:molten_obsidian",
+  "fluid_amount": 8000,
+  "incompatible_modifiers": [
+    "castingtools:repairing"
+  ],
+  "max_level": 10,
+  "valid_items": [
+    "#castingtools:all_tools",
+    "#castingtools:all_armors",
+    "#castingtools:all_weapons"
+  ]
+}

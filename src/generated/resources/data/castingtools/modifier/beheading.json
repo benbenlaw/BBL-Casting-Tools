@@ -1,0 +1,10 @@
+{
+  "description": "modifier.castingtools.beheading.description",
+  "display_name": "modifier.castingtools.beheading",
+  "experience_cost": 4000,
+  "ingredient": "#minecraft:skulls",
+  "max_level": 1,
+  "valid_items": [
+    "#castingtools:all_melee_weapons"
+  ]
+}

@@ -36,6 +36,13 @@ public class CastingToolsLangProvider extends LanguageProvider {
         add("modifier.castingtools.efficiency", "Efficiency");
         add("modifier.castingtools.unbreaking", "Unbreaking");
         add("modifier.castingtools.repairing", "Repairing");
+        add("modifier.castingtools.beheading", "Beheading");
+        add("modifier.castingtools.torch_placer", "Torch Placer");
+        add("modifier.castingtools.looting", "Looting");
+        add("modifier.castingtools.lifesteal", "Lifesteal");
+        add("modifier.castingtools.knockback", "Knockback");
+        add("modifier.castingtools.teleporting", "Teleporting");
+        add("modifier.castingtools.protection", "Protection");
 
         //Modifier Descriptions
         add("modifier.castingtools.silk_touch.description", "Allows you to mine blocks and receive the block itself instead of its usual drops, such as mining stone and receiving a stone block instead of cobblestone");
@@ -46,6 +53,14 @@ public class CastingToolsLangProvider extends LanguageProvider {
         add("modifier.castingtools.efficiency.description", "Increases mining speed");
         add("modifier.castingtools.unbreaking.description", "Reduces the chance of you tool taking damage when used");
         add("modifier.castingtools.repairing.description", "Repairs your tools and equipment over time");
+        add("modifier.castingtools.beheading.description", "Valid mobs will always drop their head when killed");
+        add("modifier.castingtools.torch_placer.description", "Places a torch when you right click. Doesn't require torches in your inventory");
+        add("modifier.castingtools.looting.description", "Increases the chance of mobs dropping more items when killed");
+        add("modifier.castingtools.lifesteal.description", "Heals you for a portion of the damage dealt to mobs");
+        add("modifier.castingtools.knockback.description", "Increases the knockback to mobs when hit");
+        add("modifier.castingtools.teleporting.description", "Teleports you to a random location within a 5 block radius when you right click. Doesn't require any items in your inventory");
+        add("modifier.castingtools.protection.description", "Reduces incoming damage from mobs and other sources");
+
 
     }
 }

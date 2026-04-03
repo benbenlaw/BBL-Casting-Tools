@@ -4,6 +4,7 @@ import com.benbenlaw.casting.Casting;
 import com.benbenlaw.casting.data.custom.FluidStackTemplateHelper;
 import com.benbenlaw.castingtools.event.ModifierEvents;
 import com.benbenlaw.castingtools.modifier.Modifier;
+import com.benbenlaw.castingtools.modifier.ModifierData;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.ItemTags;
@@ -21,36 +22,11 @@ import java.util.function.Supplier;
 
 public class ExcavationModifier extends Modifier {
 
-    private final Supplier<Integer> maxLevel;
-
-    public ExcavationModifier(Supplier<Integer> maxLevel) {
-        this.maxLevel = maxLevel;
-    }
-
     @Override
-    public int getMaxLevel() {
-        return maxLevel.get();
-    }
-
-    @Override
-    public void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event, int level) {
-        if (level > 0) {
+    public void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event, ModifierData data, int toolLevel) {
+        if (toolLevel > 0) {
             ModifierEvents.lastHitDirectionMap.put(event.getEntity().getUUID(), event.getFace());
         }
     }
-
-    @Override
-    public Optional<SizedFluidIngredient> getFluidIngredient() {
-        return Optional.of(SizedFluidIngredient.of(BuiltInRegistries.FLUID.getValue(Casting.identifier("molten_diamond")), 360));
-    }
-
-    @Override
-    public Set<TagKey<Item>> getValidTags() {
-        return Set.of(
-                ItemTags.PICKAXES,
-                ItemTags.SHOVELS
-        );
-    }
-
 
 }

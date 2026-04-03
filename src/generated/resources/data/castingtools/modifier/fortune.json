@@ -1,0 +1,17 @@
+{
+  "description": "modifier.castingtools.fortune.description",
+  "display_name": "modifier.castingtools.fortune",
+  "experience_cost": 3000,
+  "fluid": "casting:molten_lapis",
+  "fluid_amount": 1350,
+  "incompatible_modifiers": [
+    "castingtools:silk_touch"
+  ],
+  "max_level": 3,
+  "valid_items": [
+    "#minecraft:pickaxes",
+    "#minecraft:axes",
+    "#minecraft:shovels",
+    "#minecraft:hoes"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "description": "modifier.castingtools.torch_placer.description",
+  "display_name": "modifier.castingtools.torch_placer",
+  "experience_cost": 1000,
+  "fluid": "casting:molten_coal",
+  "fluid_amount": 5120,
+  "ingredient": "#c:rods/wooden",
+  "ingredient_count": 64,
+  "max_level": 1,
+  "valid_items": [
+    "#castingtools:all_tools"
+  ]
+}

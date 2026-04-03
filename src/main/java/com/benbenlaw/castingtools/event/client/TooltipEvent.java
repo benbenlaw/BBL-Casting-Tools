@@ -6,6 +6,7 @@ import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
 import com.benbenlaw.castingtools.item.ModifierComponent;
 import com.benbenlaw.castingtools.modifier.Modifier;
+import com.benbenlaw.castingtools.modifier.ModifierData;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -16,6 +17,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
 import java.util.List;
+import java.util.Objects;
 
 @EventBusSubscriber(modid = CastingTools.MOD_ID)
 public class TooltipEvent {
@@ -31,10 +33,10 @@ public class TooltipEvent {
                 event.getToolTip().add(Component.literal("Modifiers:").withStyle(ChatFormatting.BLUE));
 
                 comp.modifiers().forEach((location, level) -> {
-                    Modifier modifier = ModifierRegistry.REGISTRY.getValue(location);
+                    ModifierData modifier = Objects.requireNonNull(ModifierRegistry.MODIFIER_REGISTRY.getValue(location)).getData();
 
                     if (modifier != null) {
-                        Component name = modifier.getDisplayName();
+                        Component name = Component.translatable(modifier.displayName());
 
                         event.getToolTip().add(Component.literal(" - ")
                                 .append(name.copy().withStyle(ChatFormatting.GOLD))

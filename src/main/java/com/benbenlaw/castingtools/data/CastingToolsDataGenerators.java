@@ -3,6 +3,7 @@ package com.benbenlaw.castingtools.data;
 
 import com.benbenlaw.casting.data.CastingModelProvider;
 import com.benbenlaw.castingtools.CastingTools;
+import com.benbenlaw.castingtools.data.custom.ModifierProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -15,6 +16,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 @EventBusSubscriber(modid = CastingTools.MOD_ID)
 public class CastingToolsDataGenerators {
@@ -37,5 +39,10 @@ public class CastingToolsDataGenerators {
         //Recipes
         generator.addProvider(true, new CastingToolsRecipeProvider.Runner(packOutput, lookupProvider));
 
+        //Custom
+        generator.addProvider(true, new ModifierProvider(packOutput, lookupProvider));
+
+        //Data Maps
+        generator.addProvider(true, new BeheadingDropsDataMapProvider(packOutput, lookupProvider));
     }
 }

@@ -2,6 +2,7 @@ package com.benbenlaw.castingtools.modifier.tool;
 
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.castingtools.modifier.Modifier;
+import com.benbenlaw.castingtools.modifier.ModifierData;
 import com.benbenlaw.castingtools.utils.CastingToolsTags;
 import com.benbenlaw.core.item.CoreItemUtils;
 import com.benbenlaw.core.util.FakePlayerUtil;
@@ -43,41 +44,13 @@ import java.util.function.Supplier;
 
 public class LootingModifier extends Modifier {
 
-    private final Supplier<Integer> maxLevel;
-
-    public LootingModifier(Supplier<Integer> maxLevel) {
-        this.maxLevel = maxLevel;
-    }
-
     @Override
-    public int getMaxLevel() {
-        return maxLevel.get();
-    }
-
-    @Override
-    public boolean overridesLootTable(ItemStack stack, int level) {
+    public boolean overridesLootTable(ItemStack stack, ModifierData data, int toolLevel) {
         return true;
     }
 
     @Override
-    public Set<TagKey<Item>> getValidTags() {
-        return Set.of(
-                CastingToolsTags.Items.ALL_MELEE_WEAPONS
-        );
-    }
-
-    @Override
-    public Optional<SizedFluidIngredient> getFluidIngredient() {
-        return Optional.of(SizedFluidIngredient.of(BuiltInRegistries.FLUID.getValue(Casting.identifier("molten_lapis")), 1350));
-    }
-
-    @Override
-    public int getExperienceCost() {
-        return 4000;
-    }
-
-    @Override
-    public void onMobDrops(LivingDropsEvent event, int level) {
+    public void onMobDrops(LivingDropsEvent event, ModifierData data, int toolLevel) {
         LivingEntity deadEntity = event.getEntity();
         Entity killer = event.getEntity().getKillCredit();
         DamageSource source = event.getSource();
@@ -89,7 +62,7 @@ public class LootingModifier extends Modifier {
             event.setCanceled(true);
 
             ItemStack fakeStack = Objects.requireNonNull(event.getSource().getWeaponItem()).copy();
-            fakeStack.enchant(world.holderLookup(Registries.ENCHANTMENT).getOrThrow(Enchantments.LOOTING), level);
+            fakeStack.enchant(world.holderLookup(Registries.ENCHANTMENT).getOrThrow(Enchantments.LOOTING), toolLevel);
 
             LootTable lootTable = Objects.requireNonNull(world.getServer()).reloadableRegistries()
                     .getLootTable(deadEntity.getLootTable().get());

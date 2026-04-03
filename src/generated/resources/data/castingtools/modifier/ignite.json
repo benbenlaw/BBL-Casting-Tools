@@ -1,0 +1,14 @@
+{
+  "additional_value": 20.0,
+  "description": "modifier.castingtools.ignite.description",
+  "display_name": "modifier.castingtools.ignite",
+  "experience_cost": 1000,
+  "fluid": "minecraft:lava",
+  "fluid_amount": 8000,
+  "ingredient": "minecraft:flint_and_steel",
+  "max_level": 5,
+  "valid_items": [
+    "#castingtools:all_melee_weapons",
+    "#c:rods"
+  ]
+}

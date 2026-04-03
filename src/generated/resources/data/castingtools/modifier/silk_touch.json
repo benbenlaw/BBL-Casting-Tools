@@ -1,0 +1,17 @@
+{
+  "description": "modifier.castingtools.silk_touch.description",
+  "display_name": "modifier.castingtools.silk_touch",
+  "experience_cost": 4000,
+  "fluid": "casting:molten_emerald",
+  "fluid_amount": 720,
+  "incompatible_modifiers": [
+    "castingtools:fortune"
+  ],
+  "max_level": 1,
+  "valid_items": [
+    "#minecraft:pickaxes",
+    "#minecraft:axes",
+    "#minecraft:shovels",
+    "#minecraft:hoes"
+  ]
+}

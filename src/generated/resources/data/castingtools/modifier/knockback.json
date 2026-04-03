@@ -1,0 +1,13 @@
+{
+  "additional_value": 1.0,
+  "description": "modifier.castingtools.knockback.description",
+  "display_name": "modifier.castingtools.knockback",
+  "experience_cost": 1000,
+  "ingredient": "minecraft:piston",
+  "ingredient_count": 2,
+  "max_level": 1000,
+  "valid_items": [
+    "#castingtools:all_melee_weapons",
+    "#c:rods"
+  ]
+}

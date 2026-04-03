@@ -1,0 +1,12 @@
+{
+  "additional_value": 0.1,
+  "description": "modifier.castingtools.lifesteal.description",
+  "display_name": "modifier.castingtools.lifesteal",
+  "experience_cost": 3000,
+  "ingredient": "minecraft:golden_apple",
+  "ingredient_count": 4,
+  "max_level": 10,
+  "valid_items": [
+    "#castingtools:all_melee_weapons"
+  ]
+}

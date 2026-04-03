@@ -16,38 +16,6 @@ import java.util.Set;
 import java.util.function.Supplier;
 
 public class UnbreakingModifier extends Modifier {
-    private final Supplier<Float> effectPerLevel;
-    private final Supplier<Integer> maxLevel;
 
-    public UnbreakingModifier(Supplier<Float> effectPerLevel, Supplier<Integer> maxLevel) {
-        this.effectPerLevel = effectPerLevel;
-        this.maxLevel = maxLevel;
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return maxLevel.get();
-    }
-
-    @Override
-    public Set<TagKey<Item>> getValidTags() {
-        return Set.of(
-                CastingToolsTags.Items.ALL_TOOLS,
-                CastingToolsTags.Items.ALL_ARMORS,
-                CastingToolsTags.Items.ALL_WEAPONS
-
-        );
-    }
-
-    @Override
-    public Optional<SizedFluidIngredient> getFluidIngredient() {
-        return Optional.of(SizedFluidIngredient.of(BuiltInRegistries.FLUID.getValue(Casting.identifier("molten_obsidian")), 8000));
-    }
-
-    @Override
-    public Set<Modifier> getIncompatibleModifiers() {
-        return Set.of(
-                ModifierRegistry.REPAIRING.get()
-        );
-    }
+    //All logic for this modifier is handler in the ItemStackMixin, this allows for compatibility with other mods that use hurt and break methods
 }

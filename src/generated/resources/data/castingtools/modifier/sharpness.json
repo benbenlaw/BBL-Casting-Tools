@@ -1,0 +1,12 @@
+{
+  "additional_value": 1.0,
+  "description": "modifier.castingtools.sharpness.description",
+  "display_name": "modifier.castingtools.sharpness",
+  "experience_cost": 2000,
+  "fluid": "casting:molten_quartz",
+  "fluid_amount": 5000,
+  "max_level": 10,
+  "valid_items": [
+    "#castingtools:all_melee_weapons"
+  ]
+}

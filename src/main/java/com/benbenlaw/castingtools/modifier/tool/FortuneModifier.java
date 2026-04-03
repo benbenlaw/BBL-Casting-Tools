@@ -6,6 +6,7 @@ import com.benbenlaw.casting.fluid.CastingFluids;
 import com.benbenlaw.casting.fluid.FluidData;
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.modifier.Modifier;
+import com.benbenlaw.castingtools.modifier.ModifierData;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -28,50 +29,13 @@ import java.util.function.Supplier;
 
 public class FortuneModifier extends Modifier {
 
-    private final Supplier<Integer> maxLevel;
-
-    public FortuneModifier(Supplier<Integer> maxLevel) {
-        this.maxLevel = maxLevel;
-    }
-
     @Override
-    public int getMaxLevel() {
-        return maxLevel.get();
-    }
-
-    @Override
-    public void onCalculateDrops(ItemStack fakeStack, int level, Level world) {
-        int effectiveLevel = Math.min(level, maxLevel.get());
+    public void onCalculateDrops(ItemStack fakeStack, ModifierData data, Level world, int toolLevel) {
+        int effectiveLevel = Math.min(toolLevel, data.maxLevel());
         if (effectiveLevel > 0) {
             fakeStack.enchant(world.registryAccess().lookupOrThrow(Registries.ENCHANTMENT)
                     .getOrThrow(Enchantments.FORTUNE), effectiveLevel);
         }
     }
 
-    @Override
-    public Set<TagKey<Item>> getValidTags() {
-        return Set.of(
-                ItemTags.PICKAXES,
-                ItemTags.AXES,
-                ItemTags.SHOVELS,
-                ItemTags.HOES
-        );
-    }
-
-    @Override
-    public Optional<SizedIngredient> getIngredient() {
-        return Optional.of(SizedIngredient.of(Items.LAPIS_LAZULI, 12));
-    }
-
-    @Override
-    public Optional<SizedFluidIngredient> getFluidIngredient() {
-        return Optional.of(SizedFluidIngredient.of(BuiltInRegistries.FLUID.getValue(Casting.identifier("molten_lapis")), 1350));
-    }
-
-    @Override
-    public Set<Modifier> getIncompatibleModifiers() {
-        return Set.of(
-                ModifierRegistry.FORTUNE.get()
-        );
-    }
 }

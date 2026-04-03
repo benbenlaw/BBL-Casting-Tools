@@ -10,6 +10,6 @@ public class CastingToolsCommands {
 
     @SubscribeEvent
     public static void registerCommands(RegisterCommandsEvent event) {
-        ToolCommand.register(event.getDispatcher(), event.getBuildContext());
+        ToolCommand.register(event.getDispatcher());
     }
 }

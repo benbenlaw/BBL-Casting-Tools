@@ -4,12 +4,15 @@ import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
 import com.benbenlaw.castingtools.item.ModifierComponent;
 import com.benbenlaw.castingtools.modifier.Modifier;
+import com.benbenlaw.castingtools.modifier.ModifierData;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import com.benbenlaw.castingtools.utils.ModifierUtils;
+import com.benbenlaw.castingtools.utils.QuadConsumer;
 import com.benbenlaw.castingtools.utils.TriConsumer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -41,42 +44,55 @@ public class ModifierEvents {
     @SubscribeEvent
     public static void onLivingDamagePre(LivingDamageEvent.Pre event) {
         if (event.getSource().getEntity() instanceof LivingEntity attacker) {
-            handleModifiers(attacker, (modifier, level) -> {
-                modifier.onPreHit(event, level);
-            });
+            handleModifiers(attacker, (modifier, level) ->
+                    modifier.onPreHit(event, modifier.getData(), level));
+        }
+
+        LivingEntity victim = event.getEntity();
+        for (EquipmentSlot slot : EquipmentSlot.values()) {
+            if (slot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
+                ItemStack armorStack = victim.getItemBySlot(slot);
+                if (!armorStack.isEmpty()) {
+                    processStack(armorStack, (modifier, stack, level) ->
+                            modifier.onPreHit(event, modifier.getData(), level));
+                }
+            }
         }
     }
 
     @SubscribeEvent
     public static void onLivingDamagePost(LivingDamageEvent.Post event) {
         if (event.getSource().getEntity() instanceof LivingEntity attacker) {
-            handleModifiers(attacker, (modifier, level) -> {
-                modifier.onPostHit(event, level);
-            });
+            handleModifiers(attacker, (modifier, level) ->
+                    modifier.onPostHit(event, modifier.getData(), level));
         }
     }
 
     @SubscribeEvent
     public static void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
         if (event.getLevel().isClientSide()) return;
-        handleModifiers(event.getEntity(), (modifier, level) -> {
-            modifier.onLeftClickBlock(event, level);
-        });
+        handleModifiers(event.getEntity(), (modifier, level) ->
+                modifier.onLeftClickBlock(event, modifier.getData(), level));
     }
 
     @SubscribeEvent
     public static void onBreakSpeed(PlayerEvent.BreakSpeed event) {
-        handleModifiers(event.getEntity(), (modifier, level) -> {
-            modifier.onBreakSpeed(event, level);
-        });
+        handleModifiers(event.getEntity(), (modifier, level) ->
+                modifier.onBreakSpeed(event, modifier.getData(), level));
     }
 
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        handleModifiers(event.getEntity(), (modifier, level) -> {
-            modifier.onRightClickBlock(event, level);
-        });
+        handleModifiers(event.getEntity(), (modifier, level) ->
+                modifier.onRightClickBlock(event, modifier.getData(), level));
     }
+
+    @SubscribeEvent
+    public static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
+        handleModifiers(event.getEntity(), (modifier, level) ->
+                modifier.onRightClickItem(event, modifier.getData(), level));
+    }
+
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
@@ -85,7 +101,7 @@ public class ModifierEvents {
 
         if (player.level().getGameTime() % 20 == 0) {
             handleAllInventoryModifiers(player, (modifier, stack, level) -> {
-                modifier.onPlayerTick(event, stack, level);
+                modifier.onPlayerTick(event, stack, modifier.getData(), level);
             });
         }
     }
@@ -95,7 +111,7 @@ public class ModifierEvents {
         Entity killer = event.getEntity().getKillCredit();
         if (killer instanceof LivingEntity attacker) {
             handleModifiers(attacker, (modifier, level) -> {
-                modifier.onMobDrops(event, level);
+                modifier.onMobDrops(event, modifier.getData(), level);
             });
         }
     }
@@ -149,9 +165,10 @@ public class ModifierEvents {
         if (comp == null) return;
 
         comp.modifiers().forEach((id, level) -> {
-            Modifier modifier = ModifierRegistry.REGISTRY.getValue(id);
-            if (modifier != null) {
-                action.accept(modifier, level);
+            Modifier logic = ModifierRegistry.MODIFIER_REGISTRY.getValue(id);
+
+            if (logic != null) {
+                action.accept(logic, level);
             }
         });
     }
@@ -176,7 +193,7 @@ public class ModifierEvents {
         ModifierComponent comp = stack.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
         if (comp != null) {
             comp.modifiers().forEach((id, level) -> {
-                Modifier modifier = ModifierRegistry.REGISTRY.getValue(id);
+                Modifier modifier = ModifierRegistry.MODIFIER_REGISTRY.getValue(id);
                 if (modifier != null) {
                     action.accept(modifier, stack, level);
                 }

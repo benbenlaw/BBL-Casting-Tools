@@ -1,0 +1,12 @@
+{
+  "additional_value": 0.066,
+  "description": "modifier.castingtools.protection.description",
+  "display_name": "modifier.castingtools.protection",
+  "experience_cost": 1000,
+  "fluid": "casting:molten_steel",
+  "fluid_amount": 720,
+  "max_level": 5,
+  "valid_items": [
+    "#castingtools:all_armors"
+  ]
+}

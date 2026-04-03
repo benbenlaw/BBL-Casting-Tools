@@ -1,0 +1,13 @@
+{
+  "additional_value": 8.0,
+  "description": "modifier.castingtools.teleporting.description",
+  "display_name": "modifier.castingtools.teleporting",
+  "experience_cost": 5000,
+  "ingredient": "minecraft:ender_pearl",
+  "ingredient_count": 16,
+  "max_level": 10,
+  "valid_items": [
+    "#castingtools:all_tools",
+    "#castingtools:all_weapons"
+  ]
+}

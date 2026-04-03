@@ -1,0 +1,12 @@
+{
+  "description": "modifier.castingtools.excavation.description",
+  "display_name": "modifier.castingtools.excavation",
+  "experience_cost": 5000,
+  "fluid": "casting:molten_diamond",
+  "fluid_amount": 360,
+  "max_level": 3,
+  "valid_items": [
+    "#minecraft:pickaxes",
+    "#minecraft:shovels"
+  ]
+}

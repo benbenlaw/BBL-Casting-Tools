@@ -1,0 +1,12 @@
+{
+  "additional_value": 0.5,
+  "description": "modifier.castingtools.efficiency.description",
+  "display_name": "modifier.castingtools.efficiency",
+  "experience_cost": 1000,
+  "fluid": "casting:molten_redstone",
+  "fluid_amount": 1350,
+  "max_level": 10,
+  "valid_items": [
+    "#castingtools:all_tools"
+  ]
+}

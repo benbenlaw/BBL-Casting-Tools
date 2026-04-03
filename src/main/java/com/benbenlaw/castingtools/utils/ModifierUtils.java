@@ -27,9 +27,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static com.benbenlaw.castingtools.modifier.ModifierRegistry.EXCAVATION;
-import static com.benbenlaw.castingtools.modifier.ModifierRegistry.REGISTRY;
-
 public class ModifierUtils {
 
     public static void breakBlockWithCasting(Level level, Player player, BlockPos pos, ItemStack tool) {
@@ -46,15 +43,13 @@ public class ModifierUtils {
         ModifierComponent comp = tool.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
         if (comp != null) {
             comp.modifiers().forEach((key, modifierLevel) -> {
-                Modifier modifier = REGISTRY.getValue(key);
+                Modifier modifier = ModifierRegistry.MODIFIER_REGISTRY.getValue(key);
                 if (modifier != null) {
-                    modifier.onCalculateDrops(fakeItemStack, modifierLevel, level);
+                    modifier.onCalculateDrops(fakeItemStack, modifier.getData(), level, modifierLevel);
                 }
                 if (modifier == ModifierRegistry.SILK_TOUCH.get()) {
                     isSilkTouch.set(true);
                 }
-
-
             });
         }
 
@@ -136,7 +131,7 @@ public class ModifierUtils {
 
     public static Modifier getMatchingModifier(ItemStack toolStack, ItemStack ingredientStack, FluidStack tankFluid) {
 
-        for (Modifier modifier : REGISTRY) {
+        for (Modifier modifier : ModifierRegistry.MODIFIER_REGISTRY) {
             if (!modifier.isValid(toolStack)) continue;
 
             var itemIng = modifier.getIngredient();
@@ -149,7 +144,7 @@ public class ModifierUtils {
             }
         }
 
-        for (Modifier modifier : REGISTRY) {
+        for (Modifier modifier : ModifierRegistry.MODIFIER_REGISTRY) {
             if (!modifier.isValid(toolStack)) continue;
 
             var itemIng = modifier.getIngredient();
@@ -162,7 +157,7 @@ public class ModifierUtils {
             }
         }
 
-        for (Modifier modifier : REGISTRY) {
+        for (Modifier modifier : ModifierRegistry.MODIFIER_REGISTRY) {
             if (!modifier.isValid(toolStack)) continue;
 
             var itemIng = modifier.getIngredient();
@@ -189,9 +184,9 @@ public class ModifierUtils {
         ModifierComponent comp = stack.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
         if (comp != null) {
             for (Identifier modifierId : comp.modifiers().keySet()) {
-                Modifier existingModifier = REGISTRY.getValue(modifierId);
+                Modifier existingModifier = ModifierRegistry.MODIFIER_REGISTRY.getValue(modifierId);
                 if (existingModifier != null) {
-                    // Check if the new modifier is incompatible with any existing modifier
+
                     if (existingModifier.getIncompatibleModifiers().contains(newModifier) ||
                         newModifier.getIncompatibleModifiers().contains(existingModifier)) {
                         return true;
