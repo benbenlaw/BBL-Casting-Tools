@@ -16,4 +16,5 @@ public class ProtectionModifier extends Modifier {
 
         event.setNewDamage(currentDamage * multiplier);
     }
+
 }
