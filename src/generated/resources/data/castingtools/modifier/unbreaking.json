@@ -1,4 +1,5 @@
 {
+  "additional_value": 0.1,
   "description": "modifier.castingtools.unbreaking.description",
   "display_name": "modifier.castingtools.unbreaking",
   "experience_cost": 4000,

@@ -1,4 +1,4 @@
-// 26.1-pre-3	2026-04-03T16:13:39.1468714	castingtools Modifiers
+// 26.1.1	2026-04-08T10:52:38.3651018	castingtools Modifiers
 66fbf1dcf62da4f5cd416866cb9fcd5b3a98b548 data/castingtools/modifier/beheading.json
 83991efa21eccf1e51c059842d3054275cbaa226 data/castingtools/modifier/efficiency.json
 890802d39497215fc6dc08d3b5d986ac068f9e20 data/castingtools/modifier/excavation.json
@@ -13,4 +13,4 @@ b297b3c3c539d911eab36358657cb6062407d36a data/castingtools/modifier/repairing.js
 371fd4b094e5e02d410c4461a1b442a9d0c19cb4 data/castingtools/modifier/silk_touch.json
 99ae1e1964fd97cc76d4119d4e9033bd838ddce8 data/castingtools/modifier/teleporting.json
 a7c8041bb4964ef14eea7828dedf4442ec8613d5 data/castingtools/modifier/torch_placer.json
-9c91f9cd67d1a29f4d3e0d2a34ae9ff47c2d5d95 data/castingtools/modifier/unbreaking.json
+6d1f46fe91936d40f550191d37c43d0a4bf15b1f data/castingtools/modifier/unbreaking.json

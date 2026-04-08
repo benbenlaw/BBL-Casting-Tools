@@ -101,6 +101,7 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(CastingToolsTags.Items.ALL_WEAPONS.location()))
                     .fluid("casting:molten_obsidian", 8000)
                     .incompatibleModifier(CastingTools.identifier("repairing"))
+                    .additionalValue(0.1)
                     .save();
 
             // Repairing
