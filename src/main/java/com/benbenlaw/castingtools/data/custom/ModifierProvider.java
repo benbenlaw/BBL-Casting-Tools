@@ -160,6 +160,57 @@ public class ModifierProvider implements DataProvider {
                     .additionalValue(0.066)
                     .save();
 
+            // Magnet
+            add(cachedOutput, futures, "magnet", 4, 1000, itemLookup)
+                    .validItem(tagToString(CastingToolsTags.Items.ALL_TOOLS.location()))
+                    .ingredient("minecraft:iron_ingot", 8)
+                    .fluid("casting:molten_gold", 720)
+                    .save();
+
+            // Night Vision
+            add(cachedOutput, futures, "night_vision", 1, 8000, itemLookup)
+                    .validItem(tagToString(ItemTags.HEAD_ARMOR.location()))
+                    .ingredient("minecraft:golden_carrot", 8)
+                    .additionalValue(250.0)
+                    .save();
+
+            // Water Breathing
+            add(cachedOutput, futures, "water_breathing", 1, 2000, itemLookup)
+                    .validItem(tagToString(ItemTags.HEAD_ARMOR.location()))
+                    .ingredient("minecraft:pufferfish", 1)
+                    .additionalValue(250.0)
+                    .save();
+
+            // Speed
+            add(cachedOutput, futures, "speed", 5, 2500, itemLookup)
+                    .validItem(tagToString(CastingToolsTags.Items.ALL_ARMORS.location()))
+                    .ingredient("minecraft:sugar", 8)
+                    .save();
+
+            // Sticky
+            add(cachedOutput, futures, "sticky", 5, 1000, itemLookup)
+                    .validItem(tagToString(CastingToolsTags.Items.ALL_ARMORS.location()))
+                    .ingredient("minecraft:slime_ball", 8)
+                    .additionalValue(0.5)
+                    .save();
+
+            // Flight
+            add(cachedOutput, futures, "flight", 1, 16000, itemLookup)
+                    .validItem(tagToString(CastingToolsTags.Items.ALL_ARMORS.location()))
+                    .ingredient("minecraft:nether_star", 4)
+                    .fluid("casting:molten_netherite", 1620)
+                    .save();
+
+            // Soulbound
+            add(cachedOutput, futures, "soulbound", 1, 8000, itemLookup)
+                    .validItem(tagToString(CastingToolsTags.Items.ALL_TOOLS.location()))
+                    .validItem(tagToString(CastingToolsTags.Items.ALL_ARMORS.location()))
+                    .validItem(tagToString(CastingToolsTags.Items.ALL_WEAPONS.location()))
+                    .ingredient("minecraft:heart_of_the_sea", 1)
+                    .save();
+
+
+
 
             return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
         });

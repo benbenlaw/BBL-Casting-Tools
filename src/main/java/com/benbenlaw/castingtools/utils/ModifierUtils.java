@@ -197,5 +197,13 @@ public class ModifierUtils {
         return false;
     }
 
+    public static boolean hasSoulbound(ItemStack stack) {
+        ModifierComponent comp = stack.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        if (comp != null) {
+            return comp.modifiers().containsKey(ModifierRegistry.SOULBOUND.get().getId());
+        }
+        return false;
+    }
+
 
 }

@@ -1,7 +1,8 @@
 package com.benbenlaw.castingtools.modifier;
 
 import com.benbenlaw.castingtools.CastingTools;
-import com.benbenlaw.castingtools.modifier.armor.ProtectionModifier;
+import com.benbenlaw.castingtools.modifier.any.*;
+import com.benbenlaw.castingtools.modifier.armor.*;
 import com.benbenlaw.castingtools.modifier.tool.*;
 import com.benbenlaw.castingtools.modifier.weapon.*;
 import net.minecraft.core.Registry;
@@ -31,8 +32,20 @@ public class ModifierRegistry {
             builder.sync(true)
     );
 
+    //Any
+    public static final DeferredHolder<Modifier, UnbreakingModifier> UNBREAKING = MODIFIERS.register("unbreaking", UnbreakingModifier::new);
+    public static final DeferredHolder<Modifier, RepairingModifier> REPAIRING = MODIFIERS.register("repairing", RepairingModifier::new);
+    public static final DeferredHolder<Modifier, TorchPlacerModifier> TORCH_PLACER = MODIFIERS.register("torch_placer", TorchPlacerModifier::new);
+    public static final DeferredHolder<Modifier, SoulboundModifier> SOULBOUND = MODIFIERS.register("soulbound", SoulboundModifier::new);
+    public static final DeferredHolder<Modifier, MagnetModifier> MAGNET = MODIFIERS.register("magnet", MagnetModifier::new);
+
     //Armor Modifiers
     public static final DeferredHolder<Modifier, ProtectionModifier> PROTECTION = MODIFIERS.register("protection", ProtectionModifier::new);
+    public static final DeferredHolder<Modifier, NightVisionModifier> NIGHT_VISION = MODIFIERS.register("night_vision", NightVisionModifier::new);
+    public static final DeferredHolder<Modifier, WaterBreathingModifier> WATER_BREATHING = MODIFIERS.register("water_breathing", WaterBreathingModifier::new);
+    public static final DeferredHolder<Modifier, SpeedModifier> SPEED = MODIFIERS.register("speed", SpeedModifier::new);
+    public static final DeferredHolder<Modifier, StickyModifier> STICKY = MODIFIERS.register("sticky", StickyModifier::new);
+    public static final DeferredHolder<Modifier, FlightModifier> FLIGHT = MODIFIERS.register("flight", FlightModifier::new);
 
     //Weapon Modifiers
     public static final DeferredHolder<Modifier, IgniteModifier> IGNITE = MODIFIERS.register("ignite", IgniteModifier::new );
@@ -47,8 +60,5 @@ public class ModifierRegistry {
     public static final DeferredHolder<Modifier, SilkTouchModifier> SILK_TOUCH = MODIFIERS.register("silk_touch", SilkTouchModifier::new);
     public static final DeferredHolder<Modifier, ExcavationModifier> EXCAVATION = MODIFIERS.register("excavation", ExcavationModifier::new);
     public static final DeferredHolder<Modifier, EfficiencyModifier> EFFICIENCY = MODIFIERS.register("efficiency", EfficiencyModifier::new);
-    public static final DeferredHolder<Modifier, UnbreakingModifier> UNBREAKING = MODIFIERS.register("unbreaking", UnbreakingModifier::new);
-    public static final DeferredHolder<Modifier, RepairingModifier> REPAIRING = MODIFIERS.register("repairing", RepairingModifier::new);
-    public static final DeferredHolder<Modifier, TorchPlacerModifier> TORCH_PLACER = MODIFIERS.register("torch_placer", TorchPlacerModifier::new);
     public static final DeferredHolder<Modifier, LootingModifier> LOOTING = MODIFIERS.register("looting", LootingModifier::new);
 }

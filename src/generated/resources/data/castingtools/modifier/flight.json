@@ -1,0 +1,13 @@
+{
+  "description": "modifier.castingtools.flight.description",
+  "display_name": "modifier.castingtools.flight",
+  "experience_cost": 16000,
+  "fluid": "casting:molten_netherite",
+  "fluid_amount": 1620,
+  "ingredient": "minecraft:nether_star",
+  "ingredient_count": 4,
+  "max_level": 1,
+  "valid_items": [
+    "#castingtools:all_armors"
+  ]
+}

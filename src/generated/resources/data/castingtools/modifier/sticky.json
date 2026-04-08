@@ -1,0 +1,12 @@
+{
+  "additional_value": 0.5,
+  "description": "modifier.castingtools.sticky.description",
+  "display_name": "modifier.castingtools.sticky",
+  "experience_cost": 1000,
+  "ingredient": "minecraft:slime_ball",
+  "ingredient_count": 8,
+  "max_level": 5,
+  "valid_items": [
+    "#castingtools:all_armors"
+  ]
+}

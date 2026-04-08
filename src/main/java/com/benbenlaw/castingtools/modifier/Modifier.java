@@ -13,6 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
@@ -43,6 +44,9 @@ public abstract class Modifier {
     public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event, ModifierData data, int toolLevel) {}
     public void onRightClickItem(PlayerInteractEvent.RightClickItem event, ModifierData data, int toolLevel) {}
     public void onPlayerTick(PlayerTickEvent.Post event, ItemStack stack, ModifierData data, int toolLevel) {}
+    public void onPlayerDrops(LivingDropsEvent event, ItemStack stack, ModifierData data, int toolLevel, int slot) {}
+    public void onPlayerDeath(LivingDeathEvent event, ItemStack stack, ModifierData data, int toolLevel, int slot) {}
+    public void onPlayerClone(PlayerEvent.Clone event, ModifierData data, int toolLevel) {}
     public void onMobDrops(LivingDropsEvent event, ModifierData data, int toolLevel) {}
     public boolean overridesLootTable(ItemStack stack, ModifierData data, int toolLevel) { return false; }
 

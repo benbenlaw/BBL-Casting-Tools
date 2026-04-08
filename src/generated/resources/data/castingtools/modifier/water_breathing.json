@@ -1,0 +1,11 @@
+{
+  "additional_value": 250.0,
+  "description": "modifier.castingtools.water_breathing.description",
+  "display_name": "modifier.castingtools.water_breathing",
+  "experience_cost": 2000,
+  "ingredient": "minecraft:pufferfish",
+  "max_level": 1,
+  "valid_items": [
+    "#minecraft:head_armor"
+  ]
+}

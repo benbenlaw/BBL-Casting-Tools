@@ -1,0 +1,12 @@
+{
+  "additional_value": 250.0,
+  "description": "modifier.castingtools.night_vision.description",
+  "display_name": "modifier.castingtools.night_vision",
+  "experience_cost": 8000,
+  "ingredient": "minecraft:golden_carrot",
+  "ingredient_count": 8,
+  "max_level": 1,
+  "valid_items": [
+    "#minecraft:head_armor"
+  ]
+}

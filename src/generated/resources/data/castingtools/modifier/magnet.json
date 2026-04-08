@@ -1,0 +1,13 @@
+{
+  "description": "modifier.castingtools.magnet.description",
+  "display_name": "modifier.castingtools.magnet",
+  "experience_cost": 1000,
+  "fluid": "casting:molten_gold",
+  "fluid_amount": 720,
+  "ingredient": "minecraft:iron_ingot",
+  "ingredient_count": 8,
+  "max_level": 4,
+  "valid_items": [
+    "#castingtools:all_tools"
+  ]
+}

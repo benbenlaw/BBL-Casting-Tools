@@ -1,0 +1,11 @@
+{
+  "description": "modifier.castingtools.speed.description",
+  "display_name": "modifier.castingtools.speed",
+  "experience_cost": 2500,
+  "ingredient": "minecraft:sugar",
+  "ingredient_count": 8,
+  "max_level": 5,
+  "valid_items": [
+    "#castingtools:all_armors"
+  ]
+}

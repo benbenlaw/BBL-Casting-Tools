@@ -1,0 +1,12 @@
+{
+  "description": "modifier.castingtools.soulbound.description",
+  "display_name": "modifier.castingtools.soulbound",
+  "experience_cost": 8000,
+  "ingredient": "minecraft:heart_of_the_sea",
+  "max_level": 1,
+  "valid_items": [
+    "#castingtools:all_tools",
+    "#castingtools:all_armors",
+    "#castingtools:all_weapons"
+  ]
+}

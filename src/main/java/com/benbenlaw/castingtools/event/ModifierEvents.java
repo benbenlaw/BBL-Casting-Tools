@@ -4,16 +4,16 @@ import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
 import com.benbenlaw.castingtools.item.ModifierComponent;
 import com.benbenlaw.castingtools.modifier.Modifier;
-import com.benbenlaw.castingtools.modifier.ModifierData;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
+import com.benbenlaw.castingtools.modifier.armor.StickyModifier;
 import com.benbenlaw.castingtools.utils.ModifierUtils;
-import com.benbenlaw.castingtools.utils.QuadConsumer;
 import com.benbenlaw.castingtools.utils.TriConsumer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
@@ -81,6 +82,7 @@ public class ModifierEvents {
                 modifier.onBreakSpeed(event, modifier.getData(), level));
     }
 
+
     @SubscribeEvent
     public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         handleModifiers(event.getEntity(), (modifier, level) ->
@@ -99,20 +101,50 @@ public class ModifierEvents {
         Player player = event.getEntity();
         if (player.level().isClientSide()) return;
 
+        //handleAllInventoryModifiers(player, (modifier, stack, level) -> {
+        //    if (modifier instanceof StickyModifier) {
+        //        modifier.onPlayerTick(event, stack, modifier.getData(), level);
+        //    }
+        //});
+
         if (player.level().getGameTime() % 20 == 0) {
-            handleAllInventoryModifiers(player, (modifier, stack, level) -> {
-                modifier.onPlayerTick(event, stack, modifier.getData(), level);
-            });
+            handleAllInventoryModifiers(player, (modifier, stack, level) -> modifier.onPlayerTick(event, stack, modifier.getData(), level));
         }
     }
 
     @SubscribeEvent
     public static void onEntityDrops(LivingDropsEvent event) {
+        // Attacker Logic
         Entity killer = event.getEntity().getKillCredit();
         if (killer instanceof LivingEntity attacker) {
-            handleModifiers(attacker, (modifier, level) -> {
-                modifier.onMobDrops(event, modifier.getData(), level);
-            });
+            handleModifiers(attacker, (modifier, level) -> modifier.onMobDrops(event, modifier.getData(), level));
+        }
+
+        // Player Inventory Logic
+        if (event.getEntity() instanceof Player player) {
+            List<ItemEntity> drops = new java.util.ArrayList<>(event.getDrops());
+
+            for (ItemEntity itemEntity : drops) {
+                ItemStack stack = itemEntity.getItem();
+
+                processStack(stack, (modifier, itemStack, level) ->
+                        modifier.onPlayerDrops(event, itemStack, modifier.getData(), level, -1));
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerDeath(LivingDeathEvent event) {
+        if (event.getEntity() instanceof Player player) {
+            Inventory inventory = player.getInventory();
+            for (int i = 0; i < inventory.getContainerSize(); i++) {
+                ItemStack stack = inventory.getItem(i);
+                if (!stack.isEmpty()) {
+                    int slot = i;
+                    processStack(stack, (modifier, itemStack, level) ->
+                            modifier.onPlayerDeath(event, itemStack, modifier.getData(), level, slot));
+                }
+            }
         }
     }
 
@@ -156,7 +188,17 @@ public class ModifierEvents {
         }
     }
 
-
+    @SubscribeEvent
+    public static void onPlayerClone(PlayerEvent.Clone event) {
+        if (!event.isWasDeath()) return;
+        Player oldPlayer = event.getOriginal();
+        for (int i = 0; i < oldPlayer.getInventory().getContainerSize(); i++) {
+            ItemStack stack = oldPlayer.getInventory().getItem(i);
+            processStack(stack, (modifier, itemStack, level) -> {
+                modifier.onPlayerClone(event, modifier.getData(), level);
+            });
+        }
+    }
 
     //Held Item Modifier Handling Helper
     private static void handleModifiers(LivingEntity entity, BiConsumer<Modifier, Integer> action) {
