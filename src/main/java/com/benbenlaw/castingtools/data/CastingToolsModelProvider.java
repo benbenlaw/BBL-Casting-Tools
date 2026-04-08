@@ -42,6 +42,7 @@ public class CastingToolsModelProvider extends ModelProvider {
         createMachineBlock(CastingToolsBlocks.MODIFIER.get(), blockModels.blockStateOutput, blockModels.modelOutput);
     }
 
+
     public void createMachineBlock(Block block, Consumer<BlockModelDefinitionGenerator> blockStateOutput, BiConsumer<Identifier, ModelInstance> modelOutput) {
         TextureMapping idleTextureMapping = (new TextureMapping()).put(TextureSlot.TOP, new Material(CastingTools.identifier("block/modifier_top"))).put(TextureSlot.SIDE, new Material(CastingTools.identifier("block/modifier_side"))).put(TextureSlot.FRONT, TextureMapping.getBlockTexture(block, "_front"));
         TextureMapping workingTextureMapping = (new TextureMapping()).put(TextureSlot.TOP, new Material(CastingTools.identifier("block/modifier_top"))).put(TextureSlot.SIDE, new Material(CastingTools.identifier("block/modifier_side"))).put(TextureSlot.FRONT, TextureMapping.getBlockTexture(block, "_front_working"));
