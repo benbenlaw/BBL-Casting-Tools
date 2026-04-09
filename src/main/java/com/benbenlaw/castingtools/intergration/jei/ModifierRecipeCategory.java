@@ -131,7 +131,7 @@ public class ModifierRecipeCategory implements IRecipeCategory<ModifierRecipe> {
 
         displayStacks.addAll(recipe.modifier().getValidItems().stream().map(ItemStack::new).toList());
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 83, 12).addItemStacks(displayStacks);
+        builder.addSlot(RecipeIngredientRole.INPUT, 83, 12).addItemStacks(displayStacks);
     }
 
     @Override

@@ -43,6 +43,14 @@ public class CastingToolsLangProvider extends LanguageProvider {
         add("modifier.castingtools.knockback", "Knockback");
         add("modifier.castingtools.teleporting", "Teleporting");
         add("modifier.castingtools.protection", "Protection");
+        add("modifier.castingtools.soulbound", "Soulbound");
+        add("modifier.castingtools.magnet", "Magnet");
+        add("modifier.castingtools.night_vision", "Night Vision");
+        add("modifier.castingtools.water_breathing", "Water Breathing");
+        add("modifier.castingtools.speed", "Speed");
+        add("modifier.castingtools.sticky", "Sticky");
+        add("modifier.castingtools.flight", "Flight");
+
 
         //Modifier Descriptions
         add("modifier.castingtools.silk_touch.description", "Allows you to mine blocks and receive the block itself instead of its usual drops, such as mining stone and receiving a stone block instead of cobblestone");
@@ -60,6 +68,15 @@ public class CastingToolsLangProvider extends LanguageProvider {
         add("modifier.castingtools.knockback.description", "Increases the knockback to mobs when hit");
         add("modifier.castingtools.teleporting.description", "Teleports you to a random location within a 5 block radius when you right click. Doesn't require any items in your inventory");
         add("modifier.castingtools.protection.description", "Reduces incoming damage from mobs and other sources");
+        add("modifier.castingtools.magnet.description", "Attracts nearby items to you");
+        add("modifier.castingtools.night_vision.description", "Provides you with night vision");
+        add("modifier.castingtools.water_breathing.description", "Allows you to breathe underwater");
+        add("modifier.castingtools.speed.description", "Increases your movement speed");
+        add("modifier.castingtools.sticky.description", "Stick to walls just like a spider");
+        add("modifier.castingtools.flight.description", "Provides flight");
+
+
+
 
 
     }
