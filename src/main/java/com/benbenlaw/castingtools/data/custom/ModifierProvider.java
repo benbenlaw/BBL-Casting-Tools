@@ -209,6 +209,12 @@ public class ModifierProvider implements DataProvider {
                     .ingredient("minecraft:heart_of_the_sea", 1)
                     .save();
 
+            // Bouncy
+            add(cachedOutput, futures, "bouncy", 1, 1000, itemLookup)
+                    .validItem(tagToString(ItemTags.FOOT_ARMOR.location()))
+                    .ingredient("minecraft:slime_block", 4)
+                    .additionalValue(1.30)
+                    .save();
 
 
 

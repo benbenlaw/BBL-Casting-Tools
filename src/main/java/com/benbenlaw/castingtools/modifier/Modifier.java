@@ -1,6 +1,5 @@
 package com.benbenlaw.castingtools.modifier;
 
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -15,6 +14,7 @@ import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -48,6 +48,7 @@ public abstract class Modifier {
     public void onPlayerDeath(LivingDeathEvent event, ItemStack stack, ModifierData data, int toolLevel, int slot) {}
     public void onPlayerClone(PlayerEvent.Clone event, ModifierData data, int toolLevel) {}
     public void onMobDrops(LivingDropsEvent event, ModifierData data, int toolLevel) {}
+    public void onFalling(LivingFallEvent event, ItemStack stack, ModifierData data) {}
     public boolean overridesLootTable(ItemStack stack, ModifierData data, int toolLevel) { return false; }
 
     // ------------------------------

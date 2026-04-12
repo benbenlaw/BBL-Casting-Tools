@@ -48,7 +48,7 @@ public class CastingToolsRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes() {
         //Reset
-        shapeless(RecipeCategory.MISC, CastingToolsBlocks.MODIFIER).requires(CastingToolsBlocks.MODIFIER);
+        shapeless(RecipeCategory.MISC, CastingToolsBlocks.MODIFIER).requires(CastingToolsBlocks.MODIFIER).unlockedBy("has_modifier", has(CastingToolsBlocks.MODIFIER)).save(output);
 
         //Modifier
         shaped(RecipeCategory.MISC, CastingToolsBlocks.MODIFIER)

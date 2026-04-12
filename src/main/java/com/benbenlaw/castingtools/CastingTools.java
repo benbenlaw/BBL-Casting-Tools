@@ -11,9 +11,11 @@ import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
 import com.benbenlaw.castingtools.item.CastingToolsItems;
 import com.benbenlaw.castingtools.modifier.ModifierLoader;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
+import com.benbenlaw.castingtools.modifier.armor.BouncyModifier;
 import com.benbenlaw.castingtools.network.CastingToolsNetworking;
 import com.benbenlaw.castingtools.screen.CastingToolsMenuTypes;
 import com.benbenlaw.castingtools.screen.ModifierScreen;
+import com.benbenlaw.castingtools.utils.BounceModifierHandler;
 import net.minecraft.resources.Identifier;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -22,6 +24,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.common.NeoForge;
@@ -52,6 +55,7 @@ public class CastingTools {
         NeoForge.EVENT_BUS.addListener(CastingTools::onAddReloadListener);
 
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::commonSetupBounce);
         modEventBus.addListener(this::registerCapabilities);
         modEventBus.addListener(this::registerDataMaps);
     }
@@ -77,11 +81,16 @@ public class CastingTools {
 
     public void registerDataMaps(RegisterDataMapTypesEvent event) {
         event.register(CastingToolsDataMaps.BEHEADING_DROPS);
-    }
 
+    }
 
     public void commonSetup(RegisterPayloadHandlersEvent event) {
         CastingToolsNetworking.registerNetworking(event);
+    }
+
+    public void commonSetupBounce(FMLCommonSetupEvent event) {
+        BounceModifierHandler.init();
+
     }
 
     public static Identifier identifier(String path) {

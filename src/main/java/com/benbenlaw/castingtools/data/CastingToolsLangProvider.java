@@ -50,6 +50,7 @@ public class CastingToolsLangProvider extends LanguageProvider {
         add("modifier.castingtools.speed", "Speed");
         add("modifier.castingtools.sticky", "Sticky");
         add("modifier.castingtools.flight", "Flight");
+        add("modifier.castingtools.bouncy", "Bouncy");
 
 
         //Modifier Descriptions
@@ -74,6 +75,7 @@ public class CastingToolsLangProvider extends LanguageProvider {
         add("modifier.castingtools.speed.description", "Increases your movement speed");
         add("modifier.castingtools.sticky.description", "Stick to walls just like a spider");
         add("modifier.castingtools.flight.description", "Provides flight");
+        add("modifier.castingtools.bouncy.description", "Bounce when you fall from heights");
 
 
 

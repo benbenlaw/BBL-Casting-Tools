@@ -5,7 +5,6 @@ import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
 import com.benbenlaw.castingtools.item.ModifierComponent;
 import com.benbenlaw.castingtools.modifier.Modifier;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
-import com.benbenlaw.castingtools.modifier.armor.StickyModifier;
 import com.benbenlaw.castingtools.utils.ModifierUtils;
 import com.benbenlaw.castingtools.utils.TriConsumer;
 import net.minecraft.core.BlockPos;
@@ -24,6 +23,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -95,6 +95,12 @@ public class ModifierEvents {
                 modifier.onRightClickItem(event, modifier.getData(), level));
     }
 
+    @SubscribeEvent
+    public static void onFallDamage(LivingFallEvent event) {
+        if (event.getEntity() instanceof Player) {
+            handleAllArmorModifiers((Player) event.getEntity(), (modifier, stack, level) -> modifier.onFalling(event, stack, modifier.getData()));
+        }
+    }
 
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
@@ -226,6 +232,15 @@ public class ModifierEvents {
         for (int slotId : Inventory.EQUIPMENT_SLOT_MAPPING.keySet()) {
             ItemStack stack = inventory.getItem(slotId);
             processStack(stack, action);
+        }
+    }
+
+    private static void handleAllArmorModifiers(Player player, TriConsumer<Modifier, ItemStack, Integer> action) {
+        for (EquipmentSlot slot : EquipmentSlot.values()) {
+            if (slot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
+                ItemStack stack = player.getItemBySlot(slot);
+                processStack(stack, action);
+            }
         }
     }
 

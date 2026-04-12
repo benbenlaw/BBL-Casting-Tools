@@ -1,3 +1,5 @@
-// 26.1.1	2026-04-08T10:52:38.3641004	castingtools Recipes
+// 26.1.2	2026-04-12T13:00:33.1001967	castingtools Recipes
 61283a18de83e9d47aa47a555fee810cb1999d2e data/castingtools/advancement/recipes/misc/crafting/modifier.json
+22e85be5ff47cf31e04b306f310fb4c2a7962e0a data/castingtools/advancement/recipes/misc/modifier.json
 eb1e4d1ae9f4d30b265282275eb03c2f75f32242 data/castingtools/recipe/crafting/modifier.json
+53cc665bd3bf25da0f9ffdaf2e40ba436cf866b7 data/castingtools/recipe/modifier.json
