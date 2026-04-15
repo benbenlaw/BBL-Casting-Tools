@@ -5,6 +5,8 @@
   "jei.castingtools.modifier.information": "The Modifier can be used to make your tools and equipment more powerful.\n\nThe modifier uses Molten Experience as a fuel as well as either another fluid, an item or a Fluid and Item to apply a modifier.\n\nStanding on the Modifier will consume your experience and insert into the internal experience tank",
   "modifier.castingtools.beheading": "Beheading",
   "modifier.castingtools.beheading.description": "Valid mobs will always drop their head when killed",
+  "modifier.castingtools.bouncy": "Bouncy",
+  "modifier.castingtools.bouncy.description": "Bounce when you fall from heights",
   "modifier.castingtools.efficiency": "Efficiency",
   "modifier.castingtools.efficiency.description": "Increases mining speed",
   "modifier.castingtools.excavation": "Excavation",
