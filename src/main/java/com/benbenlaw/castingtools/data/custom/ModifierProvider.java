@@ -109,7 +109,7 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(CastingToolsTags.Items.ALL_TOOLS.location()))
                     .validItem(tagToString(CastingToolsTags.Items.ALL_ARMORS.location()))
                     .validItem(tagToString(CastingToolsTags.Items.ALL_WEAPONS.location()))
-                    .fluid("casting:molten_obsidian", 8000)
+                    .ingredient("minecraft:moss", 8)
                     .additionalValue(20)
                     .incompatibleModifier(CastingTools.identifier("unbreaking"))
                     .save();

@@ -3,11 +3,11 @@
   "description": "modifier.castingtools.repairing.description",
   "display_name": "modifier.castingtools.repairing",
   "experience_cost": 4000,
-  "fluid": "casting:molten_obsidian",
-  "fluid_amount": 8000,
   "incompatible_modifiers": [
     "castingtools:unbreaking"
   ],
+  "ingredient": "minecraft:moss",
+  "ingredient_count": 8,
   "max_level": 8,
   "valid_items": [
     "#castingtools:all_tools",
