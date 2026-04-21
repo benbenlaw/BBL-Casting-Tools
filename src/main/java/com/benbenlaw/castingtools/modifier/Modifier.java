@@ -8,6 +8,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
@@ -101,24 +102,31 @@ public abstract class Modifier {
     }
 
     public Optional<SizedIngredient> getIngredient() {
-        return data.ingredient().map(input -> {
-            Ingredient ingredient = null;
+        return data.ingredient().flatMap(input -> {
+
+            Ingredient ingredient;
 
             if (input.startsWith("#")) {
                 TagKey<Item> tagKey = TagKey.create(Registries.ITEM, Identifier.parse(input.substring(1)));
-
                 var tagHolder = BuiltInRegistries.ITEM.get(tagKey);
 
-                if (tagHolder.isPresent()) {
-                    ingredient = Ingredient.of(tagHolder.get());
+                if (tagHolder.isEmpty()) {
+                    return Optional.empty();
                 }
+
+                ingredient = Ingredient.of(tagHolder.get());
+
             } else {
                 Item item = BuiltInRegistries.ITEM.getValue(Identifier.parse(input));
+
+                if (item == Items.AIR) {
+                    return Optional.empty();
+                }
+
                 ingredient = Ingredient.of(item);
             }
 
-            assert ingredient != null;
-            return new SizedIngredient(ingredient, data.ingredientCount());
+            return Optional.of(new SizedIngredient(ingredient, data.ingredientCount()));
         });
     }
 
