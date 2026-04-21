@@ -16,11 +16,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
 
-public class CastingToolsLootTableProvider extends VanillaBlockLoot {
+public class CTLootTableProvider extends VanillaBlockLoot {
 
     private final Set<Block> knownBlocks = new ReferenceOpenHashSet<>();
 
-    public CastingToolsLootTableProvider(HolderLookup.Provider provider) {
+    public CTLootTableProvider(HolderLookup.Provider provider) {
         super(provider);
     }
 

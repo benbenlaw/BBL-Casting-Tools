@@ -1,0 +1,13 @@
+{
+  "description": "modifier.castingtools.cobblestone_placer.description",
+  "display_name": "modifier.castingtools.cobblestone_placer",
+  "experience_cost": 1000,
+  "fluid": "casting:molten_stone",
+  "fluid_amount": 5120,
+  "ingredient": "minecraft:cobblestone",
+  "ingredient_count": 64,
+  "max_level": 1,
+  "valid_items": [
+    "#castingtools:all_tools"
+  ]
+}

@@ -10,9 +10,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
-public class CastingToolsBlockTags extends BlockTagsProvider {
+public class CTBlockTags extends BlockTagsProvider {
 
-    CastingToolsBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+    CTBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(output, lookupProvider, Casting.MOD_ID);
     }
 

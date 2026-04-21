@@ -1,0 +1,12 @@
+{
+  "additional_value": 1.0,
+  "description": "modifier.castingtools.retaliation.description",
+  "display_name": "modifier.castingtools.retaliation",
+  "experience_cost": 8000,
+  "ingredient": "minecraft:diamond",
+  "ingredient_count": 6,
+  "max_level": 5,
+  "valid_items": [
+    "#castingtools:all_armors"
+  ]
+}

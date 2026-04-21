@@ -7,7 +7,7 @@
   "incompatible_modifiers": [
     "castingtools:silk_touch"
   ],
-  "max_level": 3,
+  "max_level": 7,
   "valid_items": [
     "#minecraft:pickaxes",
     "#minecraft:axes",

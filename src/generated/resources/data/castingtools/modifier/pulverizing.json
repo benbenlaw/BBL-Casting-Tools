@@ -1,0 +1,14 @@
+{
+  "description": "modifier.castingtools.pulverizing.description",
+  "display_name": "modifier.castingtools.pulverizing",
+  "experience_cost": 4000,
+  "incompatible_modifiers": [
+    "castingtools:excavation"
+  ],
+  "ingredient": "minecraft:gravel",
+  "ingredient_count": 64,
+  "max_level": 1,
+  "valid_items": [
+    "#castingtools:all_tools"
+  ]
+}

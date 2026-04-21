@@ -81,6 +81,7 @@ public class CastingTools {
 
     public void registerDataMaps(RegisterDataMapTypesEvent event) {
         event.register(CastingToolsDataMaps.BEHEADING_DROPS);
+        event.register(CastingToolsDataMaps.PULVERIZING_BLOCKS);
 
     }
 

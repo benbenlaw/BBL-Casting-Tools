@@ -4,9 +4,9 @@ import com.benbenlaw.castingtools.CastingTools;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
-public class CastingToolsLangProvider extends LanguageProvider {
+public class CTLangProvider extends LanguageProvider {
 
-    public CastingToolsLangProvider(PackOutput output) {
+    public CTLangProvider(PackOutput output) {
         super(output, CastingTools.MOD_ID, "en_us");
     }
 
@@ -51,6 +51,9 @@ public class CastingToolsLangProvider extends LanguageProvider {
         add("modifier.castingtools.sticky", "Sticky");
         add("modifier.castingtools.flight", "Flight");
         add("modifier.castingtools.bouncy", "Bouncy");
+        add("modifier.castingtools.cobblestone_placer", "Cobblestone Placer");
+        add("modifier.castingtools.retaliation", "Retaliation");
+        add("modifier.castingtools.pulverizer", "Pulverizer");
 
 
         //Modifier Descriptions
@@ -76,6 +79,9 @@ public class CastingToolsLangProvider extends LanguageProvider {
         add("modifier.castingtools.sticky.description", "Stick to walls just like a spider");
         add("modifier.castingtools.flight.description", "Provides flight");
         add("modifier.castingtools.bouncy.description", "Bounce when you fall from heights");
+        add("modifier.castingtools.cobblestone_placer.description", "Places a block of cobblestone when you right click. Doesn't require any items in your inventory");
+        add("modifier.castingtools.retaliation.description", "Sometimes damages the attacker when hit. The higher the level, the higher the chance and damage");
+        add("modifier.castingtools.pulverizer.description", "Crushes up certain blocks when broken");
 
 
 

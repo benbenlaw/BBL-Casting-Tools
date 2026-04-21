@@ -11,7 +11,6 @@ import net.minecraft.client.data.models.blockstates.BlockModelDefinitionGenerato
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.client.data.models.blockstates.PropertyDispatch;
 import net.minecraft.client.data.models.model.*;
-import net.minecraft.client.renderer.special.SpecialModelRenderer;
 import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
@@ -29,9 +28,9 @@ import java.util.function.Consumer;
 
 import static net.minecraft.client.data.models.BlockModelGenerators.*;
 
-public class CastingToolsModelProvider extends ModelProvider {
+public class CTModelProvider extends ModelProvider {
 
-    public CastingToolsModelProvider(PackOutput output) {
+    public CTModelProvider(PackOutput output) {
         super(output, CastingTools.MOD_ID);
     }
 

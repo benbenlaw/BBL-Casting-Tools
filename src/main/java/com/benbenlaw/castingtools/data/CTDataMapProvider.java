@@ -5,16 +5,18 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 
 import java.util.concurrent.CompletableFuture;
 
-public class BeheadingDropsDataMapProvider extends DataMapProvider {
+public class CTDataMapProvider extends DataMapProvider {
 
-    public BeheadingDropsDataMapProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+    public CTDataMapProvider(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(packOutput, lookupProvider);
     }
 
@@ -30,5 +32,12 @@ public class BeheadingDropsDataMapProvider extends DataMapProvider {
                 .add(EntityType.ENDER_DRAGON.builtInRegistryHolder().key(), new ItemStackTemplate(Items.DRAGON_HEAD), false)
         ;
 
+        builder(CastingToolsDataMaps.PULVERIZING_BLOCKS)
+                .add(Blocks.COBBLESTONE.defaultBlockState().typeHolder(), Identifier.withDefaultNamespace("blocks/gravel"), false)
+                .add(Blocks.GRAVEL.defaultBlockState().typeHolder(), Identifier.withDefaultNamespace("blocks/sand"), false)
+                .add(Blocks.STONE_BRICKS.defaultBlockState().typeHolder(), Identifier.withDefaultNamespace("blocks/cracked_stone_bricks"), false)
+
+
+        ;
     }
 }

@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.WallTorchBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
-public class TorchPlacerModifier extends Modifier {
+public class CobblestonePlacerModifier extends Modifier {
 
     @Override
     public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event, ModifierData data, int toolLevel) {
@@ -32,28 +32,21 @@ public class TorchPlacerModifier extends Modifier {
 
         if (!world.getBlockState(placePos).canBeReplaced()) return;
 
-        BlockState stateToPlace = null;
-        if (face == Direction.UP) {
-            stateToPlace = Blocks.TORCH.defaultBlockState();
-        } else if (face.getAxis().isHorizontal()) {
-            stateToPlace = Blocks.WALL_TORCH.defaultBlockState().setValue(WallTorchBlock.FACING, face);
+        BlockState stateToPlace = Blocks.COBBLESTONE.defaultBlockState();
+
+        boolean success = world.setBlockAndUpdate(placePos, stateToPlace);
+
+        if (success) {
+            world.playSound(null, placePos, Blocks.COBBLESTONE.getSoundType(stateToPlace, world, pos, player).getPlaceSound(),
+                    SoundSource.BLOCKS, 1.0F, 1.0F);
+
+            tool.hurtAndBreak(1, player, event.getHand());
+            player.swing(event.getHand());
+
+            event.setCancellationResult(InteractionResult.SUCCESS_SERVER);
+            event.setCanceled(true);
         }
 
-        if (stateToPlace != null && stateToPlace.canSurvive(world, placePos)) {
-
-            boolean success = world.setBlockAndUpdate(placePos, stateToPlace);
-
-            if (success) {
-                world.playSound(null, placePos, Blocks.TORCH.getSoundType(stateToPlace, world, pos, player).getPlaceSound(),
-                        SoundSource.BLOCKS, 1.0F, 1.0F);
-
-                tool.hurtAndBreak(1, player, event.getHand());
-                player.swing(event.getHand());
-
-                event.setCancellationResult(InteractionResult.SUCCESS_SERVER);
-                event.setCanceled(true);
-            }
-        }
     }
 
 

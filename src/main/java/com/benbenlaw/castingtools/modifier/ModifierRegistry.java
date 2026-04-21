@@ -36,6 +36,7 @@ public class ModifierRegistry {
     public static final DeferredHolder<Modifier, UnbreakingModifier> UNBREAKING = MODIFIERS.register("unbreaking", UnbreakingModifier::new);
     public static final DeferredHolder<Modifier, RepairingModifier> REPAIRING = MODIFIERS.register("repairing", RepairingModifier::new);
     public static final DeferredHolder<Modifier, TorchPlacerModifier> TORCH_PLACER = MODIFIERS.register("torch_placer", TorchPlacerModifier::new);
+    public static final DeferredHolder<Modifier, CobblestonePlacerModifier> COBBLESTONE_PLACER = MODIFIERS.register("cobblestone_placer", CobblestonePlacerModifier::new);
     public static final DeferredHolder<Modifier, SoulboundModifier> SOULBOUND = MODIFIERS.register("soulbound", SoulboundModifier::new);
     public static final DeferredHolder<Modifier, MagnetModifier> MAGNET = MODIFIERS.register("magnet", MagnetModifier::new);
     public static final DeferredHolder<Modifier, BouncyModifier> BOUNCY = MODIFIERS.register("bouncy", BouncyModifier::new);
@@ -47,6 +48,7 @@ public class ModifierRegistry {
     public static final DeferredHolder<Modifier, SpeedModifier> SPEED = MODIFIERS.register("speed", SpeedModifier::new);
     public static final DeferredHolder<Modifier, StickyModifier> STICKY = MODIFIERS.register("sticky", StickyModifier::new);
     public static final DeferredHolder<Modifier, FlightModifier> FLIGHT = MODIFIERS.register("flight", FlightModifier::new);
+    public static final DeferredHolder<Modifier, RetaliationModifier> RETALIATION = MODIFIERS.register("retaliation", RetaliationModifier::new);
 
     //Weapon Modifiers
     public static final DeferredHolder<Modifier, IgniteModifier> IGNITE = MODIFIERS.register("ignite", IgniteModifier::new );
@@ -62,4 +64,5 @@ public class ModifierRegistry {
     public static final DeferredHolder<Modifier, ExcavationModifier> EXCAVATION = MODIFIERS.register("excavation", ExcavationModifier::new);
     public static final DeferredHolder<Modifier, EfficiencyModifier> EFFICIENCY = MODIFIERS.register("efficiency", EfficiencyModifier::new);
     public static final DeferredHolder<Modifier, LootingModifier> LOOTING = MODIFIERS.register("looting", LootingModifier::new);
+    public static final DeferredHolder<Modifier, PulverizingModifier> PULVERIZING = MODIFIERS.register("pulverizing", PulverizingModifier::new);
 }

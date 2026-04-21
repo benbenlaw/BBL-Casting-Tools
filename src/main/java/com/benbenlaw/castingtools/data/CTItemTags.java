@@ -1,6 +1,5 @@
 package com.benbenlaw.castingtools.data;
 
-import com.benbenlaw.casting.Casting;
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.utils.CastingToolsTags;
 import net.minecraft.core.HolderLookup;
@@ -12,9 +11,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
-public class CastingToolsItemTags extends ItemTagsProvider {
+public class CTItemTags extends ItemTagsProvider {
 
-    public CastingToolsItemTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+    public CTItemTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         super(output, lookupProvider, CastingTools.MOD_ID);
     }
 

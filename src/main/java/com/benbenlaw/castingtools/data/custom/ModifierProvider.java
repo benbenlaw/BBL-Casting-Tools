@@ -3,6 +3,7 @@ package com.benbenlaw.castingtools.data.custom;
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.modifier.ModifierData;
+import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import com.benbenlaw.castingtools.utils.CastingToolsTags;
 import com.mojang.serialization.JsonOps;
 import net.minecraft.core.HolderGetter;
@@ -55,7 +56,7 @@ public class ModifierProvider implements DataProvider {
                     .save();
 
             // Fortune
-            add(cachedOutput, futures, "fortune", 3, 3000, itemLookup)
+            add(cachedOutput, futures, "fortune", 7, 3000, itemLookup)
                     .validItem(tagToString(ItemTags.PICKAXES.location()))
                     .validItem(tagToString(ItemTags.AXES.location()))
                     .validItem(tagToString(ItemTags.SHOVELS.location()))
@@ -69,6 +70,7 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(ItemTags.PICKAXES.location()))
                     .validItem(tagToString(ItemTags.SHOVELS.location()))
                     .fluid("casting:molten_diamond", 360)
+                    .incompatibleModifier(ModifierRegistry.PULVERIZING.getId())
                     .save();
 
             // Silk Touch
@@ -92,6 +94,13 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(CastingToolsTags.Items.ALL_TOOLS.location()))
                     .ingredient("#c:rods/wooden", 64)
                     .fluid("casting:molten_coal", 5120)
+                    .save();
+
+            // Cobblestone Placer
+            add(cachedOutput, futures, "cobblestone_placer", 1, 1000, itemLookup)
+                    .validItem(tagToString(CastingToolsTags.Items.ALL_TOOLS.location()))
+                    .ingredient("minecraft:cobblestone", 64)
+                    .fluid("casting:molten_stone", 5120)
                     .save();
 
             // Unbreaking
@@ -214,6 +223,20 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(ItemTags.FOOT_ARMOR.location()))
                     .ingredient("minecraft:slime_block", 4)
                     .additionalValue(1.30)
+                    .save();
+
+            // Retaliation
+            add(cachedOutput, futures, "retaliation", 5, 8000, itemLookup)
+                    .validItem(tagToString(CastingToolsTags.Items.ALL_ARMORS.location()))
+                    .ingredient("minecraft:diamond", 6)
+                    .additionalValue(1.0)
+                    .save();
+
+            // Pulverizing
+            add(cachedOutput, futures, "pulverizing", 1, 4000, itemLookup)
+                    .validItem(tagToString(CastingToolsTags.Items.ALL_TOOLS.location()))
+                    .ingredient("minecraft:gravel", 64)
+                    .incompatibleModifier(ModifierRegistry.EXCAVATION.getId())
                     .save();
 
 

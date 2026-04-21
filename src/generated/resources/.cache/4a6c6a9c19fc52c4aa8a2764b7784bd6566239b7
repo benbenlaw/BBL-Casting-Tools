@@ -1,10 +1,11 @@
-// 26.1.2	2026-04-18T09:27:33.3108892	castingtools Modifiers
+// 26.1.2	2026-04-21T11:04:57.8514881	castingtools Modifiers
 66fbf1dcf62da4f5cd416866cb9fcd5b3a98b548 data/castingtools/modifier/beheading.json
 c42a0fd8e32b554a9dd401fb7c9bc2f5c856e6bb data/castingtools/modifier/bouncy.json
+5b2d11640bbe823445df329f60e34e9a27812d28 data/castingtools/modifier/cobblestone_placer.json
 83991efa21eccf1e51c059842d3054275cbaa226 data/castingtools/modifier/efficiency.json
-890802d39497215fc6dc08d3b5d986ac068f9e20 data/castingtools/modifier/excavation.json
+208d3b87e347e7a331791553e7bd29f76c1987cc data/castingtools/modifier/excavation.json
 108897ec25ca7c15f7c406afbd1a1cf7e728b254 data/castingtools/modifier/flight.json
-728bcc8aba9a730471a1cc1154c553a0dcbded95 data/castingtools/modifier/fortune.json
+3cfaab02e4282ae6acc3f816783cdc44b08f14d1 data/castingtools/modifier/fortune.json
 b598ae81ff17f75f6c5a1acdbee9de4a569243f8 data/castingtools/modifier/ignite.json
 89db14a7878e41fc8e430fa5d77b5047251eb47e data/castingtools/modifier/knockback.json
 3945022045a6b1bf152b43f5d3051045996790d3 data/castingtools/modifier/lifesteal.json
@@ -12,7 +13,9 @@ b598ae81ff17f75f6c5a1acdbee9de4a569243f8 data/castingtools/modifier/ignite.json
 8f2d00359e881ea4e9bb1f5afca3c11901c1b1cc data/castingtools/modifier/magnet.json
 9d1ee0731d3352cd52719d62e0addbaa9946024a data/castingtools/modifier/night_vision.json
 d20f7efc2d01d4dc3bf27a9fe97cf28f40c5cb51 data/castingtools/modifier/protection.json
+f35675305edb35040145fbac2fb40e81f55e2acb data/castingtools/modifier/pulverizing.json
 2159497c095febffe578a9bb8eb1fff0be79817b data/castingtools/modifier/repairing.json
+69d5e025d0654d97b3261346fa1c18ee281d6c4f data/castingtools/modifier/retaliation.json
 98726ef52b68d51cfa26600cdf58809b84853bf8 data/castingtools/modifier/sharpness.json
 371fd4b094e5e02d410c4461a1b442a9d0c19cb4 data/castingtools/modifier/silk_touch.json
 9379025176a72471027650d2584aaee3696f288f data/castingtools/modifier/soulbound.json

@@ -1,5 +1,6 @@
 package com.benbenlaw.castingtools.modifier;
 
+import com.benbenlaw.castingtools.utils.DropContext;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -18,6 +19,7 @@ import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.fluids.crafting.FluidIngredient;
 import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
@@ -37,7 +39,7 @@ public abstract class Modifier {
 
     public void onPostHit(LivingDamageEvent.Post event, ModifierData data, int toolLevel) {}
     public void onPreHit(LivingDamageEvent.Pre event, ModifierData data, int toolLevel) {}
-    public void onBlockBreak(BlockEvent.BreakEvent event, ModifierData data, int toolLevel) {}
+    public void onBlockBreak(BreakBlockEvent event, ModifierData data, int toolLevel) {}
     public void onCalculateDrops(ItemStack fakeStack, ModifierData data, Level world, int toolLevel) {}
     public void onBreakSpeed(PlayerEvent.BreakSpeed event, ModifierData data, int toolLevel) {}
     public void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event, ModifierData data, int toolLevel) {}
@@ -49,6 +51,7 @@ public abstract class Modifier {
     public void onPlayerClone(PlayerEvent.Clone event, ModifierData data, int toolLevel) {}
     public void onMobDrops(LivingDropsEvent event, ModifierData data, int toolLevel) {}
     public void onFalling(LivingFallEvent event, ItemStack stack, ModifierData data) {}
+    public void modifyDrops(DropContext context, ModifierData data, int toolLevel) {}
     public boolean overridesLootTable(ItemStack stack, ModifierData data, int toolLevel) { return false; }
 
     // ------------------------------

@@ -1,0 +1,7 @@
+{
+  "values": {
+    "minecraft:cobblestone": "minecraft:blocks/gravel",
+    "minecraft:gravel": "minecraft:blocks/sand",
+    "minecraft:stone_bricks": "minecraft:blocks/cracked_stone_bricks"
+  }
+}

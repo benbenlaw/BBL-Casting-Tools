@@ -27,6 +27,7 @@ import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 import java.util.HashMap;
@@ -36,6 +37,7 @@ import java.util.UUID;
 import java.util.function.BiConsumer;
 
 import static com.benbenlaw.castingtools.modifier.ModifierRegistry.EXCAVATION;
+import static com.benbenlaw.castingtools.modifier.ModifierRegistry.PULVERIZING;
 
 @EventBusSubscriber(modid = CastingTools.MOD_ID)
 public class ModifierEvents {
@@ -155,7 +157,7 @@ public class ModifierEvents {
     }
 
     @SubscribeEvent
-    public static void onBlockBreak(BlockEvent.BreakEvent event) {
+    public static void onBlockBreak(BreakBlockEvent event) {
         if (event.getLevel().isClientSide()) return;
 
         Player player = event.getPlayer();
@@ -187,10 +189,18 @@ public class ModifierEvents {
                     ModifierUtils.breakBlockWithCasting(level, player, targetPos, tool);
                 }
                 ModifierUtils.breakBlockWithCasting(level, player, originPos, tool);
-            } else {
-                ModifierUtils.breakBlockWithCasting(level, player, originPos, tool);
+                event.setCanceled(true);
             }
-            event.setCanceled(true);
+
+            else {
+                processStack(tool, (modifier, itemStack, level1) -> {
+                    modifier.onBlockBreak(event, modifier.getData(), level1);
+                });
+            }
+
+            //else {
+            //    ModifierUtils.breakBlockWithCasting(level, player, originPos, tool);
+            //}
         }
     }
 
