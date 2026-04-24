@@ -2,6 +2,7 @@ package com.benbenlaw.castingtools.data;
 
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.castingtools.block.CastingToolsBlocks;
+import com.benbenlaw.castingtools.utils.CTTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -21,7 +22,12 @@ public class CTBlockTags extends BlockTagsProvider {
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(CastingToolsBlocks.MODIFIER.get())
+                .add(CastingToolsBlocks.OMNITHIUM_BLOCK.get())
         ;
+
+        tag(BlockTags.NEEDS_DIAMOND_TOOL).add(CastingToolsBlocks.OMNITHIUM_BLOCK.get());
+        tag(CTTags.Blocks.OMNITHIUM_BLOCK).add(CastingToolsBlocks.OMNITHIUM_BLOCK.get());
+
     }
 
 }

@@ -6,6 +6,7 @@ import com.benbenlaw.castingtools.block.CastingToolsCapabilities;
 import com.benbenlaw.castingtools.config.ToolModifiersConfig;
 import com.benbenlaw.castingtools.config.WeaponModifiersConfig;
 import com.benbenlaw.castingtools.datamaps.CastingToolsDataMaps;
+import com.benbenlaw.castingtools.fluids.CTFluids;
 import com.benbenlaw.castingtools.item.CastingToolsCreativeModeTab;
 import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
 import com.benbenlaw.castingtools.item.CastingToolsItems;
@@ -43,6 +44,7 @@ public class CastingTools {
         //modContainer.registerConfig(ModConfig.Type.STARTUP, ToolModifiersConfig.SPEC, "bbl/castingtools/modifiers/tools.toml");
 
         CastingToolsBlocks.BLOCKS.register(modEventBus);
+        CTFluids.FLUIDS.register(modEventBus);
         CastingToolsBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         CastingToolsItems.ITEMS.register(modEventBus);
         CastingToolsMenuTypes.MENUS.register(modEventBus);

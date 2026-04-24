@@ -7,6 +7,7 @@ import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.item.CastingToolsItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -24,6 +25,11 @@ public class CastingToolsBlocks {
                     .requiresCorrectToolForDrops()
                     .noOcclusion()));
 
+    public static final DeferredBlock<Block> OMNITHIUM_BLOCK = registerBlock("omnithium_block",
+            properties -> new Block(properties
+                    .requiresCorrectToolForDrops()
+                    .strength(50.0F, 1200.0F)
+                    .sound(SoundType.NETHERITE_BLOCK)));
 
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> function) {

@@ -5,6 +5,7 @@
   "experience_cost": 8000,
   "ingredient": "minecraft:golden_carrot",
   "ingredient_count": 8,
+  "max_enhanced_level": 1,
   "max_level": 1,
   "valid_items": [
     "#minecraft:head_armor"

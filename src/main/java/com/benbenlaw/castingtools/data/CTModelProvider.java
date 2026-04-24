@@ -3,6 +3,8 @@ package com.benbenlaw.castingtools.data;
 import com.benbenlaw.casting.block.custom.CastingBlock;
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.block.CastingToolsBlocks;
+import com.benbenlaw.castingtools.fluids.CTFluids;
+import com.benbenlaw.castingtools.item.CastingToolsItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
@@ -39,6 +41,27 @@ public class CTModelProvider extends ModelProvider {
 
         //Blocks
         createMachineBlock(CastingToolsBlocks.MODIFIER.get(), blockModels.blockStateOutput, blockModels.modelOutput);
+        blockModels.createTrivialCube(CastingToolsBlocks.OMNITHIUM_BLOCK.get());
+
+        //Items
+        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_INGOT.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_NUGGET.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateSpear(CastingToolsItems.OMNITHIUM_SPEAR.get());
+        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_CHESTPLATE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_LEGGINGS.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_HELMET.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_BOOTS.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+
+        bucketItem(itemModels, CTFluids.MOLTEN_OMNITHIUM.getBucket(), CTFluids.MOLTEN_OMNITHIUM.getBucket().content, false, false);
+
+        //Fluids
+        blockModels.createNonTemplateModelBlock(CTFluids.MOLTEN_OMNITHIUM.getBlock());
+
     }
 
     public void createMachineBlock(Block block, Consumer<BlockModelDefinitionGenerator> blockStateOutput, BiConsumer<Identifier, ModelInstance> modelOutput) {

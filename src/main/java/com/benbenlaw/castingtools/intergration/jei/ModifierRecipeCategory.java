@@ -167,6 +167,8 @@ public class ModifierRecipeCategory implements IRecipeCategory<ModifierRecipe> {
 
             tooltip.add(Component.translatable("modifier.castingtools.max_level", recipe.modifier().getMaxLevel())
                     .withStyle(ChatFormatting.AQUA));
+            tooltip.add(Component.translatable("modifier.castingtools.max_enhanced_level", recipe.modifier().getMaxEnhancedLevel())
+                    .withStyle(ChatFormatting.AQUA));
         }
     }
 }

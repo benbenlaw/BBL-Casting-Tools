@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "omnithium",
+  "key": {
+    "#": "castingtools:omnithium_nugget"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "id": "castingtools:omnithium_ingot"
+  }
+}

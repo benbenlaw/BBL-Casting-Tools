@@ -6,9 +6,10 @@
   "incompatible_modifiers": [
     "castingtools:unbreaking"
   ],
-  "ingredient": "minecraft:moss",
+  "ingredient": "#minecraft:moss_blocks",
   "ingredient_count": 8,
-  "max_level": 8,
+  "max_enhanced_level": 10,
+  "max_level": 5,
   "valid_items": [
     "#castingtools:all_tools",
     "#castingtools:all_armors",

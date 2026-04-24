@@ -2,15 +2,14 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "A": "casting:black_bricks",
-    "B": "casting:solidifier"
+    "A": "castingtools:omnithium_ingot"
   },
   "pattern": [
     "AAA",
-    "B B",
-    "AAA"
+    "A A",
+    "A A"
   ],
   "result": {
-    "id": "castingtools:modifier"
+    "id": "castingtools:omnithium_leggings"
   }
 }

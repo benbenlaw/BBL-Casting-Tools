@@ -5,6 +5,7 @@
   "experience_cost": 1000,
   "ingredient": "minecraft:slime_block",
   "ingredient_count": 4,
+  "max_enhanced_level": 1,
   "max_level": 1,
   "valid_items": [
     "#minecraft:foot_armor"

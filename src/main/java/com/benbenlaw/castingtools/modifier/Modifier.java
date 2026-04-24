@@ -76,6 +76,11 @@ public abstract class Modifier {
         return 1;
     }
 
+    public int getMaxEnhancedLevel() {
+        if (data != null) return data.maxEnhancedLevel();
+        return 1;
+    }
+
     public int getExperienceCost() {
         if (data != null) return data.experienceCost();
         return 1000;

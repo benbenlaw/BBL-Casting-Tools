@@ -1,0 +1,15 @@
+{
+  "type": "casting:melting",
+  "durationModifier": 0.5,
+  "input": {
+    "count": 1,
+    "ingredient": "castingtools:omnithium_ingot"
+  },
+  "meltingTemp": 1400,
+  "output": [
+    {
+      "amount": 90,
+      "id": "castingtools:molten_omnithium"
+    }
+  ]
+}

@@ -6,6 +6,7 @@
   "fluid_amount": 5120,
   "ingredient": "minecraft:cobblestone",
   "ingredient_count": 64,
+  "max_enhanced_level": 1,
   "max_level": 1,
   "valid_items": [
     "#castingtools:all_tools"

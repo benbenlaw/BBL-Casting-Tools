@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "castingtools:omnithium"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "castingtools:omnithium"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "castingtools:omnithium"
+      }
+    ]
+  }
+}

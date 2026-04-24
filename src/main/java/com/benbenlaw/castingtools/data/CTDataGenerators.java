@@ -3,6 +3,7 @@ package com.benbenlaw.castingtools.data;
 
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.data.custom.ModifierProvider;
+import net.minecraft.client.data.models.EquipmentAssetProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -30,7 +31,9 @@ public class CTDataGenerators {
         generator.addProvider(true, new CTModelProvider(packOutput));
 
         generator.addProvider(true, new CTItemTags(packOutput, lookupProvider));
+        generator.addProvider(true, new CTFluidTags(packOutput, lookupProvider));
         generator.addProvider(true, new CTLangProvider(packOutput));
+        generator.addProvider(true, new CTEquipmentAssetProvider(packOutput));
         generator.addProvider(true, new LootTableProvider(packOutput, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(CTLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
 

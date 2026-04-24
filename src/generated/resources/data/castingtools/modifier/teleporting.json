@@ -5,7 +5,8 @@
   "experience_cost": 5000,
   "ingredient": "minecraft:ender_pearl",
   "ingredient_count": 16,
-  "max_level": 10,
+  "max_enhanced_level": 12,
+  "max_level": 6,
   "valid_items": [
     "#castingtools:all_tools",
     "#castingtools:all_weapons"

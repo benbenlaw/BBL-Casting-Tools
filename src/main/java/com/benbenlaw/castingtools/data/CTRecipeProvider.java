@@ -1,17 +1,41 @@
 package com.benbenlaw.castingtools.data;
 
 import com.benbenlaw.casting.block.CastingBlocks;
+import com.benbenlaw.casting.data.custom.MeltingRecipeBuilder;
+import com.benbenlaw.casting.data.custom.MixingRecipeBuilder;
+import com.benbenlaw.casting.data.custom.SolidifierRecipeBuilder;
 import com.benbenlaw.casting.item.CastingItems;
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.block.CastingToolsBlocks;
+import com.benbenlaw.castingtools.fluids.CTFluids;
+import com.benbenlaw.castingtools.item.CastingToolsItems;
+import com.benbenlaw.core.tag.ResourceType;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.NonNullList;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.crafting.SizedIngredient;
+import net.neoforged.neoforge.fluids.FluidStackTemplate;
+import net.neoforged.neoforge.fluids.crafting.FluidIngredient;
+import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.Nullable;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+
+import static com.benbenlaw.casting.data.custom.FluidStackTemplateHelper.getFluidIngredient;
+import static com.benbenlaw.casting.data.custom.FluidStackTemplateHelper.getFluidStack;
 
 public class CTRecipeProvider extends RecipeProvider {
 
@@ -39,7 +63,7 @@ public class CTRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes() {
         //Reset
-        shapeless(RecipeCategory.MISC, CastingToolsBlocks.MODIFIER).requires(CastingToolsBlocks.MODIFIER).unlockedBy("has_modifier", has(CastingToolsBlocks.MODIFIER)).save(output);
+        shapeless(RecipeCategory.MISC, CastingToolsBlocks.MODIFIER).requires(CastingToolsBlocks.MODIFIER).unlockedBy("has_modifier", has(CastingToolsBlocks.MODIFIER)).save(output, "castingtools:reset");
 
         //Modifier
         shaped(RecipeCategory.MISC, CastingToolsBlocks.MODIFIER)
@@ -49,6 +73,164 @@ public class CTRecipeProvider extends RecipeProvider {
                 .define('A', CastingBlocks.BLACK_BRICKS)
                 .define('B', CastingBlocks.SOLIDIFIER)
                 .unlockedBy("has_clay", has(CastingItems.BLACK_BRICK))
-                .save(output, "castingtools:crafting/modifier");
+                .save(output);
+
+        //Omnithium
+        alloyMixingRecipes("omnithium", new FluidStackTemplate(CTFluids.MOLTEN_OMNITHIUM.getFluid(), 90),
+                List.of(
+                        getFluidIngredient("molten_end_stone", 8000),
+                        getFluidIngredient("molten_netherite", 360),
+                        getFluidIngredient("molten_steel", 3240),
+                        getFluidIngredient("molten_experience", 8000)
+                ));
+
+        shaped(RecipeCategory.MISC, CastingToolsItems.OMNITHIUM_PICKAXE)
+                .pattern("AAA")
+                .pattern(" B ")
+                .pattern(" B ")
+                .define('A', CastingToolsItems.OMNITHIUM_INGOT)
+                .define('B', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_omnithium", has(CastingToolsItems.OMNITHIUM_INGOT))
+                .save(output);
+
+        shaped(RecipeCategory.MISC, CastingToolsItems.OMNITHIUM_SHOVEL)
+                .pattern(" A ")
+                .pattern(" B ")
+                .pattern(" B ")
+                .define('A', CastingToolsItems.OMNITHIUM_INGOT)
+                .define('B', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_omnithium", has(CastingToolsItems.OMNITHIUM_INGOT))
+                .save(output);
+
+        shaped(RecipeCategory.MISC, CastingToolsItems.OMNITHIUM_AXE)
+                .pattern("AA ")
+                .pattern("AB ")
+                .pattern(" B ")
+                .define('A', CastingToolsItems.OMNITHIUM_INGOT)
+                .define('B', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_omnithium", has(CastingToolsItems.OMNITHIUM_INGOT))
+                .save(output);
+
+        shaped(RecipeCategory.MISC, CastingToolsItems.OMNITHIUM_SWORD)
+                .pattern(" A ")
+                .pattern(" A ")
+                .pattern(" B ")
+                .define('A', CastingToolsItems.OMNITHIUM_INGOT)
+                .define('B', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_omnithium", has(CastingToolsItems.OMNITHIUM_INGOT))
+                .save(output);
+
+        shaped(RecipeCategory.MISC, CastingToolsItems.OMNITHIUM_HOE)
+                .pattern("AA ")
+                .pattern(" B ")
+                .pattern(" B ")
+                .define('A', CastingToolsItems.OMNITHIUM_INGOT)
+                .define('B', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_omnithium", has(CastingToolsItems.OMNITHIUM_INGOT))
+                .save(output);
+
+        shaped(RecipeCategory.MISC, CastingToolsItems.OMNITHIUM_SPEAR)
+                .pattern("  A")
+                .pattern(" B ")
+                .pattern("B  ")
+                .define('A', CastingToolsItems.OMNITHIUM_INGOT)
+                .define('B', Tags.Items.RODS_WOODEN)
+                .unlockedBy("has_omnithium", has(CastingToolsItems.OMNITHIUM_INGOT))
+                .save(output);
+
+        shaped(RecipeCategory.MISC, CastingToolsItems.OMNITHIUM_HELMET)
+                .pattern("AAA")
+                .pattern("A A")
+                .pattern("   ")
+                .define('A', CastingToolsItems.OMNITHIUM_INGOT)
+                .unlockedBy("has_omnithium", has(CastingToolsItems.OMNITHIUM_INGOT))
+                .save(output);
+
+        shaped(RecipeCategory.MISC, CastingToolsItems.OMNITHIUM_CHESTPLATE)
+                .pattern("A A")
+                .pattern("AAA")
+                .pattern("AAA")
+                .define('A', CastingToolsItems.OMNITHIUM_INGOT)
+                .unlockedBy("has_omnithium", has(CastingToolsItems.OMNITHIUM_INGOT))
+                .save(output);
+
+        shaped(RecipeCategory.MISC, CastingToolsItems.OMNITHIUM_LEGGINGS)
+                .pattern("AAA")
+                .pattern("A A")
+                .pattern("A A")
+                .define('A', CastingToolsItems.OMNITHIUM_INGOT)
+                .unlockedBy("has_omnithium", has(CastingToolsItems.OMNITHIUM_INGOT))
+                .save(output);
+
+        simpleMeltingRecipe(List.of(new FluidStackTemplate(CTFluids.MOLTEN_OMNITHIUM.getFluid(), 810)), CastingToolsBlocks.OMNITHIUM_BLOCK,
+                "omnithium/block", ResourceType.STORAGE_BLOCKS, 1400);
+
+        simpleMeltingRecipe(List.of(new FluidStackTemplate(CTFluids.MOLTEN_OMNITHIUM.getFluid(), 90)), CastingToolsItems.OMNITHIUM_INGOT,
+                "omnithium/ingot", ResourceType.INGOTS, 1400);
+
+        simpleMeltingRecipe(List.of(new FluidStackTemplate(CTFluids.MOLTEN_OMNITHIUM.getFluid(), 10)), CastingToolsItems.OMNITHIUM_NUGGET,
+                "omnithium/nugget", ResourceType.INGOTS, 1400);
+
+        simpleSolidifierRecipe(CastingToolsBlocks.OMNITHIUM_BLOCK, new SizedFluidIngredient(FluidIngredient.of(CTFluids.MOLTEN_OMNITHIUM.getFluid().getSource()), 810),
+                CastingItems.BLOCK_MOLD, "omnithium/block", ResourceType.STORAGE_BLOCKS, 1400);
+
+        simpleSolidifierRecipe(CastingToolsItems.OMNITHIUM_INGOT, new SizedFluidIngredient(FluidIngredient.of(CTFluids.MOLTEN_OMNITHIUM.getFluid().getSource()), 90),
+                CastingItems.INGOT_MOLD, "omnithium/ingot", ResourceType.INGOTS, 1400);
+
+        simpleSolidifierRecipe(CastingToolsItems.OMNITHIUM_NUGGET, new SizedFluidIngredient(FluidIngredient.of(CTFluids.MOLTEN_OMNITHIUM.getFluid().getSource()), 10),
+                CastingItems.NUGGET_MOLD, "omnithium/nugget", ResourceType.INGOTS, 1400);
+
+        nineBlockStorageRecipes(RecipeCategory.MISC, CastingToolsItems.OMNITHIUM_INGOT, RecipeCategory.MISC, CastingToolsBlocks.OMNITHIUM_BLOCK, "omnithium/block_from_ingots", "omnithium", "omnithium/ingots_from_block", "omnithium");
+        nineBlockStorageRecipes(RecipeCategory.MISC, CastingToolsItems.OMNITHIUM_NUGGET, RecipeCategory.MISC, CastingToolsItems.OMNITHIUM_INGOT, "omnithium/ingot_from_nuggets", "omnithium", "omnithium/nuggets_from_ingot", "omnithium");
+
+
+    }
+
+    protected void nineBlockStorageRecipes(RecipeCategory unpackedFormCategory, ItemLike unpackedForm, RecipeCategory packedFormCategory, ItemLike packedForm, String packingRecipeId, @Nullable String packingRecipeGroup, String unpackingRecipeId, @Nullable String unpackingRecipeGroup) {
+        this.shapeless(unpackedFormCategory, unpackedForm, 9).requires(packedForm).group(unpackingRecipeGroup).unlockedBy(getHasName(packedForm), this.has(packedForm)).save(this.output, ResourceKey.create(Registries.RECIPE, Identifier.parse(unpackingRecipeId)));
+        this.shaped(packedFormCategory, packedForm).define('#', unpackedForm).pattern("###").pattern("###").pattern("###").group(packingRecipeGroup).unlockedBy(getHasName(unpackedForm), this.has(unpackedForm)).save(this.output, ResourceKey.create(Registries.RECIPE, Identifier.parse(packingRecipeId)));
+    }
+
+    private void alloyMixingRecipes(String material, FluidStackTemplate outputFluid, List<SizedFluidIngredient> inputFluids) {
+
+        NonNullList<SizedFluidIngredient> inputs = NonNullList.create();
+        inputs.addAll(inputFluids);
+
+        MixingRecipeBuilder.mixingRecipesBuilder(
+                        inputs,
+                        outputFluid)
+                .unlockedBy("has_mixer", has(CastingBlocks.MIXER))
+                .save(output, material + "alloy");
+    }
+
+    public void simpleMeltingRecipe(List<FluidStackTemplate> outputs, ItemLike input, String id, ResourceType resourceType, int temp) {
+        MeltingRecipeBuilder.meltingRecipesBuilder(
+                SizedIngredient.of(input, 1),
+                outputs,
+                temp,
+                Optional.of(getDurationModifier(resourceType))).save(output, id);
+    }
+
+    public void simpleSolidifierRecipe(ItemLike block, SizedFluidIngredient fluidStack, ItemLike mold, String id, ResourceType resourceType, int temp) {
+        SolidifierRecipeBuilder.solidifierRecipesBuilder(
+                SizedIngredient.of(mold, 1),
+                SizedIngredient.of(block.asItem(), 1),
+                fluidStack,
+                temp,
+                Optional.of(getDurationModifier(resourceType))).save(output, id);
+    }
+
+    private double getDurationModifier(ResourceType type) {
+        return switch (type) {
+            case NUGGETS -> 0.2;
+            case RODS, WIRES -> 0.4;
+            case INGOTS, PLATES, DUSTS, GEMS -> 0.5;
+            case GEARS -> 1.2;
+            case STORAGE_BLOCKS -> 2.5;
+            case ORES -> 1.5;
+            case RAW_MATERIALS -> 1.25;
+            case RAW_STORAGE_BLOCKS -> 3.0;
+            default -> 1.0;
+        };
     }
 }

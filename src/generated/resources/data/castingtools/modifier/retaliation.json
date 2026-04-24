@@ -5,6 +5,7 @@
   "experience_cost": 8000,
   "ingredient": "minecraft:diamond",
   "ingredient_count": 6,
+  "max_enhanced_level": 10,
   "max_level": 5,
   "valid_items": [
     "#castingtools:all_armors"

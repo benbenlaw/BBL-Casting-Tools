@@ -18,10 +18,32 @@ public class CTLangProvider extends LanguageProvider {
 
         //Blocks
         add("block.castingtools.modifier", "Modifier");
+        add("block.castingtools.omnithium_block", "Omnithium Block");
+        add("block.castingtools.molten_omnithium", "Molten Omnithium");
+
+        //Items
+        add("item.castingtools.omnithium_nugget", "Omnithium Nugget");
+        add("item.castingtools.omnithium_ingot", "Omnithium Ingot");
+        add("item.castingtools.omnithium_pickaxe", "Omnithium Pickaxe");
+        add("item.castingtools.omnithium_axe", "Omnithium Axe");
+        add("item.castingtools.omnithium_shovel", "Omnithium Shovel");
+        add("item.castingtools.omnithium_sword", "Omnithium Sword");
+        add("item.castingtools.omnithium_hoe", "Omnithium Hoe");
+        add("item.castingtools.omnithium_spear", "Omnithium Spear");
+        add("item.castingtools.omnithium_helmet", "Omnithium Helmet");
+        add("item.castingtools.omnithium_chestplate", "Omnithium Chestplate");
+        add("item.castingtools.omnithium_leggings", "Omnithium Leggings");
+        add("item.castingtools.omnithium_boots", "Omnithium Boots");
+
+        add("item.castingtools.molten_omnithium_bucket", "Omnithium Bucket");
+
+        //Fluids
+        add("fluid.castingtools.molten_omnithium", "Molten Omnithium");
 
         //Misc
         add("modifier.castingtools.incompatible", "Incompatible With");
         add("modifier.castingtools.max_level", "Max Level %s");
+        add("modifier.castingtools.max_enhanced_level", "Max Enhanced Level %s");
 
         //JEI
         add("jei.castingtools.modifier", "Modifier");
@@ -55,7 +77,6 @@ public class CTLangProvider extends LanguageProvider {
         add("modifier.castingtools.retaliation", "Retaliation");
         add("modifier.castingtools.pulverizer", "Pulverizer");
 
-
         //Modifier Descriptions
         add("modifier.castingtools.silk_touch.description", "Allows you to mine blocks and receive the block itself instead of its usual drops, such as mining stone and receiving a stone block instead of cobblestone");
         add("modifier.castingtools.excavation.description", "Increases the area of effect when mining, allowing you to mine multiple blocks at once");
@@ -72,6 +93,7 @@ public class CTLangProvider extends LanguageProvider {
         add("modifier.castingtools.knockback.description", "Increases the knockback to mobs when hit");
         add("modifier.castingtools.teleporting.description", "Teleports you to a random location within a 5 block radius when you right click. Doesn't require any items in your inventory");
         add("modifier.castingtools.protection.description", "Reduces incoming damage from mobs and other sources");
+        add("modifier.castingtools.soulbound.description", "Items are returned to you upon death instead of being dropped on the ground");
         add("modifier.castingtools.magnet.description", "Attracts nearby items to you");
         add("modifier.castingtools.night_vision.description", "Provides you with night vision");
         add("modifier.castingtools.water_breathing.description", "Allows you to breathe underwater");
@@ -82,10 +104,6 @@ public class CTLangProvider extends LanguageProvider {
         add("modifier.castingtools.cobblestone_placer.description", "Places a block of cobblestone when you right click. Doesn't require any items in your inventory");
         add("modifier.castingtools.retaliation.description", "Sometimes damages the attacker when hit. The higher the level, the higher the chance and damage");
         add("modifier.castingtools.pulverizer.description", "Crushes up certain blocks when broken");
-
-
-
-
 
     }
 }

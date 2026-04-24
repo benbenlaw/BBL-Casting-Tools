@@ -27,7 +27,9 @@ public class CTLootTableProvider extends VanillaBlockLoot {
     @Override
     protected void generate() {
         this.dropWithFluidComponent(CastingToolsBlocks.MODIFIER.get());
+        this.dropSelf(CastingToolsBlocks.OMNITHIUM_BLOCK.get());
     }
+
 
 
     private void dropWithFluidComponent(Block block) {

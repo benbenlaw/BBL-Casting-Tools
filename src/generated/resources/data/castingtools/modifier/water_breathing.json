@@ -4,6 +4,7 @@
   "display_name": "modifier.castingtools.water_breathing",
   "experience_cost": 2000,
   "ingredient": "minecraft:pufferfish",
+  "max_enhanced_level": 1,
   "max_level": 1,
   "valid_items": [
     "#minecraft:head_armor"

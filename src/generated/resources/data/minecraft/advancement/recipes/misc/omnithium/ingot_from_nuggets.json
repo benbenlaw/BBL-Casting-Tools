@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_omnithium_nugget": {
+      "conditions": {
+        "items": [
+          {
+            "items": "castingtools:omnithium_nugget"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:omnithium/ingot_from_nuggets"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_omnithium_nugget"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:omnithium/ingot_from_nuggets"
+    ]
+  }
+}

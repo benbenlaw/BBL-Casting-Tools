@@ -1,0 +1,25 @@
+{
+  "type": "casting:mixing",
+  "inputs": [
+    {
+      "amount": 8000,
+      "ingredient": "casting:molten_end_stone"
+    },
+    {
+      "amount": 360,
+      "ingredient": "casting:molten_netherite"
+    },
+    {
+      "amount": 3240,
+      "ingredient": "casting:molten_steel"
+    },
+    {
+      "amount": 8000,
+      "ingredient": "casting:molten_experience"
+    }
+  ],
+  "output": {
+    "amount": 90,
+    "id": "castingtools:molten_omnithium"
+  }
+}

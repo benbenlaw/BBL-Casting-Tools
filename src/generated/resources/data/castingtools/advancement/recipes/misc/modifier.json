@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_modifier": {
+    "has_clay": {
       "conditions": {
         "items": [
           {
-            "items": "castingtools:modifier"
+            "items": "casting:black_brick"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_modifier"
+      "has_clay"
     ]
   ],
   "rewards": {

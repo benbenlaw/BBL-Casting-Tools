@@ -3,6 +3,7 @@
   "display_name": "modifier.castingtools.soulbound",
   "experience_cost": 8000,
   "ingredient": "minecraft:heart_of_the_sea",
+  "max_enhanced_level": 1,
   "max_level": 1,
   "valid_items": [
     "#castingtools:all_tools",

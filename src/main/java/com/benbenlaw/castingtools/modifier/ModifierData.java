@@ -14,6 +14,7 @@ import java.util.*;
 
 public record ModifierData(
         int maxLevel,
+        int maxEnhancedLevel,
         int experienceCost,
         List<String> validItems,
         String displayName,
@@ -28,6 +29,7 @@ public record ModifierData(
 
     public static final Codec<ModifierData> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             Codec.INT.fieldOf("max_level").forGetter(ModifierData::maxLevel),
+            Codec.INT.fieldOf("max_enhanced_level").forGetter(ModifierData::maxEnhancedLevel),
             Codec.INT.fieldOf("experience_cost").forGetter(ModifierData::experienceCost),
             Codec.STRING.listOf().fieldOf("valid_items").forGetter(ModifierData::validItems),
             Codec.STRING.fieldOf("display_name").forGetter(ModifierData::displayName),
@@ -42,6 +44,7 @@ public record ModifierData(
 
     public static final StreamCodec<RegistryFriendlyByteBuf, ModifierData> STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.INT, ModifierData::maxLevel,
+            ByteBufCodecs.INT, ModifierData::maxEnhancedLevel,
             ByteBufCodecs.INT, ModifierData::experienceCost,
             ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), ModifierData::validItems,
             ByteBufCodecs.STRING_UTF8, ModifierData::displayName,

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_clay": {
+    "has_omnithium": {
       "conditions": {
         "items": [
           {
-            "items": "casting:black_brick"
+            "items": "castingtools:omnithium_ingot"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "castingtools:crafting/modifier"
+        "recipe": "castingtools:omnithium_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_clay"
+      "has_omnithium"
     ]
   ],
   "rewards": {
     "recipes": [
-      "castingtools:crafting/modifier"
+      "castingtools:omnithium_helmet"
     ]
   }
 }

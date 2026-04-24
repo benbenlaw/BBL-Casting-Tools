@@ -4,7 +4,8 @@
   "experience_cost": 1500,
   "ingredient": "minecraft:lapis_lazuli",
   "ingredient_count": 16,
-  "max_level": 10,
+  "max_enhanced_level": 15,
+  "max_level": 8,
   "valid_items": [
     "#castingtools:all_melee_weapons"
   ]

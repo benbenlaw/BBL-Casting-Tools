@@ -1,6 +1,24 @@
-// 26.1.2	2026-04-11T11:13:34.3274222	Tags for minecraft:item mod id castingtools
+// 26.1.2	2026-04-24T16:20:09.9182792	Tags for minecraft:item mod id castingtools
 db1e03703684ff6ecc870c39cf9dca92dce328d5 data/castingtools/tags/item/all_armors.json
 a8e0ff288e153d2f9106bec123957ef3a0596bb7 data/castingtools/tags/item/all_melee_weapons.json
 de75671f136ad29ecb1fee30fc8326bbb0cce33f data/castingtools/tags/item/all_ranged_weapons.json
 cc226d087fa5e9c99c8fa5d4b1c0826df7906d76 data/castingtools/tags/item/all_tools.json
 305ae9dd5e3b81ccfa33d881b60c94e2a07781e8 data/castingtools/tags/item/all_weapons.json
+2555c3bd8d5266018ba816f47c606affdec9cfe1 data/castingtools/tags/item/is_enhanceable.json
+c0d75ebfaddcbe10bd11da1482614d3684d23cff data/c/tags/item/buckets.json
+74c62a40fc1c88c5b68f0298c90cd547e3a86ab4 data/c/tags/item/ingots.json
+74c62a40fc1c88c5b68f0298c90cd547e3a86ab4 data/c/tags/item/ingots/omnithium.json
+532c7ef75e7fd2db74a8502fb84e6b5d80829d20 data/c/tags/item/nuggets.json
+532c7ef75e7fd2db74a8502fb84e6b5d80829d20 data/c/tags/item/nuggets/omnithium.json
+9f5c884d8ad04491bc2908de3b9e92fc1b91518a data/c/tags/item/storage_blocks.json
+9f5c884d8ad04491bc2908de3b9e92fc1b91518a data/c/tags/item/storage_blocks/omnithium.json
+447ed2a34382028c201c4f3552dae8d446cd8cb2 data/minecraft/tags/item/axes.json
+0b87d4edd60113445d8baa1aff0e69772c1aa14c data/minecraft/tags/item/chest_armor.json
+e1339441ac9cb7df7eb3d7e8558d0854d50d08a6 data/minecraft/tags/item/foot_armor.json
+f1c3d79554bacc37166afd366d0fc5caa3718d1f data/minecraft/tags/item/head_armor.json
+d721f703006a6fcf8a9a4c25877bc8c4c643096b data/minecraft/tags/item/hoes.json
+d996746f911b5cd598e3b90e38e7e0c9afb73154 data/minecraft/tags/item/leg_armor.json
+51c0778e5aefa4dc879c6b32e381654940de67ef data/minecraft/tags/item/pickaxes.json
+631c29a975ed92b2b9ed5cfc142f8ea95cccd26b data/minecraft/tags/item/shovels.json
+362ee78e01e981517c2998bd6c28b85e4333a5b5 data/minecraft/tags/item/spears.json
+2670842bcbee00fdbe22d51a4cbe1cca9624177d data/minecraft/tags/item/swords.json

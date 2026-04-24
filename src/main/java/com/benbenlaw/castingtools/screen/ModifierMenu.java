@@ -5,6 +5,7 @@ import com.benbenlaw.castingtools.block.entity.ModifierBlockEntity;
 import com.benbenlaw.castingtools.modifier.Modifier;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import com.benbenlaw.castingtools.screen.util.ModifierResultSlot;
+import com.benbenlaw.castingtools.utils.CTTags;
 import com.benbenlaw.castingtools.utils.ModifierUtils;
 import com.benbenlaw.core.screen.SimpleAbstractContainerMenu;
 import com.benbenlaw.core.screen.util.slot.FilterFluidSlot;
@@ -148,7 +149,9 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
 
 
             int currentLevel = ModifierUtils.getModifierLevel(toolStack, modifier);
-            if (currentLevel >= modifier.getMaxLevel()) {
+            int maxLevel = getEffectiveMaxLevel(toolStack, modifier);
+
+            if (currentLevel >= maxLevel) {
                 ItemStack barrier = new ItemStack(Items.BARRIER);
                 barrier.set(DataComponents.CUSTOM_NAME, Component.literal("Max Level Reached")
                         .withStyle(ChatFormatting.RED));
@@ -175,6 +178,12 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
                 this.broadcastChanges();
             }
         }
+    }
+
+    public static int getEffectiveMaxLevel(ItemStack stack, Modifier modifier) {
+        return stack.is(CTTags.Items.ENHANCED)
+                ? modifier.getMaxEnhancedLevel()
+                : modifier.getMaxLevel();
     }
 
     @Override

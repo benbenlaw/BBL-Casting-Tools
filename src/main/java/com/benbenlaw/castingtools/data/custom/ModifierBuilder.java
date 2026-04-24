@@ -10,6 +10,7 @@ import java.util.function.Consumer;
 
 public class ModifierBuilder {
     private final int maxLevel;
+    private final int maxEnhancedLevel;
     private final int experienceCost;
     private final String displayName;
     private final String description;
@@ -26,15 +27,16 @@ public class ModifierBuilder {
     private final List<Identifier> incompatibleModifiers = new ArrayList<>();
     private Consumer<ModifierBuilder> saveCallback;
 
-    private ModifierBuilder(int maxLevel, int experienceCost, String displayName, String description) {
+    private ModifierBuilder(int maxLevel, int maxEnhancedLevel, int experienceCost, String displayName, String description) {
         this.maxLevel = maxLevel;
+        this.maxEnhancedLevel = maxEnhancedLevel;
         this.experienceCost = experienceCost;
         this.displayName = displayName;
         this.description = description;
     }
 
-    public static ModifierBuilder create(int maxLevel, int experienceCost, String displayName, String description) {
-        return new ModifierBuilder(maxLevel, experienceCost, displayName, description);
+    public static ModifierBuilder create(int maxLevel, int maxEnhancedLevel, int experienceCost, String displayName, String description) {
+        return new ModifierBuilder(maxLevel,maxEnhancedLevel, experienceCost, displayName, description);
     }
 
     public ModifierBuilder validItem(String itemOrTag) {
@@ -75,6 +77,7 @@ public class ModifierBuilder {
     public ModifierData build() {
         return new ModifierData(
                 maxLevel,
+                maxEnhancedLevel,
                 experienceCost,
                 validItems,
                 displayName,

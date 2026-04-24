@@ -8,6 +8,7 @@ import com.benbenlaw.castingtools.item.ModifierComponent;
 import com.benbenlaw.castingtools.modifier.Modifier;
 import com.benbenlaw.castingtools.modifier.ModifierData;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
+import com.benbenlaw.castingtools.utils.CTTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -30,7 +31,14 @@ public class TooltipEvent {
         if (comp != null && !comp.modifiers().isEmpty()) {
 
             if (Minecraft.getInstance().hasShiftDown()) {
+
+                boolean isEnhanced = stack.is(CTTags.Items.ENHANCED);
+
+                if (isEnhanced) {
+                    event.getToolTip().add(rainbowText("Enhanced"));
+                }
                 event.getToolTip().add(Component.literal("Modifiers:").withStyle(ChatFormatting.BLUE));
+
 
                 comp.modifiers().forEach((location, level) -> {
                     ModifierData modifier = Objects.requireNonNull(ModifierRegistry.MODIFIER_REGISTRY.getValue(location)).getData();
@@ -48,5 +56,28 @@ public class TooltipEvent {
                         .withStyle(ChatFormatting.YELLOW));
             }
         }
+    }
+
+    private static final ChatFormatting[] RAINBOW = new ChatFormatting[] {
+            ChatFormatting.RED,
+            ChatFormatting.GOLD,
+            ChatFormatting.YELLOW,
+            ChatFormatting.GREEN,
+            ChatFormatting.AQUA,
+            ChatFormatting.BLUE,
+            ChatFormatting.LIGHT_PURPLE
+    };
+
+    private static Component rainbowText(String text) {
+        StringBuilder result = new StringBuilder();
+        int i = 0;
+
+        for (char c : text.toCharArray()) {
+            ChatFormatting color = RAINBOW[i % RAINBOW.length];
+            result.append(color).append(c);
+            i++;
+        }
+
+        return Component.literal(result.toString());
     }
 }

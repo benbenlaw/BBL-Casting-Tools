@@ -6,6 +6,7 @@
   "fluid_amount": 720,
   "ingredient": "minecraft:iron_ingot",
   "ingredient_count": 8,
+  "max_enhanced_level": 8,
   "max_level": 4,
   "valid_items": [
     "#castingtools:all_tools"

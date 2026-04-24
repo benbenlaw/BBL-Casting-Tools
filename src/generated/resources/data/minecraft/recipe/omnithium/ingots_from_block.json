@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "omnithium",
+  "ingredients": [
+    "castingtools:omnithium_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "castingtools:omnithium_ingot"
+  }
+}

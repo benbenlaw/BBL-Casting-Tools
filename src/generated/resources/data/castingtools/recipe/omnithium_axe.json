@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "castingtools:omnithium_ingot",
+    "B": "#c:rods/wooden"
+  },
+  "pattern": [
+    "AA ",
+    "AB ",
+    " B "
+  ],
+  "result": {
+    "id": "castingtools:omnithium_axe"
+  }
+}
