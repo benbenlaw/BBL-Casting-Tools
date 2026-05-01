@@ -10,6 +10,7 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.GameType;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
@@ -22,6 +23,7 @@ public class MagnetModifier extends Modifier {
     @Override
     public void onPlayerTick(PlayerTickEvent.Post event, ItemStack stack, ModifierData data, int toolLevel) {
         if (event.getEntity().level().isClientSide()) return;
+        if (event.getEntity().gameMode() == GameType.SPECTATOR) return;
 
         Player player = event.getEntity();
 
