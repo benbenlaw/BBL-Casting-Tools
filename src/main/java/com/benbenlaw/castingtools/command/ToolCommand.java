@@ -7,7 +7,6 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.tree.CommandNode;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.IdentifierArgument;
@@ -15,6 +14,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.permissions.Permission;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -29,6 +29,17 @@ public class ToolCommand {
         dispatcher.register(Commands.literal("tool")
                 .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
                 .then(Commands.argument("item", IdentifierArgument.id())
+                        .suggests((ctx, builder) -> {
+                            String remaining = builder.getRemaining().toLowerCase();
+
+                            for (Identifier id : BuiltInRegistries.ITEM.keySet()) {
+                                String itemId = id.toString();
+                                if (itemId.toLowerCase().startsWith(remaining)) {
+                                    builder.suggest(itemId);
+                                }
+                            }
+                            return builder.buildFuture();
+                        })
                         .then(modifierChain(0))
                 )
         );
@@ -38,16 +49,24 @@ public class ToolCommand {
 
         var modifierArg = Commands.argument("modifier_" + depth, IdentifierArgument.id())
                 .suggests((ctx, builder) -> {
+                    String remaining = builder.getRemaining().toLowerCase();
+
                     for (var entry : ModifierRegistry.MODIFIER_REGISTRY.entrySet()) {
-                        builder.suggest(entry.getKey().identifier().toString());
+                        String id = entry.getKey().identifier().toString();
+
+                        if (id.toLowerCase().startsWith(remaining)) {
+                            builder.suggest(id);
+                        }
                     }
+
                     return builder.buildFuture();
                 });
 
         var levelArg = Commands.argument("level_" + depth, IntegerArgumentType.integer(1))
                 .executes(ToolCommand::execute);
 
-        if (depth < MAX_MODIFIERS) {
+        // Fix off-by-one (max 8 modifiers total)
+        if (depth < MAX_MODIFIERS - 1) {
             levelArg.then(modifierChain(depth + 1));
         }
 
@@ -76,11 +95,9 @@ public class ToolCommand {
                 Modifier modifier = ModifierRegistry.MODIFIER_REGISTRY.getValue(entry.id);
 
                 if (modifier == null) continue;
-
                 if (!modifier.isValid(stack)) continue;
 
                 int level = Math.min(entry.level, modifier.getMaxLevel());
-
                 ModifierUtils.setModifierLevel(stack, modifier, level);
             }
 
@@ -98,7 +115,6 @@ public class ToolCommand {
         List<ModifierEntry> list = new ArrayList<>();
 
         for (int i = 0; i < MAX_MODIFIERS; i++) {
-
             try {
                 Identifier id = IdentifierArgument.getId(ctx, "modifier_" + i);
                 int level = IntegerArgumentType.getInteger(ctx, "level_" + i);
