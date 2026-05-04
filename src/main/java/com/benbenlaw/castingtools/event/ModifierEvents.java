@@ -188,15 +188,17 @@ public class ModifierEvents {
 
                     ModifierUtils.breakBlockWithCasting(level, player, targetPos, tool);
                 }
-                ModifierUtils.breakBlockWithCasting(level, player, originPos, tool);
-                event.setCanceled(true);
+
             }
 
-            else {
-                processStack(tool, (modifier, itemStack, level1) -> {
-                    modifier.onBlockBreak(event, modifier.getData(), level1);
-                });
-            }
+            ModifierUtils.breakBlockWithCasting(level, player, originPos, tool);
+            event.setCanceled(true);
+
+            //else {
+            //    processStack(tool, (modifier, itemStack, level1) -> {
+            //        modifier.onBlockBreak(event, modifier.getData(), level1);
+            //    });
+            //}
 
             //else {
             //    ModifierUtils.breakBlockWithCasting(level, player, originPos, tool);
