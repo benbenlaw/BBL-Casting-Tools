@@ -45,6 +45,7 @@ public class ModifierProvider implements DataProvider {
             // Efficiency
             add(cachedOutput, futures, "efficiency", 8, 12, 1000)
                     .validItem(tagToString(CTTags.Items.ALL_TOOLS.location()))
+                    .validItem(tagToString(ItemTags.MINING_ENCHANTABLE.location()))
                     .additionalValue(0.5)
                     .fluid("casting:molten_redstone", 1350)
                     .save();
@@ -55,6 +56,7 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(ItemTags.AXES.location()))
                     .validItem(tagToString(ItemTags.SHOVELS.location()))
                     .validItem(tagToString(ItemTags.HOES.location()))
+                    .validItem(tagToString(ItemTags.MINING_LOOT_ENCHANTABLE.location()))
                     .fluid("casting:molten_lapis", 1350)
                     .incompatibleModifier(CastingTools.identifier("silk_touch"))
                     .save();
@@ -73,6 +75,7 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(ItemTags.AXES.location()))
                     .validItem(tagToString(ItemTags.SHOVELS.location()))
                     .validItem(tagToString(ItemTags.HOES.location()))
+                    .validItem(tagToString(ItemTags.MINING_LOOT_ENCHANTABLE.location()))
                     .fluid("casting:molten_emerald", 720)
                     .incompatibleModifier(CastingTools.identifier("fortune"))
                     .save();
@@ -102,6 +105,7 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(CTTags.Items.ALL_TOOLS.location()))
                     .validItem(tagToString(CTTags.Items.ALL_ARMORS.location()))
                     .validItem(tagToString(CTTags.Items.ALL_WEAPONS.location()))
+                    .validItem(tagToString(ItemTags.DURABILITY_ENCHANTABLE.location()))
                     .fluid("casting:molten_obsidian", 8000)
                     .incompatibleModifier(CastingTools.identifier("repairing"))
                     .additionalValue(0.1)
@@ -112,6 +116,7 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(CTTags.Items.ALL_TOOLS.location()))
                     .validItem(tagToString(CTTags.Items.ALL_ARMORS.location()))
                     .validItem(tagToString(CTTags.Items.ALL_WEAPONS.location()))
+                    .validItem(tagToString(ItemTags.DURABILITY_ENCHANTABLE.location()))
                     .ingredient("#minecraft:moss_blocks", 8)
                     .additionalValue(20)
                     .incompatibleModifier(CastingTools.identifier("unbreaking"))

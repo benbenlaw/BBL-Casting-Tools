@@ -13,6 +13,7 @@
   "valid_items": [
     "#castingtools:all_tools",
     "#castingtools:all_armors",
-    "#castingtools:all_weapons"
+    "#castingtools:all_weapons",
+    "#minecraft:enchantable/durability"
   ]
 }
