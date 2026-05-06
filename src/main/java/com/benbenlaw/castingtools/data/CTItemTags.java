@@ -36,6 +36,13 @@ public class CTItemTags extends ItemTagsProvider {
         tag(ItemTags.LEG_ARMOR).add(CastingToolsItems.OMNITHIUM_LEGGINGS.get());
         tag(ItemTags.FOOT_ARMOR).add(CastingToolsItems.OMNITHIUM_BOOTS.get());
 
+        tag(ItemTags.TRIMMABLE_ARMOR)
+                .add(CastingToolsItems.OMNITHIUM_LEGGINGS.get())
+                .add(CastingToolsItems.OMNITHIUM_CHESTPLATE.get())
+                .add(CastingToolsItems.OMNITHIUM_HELMET.get())
+                .add(CastingToolsItems.OMNITHIUM_BOOTS.get())
+                ;
+
         //Ingot
         tag(Tags.Items.INGOTS).add(CastingToolsItems.OMNITHIUM_INGOT.get());
         tag(CTTags.Items.OMNITHIUM_INGOT).add(CastingToolsItems.OMNITHIUM_INGOT.get());

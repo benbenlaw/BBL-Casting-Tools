@@ -34,6 +34,7 @@ public class CTDataGenerators {
         generator.addProvider(true, new CTFluidTags(packOutput, lookupProvider));
         generator.addProvider(true, new CTLangProvider(packOutput));
         generator.addProvider(true, new CTEquipmentAssetProvider(packOutput));
+        generator.addProvider(true, new CTEquipmentAsset(packOutput));
         generator.addProvider(true, new LootTableProvider(packOutput, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(CTLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
 

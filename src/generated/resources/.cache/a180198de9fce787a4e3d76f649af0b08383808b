@@ -1,6 +1,6 @@
-// 26.1.2	2026-04-24T16:20:09.9182792	Tags for minecraft:item mod id castingtools
+// 26.1.2	2026-05-06T15:44:18.5998674	Tags for minecraft:item mod id castingtools
 db1e03703684ff6ecc870c39cf9dca92dce328d5 data/castingtools/tags/item/all_armors.json
-a8e0ff288e153d2f9106bec123957ef3a0596bb7 data/castingtools/tags/item/all_melee_weapons.json
+b72a9894bf3cfb2463a944c48380f815b57ff5e0 data/castingtools/tags/item/all_melee_weapons.json
 de75671f136ad29ecb1fee30fc8326bbb0cce33f data/castingtools/tags/item/all_ranged_weapons.json
 cc226d087fa5e9c99c8fa5d4b1c0826df7906d76 data/castingtools/tags/item/all_tools.json
 305ae9dd5e3b81ccfa33d881b60c94e2a07781e8 data/castingtools/tags/item/all_weapons.json
@@ -22,3 +22,4 @@ d996746f911b5cd598e3b90e38e7e0c9afb73154 data/minecraft/tags/item/leg_armor.json
 631c29a975ed92b2b9ed5cfc142f8ea95cccd26b data/minecraft/tags/item/shovels.json
 362ee78e01e981517c2998bd6c28b85e4333a5b5 data/minecraft/tags/item/spears.json
 2670842bcbee00fdbe22d51a4cbe1cca9624177d data/minecraft/tags/item/swords.json
+b9c0726e3beeee3784c7a825378ebf017337facb data/minecraft/tags/item/trimmable_armor.json

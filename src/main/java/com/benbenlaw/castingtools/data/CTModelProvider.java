@@ -4,6 +4,7 @@ import com.benbenlaw.casting.block.custom.CastingBlock;
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.block.CastingToolsBlocks;
 import com.benbenlaw.castingtools.fluids.CTFluids;
+import com.benbenlaw.castingtools.item.CTArmorMaterials;
 import com.benbenlaw.castingtools.item.CastingToolsItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
@@ -18,6 +19,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluid;
@@ -52,10 +54,11 @@ public class CTModelProvider extends ModelProvider {
         itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateSpear(CastingToolsItems.OMNITHIUM_SPEAR.get());
-        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_CHESTPLATE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_LEGGINGS.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_HELMET.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_BOOTS.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+
+        itemModels.generateTrimmableItem(CastingToolsItems.OMNITHIUM_CHESTPLATE.get(), CTArmorMaterials.OMNITHIUM_EQUIPMENT, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        itemModels.generateTrimmableItem(CastingToolsItems.OMNITHIUM_LEGGINGS.get(), CTArmorMaterials.OMNITHIUM_EQUIPMENT, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        itemModels.generateTrimmableItem(CastingToolsItems.OMNITHIUM_HELMET.get(), CTArmorMaterials.OMNITHIUM_EQUIPMENT, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        itemModels.generateTrimmableItem(CastingToolsItems.OMNITHIUM_BOOTS.get(), CTArmorMaterials.OMNITHIUM_EQUIPMENT, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
         bucketItem(itemModels, CTFluids.MOLTEN_OMNITHIUM.getBucket(), CTFluids.MOLTEN_OMNITHIUM.getBucket().content, false, false);
 
