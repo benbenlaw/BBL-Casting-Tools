@@ -1,4 +1,5 @@
 {
+  "associated_enchantment": "minecraft:fortune",
   "description": "modifier.castingtools.fortune.description",
   "display_name": "modifier.castingtools.fortune",
   "experience_cost": 3000,

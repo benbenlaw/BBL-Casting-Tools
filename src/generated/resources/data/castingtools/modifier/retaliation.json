@@ -1,5 +1,6 @@
 {
   "additional_value": 1.0,
+  "associated_enchantment": "minecraft:thorns",
   "description": "modifier.castingtools.retaliation.description",
   "display_name": "modifier.castingtools.retaliation",
   "experience_cost": 8000,

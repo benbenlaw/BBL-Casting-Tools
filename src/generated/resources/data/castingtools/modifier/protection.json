@@ -1,5 +1,6 @@
 {
   "additional_value": 0.066,
+  "associated_enchantment": "minecraft:protection",
   "description": "modifier.castingtools.protection.description",
   "display_name": "modifier.castingtools.protection",
   "experience_cost": 1000,

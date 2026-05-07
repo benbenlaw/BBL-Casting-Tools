@@ -1,4 +1,5 @@
 {
+  "associated_enchantment": "minecraft:silk_touch",
   "description": "modifier.castingtools.silk_touch.description",
   "display_name": "modifier.castingtools.silk_touch",
   "experience_cost": 4000,

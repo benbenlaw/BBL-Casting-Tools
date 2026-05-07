@@ -1,5 +1,6 @@
 {
   "additional_value": 1.0,
+  "associated_enchantment": "minecraft:sharpness",
   "description": "modifier.castingtools.sharpness.description",
   "display_name": "modifier.castingtools.sharpness",
   "experience_cost": 2000,

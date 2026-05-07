@@ -1,5 +1,6 @@
 {
   "additional_value": 1.0,
+  "associated_enchantment": "minecraft:knockback",
   "description": "modifier.castingtools.knockback.description",
   "display_name": "modifier.castingtools.knockback",
   "experience_cost": 1000,

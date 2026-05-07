@@ -25,6 +25,7 @@ public class ModifierBuilder {
 
     private Double additionalValue = null;
     private final List<Identifier> incompatibleModifiers = new ArrayList<>();
+    private Optional<Identifier> associatedEnchantment = Optional.empty();
     private Consumer<ModifierBuilder> saveCallback;
 
     private ModifierBuilder(int maxLevel, int maxEnhancedLevel, int experienceCost, String displayName, String description) {
@@ -68,6 +69,11 @@ public class ModifierBuilder {
         return this;
     }
 
+    public ModifierBuilder associatedEnchantment(Identifier enchantment) {
+        this.associatedEnchantment = Optional.of(enchantment);
+        return this;
+    }
+
     public ModifierBuilder setSaveCallback(Consumer<ModifierBuilder> callback) {
         this.saveCallback = callback;
         return this;
@@ -87,7 +93,8 @@ public class ModifierBuilder {
                 Optional.ofNullable(fluidString),
                 fluidAmount,
                 Optional.ofNullable(additionalValue),
-                incompatibleModifiers.isEmpty() ? Optional.empty() : Optional.of(incompatibleModifiers)
+                incompatibleModifiers.isEmpty() ? Optional.empty() : Optional.of(incompatibleModifiers),
+                associatedEnchantment
         );
     }
 

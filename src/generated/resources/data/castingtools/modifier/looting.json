@@ -1,4 +1,5 @@
 {
+  "associated_enchantment": "minecraft:looting",
   "description": "modifier.castingtools.looting.description",
   "display_name": "modifier.castingtools.looting",
   "experience_cost": 1500,

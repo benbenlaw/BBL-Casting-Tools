@@ -48,6 +48,7 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(ItemTags.MINING_ENCHANTABLE.location()))
                     .additionalValue(0.5)
                     .fluid("casting:molten_redstone", 1350)
+                    .associatedEnchantment(Identifier.withDefaultNamespace("efficiency"))
                     .save();
 
             // Fortune
@@ -59,6 +60,7 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(ItemTags.MINING_LOOT_ENCHANTABLE.location()))
                     .fluid("casting:molten_lapis", 1350)
                     .incompatibleModifier(CastingTools.identifier("silk_touch"))
+                    .associatedEnchantment(Identifier.withDefaultNamespace("fortune"))
                     .save();
 
             //Excavation
@@ -78,12 +80,14 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(ItemTags.MINING_LOOT_ENCHANTABLE.location()))
                     .fluid("casting:molten_emerald", 720)
                     .incompatibleModifier(CastingTools.identifier("fortune"))
+                    .associatedEnchantment(Identifier.withDefaultNamespace("silk_touch"))
                     .save();
 
             // Looting
             add(cachedOutput, futures, "looting", 8, 15, 1500)
                     .validItem(tagToString(CTTags.Items.ALL_MELEE_WEAPONS.location()))
                     .ingredient("minecraft:lapis_lazuli", 16)
+                    .associatedEnchantment(Identifier.withDefaultNamespace("looting"))
                     .save();
 
             // Torch Placer
@@ -109,6 +113,7 @@ public class ModifierProvider implements DataProvider {
                     .fluid("casting:molten_obsidian", 8000)
                     .incompatibleModifier(CastingTools.identifier("repairing"))
                     .additionalValue(0.1)
+                    .associatedEnchantment(Identifier.withDefaultNamespace("unbreaking"))
                     .save();
 
             // Repairing
@@ -136,6 +141,7 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(CTTags.Items.ALL_MELEE_WEAPONS.location()))
                     .fluid("casting:molten_quartz", 5000)
                     .additionalValue(1.0)
+                    .associatedEnchantment(Identifier.withDefaultNamespace("sharpness"))
                     .save();
 
             // Lifesteal
@@ -151,6 +157,7 @@ public class ModifierProvider implements DataProvider {
                     .validItem("#c:rods")
                     .ingredient("minecraft:piston", 2)
                     .additionalValue(1.0)
+                    .associatedEnchantment(Identifier.withDefaultNamespace("knockback"))
                     .save();
 
             // Teleporting
@@ -166,6 +173,7 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(CTTags.Items.ALL_ARMORS.location()))
                     .fluid("casting:molten_steel", 720)
                     .additionalValue(0.066)
+                    .associatedEnchantment(Identifier.withDefaultNamespace("protection"))
                     .save();
 
             // Magnet
@@ -229,6 +237,7 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(CTTags.Items.ALL_ARMORS.location()))
                     .ingredient("minecraft:diamond", 6)
                     .additionalValue(1.0)
+                    .associatedEnchantment(Identifier.withDefaultNamespace("thorns"))
                     .save();
 
             // Pulverizing

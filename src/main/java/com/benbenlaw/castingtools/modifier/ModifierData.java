@@ -24,7 +24,8 @@ public record ModifierData(
         Optional<String> fluid,
         int fluidAmount,
         Optional<Double> additionalValue,
-        Optional<List<Identifier>> incompatibleModifiers
+        Optional<List<Identifier>> incompatibleModifiers,
+        Optional<Identifier> associatedEnchantment
 ) {
 
     public static final Codec<ModifierData> CODEC = RecordCodecBuilder.create(instance -> instance.group(
@@ -39,10 +40,11 @@ public record ModifierData(
             Codec.STRING.optionalFieldOf("fluid").forGetter(ModifierData::fluid),
             Codec.INT.optionalFieldOf("fluid_amount", 0).forGetter(ModifierData::fluidAmount),
             Codec.DOUBLE.optionalFieldOf("additional_value").forGetter(ModifierData::additionalValue),
-            Identifier.CODEC.listOf().optionalFieldOf("incompatible_modifiers").forGetter(ModifierData::incompatibleModifiers)
+            Identifier.CODEC.listOf().optionalFieldOf("incompatible_modifiers").forGetter(ModifierData::incompatibleModifiers),
+            Identifier.CODEC.optionalFieldOf("associated_enchantment").forGetter(ModifierData::associatedEnchantment)
     ).apply(instance, ModifierData::new));
 
-    public static final StreamCodec<RegistryFriendlyByteBuf, ModifierData> STREAM_CODEC = StreamCodec.composite(
+    public static final StreamCodec<RegistryFriendlyByteBuf, ModifierData> STREAM_CODEC = BiggerStreamCodec.composite(
             ByteBufCodecs.INT, ModifierData::maxLevel,
             ByteBufCodecs.INT, ModifierData::maxEnhancedLevel,
             ByteBufCodecs.INT, ModifierData::experienceCost,
@@ -55,6 +57,7 @@ public record ModifierData(
             ByteBufCodecs.VAR_INT, ModifierData::fluidAmount,
             ByteBufCodecs.DOUBLE.apply(ByteBufCodecs::optional), ModifierData::additionalValue,
             Identifier.STREAM_CODEC.apply(ByteBufCodecs.list()).apply(ByteBufCodecs::optional), ModifierData::incompatibleModifiers,
+            Identifier.STREAM_CODEC.apply(ByteBufCodecs::optional), ModifierData::associatedEnchantment,
             ModifierData::new
     );
 

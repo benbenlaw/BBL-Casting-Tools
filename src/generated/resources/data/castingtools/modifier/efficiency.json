@@ -1,5 +1,6 @@
 {
   "additional_value": 0.5,
+  "associated_enchantment": "minecraft:efficiency",
   "description": "modifier.castingtools.efficiency.description",
   "display_name": "modifier.castingtools.efficiency",
   "experience_cost": 1000,
