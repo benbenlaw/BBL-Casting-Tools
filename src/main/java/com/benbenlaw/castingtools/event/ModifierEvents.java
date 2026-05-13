@@ -26,6 +26,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.level.BlockDropsEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
@@ -157,57 +158,18 @@ public class ModifierEvents {
     }
 
     @SubscribeEvent
+    public static void onBlockDrops(BlockDropsEvent event) {
+        ItemStack stack = event.getTool();
+        processStack(stack, (modifier, itemStack, level) ->
+            modifier.onBlockDrops(event, modifier.getData(), level));
+    }
+
+    @SubscribeEvent
     public static void onBlockBreak(BreakBlockEvent event) {
         if (event.getLevel().isClientSide()) return;
-
-        Player player = event.getPlayer();
-        Level level = (Level) event.getLevel();
-        BlockPos originPos = event.getPos();
-        BlockState originState = level.getBlockState(originPos);
-
-        Direction face = lastHitDirectionMap.getOrDefault(player.getUUID(), Direction.DOWN);
-        ItemStack tool = player.getMainHandItem();
-        ModifierComponent comp = tool.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
-
-        if (comp != null) {
-            Integer excavationLevel = comp.modifiers().get(EXCAVATION.get().getId());
-
-            if (excavationLevel != null && excavationLevel > 0) {
-                List<BlockPos> area = ModifierUtils.getExcavationPlane(originPos, face, excavationLevel);
-
-                for (BlockPos targetPos : area) {
-                    if (targetPos.equals(originPos)) continue;
-
-                    BlockState targetState = level.getBlockState(targetPos);
-                    if (tool.getDestroySpeed(targetState) <= 1.0f) continue;
-
-                    float originHardness = originState.getDestroySpeed(level, originPos);
-                    float targetHardness = targetState.getDestroySpeed(level, targetPos);
-
-                    if (targetHardness < 0 || targetHardness > originHardness * 1.5f) continue;
-
-                    ModifierUtils.breakBlockWithCasting(level, player, targetPos, tool);
-                }
-
-            }
-
-            processStack(tool, (modifier, itemStack, level1) -> {
-                modifier.onBlockBreak(event, modifier.getData(), level1);
-            });
-
-            ModifierUtils.breakBlockWithCasting(level, player, originPos, tool);
-            event.setCanceled(true);
-
-            //else {
-            //
-            //
-            //
-            //}
-
-            //else {
-            //    ModifierUtils.breakBlockWithCasting(level, player, originPos, tool);
-            //}
-        }
+        ItemStack stack = event.getPlayer().getWeaponItem();
+        processStack(stack, (modifier, itemStack, level) ->
+                modifier.onBlockBreak(event, modifier.getData(), level));
     }
 
     @SubscribeEvent

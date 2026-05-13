@@ -6,16 +6,6 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 public class SharpnessModifier extends Modifier {
 
-    @Override
-    public void onPreHit(LivingDamageEvent.Pre event, ModifierData data, int toolLevel) {
-
-        int effectiveLevel = Math.min(toolLevel, data.maxLevel());
-        if (effectiveLevel <= 0) return;
-
-        float bonus = effectiveLevel * data.additionalValue().orElse(1.0).floatValue();
-        System.out.println(event.getOriginalDamage() + bonus);
-        event.setNewDamage(event.getOriginalDamage() + bonus);
-    }
-
+    //Sharpness is handled like vanilla inside the EnchantmentHelperMixin
 
 }

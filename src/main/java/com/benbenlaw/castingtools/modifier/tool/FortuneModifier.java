@@ -29,13 +29,6 @@ import java.util.function.Supplier;
 
 public class FortuneModifier extends Modifier {
 
-    @Override
-    public void onCalculateDrops(ItemStack fakeStack, ModifierData data, Level world, int toolLevel) {
-        int effectiveLevel = Math.min(toolLevel, data.maxLevel());
-        if (effectiveLevel > 0) {
-            fakeStack.enchant(world.registryAccess().lookupOrThrow(Registries.ENCHANTMENT)
-                    .getOrThrow(Enchantments.FORTUNE), effectiveLevel);
-        }
-    }
+    //Fortune is handled like vanilla inside the EnchantmentHelperMixin
 
 }

@@ -46,7 +46,7 @@ public class ModifierProvider implements DataProvider {
             add(cachedOutput, futures, "efficiency", 8, 12, 1000)
                     .validItem(tagToString(CTTags.Items.ALL_TOOLS.location()))
                     .validItem(tagToString(ItemTags.MINING_ENCHANTABLE.location()))
-                    .additionalValue(0.5)
+                    .additionalValue(0.75)
                     .fluid("casting:molten_redstone", 1350)
                     .associatedEnchantment(Identifier.withDefaultNamespace("efficiency"))
                     .save();
@@ -68,7 +68,6 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(ItemTags.PICKAXES.location()))
                     .validItem(tagToString(ItemTags.SHOVELS.location()))
                     .fluid("casting:molten_diamond", 360)
-                    .incompatibleModifier(ModifierRegistry.PULVERIZING.getId())
                     .save();
 
             // Silk Touch
@@ -79,7 +78,8 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(ItemTags.HOES.location()))
                     .validItem(tagToString(ItemTags.MINING_LOOT_ENCHANTABLE.location()))
                     .fluid("casting:molten_emerald", 720)
-                    .incompatibleModifier(CastingTools.identifier("fortune"))
+                    .incompatibleModifier(ModifierRegistry.FORTUNE.getId())
+                    .incompatibleModifier(ModifierRegistry.SILK_TOUCH.getId())
                     .associatedEnchantment(Identifier.withDefaultNamespace("silk_touch"))
                     .save();
 
@@ -244,7 +244,7 @@ public class ModifierProvider implements DataProvider {
             add(cachedOutput, futures, "pulverizing", 1, 1, 4000)
                     .validItem(tagToString(CTTags.Items.ALL_TOOLS.location()))
                     .ingredient("minecraft:gravel", 64)
-                    .incompatibleModifier(ModifierRegistry.EXCAVATION.getId())
+                    .incompatibleModifier(ModifierRegistry.SILK_TOUCH.getId())
                     .save();
 
             return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));

@@ -21,6 +21,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.level.BlockDropsEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
@@ -44,7 +45,7 @@ public abstract class Modifier {
     public void onPostHit(LivingDamageEvent.Post event, ModifierData data, int toolLevel) {}
     public void onPreHit(LivingDamageEvent.Pre event, ModifierData data, int toolLevel) {}
     public void onBlockBreak(BreakBlockEvent event, ModifierData data, int toolLevel) {}
-    public void onCalculateDrops(ItemStack fakeStack, ModifierData data, Level world, int toolLevel) {}
+    public void onBlockDrops(BlockDropsEvent event, ModifierData data, int toolLevel) {}
     public void onBreakSpeed(PlayerEvent.BreakSpeed event, ModifierData data, int toolLevel) {}
     public void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event, ModifierData data, int toolLevel) {}
     public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event, ModifierData data, int toolLevel) {}

@@ -30,61 +30,6 @@ import java.util.Objects;
 
 public class LootingModifier extends Modifier {
 
-    @Override
-    public boolean overridesLootTable(ItemStack stack, ModifierData data, int toolLevel) {
-        return true;
-    }
+    //Looting is handled like vanilla inside the EnchantmentHelperMixin
 
-    @Override
-    public void onMobDrops(LivingDropsEvent event, ModifierData data, int toolLevel) {
-        LivingEntity deadEntity = event.getEntity();
-        Entity killer = event.getEntity().getKillCredit();
-        DamageSource source = event.getSource();
-        Level world = deadEntity.level();
-
-        boolean bossLoot = deadEntity instanceof WitherBoss || deadEntity instanceof EnderDragon;
-
-        if (!bossLoot) {
-            event.setCanceled(true);
-
-            ItemStack fakeStack = Objects.requireNonNull(event.getSource().getWeaponItem()).copy();
-            fakeStack.enchant(world.holderLookup(Registries.ENCHANTMENT).getOrThrow(Enchantments.LOOTING), toolLevel);
-
-            LootTable lootTable = Objects.requireNonNull(world.getServer()).reloadableRegistries()
-                    .getLootTable(deadEntity.getLootTable().get());
-
-            List<ItemStack> newLoot = getMobLootDrops(deadEntity, (Player) killer, source, fakeStack, lootTable, world);
-
-            for (ItemStack stack : newLoot) {
-
-                popOutTheItem(world, BlockPos.containing(deadEntity.blockPosition().getCenter()), stack);
-            }
-        }
-    }
-
-    public static void popOutTheItem(Level level, BlockPos blockPos, ItemStack itemStack) {
-
-        Vec3 vec3 = Vec3.atLowerCornerWithOffset(blockPos, 0.5, 1.1, 0.5).offsetRandom(level.getRandom(), 0.7F);
-        ItemStack itemstack1 = itemStack.copy();
-        ItemEntity itementity = new ItemEntity(level, vec3.x(), vec3.y(), vec3.z(), itemstack1);
-        itementity.setDefaultPickUpDelay();
-        level.addFreshEntity(itementity);
-    }
-
-    public static List<ItemStack> getMobLootDrops(Entity deadEntity, Player player, DamageSource damageSource, ItemStack stack,
-                                                  LootTable lootTable, Level level) {
-
-        FakePlayer fakePlayer = FakePlayerUtil.createFakePlayer((ServerLevel) level, "FakePlayerForLooting");
-        fakePlayer.setItemInHand(InteractionHand.MAIN_HAND, stack);
-
-        LootParams.Builder lootParams = new LootParams.Builder((ServerLevel) level)
-                .withParameter(LootContextParams.THIS_ENTITY, deadEntity)
-                .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(deadEntity.getOnPos()))
-                .withParameter(LootContextParams.DAMAGE_SOURCE, damageSource)
-                .withParameter(LootContextParams.LAST_DAMAGE_PLAYER, player)
-                .withParameter(LootContextParams.ATTACKING_ENTITY, fakePlayer);
-
-        LootParams lootParamsFinal = lootParams.create(LootContextParamSets.ENTITY);
-        return lootTable.getRandomItems(lootParamsFinal);
-    }
 }

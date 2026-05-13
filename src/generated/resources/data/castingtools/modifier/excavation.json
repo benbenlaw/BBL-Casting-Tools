@@ -4,9 +4,6 @@
   "experience_cost": 5000,
   "fluid": "casting:molten_diamond",
   "fluid_amount": 360,
-  "incompatible_modifiers": [
-    "castingtools:pulverizing"
-  ],
   "max_enhanced_level": 5,
   "max_level": 3,
   "valid_items": [

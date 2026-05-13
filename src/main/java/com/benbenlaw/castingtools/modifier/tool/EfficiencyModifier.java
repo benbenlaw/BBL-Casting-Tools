@@ -11,7 +11,7 @@ public class EfficiencyModifier extends Modifier {
         if (toolLevel <= 0) return;
 
         if (event.getEntity().getMainHandItem().isCorrectToolForDrops(event.getState())) {
-            float bonus = (float) (data.additionalValue().orElse(0.5) * toolLevel);
+            float bonus = (float) (data.additionalValue().orElse(0.75) * toolLevel);
             event.setNewSpeed(event.getNewSpeed() + bonus);
         }
     }

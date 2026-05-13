@@ -45,7 +45,7 @@ public class ModifierUtils {
             comp.modifiers().forEach((key, modifierLevel) -> {
                 Modifier modifier = ModifierRegistry.MODIFIER_REGISTRY.getValue(key);
                 if (modifier != null) {
-                    modifier.onCalculateDrops(fakeItemStack, modifier.getData(), level, modifierLevel);
+                //    modifier.onCalculateDrops(fakeItemStack, modifier.getData(), level, modifierLevel);
                 }
                 if (modifier == ModifierRegistry.SILK_TOUCH.get()) {
                     isSilkTouch.set(true);
