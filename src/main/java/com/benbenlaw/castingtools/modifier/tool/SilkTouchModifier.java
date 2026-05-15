@@ -51,6 +51,7 @@ public class SilkTouchModifier extends Modifier {
         silkTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT)
                 .getOrThrow(Enchantments.SILK_TOUCH), 1);
 
+        event.setDroppedExperience(0);
         event.getDrops().clear();
         List<ItemStack> silkDrops = Block.getDrops(state, level, pos, blockEntity, player, silkTool);
 

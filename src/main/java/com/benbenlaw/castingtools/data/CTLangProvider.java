@@ -47,7 +47,16 @@ public class CTLangProvider extends LanguageProvider {
 
         //JEI
         add("jei.castingtools.modifier", "Modifier");
+        add("jei.castingtools.pulverizing", "Pulverizing");
+        add("jei.castingtools.treasure", "Treasure!");
+        add("jei.castingtools.beheading", "Beheading!");
+        add("tooltip.castingtools.beheading", "Drops from %s when tool has beheading modifier");
+        add("tooltip.castingtools.treasure", "Breaking %s when tool has the treasure modifier");
+        add("tooltip.castingtools.pulverizing", "Breaking %s when tool has the pulverizing modifier");
+        add("jei.castingtools.chance", "Chance: %s%%");
         add("jei.castingtools.modifier.information", "The Modifier can be used to make your tools and equipment more powerful.\n\nThe modifier uses Molten Experience as a fuel as well as either another fluid, an item or a Fluid and Item to apply a modifier.\n\nStanding on the Modifier will consume your experience and insert into the internal experience tank");
+
+
 
         //Modifiers
         add("modifier.castingtools.excavation", "Excavation");
@@ -75,7 +84,8 @@ public class CTLangProvider extends LanguageProvider {
         add("modifier.castingtools.bouncy", "Bouncy");
         add("modifier.castingtools.cobblestone_placer", "Cobblestone Placer");
         add("modifier.castingtools.retaliation", "Retaliation");
-        add("modifier.castingtools.pulverizer", "Pulverizer");
+        add("modifier.castingtools.pulverizing", "Pulverizing");
+        add("modifier.castingtools.treasure", "Treasure!");
 
         //Modifier Descriptions
         add("modifier.castingtools.silk_touch.description", "Allows you to mine blocks and receive the block itself instead of its usual drops, such as mining stone and receiving a stone block instead of cobblestone");
@@ -103,7 +113,8 @@ public class CTLangProvider extends LanguageProvider {
         add("modifier.castingtools.bouncy.description", "Bounce when you fall from heights");
         add("modifier.castingtools.cobblestone_placer.description", "Places a block of cobblestone when you right click. Doesn't require any items in your inventory");
         add("modifier.castingtools.retaliation.description", "Sometimes damages the attacker when hit. The higher the level, the higher the chance and damage");
-        add("modifier.castingtools.pulverizer.description", "Crushes up certain blocks when broken");
+        add("modifier.castingtools.pulverizing.description", "Crushes up certain blocks when broken");
+        add("modifier.castingtools.treasure.description", "Find additional drops from certain blocks when broken");
 
     }
 }

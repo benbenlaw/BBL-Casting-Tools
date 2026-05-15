@@ -6,7 +6,9 @@
   "fluid": "casting:molten_emerald",
   "fluid_amount": 720,
   "incompatible_modifiers": [
-    "castingtools:fortune"
+    "castingtools:fortune",
+    "castingtools:pulverizing",
+    "castingtools:treasure"
   ],
   "max_enhanced_level": 1,
   "max_level": 1,

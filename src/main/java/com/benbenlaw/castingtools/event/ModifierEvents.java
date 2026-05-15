@@ -37,8 +37,6 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.function.BiConsumer;
 
-import static com.benbenlaw.castingtools.modifier.ModifierRegistry.EXCAVATION;
-import static com.benbenlaw.castingtools.modifier.ModifierRegistry.PULVERIZING;
 
 @EventBusSubscriber(modid = CastingTools.MOD_ID)
 public class ModifierEvents {

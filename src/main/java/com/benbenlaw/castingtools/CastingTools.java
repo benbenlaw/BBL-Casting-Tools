@@ -3,16 +3,13 @@ package com.benbenlaw.castingtools;
 import com.benbenlaw.castingtools.block.CastingToolsBlockEntities;
 import com.benbenlaw.castingtools.block.CastingToolsBlocks;
 import com.benbenlaw.castingtools.block.CastingToolsCapabilities;
-import com.benbenlaw.castingtools.config.ToolModifiersConfig;
-import com.benbenlaw.castingtools.config.WeaponModifiersConfig;
-import com.benbenlaw.castingtools.datamaps.CastingToolsDataMaps;
+import com.benbenlaw.castingtools.datamaps.CTDataMaps;
 import com.benbenlaw.castingtools.fluids.CTFluids;
 import com.benbenlaw.castingtools.item.CastingToolsCreativeModeTab;
 import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
 import com.benbenlaw.castingtools.item.CastingToolsItems;
 import com.benbenlaw.castingtools.modifier.ModifierLoader;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
-import com.benbenlaw.castingtools.modifier.armor.BouncyModifier;
 import com.benbenlaw.castingtools.network.CastingToolsNetworking;
 import com.benbenlaw.castingtools.screen.CastingToolsMenuTypes;
 import com.benbenlaw.castingtools.screen.ModifierScreen;
@@ -24,7 +21,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
@@ -82,9 +78,9 @@ public class CastingTools {
     }
 
     public void registerDataMaps(RegisterDataMapTypesEvent event) {
-        event.register(CastingToolsDataMaps.BEHEADING_DROPS);
-        event.register(CastingToolsDataMaps.PULVERIZING_BLOCKS);
-
+        event.register(CTDataMaps.BEHEADING_DROPS);
+        event.register(CTDataMaps.PULVERIZING_BLOCKS);
+        event.register(CTDataMaps.TREASURE);
     }
 
     public void commonSetup(RegisterPayloadHandlersEvent event) {

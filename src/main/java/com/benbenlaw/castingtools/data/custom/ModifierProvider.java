@@ -79,7 +79,8 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(ItemTags.MINING_LOOT_ENCHANTABLE.location()))
                     .fluid("casting:molten_emerald", 720)
                     .incompatibleModifier(ModifierRegistry.FORTUNE.getId())
-                    .incompatibleModifier(ModifierRegistry.SILK_TOUCH.getId())
+                    .incompatibleModifier(ModifierRegistry.PULVERIZING.getId())
+                    .incompatibleModifier(ModifierRegistry.TREASURE.getId())
                     .associatedEnchantment(Identifier.withDefaultNamespace("silk_touch"))
                     .save();
 
@@ -244,6 +245,13 @@ public class ModifierProvider implements DataProvider {
             add(cachedOutput, futures, "pulverizing", 1, 1, 4000)
                     .validItem(tagToString(CTTags.Items.ALL_TOOLS.location()))
                     .ingredient("minecraft:gravel", 64)
+                    .incompatibleModifier(ModifierRegistry.SILK_TOUCH.getId())
+                    .save();
+
+            // Treasure
+            add(cachedOutput, futures, "treasure", 1, 1, 8000)
+                    .validItem(tagToString(CTTags.Items.ALL_TOOLS.location()))
+                    .fluid("casting:molten_amethyst", 8000)
                     .incompatibleModifier(ModifierRegistry.SILK_TOUCH.getId())
                     .save();
 

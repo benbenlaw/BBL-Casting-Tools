@@ -2,6 +2,9 @@
   "description": "modifier.castingtools.pulverizing.description",
   "display_name": "modifier.castingtools.pulverizing",
   "experience_cost": 4000,
+  "incompatible_modifiers": [
+    "castingtools:silk_touch"
+  ],
   "ingredient": "minecraft:gravel",
   "ingredient_count": 64,
   "max_enhanced_level": 1,

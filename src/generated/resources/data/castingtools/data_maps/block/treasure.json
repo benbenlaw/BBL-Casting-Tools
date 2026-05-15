@@ -1,0 +1,20 @@
+{
+  "values": {
+    "minecraft:gravel": [
+      {
+        "chance": 0.8,
+        "item": {
+          "id": "minecraft:flint"
+        }
+      }
+    ],
+    "minecraft:sand": [
+      {
+        "chance": 0.01,
+        "item": {
+          "id": "minecraft:heart_of_the_sea"
+        }
+      }
+    ]
+  }
+}

@@ -1,11 +1,9 @@
 package com.benbenlaw.castingtools.intergration.jei;
 
-import com.benbenlaw.casting.Casting;
-import com.benbenlaw.casting.block.CastingBlocks;
-import com.benbenlaw.casting.screen.ControllerScreen;
 import com.benbenlaw.castingtools.CastingTools;
-import com.benbenlaw.castingtools.block.CastingToolsBlockEntities;
 import com.benbenlaw.castingtools.block.CastingToolsBlocks;
+import com.benbenlaw.castingtools.event.client.ClientRecipeCache;
+import com.benbenlaw.castingtools.intergration.custom.ModifierRecipe;
 import com.benbenlaw.castingtools.modifier.Modifier;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import com.benbenlaw.castingtools.screen.ModifierScreen;
@@ -40,6 +38,9 @@ public class JEICastingToolsPlugin implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(@NotNull IRecipeCatalystRegistration registration) {
         registration.addCraftingStation(ModifierRecipeCategory.RECIPE_TYPE, CastingToolsBlocks.MODIFIER.toStack());
+        registration.addCraftingStation(BeheadingRecipeCategory.RECIPE_TYPE, CastingToolsBlocks.MODIFIER.toStack());
+        registration.addCraftingStation(TreasureRecipeCategory.RECIPE_TYPE, CastingToolsBlocks.MODIFIER.toStack());
+        registration.addCraftingStation(PulverizingRecipeCategory.RECIPE_TYPE, CastingToolsBlocks.MODIFIER.toStack());
     }
 
     @Override
@@ -47,6 +48,9 @@ public class JEICastingToolsPlugin implements IModPlugin {
         slotDrawable = registration.getJeiHelpers().getGuiHelper().getSlotDrawable();
 
         registration.addRecipeCategories(new ModifierRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new BeheadingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new TreasureRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new PulverizingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -63,6 +67,11 @@ public class JEICastingToolsPlugin implements IModPlugin {
 
         registration.addIngredientInfo(new ItemStack(CastingToolsBlocks.MODIFIER), VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.castingtools.modifier.information"));
+
+        registration.addRecipes(BeheadingRecipeCategory.RECIPE_TYPE, ClientRecipeCache.getCachedBeheadingRecipes().stream().toList());
+        registration.addRecipes(TreasureRecipeCategory.RECIPE_TYPE, ClientRecipeCache.getCachedTreasureRecipes().stream().toList());
+        registration.addRecipes(PulverizingRecipeCategory.RECIPE_TYPE, ClientRecipeCache.getCachedPulverizingRecipes().stream().toList());
+
     }
 
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {

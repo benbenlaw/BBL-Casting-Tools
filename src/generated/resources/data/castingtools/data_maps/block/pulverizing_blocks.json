@@ -1,7 +1,25 @@
 {
   "values": {
-    "minecraft:cobblestone": "minecraft:blocks/gravel",
-    "minecraft:gravel": "minecraft:blocks/sand",
-    "minecraft:stone_bricks": "minecraft:blocks/cracked_stone_bricks"
+    "minecraft:cobblestone": [
+      {
+        "item": {
+          "id": "minecraft:gravel"
+        }
+      }
+    ],
+    "minecraft:gravel": [
+      {
+        "item": {
+          "id": "minecraft:sand"
+        }
+      }
+    ],
+    "minecraft:stone_bricks": [
+      {
+        "item": {
+          "id": "minecraft:cracked_stone_bricks"
+        }
+      }
+    ]
   }
 }

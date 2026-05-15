@@ -65,4 +65,5 @@ public class ModifierRegistry {
     public static final DeferredHolder<Modifier, EfficiencyModifier> EFFICIENCY = MODIFIERS.register("efficiency", EfficiencyModifier::new);
     public static final DeferredHolder<Modifier, LootingModifier> LOOTING = MODIFIERS.register("looting", LootingModifier::new);
     public static final DeferredHolder<Modifier, PulverizingModifier> PULVERIZING = MODIFIERS.register("pulverizing", PulverizingModifier::new);
+    public static final DeferredHolder<Modifier, TreasureModifier> TREASURE = MODIFIERS.register("treasure", TreasureModifier::new);
 }

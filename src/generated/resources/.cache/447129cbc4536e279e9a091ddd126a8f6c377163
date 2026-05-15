@@ -1,4 +1,4 @@
-// 26.1.2	2026-04-24T17:00:27.2584176	castingtools Recipes
+// 26.1.2	2026-05-15T19:38:14.1626434	castingtools Recipes
 4274a0bae05a513a1aff10333a300ea3b246971f data/castingtools/advancement/recipes/misc/modifier.json
 564ff0483a9c0f729196e5d47de45716acb6f04a data/castingtools/advancement/recipes/misc/omnithium_axe.json
 37d17a46a6819ff6ea923ee9f316d5f0856692e7 data/castingtools/advancement/recipes/misc/omnithium_chestplate.json
@@ -28,9 +28,9 @@ bb1fbb0c92443fdbf835ecf01422444c19c9faa5 data/casting/advancement/recipes/meltin
 e1c854cc7bb8cc05603c6ae1027c9cd2621eb4c5 data/casting/advancement/recipes/solidifier/solidifier/omnithium/block.json
 ecc936092f014180498c2fbe7f19249e9cbd5923 data/casting/advancement/recipes/solidifier/solidifier/omnithium/ingot.json
 8162ae11690d4c2530a00973d81716d9450050d0 data/casting/advancement/recipes/solidifier/solidifier/omnithium/nugget.json
-7a31650cb0bc0a965c618adea00b968a77ed5786 data/casting/recipe/melting/omnithium/block.json
-623112d4d02cba18a53a1a0056887597d98be466 data/casting/recipe/melting/omnithium/ingot.json
-0a224035f87d3d5e0d818a33f31daf8b9e390018 data/casting/recipe/melting/omnithium/nugget.json
+d1b2b30ac5331f4a0962cb5ed1f0a0e997d45b2f data/casting/recipe/melting/omnithium/block.json
+2c5bd54c14c76744f9df34451ce51893a907a48a data/casting/recipe/melting/omnithium/ingot.json
+8de285e4d59989834b5052c5a4fa3b608b24b25b data/casting/recipe/melting/omnithium/nugget.json
 7225d505eb04d02c0e417adbd92db7859e100a6a data/casting/recipe/mixing/omnithiumalloy.json
 b293f7b3d00d21aa4d77c2d462557211fb012707 data/casting/recipe/solidifier/omnithium/block.json
 52e39313db5a3548cadd3d0f7433d2f81978cc10 data/casting/recipe/solidifier/omnithium/ingot.json

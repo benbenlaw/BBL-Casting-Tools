@@ -4,43 +4,31 @@ import com.benbenlaw.castingtools.datamaps.CTDataMaps;
 import com.benbenlaw.castingtools.modifier.Modifier;
 import com.benbenlaw.castingtools.modifier.ModifierData;
 import com.benbenlaw.core.recipe.ChanceResult;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 
 import java.util.List;
 
-public class PulverizingModifier extends Modifier {
+public class TreasureModifier extends Modifier {
 
     @Override
     public void onBlockDrops(BlockDropsEvent event, ModifierData data, int toolLevel) {
 
         ServerLevel level = event.getLevel();
         BlockState state = event.getState();
-        Player player = (Player) event.getBreaker();
-        ItemStack tool = event.getTool();
 
-        List<ChanceResult> chanceResults = state.typeHolder().getData(CTDataMaps.PULVERIZING_BLOCKS);
+        List<ChanceResult> chanceResults = state.typeHolder().getData(CTDataMaps.TREASURE);
         if (chanceResults == null) return;
-
-        event.getDrops().clear();
-
 
         for (ChanceResult result : chanceResults) {
             ItemStack itemStack = result.rollOutput(level.getRandom());
             Block.popResource(level, event.getPos(), itemStack);
         }
+
+
     }
 }

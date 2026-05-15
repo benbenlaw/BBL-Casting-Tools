@@ -1,14 +1,10 @@
 package com.benbenlaw.castingtools.intergration.jei;
 
 import com.benbenlaw.casting.Casting;
-import com.benbenlaw.casting.block.CastingBlocks;
-import com.benbenlaw.casting.event.client.ClientRecipeCache;
-import com.benbenlaw.casting.recipe.custom.SolidifierRecipe;
 import com.benbenlaw.castingtools.CastingTools;
-import com.benbenlaw.castingtools.block.CastingToolsBlockEntities;
 import com.benbenlaw.castingtools.block.CastingToolsBlocks;
+import com.benbenlaw.castingtools.intergration.custom.ModifierRecipe;
 import com.benbenlaw.castingtools.modifier.Modifier;
-import com.benbenlaw.core.util.MouseUtil;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.ITooltipBuilder;
@@ -31,9 +27,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.display.SlotDisplay;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.FluidStack;
@@ -42,7 +36,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 public class ModifierRecipeCategory implements IRecipeCategory<ModifierRecipe> {

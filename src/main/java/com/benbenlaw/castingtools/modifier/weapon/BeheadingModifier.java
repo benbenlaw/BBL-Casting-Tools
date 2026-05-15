@@ -10,7 +10,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 
-import static com.benbenlaw.castingtools.datamaps.CastingToolsDataMaps.BEHEADING_DROPS;
+import static com.benbenlaw.castingtools.datamaps.CTDataMaps.BEHEADING_DROPS;
 
 
 public class BeheadingModifier extends Modifier {
