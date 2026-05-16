@@ -1,0 +1,14 @@
+{
+  "additional_value": 8.0,
+  "description": "modifier.castingtools.lightning_strike.description",
+  "display_name": "modifier.castingtools.lightning_strike",
+  "experience_cost": 8000,
+  "fluid": "casting:molten_glowstone",
+  "fluid_amount": 8000,
+  "ingredient": "minecraft:lightning_rod",
+  "max_enhanced_level": 10,
+  "max_level": 5,
+  "valid_items": [
+    "#castingtools:all_melee_weapons"
+  ]
+}

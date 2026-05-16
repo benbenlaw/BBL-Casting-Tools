@@ -255,6 +255,15 @@ public class ModifierProvider implements DataProvider {
                     .incompatibleModifier(ModifierRegistry.SILK_TOUCH.getId())
                     .save();
 
+            // Lightning Strike
+            add(cachedOutput, futures, "lightning_strike", 5, 10, 8000)
+                    .validItem(tagToString(CTTags.Items.ALL_MELEE_WEAPONS.location()))
+                    .ingredient("minecraft:lightning_rod", 1)
+                    .fluid("casting:molten_glowstone", 8000)
+                    .additionalValue(8.0)
+                    .save();
+
+
             return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
         });
     }

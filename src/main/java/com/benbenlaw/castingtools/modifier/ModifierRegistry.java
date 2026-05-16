@@ -57,6 +57,7 @@ public class ModifierRegistry {
     public static final DeferredHolder<Modifier, LifestealModifier> LIFESTEAL = MODIFIERS.register("lifesteal", LifestealModifier::new);
     public static final DeferredHolder<Modifier, KnockbackModifier> KNOCKBACK = MODIFIERS.register("knockback", KnockbackModifier::new);
     public static final DeferredHolder<Modifier, TeleportingModifier> TELEPORTING = MODIFIERS.register("teleporting", TeleportingModifier::new);
+    public static final DeferredHolder<Modifier, LightningStrikeModifier> LIGHTNING_STRIKE = MODIFIERS.register("lightning_strike", LightningStrikeModifier::new);
 
     //Tool Modifiers
     public static final DeferredHolder<Modifier, FortuneModifier> FORTUNE = MODIFIERS.register("fortune", FortuneModifier::new);
