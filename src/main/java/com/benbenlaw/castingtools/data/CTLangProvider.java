@@ -1,7 +1,9 @@
 package com.benbenlaw.castingtools.data;
 
 import com.benbenlaw.castingtools.CastingTools;
+import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class CTLangProvider extends LanguageProvider {
@@ -56,36 +58,13 @@ public class CTLangProvider extends LanguageProvider {
         add("jei.castingtools.chance", "Chance: %s%%");
         add("jei.castingtools.modifier.information", "The Modifier can be used to make your tools and equipment more powerful.\n\nThe modifier uses Molten Experience as a fuel as well as either another fluid, an item or a Fluid and Item to apply a modifier.\n\nStanding on the Modifier will consume your experience and insert into the internal experience tank");
 
-
-
         //Modifiers
-        add("modifier.castingtools.excavation", "Excavation");
-        add("modifier.castingtools.silk_touch", "Silk Touch");
-        add("modifier.castingtools.fortune", "Fortune");
-        add("modifier.castingtools.sharpness", "Sharpness");
-        add("modifier.castingtools.ignite", "Ignite");
-        add("modifier.castingtools.efficiency", "Efficiency");
-        add("modifier.castingtools.unbreaking", "Unbreaking");
-        add("modifier.castingtools.repairing", "Repairing");
-        add("modifier.castingtools.beheading", "Beheading");
-        add("modifier.castingtools.torch_placer", "Torch Placer");
-        add("modifier.castingtools.looting", "Looting");
-        add("modifier.castingtools.lifesteal", "Lifesteal");
-        add("modifier.castingtools.knockback", "Knockback");
-        add("modifier.castingtools.teleporting", "Teleporting");
-        add("modifier.castingtools.protection", "Protection");
-        add("modifier.castingtools.soulbound", "Soulbound");
-        add("modifier.castingtools.magnet", "Magnet");
-        add("modifier.castingtools.night_vision", "Night Vision");
-        add("modifier.castingtools.water_breathing", "Water Breathing");
-        add("modifier.castingtools.speed", "Speed");
-        add("modifier.castingtools.sticky", "Sticky");
-        add("modifier.castingtools.flight", "Flight");
-        add("modifier.castingtools.bouncy", "Bouncy");
-        add("modifier.castingtools.cobblestone_placer", "Cobblestone Placer");
-        add("modifier.castingtools.retaliation", "Retaliation");
-        add("modifier.castingtools.pulverizing", "Pulverizing");
-        add("modifier.castingtools.treasure", "Treasure!");
+        ModifierRegistry.MODIFIER_REGISTRY.entrySet().forEach(entry -> {
+            Identifier id = entry.getKey().identifier();
+            String key = "modifier.castingtools." + id.getPath();
+            String name = formatName(id.getPath());
+            add(key, name);
+        });
 
         //Modifier Descriptions
         add("modifier.castingtools.silk_touch.description", "Allows you to mine blocks and receive the block itself instead of its usual drops, such as mining stone and receiving a stone block instead of cobblestone");
@@ -115,6 +94,20 @@ public class CTLangProvider extends LanguageProvider {
         add("modifier.castingtools.retaliation.description", "Sometimes damages the attacker when hit. The higher the level, the higher the chance and damage");
         add("modifier.castingtools.pulverizing.description", "Crushes up certain blocks when broken");
         add("modifier.castingtools.treasure.description", "Find additional drops from certain blocks when broken");
+        add("modifier.castingtools.lightning_strike.description", "Summons a lightning bolt when you hit a mob dealing additional damage");
 
+    }
+
+    private static String formatName(String path) {
+
+        String[] parts = path.split("_");
+        StringBuilder sb = new StringBuilder();
+
+        for (String part : parts) {
+            if (part.isEmpty()) continue;
+            sb.append(Character.toUpperCase(part.charAt(0))).append(part.substring(1)).append(" ");
+        }
+
+        return sb.toString().trim();
     }
 }

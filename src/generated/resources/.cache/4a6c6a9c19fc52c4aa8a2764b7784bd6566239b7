@@ -1,4 +1,4 @@
-// 26.1.2	2026-05-16T18:37:58.9300788	castingtools Modifiers
+// 26.1.2	2026-05-17T09:19:04.8949815	castingtools Modifiers
 9be7b355798f4710aefe8efa0149779e8e09a36a data/castingtools/modifier/beheading.json
 7b58d08a4932d4db5a465c3379ba307b54c10a03 data/castingtools/modifier/bouncy.json
 8358edb0ef27bdcc49fcdc63e05c7ba978f376ca data/castingtools/modifier/cobblestone_placer.json
@@ -9,7 +9,7 @@ df73330fbfc552cdb3fe8d53ede94615b86469b8 data/castingtools/modifier/fortune.json
 156879586f7d9498f13d9c75aa464032efd801b5 data/castingtools/modifier/ignite.json
 5f7fcc95155193226f8ed8db9ac4d2813aa90341 data/castingtools/modifier/knockback.json
 e8778596f82db4b01ce07daa02d28582dab84066 data/castingtools/modifier/lifesteal.json
-2671b1e3d88046a9b2cd8f72d4b8d233e1194b98 data/castingtools/modifier/lightning_strike.json
+74d200a0cd315f84870b522c8a7ebe9ace118468 data/castingtools/modifier/lightning_strike.json
 0937fadfdbecd4ec549ad5467120084bf641678d data/castingtools/modifier/looting.json
 b5f68a3f58966d4e4a886231f38b0c9efed1c0b6 data/castingtools/modifier/magnet.json
 5b83b2236c9db02e55d39f0d91de9edba288b426 data/castingtools/modifier/night_vision.json

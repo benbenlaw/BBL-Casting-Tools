@@ -5,7 +5,7 @@
   "experience_cost": 8000,
   "fluid": "casting:molten_glowstone",
   "fluid_amount": 8000,
-  "ingredient": "minecraft:lightning_rod",
+  "ingredient": "#minecraft:lightning_rods",
   "max_enhanced_level": 10,
   "max_level": 5,
   "valid_items": [

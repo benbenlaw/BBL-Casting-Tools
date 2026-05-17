@@ -6,7 +6,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 
 @EventBusSubscriber(modid = CastingTools.MOD_ID)
-public class CastingToolsCommands {
+public class CTCommands {
 
     @SubscribeEvent
     public static void registerCommands(RegisterCommandsEvent event) {
