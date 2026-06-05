@@ -22,7 +22,7 @@ public class LightningStrikeModifier extends Modifier {
         lightning.setDamage(0.0f);
         lightning.setPos(position);
         level.addFreshEntity(lightning);
-        float finalDamage = (float) (event.getNewDamage() + (data.additionalValue().orElse(5.0) * toolLevel));
+        float finalDamage = (float) (event.getInflictedDamage() + (data.additionalValue().orElse(5.0) * toolLevel));
 
         System.out.println("finalDamage: " + finalDamage);
         enemy.hurt(level.damageSources().lightningBolt(), finalDamage);

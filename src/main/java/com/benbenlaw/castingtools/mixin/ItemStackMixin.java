@@ -41,8 +41,7 @@ public class ItemStackMixin {
         int levelValue = comp.modifiers().get(UNBREAKING.get().getId());
         float chance = levelValue * modifier.additionalValue().get().floatValue();
 
-        RandomSource random = (player != null) ? player.getRandom() : RandomSource.create();
-
+        RandomSource random = (level != null) ? level.getRandom() : RandomSource.create();
 
         if (random.nextFloat() < chance) {
             cir.setReturnValue(0);

@@ -14,7 +14,7 @@ public class LifestealModifier extends Modifier {
         Entity attacker = event.getSource().getEntity();
         if (!(attacker instanceof LivingEntity livingAttacker)) return;
 
-        float damageDealt = event.getNewDamage();
+        float damageDealt = event.getInflictedDamage();
         double lifestealPercentage = data.additionalValue().orElse(0.1);
 
         float healAmount = (float) (damageDealt * lifestealPercentage * toolLevel);
