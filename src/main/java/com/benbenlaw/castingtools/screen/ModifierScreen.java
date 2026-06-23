@@ -38,7 +38,7 @@ public class ModifierScreen extends AbstractContainerScreen<ModifierMenu> {
         int y = (height - imageHeight) / 2;
 
         guiGraphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, x, y, 0, 0, imageWidth, imageHeight, 256, 256);
-        renderTankTextures(guiGraphics, x, y);
+
     }
 
     @Override
@@ -48,45 +48,10 @@ public class ModifierScreen extends AbstractContainerScreen<ModifierMenu> {
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
-        renderTankTooltips(guiGraphics, x, y, mouseX, mouseY);
-    }
+        FluidRenderingUtils.renderFluid(guiGraphics, menu.blockEntity.getFluidHandler(), 0, x, y,
+                8, 20, 47, 16, mouseX, mouseY, Component.translatable("tooltip.casting.empty"));
 
-    private void renderTankTextures(GuiGraphicsExtractor guiGraphics, int x, int y) {
-        drawTankFluid(guiGraphics, menu.blockEntity.getInputFluidHandler(), 0, x + 8, y + 20, 16, 47);
-        drawTankFluid(guiGraphics, menu.blockEntity.getInputFluidHandler(), 1, x + 35, y + 20, 16, 47);
-    }
-
-
-    private void drawTankFluid(GuiGraphicsExtractor guiGraphics, Object handler, int slot, int x, int y, int width, int height) {
-        var fluidHandler = (FluidStacksResourceHandler) handler;
-        var stack = FluidUtil.getStack(fluidHandler, slot);
-
-        if (!stack.isEmpty()) {
-            int capacity = fluidHandler.getCapacityAsInt(slot, FluidResource.of(stack));
-            int displayLevel = (int) ((float) stack.getAmount() / (float) capacity * (float) height);
-            FluidRenderingUtils.renderFluidStack(guiGraphics, stack, x, y + height - displayLevel, width, displayLevel, 0, 0);
-        }
-    }
-
-    private void renderTankTooltips(GuiGraphicsExtractor guiGraphics, int x, int y, int mouseX, int mouseY) {
-        drawTankTooltip(guiGraphics, menu.blockEntity.getInputFluidHandler(), 0, x + 8, y + 20, 16, 47, mouseX, mouseY, "Empty");
-        drawTankTooltip(guiGraphics, menu.blockEntity.getInputFluidHandler(), 1, x + 35, y + 20,16, 47, mouseX, mouseY, "Empty");
-
-
-    }
-
-    private void drawTankTooltip(GuiGraphicsExtractor guiGraphics, Object handler, int slot, int x, int y, int width, int height, int mouseX, int mouseY, String emptyName) {
-        var fluidHandler = (FluidStacksResourceHandler) handler;
-        var stack = FluidUtil.getStack(fluidHandler, slot);
-
-        if (mouseX >= x && mouseX < x + width && mouseY >= y && mouseY < y + height) {
-            if (stack.isEmpty()) {
-                Component text = Component.literal(emptyName);
-                List<ClientTooltipComponent> components = List.of(ClientTooltipComponent.create(text.getVisualOrderText()));
-                guiGraphics.tooltip(this.font, components, mouseX, mouseY, DefaultTooltipPositioner.INSTANCE, null);
-            } else {
-                FluidRenderingUtils.renderFluidStackTooltip(guiGraphics, stack, fluidHandler, slot, x, y, width, height, mouseX, mouseY);
-            }
-        }
+        FluidRenderingUtils.renderFluid(guiGraphics, menu.blockEntity.getFluidHandler(), 1, x, y,
+                35, 20, 47, 16, mouseX, mouseY, Component.translatable("tooltip.casting.empty"));
     }
 }

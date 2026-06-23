@@ -2,7 +2,10 @@ package com.benbenlaw.castingtools.datamaps;
 
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.core.recipe.ChanceResult;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
@@ -22,7 +25,6 @@ public class CTDataMaps {
 
     public static final DataMapType<Block, List<ChanceResult>> TREASURE = DataMapType.builder(
             CastingTools.identifier("treasure"), Registries.BLOCK, ChanceResult.CODEC.listOf()).synced(ChanceResult.CODEC.listOf(), true).build();
-
 
 }
 

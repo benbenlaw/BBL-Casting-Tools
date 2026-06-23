@@ -7,6 +7,8 @@ import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import com.benbenlaw.castingtools.screen.util.ModifierResultSlot;
 import com.benbenlaw.castingtools.utils.CTTags;
 import com.benbenlaw.castingtools.utils.ModifierUtils;
+import com.benbenlaw.core.block.entity.handler.fluid.SyncableFluidHandler;
+import com.benbenlaw.core.block.entity.handler.item.SyncableItemHandler;
 import com.benbenlaw.core.screen.SimpleAbstractContainerMenu;
 import com.benbenlaw.core.screen.util.slot.FilterFluidSlot;
 import com.benbenlaw.core.screen.util.slot.InputSlot;
@@ -62,10 +64,10 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
 
         assert blockEntity != null;
 
-        this.addSlot(new InputSlot(blockEntity.getInputHandler(), blockEntity.getInputHandler()::set, 0, 63, 35));
-        this.addSlot(new InputSlot(blockEntity.getInputHandler(), blockEntity.getInputHandler()::set, 1, 98, 35).size(1));
-        this.addSlot(new ModifierResultSlot(blockEntity.getInputHandler(), blockEntity.getInputFluidHandler(), blockEntity.getOutputHandler(),
-                blockEntity.getOutputHandler()::set, 0, 152, 35).size(1));
+        this.addSlot(new InputSlot(blockEntity.getItemHandler(), blockEntity.getItemHandler()::set, 0, 63, 35));
+        this.addSlot(new InputSlot(blockEntity.getItemHandler(), blockEntity.getItemHandler()::set, 1, 98, 35).size(1));
+        this.addSlot(new ModifierResultSlot((SyncableItemHandler) blockEntity.getItemHandler(), (SyncableFluidHandler) blockEntity.getFluidHandler(), (SyncableItemHandler) blockEntity.getItemHandler(),
+                blockEntity.getItemHandler()::set, 2, 152, 35).size(1));
 
         addDataSlots(data);
     }
@@ -85,30 +87,30 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
     private void setupResult() {
         if (this.level.isClientSide()) return;
 
-        ItemStack ingredientStack = ItemUtil.getStack(blockEntity.getInputHandler(), 0);
-        ItemStack toolStack = ItemUtil.getStack(blockEntity.getInputHandler(), 1);
-        ItemStack currentOutput = ItemUtil.getStack(blockEntity.getOutputHandler(), 0);
+        ItemStack ingredientStack = ItemUtil.getStack(blockEntity.getItemHandler(), 0);
+        ItemStack toolStack = ItemUtil.getStack(blockEntity.getItemHandler(), 1);
+        ItemStack currentOutput = ItemUtil.getStack(blockEntity.getItemHandler(), 2);
 
         if (toolStack.isEmpty()) {
             if (!currentOutput.isEmpty()) {
-                blockEntity.getOutputHandler().set(0, ItemResource.EMPTY, 0);
+                blockEntity.getItemHandler().set(2, ItemResource.EMPTY, 0);
                 this.broadcastChanges();
             }
             return;
         }
 
-        Modifier modifier = ModifierUtils.getMatchingModifier(toolStack, ingredientStack, FluidUtil.getStack(blockEntity.getInputFluidHandler(), 1));
+        Modifier modifier = ModifierUtils.getMatchingModifier(toolStack, ingredientStack, FluidUtil.getStack(blockEntity.getFluidHandler(), 1));
 
         if (modifier == null || !modifier.isValid(toolStack)) {
             if (!currentOutput.isEmpty()) {
-                blockEntity.getOutputHandler().set(0, ItemResource.EMPTY, 0);
+                blockEntity.getItemHandler().set(2, ItemResource.EMPTY, 0);
                 this.broadcastChanges();
             }
             return;
         }
 
         int requiredExperience = modifier.getExperienceCost();
-        FluidStack expFluid = FluidUtil.getStack(blockEntity.getInputFluidHandler(), 0);
+        FluidStack expFluid = FluidUtil.getStack(blockEntity.getFluidHandler(), 0);
         TagKey<Fluid> experienceTag = TagKey.create(Registries.FLUID, Identifier.fromNamespaceAndPath("c", "experience"));
         boolean hasExperience = (requiredExperience <= 0) ||
                 (!expFluid.isEmpty() && expFluid.is(experienceTag) && expFluid.getAmount() >= requiredExperience);
@@ -117,7 +119,7 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
         var fluidIngOpt = modifier.getFluidIngredient();
         if (fluidIngOpt.isPresent()) {
             var sizedFluidIng = fluidIngOpt.get();
-            FluidStack tankFluid = FluidUtil.getStack(blockEntity.getInputFluidHandler(), 1);
+            FluidStack tankFluid = FluidUtil.getStack(blockEntity.getFluidHandler(), 1);
             hasFluidIngredient = sizedFluidIng.test(tankFluid) && tankFluid.getAmount() >= sizedFluidIng.amount();
         } else {
             hasFluidIngredient = true;
@@ -141,7 +143,7 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
                         .withStyle(ChatFormatting.RED));
 
                 if (!ItemStack.matches(currentOutput, barrier)) {
-                    blockEntity.getOutputHandler().set(0, ItemResource.of(barrier), 1);
+                    blockEntity.getItemHandler().set(2, ItemResource.of(barrier), 1);
                     this.broadcastChanges();
                 }
                 return;
@@ -157,7 +159,7 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
                         .withStyle(ChatFormatting.RED));
 
                 if (!ItemStack.matches(currentOutput, barrier)) {
-                    blockEntity.getOutputHandler().set(0, ItemResource.of(barrier), 1);
+                    blockEntity.getItemHandler().set(2, ItemResource.of(barrier), 1);
                     this.broadcastChanges();
                 }
                 return;
@@ -167,14 +169,14 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
             ModifierUtils.setModifierLevel(result, modifier, currentLevel + 1);
 
             if (!ItemStack.matches(currentOutput, result)) {
-                blockEntity.getOutputHandler().set(0, ItemResource.EMPTY, 0);
-                blockEntity.getOutputHandler().set(0, ItemResource.of(result), 1);
+                blockEntity.getItemHandler().set(2, ItemResource.EMPTY, 0);
+                blockEntity.getItemHandler().set(2, ItemResource.of(result), 1);
                 this.broadcastChanges();
                 blockEntity.setChanged();
             }
         } else {
             if (!currentOutput.isEmpty()) {
-                blockEntity.getOutputHandler().set(0, ItemResource.EMPTY, 0);
+                blockEntity.getItemHandler().set(2, ItemResource.EMPTY, 0);
                 this.broadcastChanges();
             }
         }

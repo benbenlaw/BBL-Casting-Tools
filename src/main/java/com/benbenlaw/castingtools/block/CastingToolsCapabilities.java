@@ -10,10 +10,10 @@ public class CastingToolsCapabilities {
 
         //Modifier
         event.registerBlockEntity(Capabilities.Item.BLOCK, CastingToolsBlockEntities.MODIFIER_BLOCK_ENTITY.get(),
-                (blockEntity, side) -> blockEntity.getItemCapability());
+                (blockEntity, side) -> blockEntity.getItemHandler());
 
         event.registerBlockEntity(Capabilities.Fluid.BLOCK, CastingToolsBlockEntities.MODIFIER_BLOCK_ENTITY.get(),
-                (blockEntity, side) -> blockEntity.getFluidCapability());
+                (blockEntity, side) -> blockEntity.getFluidHandler());
 
     }
 }
