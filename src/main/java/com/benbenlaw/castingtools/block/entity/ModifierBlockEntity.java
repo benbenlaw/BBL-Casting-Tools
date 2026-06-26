@@ -27,6 +27,7 @@ import com.benbenlaw.core.block.entity.handler.item.OutputItemHandler;
 import com.benbenlaw.core.block.entity.handler.item.SyncableItemHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -35,8 +36,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.MenuProvider;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -65,6 +65,7 @@ import net.neoforged.neoforge.transfer.transaction.Transaction;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
@@ -164,7 +165,16 @@ public class ModifierBlockEntity extends SyncableBlockEntity implements MenuProv
 
     @Override
     public void preRemoveSideEffects(@NonNull BlockPos pos, @NonNull BlockState state) {
-        dropInventoryContents(inventory);
+
+        List<ItemStack> items = new ArrayList<>();
+
+        for (int i = 0; i < 2; i++) {
+            items.add(ItemUtil.getStack(inventory, i));
+        }
+
+        Container tempContainer = new SimpleContainer(items.getFirst(), items.getLast());
+        assert this.level != null;
+        Containers.dropContents(this.level, this.worldPosition, tempContainer);
     }
 
     @Override
