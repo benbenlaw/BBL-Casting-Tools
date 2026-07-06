@@ -117,7 +117,7 @@ public class ModifierBlockEntity extends SyncableBlockEntity implements MenuProv
         ItemStack stack = player.getItemInHand(hand);
 
         if (stack.getItem() instanceof FluidMoverItem) {
-            return FluidMoverItem.onBlockInteract(stack, fluidInventory, new int[]{0, 1}, new int[]{0, 1});
+            return FluidMoverItem.onBlockInteract(stack, fluidInventory, new int[]{1, 0}, new int[]{1, 0});
         }
 
         try (Transaction tx = Transaction.open(null)) {
