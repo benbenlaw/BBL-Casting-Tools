@@ -1,9 +1,7 @@
 package com.benbenlaw.castingtools.item;
 
 import com.benbenlaw.castingtools.CastingTools;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -22,22 +20,21 @@ public class CastingToolsItems {
                     .rarity(Rarity.EPIC));
 
     public static final DeferredItem<Item> OMNITHIUM_SHOVEL = ITEMS.registerItem("omnithium_shovel",
-            Item::new,properties -> properties
-                    .shovel(CTToolMaterials.OMNITHIUM, 1.5F, -3.0F)
+            properties -> new ShovelItem(CTToolMaterials.OMNITHIUM, 1.5F, -3.0F,
+                    properties
                     .fireResistant()
-                    .rarity(Rarity.EPIC));
+                    .rarity(Rarity.EPIC)));
 
     public static final DeferredItem<Item> OMNITHIUM_AXE = ITEMS.registerItem("omnithium_axe",
-            Item::new,properties -> properties
-                    .axe(CTToolMaterials.OMNITHIUM, 7.0F, -3.1F)
+            properties -> new AxeItem(CTToolMaterials.OMNITHIUM, 7.0F, -3.1F,
+                    properties
                     .fireResistant()
-                    .rarity(Rarity.EPIC));
+                    .rarity(Rarity.EPIC)));
 
     public static final DeferredItem<Item> OMNITHIUM_HOE = ITEMS.registerItem("omnithium_hoe",
-        Item::new,properties -> properties
-                .hoe(CTToolMaterials.OMNITHIUM, 0.0F, -3.0F)
+        properties -> new HoeItem(CTToolMaterials.OMNITHIUM, 0.0F, -3.0F, properties
                 .fireResistant()
-                .rarity(Rarity.EPIC));
+                .rarity(Rarity.EPIC)));
 
     public static final DeferredItem<Item> OMNITHIUM_SWORD = ITEMS.registerItem("omnithium_sword",
             Item::new,properties -> properties
