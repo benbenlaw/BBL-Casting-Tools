@@ -24,6 +24,25 @@ import static com.benbenlaw.castingtools.modifier.ModifierRegistry.*;
 public class ItemStackMixin {
 
     @Inject(
+            method = "isEnchanted()Z",
+            at = @At("RETURN"),
+            cancellable = true
+    )
+    private void casting$isEnchanted(CallbackInfoReturnable<Boolean> cir) {
+        if (cir.getReturnValueZ()) {
+            return;
+        }
+        ItemStack tool = (ItemStack)(Object)this;
+
+        ModifierComponent comp = tool.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        if (comp == null || comp.modifiers().isEmpty()) {
+            return;
+        }
+
+        cir.setReturnValue(true);
+    }
+
+    @Inject(
             method = "processDurabilityChange(ILnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/LivingEntity;)I",
             at = @At("RETURN"),
             cancellable = true
