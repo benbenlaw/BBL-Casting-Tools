@@ -78,9 +78,12 @@ public class ModifierBlockEntity extends SyncableBlockEntity implements MenuProv
             TagKey<Fluid> experienceTag = TagKey.create(Registries.FLUID, Identifier.fromNamespaceAndPath("c", "experience"));
             return stack.is(experienceTag);
         }
-        return i == 1;
+        if (i == 1) {
+            TagKey<Fluid> experienceTag = TagKey.create(Registries.FLUID, Identifier.fromNamespaceAndPath("c", "experience"));
+            return !stack.is(experienceTag);
+        };
+        return false;
     }, i -> i == 2);
-
 
     public ModifierBlockEntity(BlockPos pos, BlockState state) {
         super(CastingToolsBlockEntities.MODIFIER_BLOCK_ENTITY.get(), pos, state);
