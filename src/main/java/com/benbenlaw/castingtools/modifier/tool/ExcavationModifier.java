@@ -55,11 +55,11 @@ public class ExcavationModifier extends Modifier {
         for (BlockPos pos : extraBlocks) {
             BlockState state = level.getBlockState(pos);
             Block.dropResources(state, level, pos, blockEntity, player, toolStack);
-            level.destroyBlock(pos, false);
 
-            //state.onDestroyedByPlayer(level, pos, player, toolStack, canHarvest, level.getFluidState(pos));
-            //event.getLevel().destroyBlock(pos, true, event.getPlayer());
-            //event.getPlayer().getMainHandItem().hurtAndBreak(1, event.getPlayer(), InteractionHand.MAIN_HAND);
+            boolean blockDestroyed = level.destroyBlock(pos, false);
+            if (blockDestroyed) {
+                player.getMainHandItem().hurtAndBreak(1, event.getPlayer(), InteractionHand.MAIN_HAND);
+            }
         }
     }
 
