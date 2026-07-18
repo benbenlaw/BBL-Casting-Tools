@@ -170,7 +170,7 @@ public class ModifierProvider implements DataProvider {
                     .save();
 
             // Protection
-            add(cachedOutput, futures, "protection", 5, 10, 1000)
+            add(cachedOutput, futures, "protection", 10, 20, 1000)
                     .validItem(tagToString(CTTags.Items.ALL_ARMORS.location()))
                     .fluid("casting:molten_steel", 720)
                     .additionalValue(0.066)

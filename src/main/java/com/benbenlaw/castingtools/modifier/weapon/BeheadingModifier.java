@@ -20,7 +20,11 @@ public class BeheadingModifier extends Modifier {
         LivingEntity deadEntity = event.getEntity();
         Level level = deadEntity.level();
 
-        ItemStack beheadingDrop = deadEntity.getType().builtInRegistryHolder().getData(BEHEADING_DROPS).create();
+        ItemStack beheadingDrop = null;
+
+        if (deadEntity.getType().builtInRegistryHolder().getData(BEHEADING_DROPS) != null) {
+            beheadingDrop = deadEntity.getType().builtInRegistryHolder().getData(BEHEADING_DROPS).create();
+        }
 
         if (beheadingDrop != null) {
             popOutTheItem(level, deadEntity.blockPosition(), beheadingDrop.copy());
