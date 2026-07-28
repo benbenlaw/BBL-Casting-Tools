@@ -38,10 +38,6 @@ public abstract class Modifier {
 
     private ModifierData data;
 
-    // ------------------------------
-    // Event Hooks
-    // ------------------------------
-
     public void onPostHit(LivingDamageEvent.Post event, ModifierData data, int toolLevel) {}
     public void onPreHit(LivingDamageEvent.Pre event, ModifierData data, int toolLevel) {}
     public void onBlockBreak(BreakBlockEvent event, ModifierData data, int toolLevel) {}
@@ -59,10 +55,6 @@ public abstract class Modifier {
     public void modifyDrops(DropContext context, ModifierData data, int toolLevel) {}
     public boolean overridesLootTable(ItemStack stack, ModifierData data, int toolLevel) { return false; }
 
-    // ------------------------------
-    // ModifierData
-    // ------------------------------
-
     public void setData(ModifierData data) {
         this.data = data;
     }
@@ -70,10 +62,6 @@ public abstract class Modifier {
     public ModifierData getData() {
         return data;
     }
-
-    // ------------------------------
-    // Configurable Fields
-    // ------------------------------
 
     public int getMaxLevel() {
         if (data != null) return data.maxLevel();
@@ -166,20 +154,11 @@ public abstract class Modifier {
         }
         return Set.of();
     }
-
-    // ------------------------------
-    // Validation
-    // ------------------------------
-
     public boolean isValid(ItemStack stack) {
         if (!getValidItems().isEmpty() && getValidItems().contains(stack.getItem())) return true;
         if (!getValidTags().isEmpty() && getValidTags().stream().anyMatch(stack::is)) return true;
         return false;
     }
-
-    // ------------------------------
-    // Identification & Display
-    // ------------------------------
 
     public Identifier getId() {
         return ModifierRegistry.MODIFIER_REGISTRY.getKey(this);

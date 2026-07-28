@@ -90,9 +90,11 @@ public class ModifierRecipeCategory implements IRecipeCategory<ModifierRecipe> {
                 holders -> new FluidStack(holders.get(0), 1000)
         ).toList().getFirst());
 
+        builder.addInvisibleIngredients(RecipeIngredientRole.OUTPUT).add(ModifierIngredientType.INSTANCE, recipe.modifier());
+
         builder.addSlot(RecipeIngredientRole.INPUT, 2, 12).add(displayFluids.getFirst().getFluid())
                 .addRichTooltipCallback((slot, tooltip) ->
-                        tooltip.add(Component.literal(recipe.modifier().getExperienceCost() + " mB").withStyle(ChatFormatting.GOLD)));;
+                        tooltip.add(Component.literal(recipe.modifier().getExperienceCost() + " mB").withStyle(ChatFormatting.GOLD)));
 
         if (recipe.modifier().getFluidIngredient().isPresent()) {
             builder.addSlot(RecipeIngredientRole.INPUT, 34, 12).add(recipe.modifier().getFluidIngredient().get().ingredient().display())

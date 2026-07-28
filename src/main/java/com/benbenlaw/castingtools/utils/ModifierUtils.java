@@ -38,7 +38,6 @@ public class ModifierUtils {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         AtomicBoolean isSilkTouch = new AtomicBoolean(false);
 
-        //Prepare Fake Tool for Silk Touch and Fortune as these affects drops
         ItemStack fakeItemStack = tool.copy();
         ModifierComponent comp = tool.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
         if (comp != null) {
@@ -106,7 +105,6 @@ public class ModifierUtils {
             for (int j = -level; j <= level; j++) {
                 BlockPos offset = origin;
 
-                // Apply offset based on the perpendicular axes
                 offset = offset.relative(Direction.fromAxisAndDirection(axis1, i >= 0 ? Direction.AxisDirection.POSITIVE : Direction.AxisDirection.NEGATIVE), Math.abs(i));
                 offset = offset.relative(Direction.fromAxisAndDirection(axis2, j >= 0 ? Direction.AxisDirection.POSITIVE : Direction.AxisDirection.NEGATIVE), Math.abs(j));
 

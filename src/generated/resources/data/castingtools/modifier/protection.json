@@ -6,8 +6,8 @@
   "experience_cost": 1000,
   "fluid": "casting:molten_steel",
   "fluid_amount": 720,
-  "max_enhanced_level": 10,
-  "max_level": 5,
+  "max_enhanced_level": 20,
+  "max_level": 10,
   "valid_items": [
     "#castingtools:all_armors"
   ]

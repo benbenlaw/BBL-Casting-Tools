@@ -52,6 +52,7 @@ public class CTLangProvider extends LanguageProvider {
         add("jei.castingtools.pulverizing", "Pulverizing");
         add("jei.castingtools.treasure", "Treasure!");
         add("jei.castingtools.beheading", "Beheading!");
+        add("jei.castingtools.modifier_compatability", "Valid for Modifier");
         add("tooltip.castingtools.beheading", "Drops from %s when tool has beheading modifier");
         add("tooltip.castingtools.treasure", "Breaking %s when tool has the treasure modifier");
         add("tooltip.castingtools.pulverizing", "Breaking %s when tool has the pulverizing modifier");
@@ -95,6 +96,8 @@ public class CTLangProvider extends LanguageProvider {
         add("modifier.castingtools.pulverizing.description", "Crushes up certain blocks when broken");
         add("modifier.castingtools.treasure.description", "Find additional drops from certain blocks when broken");
         add("modifier.castingtools.lightning_strike.description", "Summons a lightning bolt when you hit a mob dealing additional damage");
+
+        add("modifier.castingtools.modifier", "Modifier: %s");
 
     }
 

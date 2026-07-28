@@ -3,6 +3,7 @@ package com.benbenlaw.castingtools.intergration.jei;
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.block.CastingToolsBlocks;
 import com.benbenlaw.castingtools.event.client.ClientRecipeCache;
+import com.benbenlaw.castingtools.intergration.custom.ModifierCompatibilityRecipe;
 import com.benbenlaw.castingtools.intergration.custom.ModifierRecipe;
 import com.benbenlaw.castingtools.modifier.Modifier;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
@@ -12,13 +13,19 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.drawable.IDrawableStatic;
 import mezz.jei.api.registration.*;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @JeiPlugin
 public class JEICastingToolsPlugin implements IModPlugin {
@@ -51,6 +58,8 @@ public class JEICastingToolsPlugin implements IModPlugin {
         registration.addRecipeCategories(new BeheadingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new TreasureRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new PulverizingRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+
+        registration.addRecipeCategories(new ModifierCompatibilityRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -72,12 +81,48 @@ public class JEICastingToolsPlugin implements IModPlugin {
         registration.addRecipes(TreasureRecipeCategory.RECIPE_TYPE, ClientRecipeCache.getCachedTreasureRecipes().stream().toList());
         registration.addRecipes(PulverizingRecipeCategory.RECIPE_TYPE, ClientRecipeCache.getCachedPulverizingRecipes().stream().toList());
 
+        List<ModifierCompatibilityRecipe> compatibilityRecipes = new ArrayList<>();
+
+        for (Modifier modifier : ModifierRegistry.MODIFIER_REGISTRY) {
+            if (modifier.getData() == null) continue;
+
+            Map<Item, ItemStack> compatibleByItem = new LinkedHashMap<>();
+
+            for (TagKey<Item> tag : modifier.getValidTags()) {
+                BuiltInRegistries.ITEM.get(tag).ifPresent(holders -> {
+                    for (Holder<Item> holder : holders) {
+                        compatibleByItem.putIfAbsent(holder.value(), new ItemStack(holder.value()));
+                    }
+                });
+            }
+
+            for (Item item : modifier.getValidItems()) {
+                compatibleByItem.putIfAbsent(item, new ItemStack(item));
+            }
+
+            if (!compatibleByItem.isEmpty()) {
+                compatibilityRecipes.add(new ModifierCompatibilityRecipe(modifier, new ArrayList<>(compatibleByItem.values())));
+            }
+        }
+
+        registration.addRecipes(ModifierCompatibilityRecipeCategory.RECIPE_TYPE, compatibilityRecipes);
+
     }
 
+    @Override
+    public void registerIngredients(IModIngredientRegistration registration) {
+        List<Modifier> allModifiers = new ArrayList<>();
+        for (Modifier modifier : ModifierRegistry.MODIFIER_REGISTRY) {
+            if (modifier.getData() != null) {
+                allModifiers.add(modifier);
+            }
+        }
+        registration.register(ModifierIngredientType.INSTANCE, allModifiers, new ModifierIngredientHelper(), new ModifierIngredientRenderer(), ModifierRegistry.MODIFIER_REGISTRY.byNameCodec());
+    }
+
+    @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
-
         registration.addRecipeClickArea(ModifierScreen.class, 121, 34, 24, 16, ModifierRecipeCategory.RECIPE_TYPE);
-
     }
 }
 
