@@ -1,10 +1,10 @@
-// 26.1.2	2026-05-06T15:44:18.5998674	Tags for minecraft:item mod id castingtools
+// 26.1.2	2026-08-05T13:36:36.4210976	Tags for minecraft:item mod id castingtools
 db1e03703684ff6ecc870c39cf9dca92dce328d5 data/castingtools/tags/item/all_armors.json
 b72a9894bf3cfb2463a944c48380f815b57ff5e0 data/castingtools/tags/item/all_melee_weapons.json
 de75671f136ad29ecb1fee30fc8326bbb0cce33f data/castingtools/tags/item/all_ranged_weapons.json
 cc226d087fa5e9c99c8fa5d4b1c0826df7906d76 data/castingtools/tags/item/all_tools.json
 305ae9dd5e3b81ccfa33d881b60c94e2a07781e8 data/castingtools/tags/item/all_weapons.json
-2555c3bd8d5266018ba816f47c606affdec9cfe1 data/castingtools/tags/item/is_enhanceable.json
+5526943caa3cdf33a58311b55929bd82212877ea data/castingtools/tags/item/is_enhanceable.json
 c0d75ebfaddcbe10bd11da1482614d3684d23cff data/c/tags/item/buckets.json
 74c62a40fc1c88c5b68f0298c90cd547e3a86ab4 data/c/tags/item/ingots.json
 74c62a40fc1c88c5b68f0298c90cd547e3a86ab4 data/c/tags/item/ingots/omnithium.json
@@ -12,6 +12,8 @@ c0d75ebfaddcbe10bd11da1482614d3684d23cff data/c/tags/item/buckets.json
 532c7ef75e7fd2db74a8502fb84e6b5d80829d20 data/c/tags/item/nuggets/omnithium.json
 9f5c884d8ad04491bc2908de3b9e92fc1b91518a data/c/tags/item/storage_blocks.json
 9f5c884d8ad04491bc2908de3b9e92fc1b91518a data/c/tags/item/storage_blocks/omnithium.json
+e876d30acc468aa3a28126bd543fa503104ae7cf data/c/tags/item/tools/bow.json
+470a70efb027fd362c378e3ab4a519a50f22f283 data/c/tags/item/tools/crossbow.json
 447ed2a34382028c201c4f3552dae8d446cd8cb2 data/minecraft/tags/item/axes.json
 0b87d4edd60113445d8baa1aff0e69772c1aa14c data/minecraft/tags/item/chest_armor.json
 e1339441ac9cb7df7eb3d7e8558d0854d50d08a6 data/minecraft/tags/item/foot_armor.json

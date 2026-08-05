@@ -1,0 +1,16 @@
+{
+  "additional_value": 1.0,
+  "associated_enchantment": "minecraft:power",
+  "description": "modifier.castingtools.power.description",
+  "display_name": "modifier.castingtools.power",
+  "experience_cost": 4000,
+  "fluid": "casting:molten_quartz",
+  "fluid_amount": 8000,
+  "ingredient": "minecraft:arrow",
+  "ingredient_count": 32,
+  "max_enhanced_level": 12,
+  "max_level": 7,
+  "valid_items": [
+    "#castingtools:all_ranged_weapons"
+  ]
+}

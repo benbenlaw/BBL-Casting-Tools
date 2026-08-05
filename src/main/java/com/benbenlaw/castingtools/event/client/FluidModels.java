@@ -5,11 +5,12 @@ import com.benbenlaw.castingtools.fluids.CTFluids;
 import com.benbenlaw.core.Core;
 import net.minecraft.client.renderer.block.FluidModel;
 import net.minecraft.client.resources.model.sprite.Material;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterFluidModelsEvent;
 
-@EventBusSubscriber(modid = CastingTools.MOD_ID)
+@EventBusSubscriber(modid = CastingTools.MOD_ID, value = Dist.CLIENT)
 public class FluidModels {
 
     @SubscribeEvent

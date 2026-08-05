@@ -28,7 +28,5 @@ public class TreasureModifier extends Modifier {
             ItemStack itemStack = result.rollOutput(level.getRandom());
             Block.popResource(level, event.getPos(), itemStack);
         }
-
-
     }
 }

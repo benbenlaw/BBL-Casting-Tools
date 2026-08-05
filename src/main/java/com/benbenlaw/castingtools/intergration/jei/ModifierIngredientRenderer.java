@@ -21,8 +21,6 @@ public class ModifierIngredientRenderer implements IIngredientRenderer<Modifier>
         int textWidth = font.width(shortLabel);
         guiGraphics.text(font, shortLabel, (16 - textWidth) / 2, 4, 0xFFFFFFFF, false);
 
-
-
     }
 
     @Override

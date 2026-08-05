@@ -9,6 +9,8 @@
     "castingtools:omnithium_helmet",
     "castingtools:omnithium_chestplate",
     "castingtools:omnithium_leggings",
-    "castingtools:omnithium_boots"
+    "castingtools:omnithium_boots",
+    "castingtools:omnithium_bow",
+    "castingtools:omnithium_crossbow"
   ]
 }

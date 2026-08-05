@@ -24,6 +24,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
+import net.neoforged.neoforge.event.entity.player.ArrowLooseEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
@@ -60,6 +61,12 @@ public class ModifierEvents {
                 }
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void onBowFired(ArrowLooseEvent event) {
+        handleModifiers(event.getEntity(), (modifier, level) ->
+                modifier.onBowFired(event, modifier.getData(), level));
     }
 
     @SubscribeEvent

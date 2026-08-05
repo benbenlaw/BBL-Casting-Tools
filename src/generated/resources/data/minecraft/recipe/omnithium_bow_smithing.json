@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#c:ingots/omnithium",
+  "base": "minecraft:bow",
+  "result": {
+    "id": "castingtools:omnithium_bow"
+  },
+  "template": "castingtools:omnithium_upgrade_smithing_template"
+}

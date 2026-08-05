@@ -1,5 +1,13 @@
 {
   "values": {
+    "minecraft:deepslate": [
+      {
+        "chance": 0.01,
+        "item": {
+          "id": "castingtools:omnithium_upgrade_smithing_template"
+        }
+      }
+    ],
     "minecraft:gravel": [
       {
         "chance": 0.8,

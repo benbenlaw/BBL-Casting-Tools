@@ -8,6 +8,7 @@ import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.player.ArrowLooseEvent;
 
 public class LightningStrikeModifier extends Modifier {
 
@@ -24,7 +25,7 @@ public class LightningStrikeModifier extends Modifier {
         level.addFreshEntity(lightning);
         float finalDamage = (float) (event.getInflictedDamage() + (data.additionalValue().orElse(5.0) * toolLevel));
 
-        System.out.println("finalDamage: " + finalDamage);
+        //System.out.println("finalDamage: " + finalDamage);
         enemy.hurt(level.damageSources().lightningBolt(), finalDamage);
     }
 }

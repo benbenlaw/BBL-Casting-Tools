@@ -19,6 +19,7 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
+import net.neoforged.neoforge.event.entity.player.ArrowLooseEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
@@ -53,6 +54,7 @@ public abstract class Modifier {
     public void onMobDrops(LivingDropsEvent event, ModifierData data, int toolLevel) {}
     public void onFalling(LivingFallEvent event, ItemStack stack, ModifierData data) {}
     public void modifyDrops(DropContext context, ModifierData data, int toolLevel) {}
+    public void onBowFired(ArrowLooseEvent event, ModifierData data, int toolLevel) {}
     public boolean overridesLootTable(ItemStack stack, ModifierData data, int toolLevel) { return false; }
 
     public void setData(ModifierData data) {

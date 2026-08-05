@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#c:ingots/omnithium",
+  "base": "minecraft:diamond_chestplate",
+  "result": {
+    "id": "castingtools:omnithium_chestplate"
+  },
+  "template": "castingtools:omnithium_upgrade_smithing_template"
+}

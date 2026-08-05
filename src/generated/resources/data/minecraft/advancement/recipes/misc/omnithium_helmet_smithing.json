@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_omnithium_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:ingots/omnithium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:omnithium_helmet_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_omnithium_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:omnithium_helmet_smithing"
+    ]
+  }
+}

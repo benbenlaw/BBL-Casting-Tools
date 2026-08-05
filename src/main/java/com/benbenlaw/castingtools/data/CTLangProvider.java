@@ -3,6 +3,7 @@ package com.benbenlaw.castingtools.data;
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import net.minecraft.data.PackOutput;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
@@ -36,6 +37,9 @@ public class CTLangProvider extends LanguageProvider {
         add("item.castingtools.omnithium_chestplate", "Omnithium Chestplate");
         add("item.castingtools.omnithium_leggings", "Omnithium Leggings");
         add("item.castingtools.omnithium_boots", "Omnithium Boots");
+        add("item.castingtools.omnithium_bow", "Omnithium Bow");
+        add("item.castingtools.omnithium_crossbow", "Omnithium Crossbow");
+        add("item.castingtools.omnithium_upgrade_smithing_template", "Omnithium Upgrade Smithing Template");
 
         add("item.castingtools.molten_omnithium_bucket", "Omnithium Bucket");
 
@@ -99,6 +103,10 @@ public class CTLangProvider extends LanguageProvider {
 
         add("modifier.castingtools.modifier", "Modifier: %s");
 
+        add("item.castingtools.omnithium_upgrade_smithing_template.applies_to", "Diamond Equipment");
+        add("item.castingtools.omnithium_upgrade_smithing_template.ingredients", "Omnithium Ingot");
+        add("item.castingtools.omnithium_upgrade_smithing_template.base_slot_description", "Add omnithium armor, weapon, or tool");
+        add("item.castingtools.omnithium_upgrade_smithing_template.additions_slot_description", "Add Omnithium Ingot");
     }
 
     private static String formatName(String path) {

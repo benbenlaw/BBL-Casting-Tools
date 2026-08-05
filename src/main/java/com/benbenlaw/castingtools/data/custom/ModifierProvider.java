@@ -131,10 +131,12 @@ public class ModifierProvider implements DataProvider {
             // Ignite
             add(cachedOutput, futures, "ignite", 5, 10, 1000)
                     .validItem(tagToString(CTTags.Items.ALL_MELEE_WEAPONS.location()))
+                    .validItem(tagToString(CTTags.Items.ALL_RANGED_WEAPONS.location()))
                     .validItem(tagToString(Tags.Items.RODS.location()))
                     .ingredient("minecraft:flint_and_steel", 1)
                     .fluid("minecraft:lava", 8000)
                     .additionalValue(20.0)
+                    .associatedEnchantment(Identifier.withDefaultNamespace("flame"))
                     .save();
 
             // Sharpness
@@ -258,9 +260,36 @@ public class ModifierProvider implements DataProvider {
             // Lightning Strike
             add(cachedOutput, futures, "lightning_strike", 5, 10, 8000)
                     .validItem(tagToString(CTTags.Items.ALL_MELEE_WEAPONS.location()))
+                    .validItem(tagToString(CTTags.Items.ALL_RANGED_WEAPONS.location()))
                     .ingredient("#minecraft:lightning_rods", 1)
                     .fluid("casting:molten_glowstone", 8000)
                     .additionalValue(8.0)
+                    .save();
+
+            //Punch
+            add(cachedOutput, futures, "punch", 7, 12, 2000)
+                    .validItem(tagToString(CTTags.Items.ALL_RANGED_WEAPONS.location()))
+                    .ingredient("minecraft:arrow", 32)
+                    .additionalValue(1.0)
+                    .associatedEnchantment(Identifier.withDefaultNamespace("punch"))
+                    .save();
+
+            //Power
+            add(cachedOutput, futures, "power", 7, 12, 4000)
+                    .validItem(tagToString(CTTags.Items.ALL_RANGED_WEAPONS.location()))
+                    .ingredient("minecraft:arrow", 32)
+                    .fluid("casting:molten_quartz", 8000)
+                    .additionalValue(1.0)
+                    .associatedEnchantment(Identifier.withDefaultNamespace("power"))
+                    .save();
+
+            //Infinity
+            add(cachedOutput, futures, "infinity", 1, 1, 8000)
+                    .validItem(tagToString(CTTags.Items.ALL_RANGED_WEAPONS.location()))
+                    .ingredient("#minecraft:moss_blocks", 8)
+                    .fluid("casting:molten_lapis", 11520)
+                    .additionalValue(1.0)
+                    .associatedEnchantment(Identifier.withDefaultNamespace("infinity"))
                     .save();
 
 

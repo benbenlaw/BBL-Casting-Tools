@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "castingtools:omnithium_ingot",
+    "B": "castingtools:omnithium_upgrade_smithing_template",
+    "C": "castingtools:omnithium_block"
+  },
+  "pattern": [
+    "ABA",
+    "ACA",
+    "AAA"
+  ],
+  "result": {
+    "id": "castingtools:omnithium_upgrade_smithing_template"
+  }
+}

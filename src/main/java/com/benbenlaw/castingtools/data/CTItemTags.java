@@ -35,6 +35,8 @@ public class CTItemTags extends ItemTagsProvider {
         tag(ItemTags.CHEST_ARMOR).add(CastingToolsItems.OMNITHIUM_CHESTPLATE.get());
         tag(ItemTags.LEG_ARMOR).add(CastingToolsItems.OMNITHIUM_LEGGINGS.get());
         tag(ItemTags.FOOT_ARMOR).add(CastingToolsItems.OMNITHIUM_BOOTS.get());
+        tag(Tags.Items.TOOLS_BOW).add(CastingToolsItems.OMNITHIUM_BOW.get());
+        tag(Tags.Items.TOOLS_CROSSBOW).add(CastingToolsItems.OMNITHIUM_CROSSBOW.get());
 
         tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(CastingToolsItems.OMNITHIUM_LEGGINGS.get())
@@ -70,6 +72,8 @@ public class CTItemTags extends ItemTagsProvider {
                 .add(CastingToolsItems.OMNITHIUM_CHESTPLATE.get())
                 .add(CastingToolsItems.OMNITHIUM_LEGGINGS.get())
                 .add(CastingToolsItems.OMNITHIUM_BOOTS.get())
+                .add(CastingToolsItems.OMNITHIUM_BOW.get())
+                .add(CastingToolsItems.OMNITHIUM_CROSSBOW.get())
         ;
 
 
@@ -110,6 +114,8 @@ public class CTItemTags extends ItemTagsProvider {
                 .addTag(Tags.Items.TOOLS_BOW)
                 .addTag(Tags.Items.TOOLS_CROSSBOW)
         ;
+
+        //
 
 
     }

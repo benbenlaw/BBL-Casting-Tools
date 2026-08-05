@@ -1,4 +1,4 @@
-// 26.1.2	2026-07-28T14:00:37.8841068	castingtools Modifiers
+// 26.1.2	2026-08-05T13:56:35.6522604	castingtools Modifiers
 9be7b355798f4710aefe8efa0149779e8e09a36a data/castingtools/modifier/beheading.json
 7b58d08a4932d4db5a465c3379ba307b54c10a03 data/castingtools/modifier/bouncy.json
 8358edb0ef27bdcc49fcdc63e05c7ba978f376ca data/castingtools/modifier/cobblestone_placer.json
@@ -6,15 +6,18 @@ d45267c75f1b4e67e0e581b75d7bcfcaf70019fc data/castingtools/modifier/efficiency.j
 9e40b48a9cdf7bd19f97ae323eebbd6b92a6848d data/castingtools/modifier/excavation.json
 85cc5e0648dc6d5d8258028ff8001b7fe2bd5a52 data/castingtools/modifier/flight.json
 df73330fbfc552cdb3fe8d53ede94615b86469b8 data/castingtools/modifier/fortune.json
-156879586f7d9498f13d9c75aa464032efd801b5 data/castingtools/modifier/ignite.json
+ad3d1d04420ba9f0766fd8e803d0deb04b746115 data/castingtools/modifier/ignite.json
+fe1e3b8332ed157ae9a134c429ec85c467a2717f data/castingtools/modifier/infinity.json
 5f7fcc95155193226f8ed8db9ac4d2813aa90341 data/castingtools/modifier/knockback.json
 e8778596f82db4b01ce07daa02d28582dab84066 data/castingtools/modifier/lifesteal.json
 74d200a0cd315f84870b522c8a7ebe9ace118468 data/castingtools/modifier/lightning_strike.json
 0937fadfdbecd4ec549ad5467120084bf641678d data/castingtools/modifier/looting.json
 b5f68a3f58966d4e4a886231f38b0c9efed1c0b6 data/castingtools/modifier/magnet.json
 5b83b2236c9db02e55d39f0d91de9edba288b426 data/castingtools/modifier/night_vision.json
+eb966f9ff19348b822f908cf03da3f1c8236a05d data/castingtools/modifier/power.json
 aed73d2d5d9e955e3e2091626ceeb6fe1906c77a data/castingtools/modifier/protection.json
 3d422cc1bd9b53ae1d1762b2d9d4864743bdc849 data/castingtools/modifier/pulverizing.json
+fd457c9f536571644dc6c62810ac305180dda96c data/castingtools/modifier/punch.json
 422bb40658a01d443a8d8a85f4f9803bfba9549c data/castingtools/modifier/repairing.json
 cd6d0cfa9f1cb4a3648b17b30b0bd4236157c9c0 data/castingtools/modifier/retaliation.json
 daccd85449420d8f6215d3d2e513752616551796 data/castingtools/modifier/sharpness.json

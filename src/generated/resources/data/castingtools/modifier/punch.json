@@ -1,0 +1,14 @@
+{
+  "additional_value": 1.0,
+  "associated_enchantment": "minecraft:punch",
+  "description": "modifier.castingtools.punch.description",
+  "display_name": "modifier.castingtools.punch",
+  "experience_cost": 2000,
+  "ingredient": "minecraft:arrow",
+  "ingredient_count": 32,
+  "max_enhanced_level": 12,
+  "max_level": 7,
+  "valid_items": [
+    "#castingtools:all_ranged_weapons"
+  ]
+}

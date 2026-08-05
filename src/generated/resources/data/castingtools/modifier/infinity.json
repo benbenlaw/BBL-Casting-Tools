@@ -1,0 +1,16 @@
+{
+  "additional_value": 1.0,
+  "associated_enchantment": "minecraft:infinity",
+  "description": "modifier.castingtools.infinity.description",
+  "display_name": "modifier.castingtools.infinity",
+  "experience_cost": 8000,
+  "fluid": "casting:molten_lapis",
+  "fluid_amount": 11520,
+  "ingredient": "#minecraft:moss_blocks",
+  "ingredient_count": 8,
+  "max_enhanced_level": 1,
+  "max_level": 1,
+  "valid_items": [
+    "#castingtools:all_ranged_weapons"
+  ]
+}

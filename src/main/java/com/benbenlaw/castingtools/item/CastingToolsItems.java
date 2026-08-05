@@ -1,7 +1,9 @@
 package com.benbenlaw.castingtools.item;
 
 import com.benbenlaw.castingtools.CastingTools;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.ChargedProjectiles;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -48,6 +50,18 @@ public class CastingToolsItems {
                     .fireResistant()
                     .rarity(Rarity.EPIC));
 
+    public static final DeferredItem<Item> OMNITHIUM_BOW = ITEMS.registerItem("omnithium_bow",
+            BowItem::new,properties -> properties
+                    .durability(5000)
+                    .fireResistant()
+                    .rarity(Rarity.EPIC));
+
+    public static final DeferredItem<Item> OMNITHIUM_CROSSBOW = ITEMS.registerItem("omnithium_crossbow",
+            CrossbowItem::new,properties -> properties
+                    .durability(5000)
+                    .component(DataComponents.CHARGED_PROJECTILES, ChargedProjectiles.EMPTY)
+                    .fireResistant()
+                    .rarity(Rarity.EPIC));
 
     public static final DeferredItem<Item> OMNITHIUM_HELMET = ITEMS.registerItem("omnithium_helmet",
             Item::new,properties -> properties
@@ -73,8 +87,8 @@ public class CastingToolsItems {
                     .fireResistant()
                     .rarity(Rarity.EPIC));
 
-
-
-
+    public static final DeferredItem<Item> OMNITHIUM_UPGRADE_SMITHING_TEMPLATE = ITEMS.registerItem("omnithium_upgrade_smithing_template",
+            OmnithiumSmithingTemplateItem::createOmnithiumUpgradeTemplate, properties -> properties
+                    .rarity(Rarity.EPIC));
 
 }

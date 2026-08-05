@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#c:ingots/omnithium",
+  "base": "minecraft:diamond_helmet",
+  "result": {
+    "id": "castingtools:omnithium_helmet"
+  },
+  "template": "castingtools:omnithium_upgrade_smithing_template"
+}

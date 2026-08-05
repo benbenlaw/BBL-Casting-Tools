@@ -1,5 +1,6 @@
 {
   "additional_value": 20.0,
+  "associated_enchantment": "minecraft:flame",
   "description": "modifier.castingtools.ignite.description",
   "display_name": "modifier.castingtools.ignite",
   "experience_cost": 1000,
@@ -10,6 +11,7 @@
   "max_level": 5,
   "valid_items": [
     "#castingtools:all_melee_weapons",
+    "#castingtools:all_ranged_weapons",
     "#c:rods"
   ]
 }

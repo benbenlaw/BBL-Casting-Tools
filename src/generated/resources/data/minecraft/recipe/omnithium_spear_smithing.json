@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "#c:ingots/omnithium",
+  "base": "minecraft:diamond_spear",
+  "result": {
+    "id": "castingtools:omnithium_spear"
+  },
+  "template": "castingtools:omnithium_upgrade_smithing_template"
+}
