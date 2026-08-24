@@ -1,6 +1,5 @@
 package com.benbenlaw.castingtools.modifier.any;
 
-import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
 import com.benbenlaw.castingtools.modifier.Modifier;
 import com.benbenlaw.castingtools.modifier.ModifierData;
 import com.benbenlaw.castingtools.utils.ModifierUtils;

@@ -8,7 +8,7 @@ import com.benbenlaw.casting.item.CastingItems;
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.block.CastingToolsBlocks;
 import com.benbenlaw.castingtools.fluids.CTFluids;
-import com.benbenlaw.castingtools.item.CastingToolsItems;
+import com.benbenlaw.castingtools.item.CTItems;
 import com.benbenlaw.castingtools.utils.CTTags;
 import com.benbenlaw.core.tag.ResourceType;
 import net.minecraft.core.HolderLookup;
@@ -21,13 +21,10 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Blocks;
-import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.FluidStackTemplate;
 import net.neoforged.neoforge.fluids.crafting.FluidIngredient;
@@ -40,7 +37,6 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 import static com.benbenlaw.casting.data.custom.FluidStackTemplateHelper.getFluidIngredient;
-import static com.benbenlaw.casting.data.custom.FluidStackTemplateHelper.getFluidStack;
 
 public class CTRecipeProvider extends RecipeProvider {
 
@@ -81,29 +77,29 @@ public class CTRecipeProvider extends RecipeProvider {
                 .save(output);
 
         //Omnithium Template
-        shaped(RecipeCategory.MISC, CastingToolsItems.OMNITHIUM_UPGRADE_SMITHING_TEMPLATE)
+        shaped(RecipeCategory.MISC, CTItems.OMNITHIUM_UPGRADE_SMITHING_TEMPLATE)
                 .pattern("ABA")
                 .pattern("ACA")
                 .pattern("AAA")
-                .define('A', CastingToolsItems.OMNITHIUM_INGOT)
-                .define('B', CastingToolsItems.OMNITHIUM_UPGRADE_SMITHING_TEMPLATE)
+                .define('A', CTItems.OMNITHIUM_INGOT)
+                .define('B', CTItems.OMNITHIUM_UPGRADE_SMITHING_TEMPLATE)
                 .define('C', CastingToolsBlocks.OMNITHIUM_BLOCK)
                 .unlockedBy("has_clay", has(CastingItems.BLACK_BRICK))
                 .save(output);
 
         //Smithing
-        omnithiumSmithing(Items.DIAMOND_PICKAXE, CastingToolsItems.OMNITHIUM_PICKAXE.get());
-        omnithiumSmithing(Items.DIAMOND_SHOVEL, CastingToolsItems.OMNITHIUM_SHOVEL.get());
-        omnithiumSmithing(Items.DIAMOND_AXE, CastingToolsItems.OMNITHIUM_AXE.get());
-        omnithiumSmithing(Items.DIAMOND_HOE, CastingToolsItems.OMNITHIUM_HOE.get());
-        omnithiumSmithing(Items.DIAMOND_SWORD, CastingToolsItems.OMNITHIUM_SWORD.get());
-        omnithiumSmithing(Items.DIAMOND_SPEAR, CastingToolsItems.OMNITHIUM_SPEAR.get());
-        omnithiumSmithing(Items.DIAMOND_HELMET, CastingToolsItems.OMNITHIUM_HELMET.get());
-        omnithiumSmithing(Items.DIAMOND_CHESTPLATE, CastingToolsItems.OMNITHIUM_CHESTPLATE.get());
-        omnithiumSmithing(Items.DIAMOND_LEGGINGS, CastingToolsItems.OMNITHIUM_LEGGINGS.get());
-        omnithiumSmithing(Items.DIAMOND_BOOTS, CastingToolsItems.OMNITHIUM_BOOTS.get());
-        omnithiumSmithing(Items.BOW, CastingToolsItems.OMNITHIUM_BOW.get());
-        omnithiumSmithing(Items.CROSSBOW, CastingToolsItems.OMNITHIUM_CROSSBOW.get());
+        omnithiumSmithing(Items.DIAMOND_PICKAXE, CTItems.OMNITHIUM_PICKAXE.get());
+        omnithiumSmithing(Items.DIAMOND_SHOVEL, CTItems.OMNITHIUM_SHOVEL.get());
+        omnithiumSmithing(Items.DIAMOND_AXE, CTItems.OMNITHIUM_AXE.get());
+        omnithiumSmithing(Items.DIAMOND_HOE, CTItems.OMNITHIUM_HOE.get());
+        omnithiumSmithing(Items.DIAMOND_SWORD, CTItems.OMNITHIUM_SWORD.get());
+        omnithiumSmithing(Items.DIAMOND_SPEAR, CTItems.OMNITHIUM_SPEAR.get());
+        omnithiumSmithing(Items.DIAMOND_HELMET, CTItems.OMNITHIUM_HELMET.get());
+        omnithiumSmithing(Items.DIAMOND_CHESTPLATE, CTItems.OMNITHIUM_CHESTPLATE.get());
+        omnithiumSmithing(Items.DIAMOND_LEGGINGS, CTItems.OMNITHIUM_LEGGINGS.get());
+        omnithiumSmithing(Items.DIAMOND_BOOTS, CTItems.OMNITHIUM_BOOTS.get());
+        omnithiumSmithing(Items.BOW, CTItems.OMNITHIUM_BOW.get());
+        omnithiumSmithing(Items.CROSSBOW, CTItems.OMNITHIUM_CROSSBOW.get());
 
         //Omnithium
         alloyMixingRecipes("omnithium", new FluidStackTemplate(CTFluids.MOLTEN_OMNITHIUM.getFluid(), 90),
@@ -117,23 +113,23 @@ public class CTRecipeProvider extends RecipeProvider {
         simpleMeltingRecipe(List.of(new FluidStackTemplate(CTFluids.MOLTEN_OMNITHIUM.getFluid(), 810)), CastingToolsBlocks.OMNITHIUM_BLOCK,
                 "omnithium/block", ResourceType.STORAGE_BLOCKS, 1400);
 
-        simpleMeltingRecipe(List.of(new FluidStackTemplate(CTFluids.MOLTEN_OMNITHIUM.getFluid(), 90)), CastingToolsItems.OMNITHIUM_INGOT,
+        simpleMeltingRecipe(List.of(new FluidStackTemplate(CTFluids.MOLTEN_OMNITHIUM.getFluid(), 90)), CTItems.OMNITHIUM_INGOT,
                 "omnithium/ingot", ResourceType.INGOTS, 1400);
 
-        simpleMeltingRecipe(List.of(new FluidStackTemplate(CTFluids.MOLTEN_OMNITHIUM.getFluid(), 10)), CastingToolsItems.OMNITHIUM_NUGGET,
+        simpleMeltingRecipe(List.of(new FluidStackTemplate(CTFluids.MOLTEN_OMNITHIUM.getFluid(), 10)), CTItems.OMNITHIUM_NUGGET,
                 "omnithium/nugget", ResourceType.INGOTS, 1400);
 
         simpleSolidifierRecipe(CastingToolsBlocks.OMNITHIUM_BLOCK, new SizedFluidIngredient(FluidIngredient.of(CTFluids.MOLTEN_OMNITHIUM.getFluid().getSource()), 810),
                 CastingItems.BLOCK_MOLD, "omnithium/block", ResourceType.STORAGE_BLOCKS, 1400);
 
-        simpleSolidifierRecipe(CastingToolsItems.OMNITHIUM_INGOT, new SizedFluidIngredient(FluidIngredient.of(CTFluids.MOLTEN_OMNITHIUM.getFluid().getSource()), 90),
+        simpleSolidifierRecipe(CTItems.OMNITHIUM_INGOT, new SizedFluidIngredient(FluidIngredient.of(CTFluids.MOLTEN_OMNITHIUM.getFluid().getSource()), 90),
                 CastingItems.INGOT_MOLD, "omnithium/ingot", ResourceType.INGOTS, 1400);
 
-        simpleSolidifierRecipe(CastingToolsItems.OMNITHIUM_NUGGET, new SizedFluidIngredient(FluidIngredient.of(CTFluids.MOLTEN_OMNITHIUM.getFluid().getSource()), 10),
+        simpleSolidifierRecipe(CTItems.OMNITHIUM_NUGGET, new SizedFluidIngredient(FluidIngredient.of(CTFluids.MOLTEN_OMNITHIUM.getFluid().getSource()), 10),
                 CastingItems.NUGGET_MOLD, "omnithium/nugget", ResourceType.INGOTS, 1400);
 
-        nineBlockStorageRecipes(RecipeCategory.MISC, CastingToolsItems.OMNITHIUM_INGOT, RecipeCategory.MISC, CastingToolsBlocks.OMNITHIUM_BLOCK, "omnithium/block_from_ingots", "omnithium", "omnithium/ingots_from_block", "omnithium");
-        nineBlockStorageRecipes(RecipeCategory.MISC, CastingToolsItems.OMNITHIUM_NUGGET, RecipeCategory.MISC, CastingToolsItems.OMNITHIUM_INGOT, "omnithium/ingot_from_nuggets", "omnithium", "omnithium/nuggets_from_ingot", "omnithium");
+        nineBlockStorageRecipes(RecipeCategory.MISC, CTItems.OMNITHIUM_INGOT, RecipeCategory.MISC, CastingToolsBlocks.OMNITHIUM_BLOCK, "omnithium/block_from_ingots", "omnithium", "omnithium/ingots_from_block", "omnithium");
+        nineBlockStorageRecipes(RecipeCategory.MISC, CTItems.OMNITHIUM_NUGGET, RecipeCategory.MISC, CTItems.OMNITHIUM_INGOT, "omnithium/ingot_from_nuggets", "omnithium", "omnithium/nuggets_from_ingot", "omnithium");
 
 
     }
@@ -187,7 +183,7 @@ public class CTRecipeProvider extends RecipeProvider {
     }
 
     protected void omnithiumSmithing(Item base, Item result) {
-        SmithingTransformRecipeBuilder.smithing(Ingredient.of(CastingToolsItems.OMNITHIUM_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(base), this.tag(CTTags.Items.OMNITHIUM_INGOT), RecipeCategory.MISC, result).unlocks("has_omnithium_ingot", this.has(CTTags.Items.OMNITHIUM_INGOT)).save(this.output, getItemName(result) + "_smithing");
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(CTItems.OMNITHIUM_UPGRADE_SMITHING_TEMPLATE), Ingredient.of(base), this.tag(CTTags.Items.OMNITHIUM_INGOT), RecipeCategory.MISC, result).unlocks("has_omnithium_ingot", this.has(CTTags.Items.OMNITHIUM_INGOT)).save(this.output, getItemName(result) + "_smithing");
     }
 
 }

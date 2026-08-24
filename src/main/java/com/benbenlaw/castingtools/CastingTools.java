@@ -5,9 +5,9 @@ import com.benbenlaw.castingtools.block.CastingToolsBlocks;
 import com.benbenlaw.castingtools.block.CastingToolsCapabilities;
 import com.benbenlaw.castingtools.datamaps.CTDataMaps;
 import com.benbenlaw.castingtools.fluids.CTFluids;
-import com.benbenlaw.castingtools.item.CastingToolsCreativeModeTab;
-import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
-import com.benbenlaw.castingtools.item.CastingToolsItems;
+import com.benbenlaw.castingtools.item.CTCreativeModeTab;
+import com.benbenlaw.castingtools.item.CTDataComponent;
+import com.benbenlaw.castingtools.item.CTItems;
 import com.benbenlaw.castingtools.modifier.ModifierLoader;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import com.benbenlaw.castingtools.network.CastingToolsNetworking;
@@ -42,11 +42,11 @@ public class CastingTools {
         CastingToolsBlocks.BLOCKS.register(modEventBus);
         CTFluids.FLUIDS.register(modEventBus);
         CastingToolsBlockEntities.BLOCK_ENTITIES.register(modEventBus);
-        CastingToolsItems.ITEMS.register(modEventBus);
+        CTItems.ITEMS.register(modEventBus);
         CastingToolsMenuTypes.MENUS.register(modEventBus);
-        CastingToolsCreativeModeTab.CREATIVE_MODE_TABS.register(modEventBus);
+        CTCreativeModeTab.CREATIVE_MODE_TABS.register(modEventBus);
 
-        CastingToolsDataComponent.COMPONENTS.register(modEventBus);
+        CTDataComponent.COMPONENTS.register(modEventBus);
         ModifierRegistry.MODIFIERS.register(modEventBus);
         ModifierRegistry.MODIFIER_DATA.register(modEventBus);
 

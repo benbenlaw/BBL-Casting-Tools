@@ -1,13 +1,11 @@
 package com.benbenlaw.castingtools.event;
 
 import com.benbenlaw.castingtools.CastingTools;
-import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
+import com.benbenlaw.castingtools.item.CTDataComponent;
 import com.benbenlaw.castingtools.item.ModifierComponent;
 import com.benbenlaw.castingtools.modifier.Modifier;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
-import com.benbenlaw.castingtools.utils.ModifierUtils;
 import com.benbenlaw.castingtools.utils.TriConsumer;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -16,8 +14,6 @@ import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
@@ -28,7 +24,6 @@ import net.neoforged.neoforge.event.entity.player.ArrowLooseEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
@@ -192,7 +187,7 @@ public class ModifierEvents {
     //Held Item Modifier Handling Helper
     private static void handleModifiers(LivingEntity entity, BiConsumer<Modifier, Integer> action) {
         ItemStack stack = entity.getMainHandItem();
-        ModifierComponent comp = stack.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        ModifierComponent comp = stack.get(CTDataComponent.MODIFIER_COMPONENT);
         if (comp == null) return;
 
         comp.modifiers().forEach((id, level) -> {
@@ -230,7 +225,7 @@ public class ModifierEvents {
     private static void processStack(ItemStack stack, TriConsumer<Modifier, ItemStack, Integer> action) {
         if (stack.isEmpty()) return;
 
-        ModifierComponent comp = stack.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        ModifierComponent comp = stack.get(CTDataComponent.MODIFIER_COMPONENT);
         if (comp != null) {
             comp.modifiers().forEach((id, level) -> {
                 Modifier modifier = ModifierRegistry.MODIFIER_REGISTRY.getValue(id);

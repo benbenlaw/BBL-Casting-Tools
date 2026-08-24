@@ -8,7 +8,7 @@ import net.minecraft.world.item.equipment.ArmorType;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class CastingToolsItems {
+public class CTItems {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(CastingTools.MOD_ID);
 

@@ -1,13 +1,12 @@
 package com.benbenlaw.castingtools.utils;
 
-import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
+import com.benbenlaw.castingtools.item.CTDataComponent;
 import com.benbenlaw.castingtools.item.ModifierComponent;
 import com.benbenlaw.castingtools.modifier.Modifier;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ExperienceOrb;
@@ -39,7 +38,7 @@ public class ModifierUtils {
         AtomicBoolean isSilkTouch = new AtomicBoolean(false);
 
         ItemStack fakeItemStack = tool.copy();
-        ModifierComponent comp = tool.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        ModifierComponent comp = tool.get(CTDataComponent.MODIFIER_COMPONENT);
         if (comp != null) {
             comp.modifiers().forEach((key, modifierLevel) -> {
                 Modifier modifier = ModifierRegistry.MODIFIER_REGISTRY.getValue(key);
@@ -117,7 +116,7 @@ public class ModifierUtils {
 
 
     public static int getModifierLevel(ItemStack stack, Modifier modifier) {
-        ModifierComponent comp = stack.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        ModifierComponent comp = stack.get(CTDataComponent.MODIFIER_COMPONENT);
         if (comp != null) {
             Integer level = comp.modifiers().get(modifier.getId());
             if (level != null && level > 0) {
@@ -172,14 +171,14 @@ public class ModifierUtils {
     }
 
     public static void setModifierLevel(ItemStack stack, Modifier modifier, int level) {
-        ModifierComponent comp = stack.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        ModifierComponent comp = stack.get(CTDataComponent.MODIFIER_COMPONENT);
         Map<Identifier, Integer> map = (comp == null) ? new HashMap<>() : new HashMap<>(comp.modifiers());
         map.put(modifier.getId(), level);
-        stack.set(CastingToolsDataComponent.MODIFIER_COMPONENT, new ModifierComponent(map));
+        stack.set(CTDataComponent.MODIFIER_COMPONENT, new ModifierComponent(map));
     }
 
     public static boolean hasConflict(ItemStack stack, Modifier newModifier) {
-        ModifierComponent comp = stack.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        ModifierComponent comp = stack.get(CTDataComponent.MODIFIER_COMPONENT);
         if (comp != null) {
             for (Identifier modifierId : comp.modifiers().keySet()) {
                 Modifier existingModifier = ModifierRegistry.MODIFIER_REGISTRY.getValue(modifierId);
@@ -196,7 +195,7 @@ public class ModifierUtils {
     }
 
     public static boolean hasSoulbound(ItemStack stack) {
-        ModifierComponent comp = stack.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        ModifierComponent comp = stack.get(CTDataComponent.MODIFIER_COMPONENT);
         if (comp != null) {
             return comp.modifiers().containsKey(ModifierRegistry.SOULBOUND.get().getId());
         }

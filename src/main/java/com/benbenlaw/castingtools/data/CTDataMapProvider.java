@@ -1,11 +1,10 @@
 package com.benbenlaw.castingtools.data;
 
 import com.benbenlaw.castingtools.datamaps.CTDataMaps;
-import com.benbenlaw.castingtools.item.CastingToolsItems;
+import com.benbenlaw.castingtools.item.CTItems;
 import com.benbenlaw.core.recipe.ChanceResult;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
@@ -43,8 +42,8 @@ public class CTDataMapProvider extends DataMapProvider {
         builder(CTDataMaps.TREASURE)
                 .add(Blocks.GRAVEL.defaultBlockState().typeHolder(), Collections.singletonList(chanceResult(Items.FLINT, 0.8f)), false)
                 .add(Blocks.SAND.defaultBlockState().typeHolder(), Collections.singletonList(chanceResult(Items.HEART_OF_THE_SEA, 0.01f)), false)
-                .add(Blocks.DEEPSLATE.defaultBlockState().typeHolder(), Collections.singletonList(chanceResult(CastingToolsItems.OMNITHIUM_UPGRADE_SMITHING_TEMPLATE, 0.01f)), false)
-                .add(Blocks.DEEPSLATE.defaultBlockState().typeHolder(), Collections.singletonList(chanceResult(CastingToolsItems.OMNITHIUM_UPGRADE_SMITHING_TEMPLATE, 0.01f)), false)
+                .add(Blocks.DEEPSLATE.defaultBlockState().typeHolder(), Collections.singletonList(chanceResult(CTItems.OMNITHIUM_UPGRADE_SMITHING_TEMPLATE, 0.01f)), false)
+                .add(Blocks.DEEPSLATE.defaultBlockState().typeHolder(), Collections.singletonList(chanceResult(CTItems.OMNITHIUM_UPGRADE_SMITHING_TEMPLATE, 0.01f)), false)
 
         ;
     }

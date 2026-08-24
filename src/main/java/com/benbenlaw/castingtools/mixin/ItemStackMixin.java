@@ -1,19 +1,15 @@
 package com.benbenlaw.castingtools.mixin;
 
-import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
+import com.benbenlaw.castingtools.item.CTDataComponent;
 import com.benbenlaw.castingtools.item.ModifierComponent;
-import com.benbenlaw.castingtools.modifier.Modifier;
 import com.benbenlaw.castingtools.modifier.ModifierData;
-import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Objects;
@@ -34,7 +30,7 @@ public class ItemStackMixin {
         }
         ItemStack tool = (ItemStack)(Object)this;
 
-        ModifierComponent comp = tool.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        ModifierComponent comp = tool.get(CTDataComponent.MODIFIER_COMPONENT);
         if (comp == null || comp.modifiers().isEmpty()) {
             return;
         }
@@ -50,7 +46,7 @@ public class ItemStackMixin {
     private void casting$unbreakingModifier(int amount, ServerLevel level, LivingEntity player, CallbackInfoReturnable<Integer> cir) {
         ItemStack tool = (ItemStack)(Object)this;
 
-        ModifierComponent comp = tool.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        ModifierComponent comp = tool.get(CTDataComponent.MODIFIER_COMPONENT);
         if (comp == null) return;
 
         if (!comp.modifiers().containsKey(UNBREAKING.get().getId())) return;

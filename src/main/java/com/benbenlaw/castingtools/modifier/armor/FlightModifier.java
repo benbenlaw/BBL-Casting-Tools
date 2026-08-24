@@ -1,11 +1,9 @@
 package com.benbenlaw.castingtools.modifier.armor;
 
-import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
+import com.benbenlaw.castingtools.item.CTDataComponent;
 import com.benbenlaw.castingtools.modifier.Modifier;
 import com.benbenlaw.castingtools.modifier.ModifierData;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -25,7 +23,7 @@ public class FlightModifier extends Modifier {
             if (slot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
                 ItemStack armorStack = player.getItemBySlot(slot);
 
-                var comp = armorStack.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+                var comp = armorStack.get(CTDataComponent.MODIFIER_COMPONENT);
                 if (comp != null) {
                     isWorn = comp.modifiers().get(ModifierRegistry.FLIGHT.get().getId()) != null;
                 }

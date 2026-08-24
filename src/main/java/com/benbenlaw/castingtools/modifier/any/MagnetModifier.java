@@ -1,22 +1,13 @@
 package com.benbenlaw.castingtools.modifier.any;
 
-import com.benbenlaw.casting.item.CastingDataComponents;
-import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
-import com.benbenlaw.castingtools.item.ModifierComponent;
 import com.benbenlaw.castingtools.modifier.Modifier;
 import com.benbenlaw.castingtools.modifier.ModifierData;
-import com.benbenlaw.castingtools.modifier.ModifierRegistry;
-import net.minecraft.core.component.DataComponentType;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
-
-import java.util.Objects;
-
-import static com.benbenlaw.castingtools.modifier.ModifierRegistry.*;
 
 public class MagnetModifier extends Modifier {
 

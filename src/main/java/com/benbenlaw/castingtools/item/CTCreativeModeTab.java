@@ -11,7 +11,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class CastingToolsCreativeModeTab {
+public class CTCreativeModeTab {
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CastingTools.MOD_ID);
 
@@ -20,7 +20,7 @@ public class CastingToolsCreativeModeTab {
             .icon(() -> CastingToolsBlocks.MODIFIER.get().asItem().getDefaultInstance())
             .title(Component.translatable("itemGroup.castingtools"))
             .displayItems((featureFlagSet, output) -> {
-                CastingToolsItems.ITEMS.getEntries().forEach((entry) -> output.accept(entry.get()));
+                CTItems.ITEMS.getEntries().forEach((entry) -> output.accept(entry.get()));
             }).build());
 }
 

@@ -1,10 +1,7 @@
 package com.benbenlaw.castingtools.block;
 
-import com.benbenlaw.casting.Casting;
-import com.benbenlaw.casting.block.custom.ControllerBlock;
-import com.benbenlaw.casting.item.CastingItems;
 import com.benbenlaw.castingtools.CastingTools;
-import com.benbenlaw.castingtools.item.CastingToolsItems;
+import com.benbenlaw.castingtools.item.CTItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -39,6 +36,6 @@ public class CastingToolsBlocks {
     }
 
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
-        CastingToolsItems.ITEMS.registerItem(name, properties -> new BlockItem(block.get(), properties.useBlockDescriptionPrefix()));
+        CTItems.ITEMS.registerItem(name, properties -> new BlockItem(block.get(), properties.useBlockDescriptionPrefix()));
     }
 }

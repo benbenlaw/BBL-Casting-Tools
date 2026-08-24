@@ -5,7 +5,7 @@ import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.block.CastingToolsBlocks;
 import com.benbenlaw.castingtools.fluids.CTFluids;
 import com.benbenlaw.castingtools.item.CTArmorMaterials;
-import com.benbenlaw.castingtools.item.CastingToolsItems;
+import com.benbenlaw.castingtools.item.CTItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
@@ -19,7 +19,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluid;
@@ -46,29 +45,29 @@ public class CTModelProvider extends ModelProvider {
         blockModels.createTrivialCube(CastingToolsBlocks.OMNITHIUM_BLOCK.get());
 
         //Items
-        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_INGOT.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_NUGGET.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-        itemModels.generateSpear(CastingToolsItems.OMNITHIUM_SPEAR.get());
+        itemModels.generateFlatItem(CTItems.OMNITHIUM_INGOT.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(CTItems.OMNITHIUM_NUGGET.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(CTItems.OMNITHIUM_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(CTItems.OMNITHIUM_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(CTItems.OMNITHIUM_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(CTItems.OMNITHIUM_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(CTItems.OMNITHIUM_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateSpear(CTItems.OMNITHIUM_SPEAR.get());
 
-        itemModels.generateFlatItem(CastingToolsItems.OMNITHIUM_UPGRADE_SMITHING_TEMPLATE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(CTItems.OMNITHIUM_UPGRADE_SMITHING_TEMPLATE.get(), ModelTemplates.FLAT_ITEM);
 
-        itemModels.generateTrimmableItem(CastingToolsItems.OMNITHIUM_CHESTPLATE.get(), CTArmorMaterials.OMNITHIUM_EQUIPMENT, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModels.generateTrimmableItem(CastingToolsItems.OMNITHIUM_LEGGINGS.get(), CTArmorMaterials.OMNITHIUM_EQUIPMENT, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModels.generateTrimmableItem(CastingToolsItems.OMNITHIUM_HELMET.get(), CTArmorMaterials.OMNITHIUM_EQUIPMENT, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModels.generateTrimmableItem(CastingToolsItems.OMNITHIUM_BOOTS.get(), CTArmorMaterials.OMNITHIUM_EQUIPMENT, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        itemModels.generateTrimmableItem(CTItems.OMNITHIUM_CHESTPLATE.get(), CTArmorMaterials.OMNITHIUM_EQUIPMENT, ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
+        itemModels.generateTrimmableItem(CTItems.OMNITHIUM_LEGGINGS.get(), CTArmorMaterials.OMNITHIUM_EQUIPMENT, ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
+        itemModels.generateTrimmableItem(CTItems.OMNITHIUM_HELMET.get(), CTArmorMaterials.OMNITHIUM_EQUIPMENT, ItemModelGenerators.TRIM_PREFIX_HELMET, false);
+        itemModels.generateTrimmableItem(CTItems.OMNITHIUM_BOOTS.get(), CTArmorMaterials.OMNITHIUM_EQUIPMENT, ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
 
         bucketItem(itemModels, CTFluids.MOLTEN_OMNITHIUM.getBucket(), CTFluids.MOLTEN_OMNITHIUM.getBucket().content, false, false);
 
-        itemModels.createFlatItemModel(CastingToolsItems.OMNITHIUM_BOW.get(), ModelTemplates.BOW);
-        itemModels.generateBow(CastingToolsItems.OMNITHIUM_BOW.asItem());
+        itemModels.createFlatItemModel(CTItems.OMNITHIUM_BOW.get(), ModelTemplates.BOW);
+        itemModels.generateBow(CTItems.OMNITHIUM_BOW.asItem());
 
-        itemModels.createFlatItemModel(CastingToolsItems.OMNITHIUM_CROSSBOW.get(), ModelTemplates.CROSSBOW);
-        itemModels.generateCrossbow(CastingToolsItems.OMNITHIUM_CROSSBOW.asItem());
+        itemModels.createFlatItemModel(CTItems.OMNITHIUM_CROSSBOW.get(), ModelTemplates.CROSSBOW);
+        itemModels.generateCrossbow(CTItems.OMNITHIUM_CROSSBOW.asItem());
 
         //Fluids
         blockModels.createNonTemplateModelBlock(CTFluids.MOLTEN_OMNITHIUM.getBlock());

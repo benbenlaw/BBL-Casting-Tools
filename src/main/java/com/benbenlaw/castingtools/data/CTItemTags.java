@@ -3,12 +3,11 @@ package com.benbenlaw.castingtools.data;
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.block.CastingToolsBlocks;
 import com.benbenlaw.castingtools.fluids.CTFluids;
-import com.benbenlaw.castingtools.item.CastingToolsItems;
+import com.benbenlaw.castingtools.item.CTItems;
 import com.benbenlaw.castingtools.utils.CTTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ItemTagsProvider;
 import org.jetbrains.annotations.NotNull;
@@ -25,33 +24,33 @@ public class CTItemTags extends ItemTagsProvider {
     protected void addTags(HolderLookup.@NotNull Provider provider) {
 
         //Tools
-        tag(ItemTags.PICKAXES).add(CastingToolsItems.OMNITHIUM_PICKAXE.get());
-        tag(ItemTags.SHOVELS).add(CastingToolsItems.OMNITHIUM_SHOVEL.get());
-        tag(ItemTags.AXES).add(CastingToolsItems.OMNITHIUM_AXE.get());
-        tag(ItemTags.HOES).add(CastingToolsItems.OMNITHIUM_HOE.get());
-        tag(ItemTags.SWORDS).add(CastingToolsItems.OMNITHIUM_SWORD.get());
-        tag(ItemTags.SPEARS).add(CastingToolsItems.OMNITHIUM_SPEAR.get());
-        tag(ItemTags.HEAD_ARMOR).add(CastingToolsItems.OMNITHIUM_HELMET.get());
-        tag(ItemTags.CHEST_ARMOR).add(CastingToolsItems.OMNITHIUM_CHESTPLATE.get());
-        tag(ItemTags.LEG_ARMOR).add(CastingToolsItems.OMNITHIUM_LEGGINGS.get());
-        tag(ItemTags.FOOT_ARMOR).add(CastingToolsItems.OMNITHIUM_BOOTS.get());
-        tag(Tags.Items.TOOLS_BOW).add(CastingToolsItems.OMNITHIUM_BOW.get());
-        tag(Tags.Items.TOOLS_CROSSBOW).add(CastingToolsItems.OMNITHIUM_CROSSBOW.get());
+        tag(ItemTags.PICKAXES).add(CTItems.OMNITHIUM_PICKAXE.get());
+        tag(ItemTags.SHOVELS).add(CTItems.OMNITHIUM_SHOVEL.get());
+        tag(ItemTags.AXES).add(CTItems.OMNITHIUM_AXE.get());
+        tag(ItemTags.HOES).add(CTItems.OMNITHIUM_HOE.get());
+        tag(ItemTags.SWORDS).add(CTItems.OMNITHIUM_SWORD.get());
+        tag(ItemTags.SPEARS).add(CTItems.OMNITHIUM_SPEAR.get());
+        tag(ItemTags.HEAD_ARMOR).add(CTItems.OMNITHIUM_HELMET.get());
+        tag(ItemTags.CHEST_ARMOR).add(CTItems.OMNITHIUM_CHESTPLATE.get());
+        tag(ItemTags.LEG_ARMOR).add(CTItems.OMNITHIUM_LEGGINGS.get());
+        tag(ItemTags.FOOT_ARMOR).add(CTItems.OMNITHIUM_BOOTS.get());
+        tag(Tags.Items.TOOLS_BOW).add(CTItems.OMNITHIUM_BOW.get());
+        tag(Tags.Items.TOOLS_CROSSBOW).add(CTItems.OMNITHIUM_CROSSBOW.get());
 
         tag(ItemTags.TRIMMABLE_ARMOR)
-                .add(CastingToolsItems.OMNITHIUM_LEGGINGS.get())
-                .add(CastingToolsItems.OMNITHIUM_CHESTPLATE.get())
-                .add(CastingToolsItems.OMNITHIUM_HELMET.get())
-                .add(CastingToolsItems.OMNITHIUM_BOOTS.get())
+                .add(CTItems.OMNITHIUM_LEGGINGS.get())
+                .add(CTItems.OMNITHIUM_CHESTPLATE.get())
+                .add(CTItems.OMNITHIUM_HELMET.get())
+                .add(CTItems.OMNITHIUM_BOOTS.get())
                 ;
 
         //Ingot
-        tag(Tags.Items.INGOTS).add(CastingToolsItems.OMNITHIUM_INGOT.get());
-        tag(CTTags.Items.OMNITHIUM_INGOT).add(CastingToolsItems.OMNITHIUM_INGOT.get());
+        tag(Tags.Items.INGOTS).add(CTItems.OMNITHIUM_INGOT.get());
+        tag(CTTags.Items.OMNITHIUM_INGOT).add(CTItems.OMNITHIUM_INGOT.get());
 
         //Nuggets
-        tag(Tags.Items.NUGGETS).add(CastingToolsItems.OMNITHIUM_NUGGET.get());
-        tag(CTTags.Items.OMNITHIUM_NUGGET).add(CastingToolsItems.OMNITHIUM_NUGGET.get());
+        tag(Tags.Items.NUGGETS).add(CTItems.OMNITHIUM_NUGGET.get());
+        tag(CTTags.Items.OMNITHIUM_NUGGET).add(CTItems.OMNITHIUM_NUGGET.get());
 
         //Blocks
         tag(Tags.Items.STORAGE_BLOCKS).add(CastingToolsBlocks.OMNITHIUM_BLOCK.get().asItem());
@@ -62,18 +61,18 @@ public class CTItemTags extends ItemTagsProvider {
 
         //Is Enhanced
         tag(CTTags.Items.ENHANCED)
-                .add(CastingToolsItems.OMNITHIUM_PICKAXE.get())
-                .add(CastingToolsItems.OMNITHIUM_SHOVEL.get())
-                .add(CastingToolsItems.OMNITHIUM_AXE.get())
-                .add(CastingToolsItems.OMNITHIUM_HOE.get())
-                .add(CastingToolsItems.OMNITHIUM_SWORD.get())
-                .add(CastingToolsItems.OMNITHIUM_SPEAR.get())
-                .add(CastingToolsItems.OMNITHIUM_HELMET.get())
-                .add(CastingToolsItems.OMNITHIUM_CHESTPLATE.get())
-                .add(CastingToolsItems.OMNITHIUM_LEGGINGS.get())
-                .add(CastingToolsItems.OMNITHIUM_BOOTS.get())
-                .add(CastingToolsItems.OMNITHIUM_BOW.get())
-                .add(CastingToolsItems.OMNITHIUM_CROSSBOW.get())
+                .add(CTItems.OMNITHIUM_PICKAXE.get())
+                .add(CTItems.OMNITHIUM_SHOVEL.get())
+                .add(CTItems.OMNITHIUM_AXE.get())
+                .add(CTItems.OMNITHIUM_HOE.get())
+                .add(CTItems.OMNITHIUM_SWORD.get())
+                .add(CTItems.OMNITHIUM_SPEAR.get())
+                .add(CTItems.OMNITHIUM_HELMET.get())
+                .add(CTItems.OMNITHIUM_CHESTPLATE.get())
+                .add(CTItems.OMNITHIUM_LEGGINGS.get())
+                .add(CTItems.OMNITHIUM_BOOTS.get())
+                .add(CTItems.OMNITHIUM_BOW.get())
+                .add(CTItems.OMNITHIUM_CROSSBOW.get())
         ;
 
 

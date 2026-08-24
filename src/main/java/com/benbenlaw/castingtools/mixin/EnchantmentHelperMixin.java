@@ -1,9 +1,8 @@
 package com.benbenlaw.castingtools.mixin;
 
-import com.benbenlaw.castingtools.item.CastingToolsDataComponent;
+import com.benbenlaw.castingtools.item.CTDataComponent;
 import com.benbenlaw.castingtools.item.ModifierComponent;
 import com.benbenlaw.castingtools.modifier.Modifier;
-import com.benbenlaw.castingtools.modifier.ModifierData;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
@@ -26,8 +25,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
 
-import static com.benbenlaw.castingtools.modifier.ModifierRegistry.EXCAVATION;
-
 @Mixin(EnchantmentHelper.class)
 public class EnchantmentHelperMixin {
 
@@ -38,7 +35,7 @@ public class EnchantmentHelperMixin {
     )
     private static void castingTools$getTagEnchantmentLevel(Holder<Enchantment> enchantment, ItemInstance piece, CallbackInfoReturnable<Integer> cir) {
 
-        ModifierComponent comp =piece.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        ModifierComponent comp =piece.get(CTDataComponent.MODIFIER_COMPONENT);
 
         if (comp == null) {
             return;
@@ -84,7 +81,7 @@ public class EnchantmentHelperMixin {
     )
     private static void castingTools$getEnchantmentLevel(Holder<Enchantment> enchantment, ItemInstance piece, CallbackInfoReturnable<Integer> cir) {
 
-        ModifierComponent comp =piece.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        ModifierComponent comp =piece.get(CTDataComponent.MODIFIER_COMPONENT);
 
         if (comp == null) {
             return;
@@ -129,7 +126,7 @@ public class EnchantmentHelperMixin {
     )
     private static void castingTools$runIterationOnItem(ItemStack piece, EnchantmentHelper.EnchantmentVisitor method, CallbackInfo ci) {
 
-        ModifierComponent comp = piece.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        ModifierComponent comp = piece.get(CTDataComponent.MODIFIER_COMPONENT);
         if (comp == null) {
             return;
         }
@@ -171,7 +168,7 @@ public class EnchantmentHelperMixin {
             return;
         }
 
-        ModifierComponent comp = piece.get(CastingToolsDataComponent.MODIFIER_COMPONENT);
+        ModifierComponent comp = piece.get(CTDataComponent.MODIFIER_COMPONENT);
         if (comp == null) {
             return;
         }
