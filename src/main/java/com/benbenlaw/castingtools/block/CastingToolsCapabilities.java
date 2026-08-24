@@ -1,6 +1,5 @@
 package com.benbenlaw.castingtools.block;
 
-import com.benbenlaw.casting.block.CastingBlockEntities;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 

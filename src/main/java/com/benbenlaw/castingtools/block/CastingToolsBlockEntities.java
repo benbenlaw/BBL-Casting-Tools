@@ -1,8 +1,5 @@
 package com.benbenlaw.castingtools.block;
 
-import com.benbenlaw.casting.Casting;
-import com.benbenlaw.casting.block.CastingBlocks;
-import com.benbenlaw.casting.block.entity.SolidifierBlockEntity;
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.block.entity.ModifierBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;

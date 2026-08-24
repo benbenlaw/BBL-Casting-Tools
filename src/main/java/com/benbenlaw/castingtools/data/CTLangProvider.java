@@ -3,7 +3,6 @@ package com.benbenlaw.castingtools.data;
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import net.minecraft.data.PackOutput;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 

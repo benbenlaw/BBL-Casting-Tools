@@ -8,7 +8,6 @@ import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.player.ArrowLooseEvent;
 
 public class LightningStrikeModifier extends Modifier {
 

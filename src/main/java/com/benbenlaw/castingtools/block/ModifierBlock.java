@@ -1,9 +1,6 @@
 package com.benbenlaw.castingtools.block;
 
-import com.benbenlaw.casting.block.CastingBlockEntities;
 import com.benbenlaw.casting.block.custom.CastingBlock;
-import com.benbenlaw.casting.block.custom.SolidifierBlock;
-import com.benbenlaw.casting.block.entity.SolidifierBlockEntity;
 import com.benbenlaw.castingtools.block.entity.ModifierBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;

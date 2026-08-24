@@ -3,7 +3,6 @@ package com.benbenlaw.castingtools.data;
 
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.data.custom.ModifierProvider;
-import net.minecraft.client.data.models.EquipmentAssetProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;

@@ -1,7 +1,6 @@
 package com.benbenlaw.castingtools.intergration.jei;
 
 import com.benbenlaw.casting.Casting;
-import com.benbenlaw.casting.recipe.custom.MeltingRecipe;
 import com.benbenlaw.castingtools.block.CastingToolsBlocks;
 import com.benbenlaw.castingtools.intergration.custom.ModifierCompatibilityRecipe;
 import mezz.jei.api.constants.VanillaTypes;
@@ -22,7 +21,6 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.EntityEquipment;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;

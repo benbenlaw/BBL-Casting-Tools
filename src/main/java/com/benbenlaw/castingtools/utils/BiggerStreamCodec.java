@@ -1,7 +1,6 @@
 package com.benbenlaw.castingtools.utils;
 
 import com.mojang.datafixers.util.Function13;
-import com.mojang.datafixers.util.Function8;
 import net.minecraft.network.codec.StreamCodec;
 
 import java.util.function.Function;

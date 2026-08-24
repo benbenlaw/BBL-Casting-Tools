@@ -1,18 +1,14 @@
 package com.benbenlaw.castingtools.screen;
 
-import com.benbenlaw.casting.util.CastingTags;
 import com.benbenlaw.castingtools.block.entity.ModifierBlockEntity;
 import com.benbenlaw.castingtools.modifier.Modifier;
-import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import com.benbenlaw.castingtools.screen.util.ModifierResultSlot;
 import com.benbenlaw.castingtools.utils.CTTags;
 import com.benbenlaw.castingtools.utils.ModifierUtils;
 import com.benbenlaw.core.block.entity.handler.fluid.SyncableFluidHandler;
 import com.benbenlaw.core.block.entity.handler.item.SyncableItemHandler;
 import com.benbenlaw.core.screen.SimpleAbstractContainerMenu;
-import com.benbenlaw.core.screen.util.slot.FilterFluidSlot;
 import com.benbenlaw.core.screen.util.slot.InputSlot;
-import com.benbenlaw.core.screen.util.slot.ResultSlot;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
@@ -22,25 +18,20 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.Container;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerInput;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.fluids.FluidStack;
-import net.neoforged.neoforge.fluids.crafting.SizedFluidIngredient;
 import net.neoforged.neoforge.transfer.fluid.FluidUtil;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.item.ItemUtil;
 import org.jspecify.annotations.NonNull;
-
-import java.util.Optional;
 
 public class ModifierMenu extends SimpleAbstractContainerMenu {
 

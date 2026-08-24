@@ -14,7 +14,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Objects;
 
-import static com.benbenlaw.castingtools.modifier.ModifierRegistry.*;
+import static com.benbenlaw.castingtools.modifier.ModifierRegistry.MODIFIER_REGISTRY;
+import static com.benbenlaw.castingtools.modifier.ModifierRegistry.UNBREAKING;
 
 @Mixin(ItemStack.class)
 public class ItemStackMixin {

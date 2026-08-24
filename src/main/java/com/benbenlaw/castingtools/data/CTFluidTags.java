@@ -1,19 +1,14 @@
 package com.benbenlaw.castingtools.data;
 
-import com.benbenlaw.casting.Casting;
 import com.benbenlaw.castingtools.CastingTools;
-import com.benbenlaw.castingtools.block.CastingToolsBlocks;
 import com.benbenlaw.castingtools.fluids.CTFluids;
-import com.benbenlaw.castingtools.utils.CTTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.resources.Identifier;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.material.Fluid;
-import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;

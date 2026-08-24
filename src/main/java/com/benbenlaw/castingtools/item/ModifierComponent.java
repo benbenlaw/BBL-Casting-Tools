@@ -1,14 +1,11 @@
 package com.benbenlaw.castingtools.item;
 
-import com.benbenlaw.castingtools.modifier.Modifier;
-import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.Identifier;
-import net.minecraft.resources.ResourceKey;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,9 +1,5 @@
 package com.benbenlaw.castingtools.screen;
 
-import com.benbenlaw.casting.Casting;
-import com.benbenlaw.casting.screen.ControllerMenu;
-import com.benbenlaw.casting.screen.MixerMenu;
-import com.benbenlaw.casting.screen.SolidifierMenu;
 import com.benbenlaw.castingtools.CastingTools;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.inventory.MenuType;

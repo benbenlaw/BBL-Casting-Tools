@@ -2,12 +2,8 @@ package com.benbenlaw.castingtools.datamaps;
 
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.core.recipe.ChanceResult;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.datamaps.DataMapType;

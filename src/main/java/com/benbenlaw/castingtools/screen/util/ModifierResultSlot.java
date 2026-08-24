@@ -1,7 +1,6 @@
 package com.benbenlaw.castingtools.screen.util;
 
 import com.benbenlaw.castingtools.modifier.Modifier;
-import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import com.benbenlaw.castingtools.utils.ModifierUtils;
 import com.benbenlaw.core.block.entity.handler.fluid.SyncableFluidHandler;
 import com.benbenlaw.core.block.entity.handler.item.SyncableItemHandler;
