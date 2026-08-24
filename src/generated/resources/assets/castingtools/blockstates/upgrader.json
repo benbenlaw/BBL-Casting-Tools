@@ -1,0 +1,48 @@
+{
+  "variants": {
+    "facing=down,working=false": {
+      "model": "castingtools:block/upgrader_vertical",
+      "x": 180
+    },
+    "facing=down,working=true": {
+      "model": "castingtools:block/upgrader_working_vertical",
+      "x": 180
+    },
+    "facing=east,working=false": {
+      "model": "castingtools:block/upgrader",
+      "y": 90
+    },
+    "facing=east,working=true": {
+      "model": "castingtools:block/upgrader_working",
+      "y": 90
+    },
+    "facing=north,working=false": {
+      "model": "castingtools:block/upgrader"
+    },
+    "facing=north,working=true": {
+      "model": "castingtools:block/upgrader_working"
+    },
+    "facing=south,working=false": {
+      "model": "castingtools:block/upgrader",
+      "y": 180
+    },
+    "facing=south,working=true": {
+      "model": "castingtools:block/upgrader_working",
+      "y": 180
+    },
+    "facing=up,working=false": {
+      "model": "castingtools:block/upgrader_vertical"
+    },
+    "facing=up,working=true": {
+      "model": "castingtools:block/upgrader_working_vertical"
+    },
+    "facing=west,working=false": {
+      "model": "castingtools:block/upgrader",
+      "y": 270
+    },
+    "facing=west,working=true": {
+      "model": "castingtools:block/upgrader_working",
+      "y": 270
+    }
+  }
+}

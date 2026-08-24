@@ -1,7 +1,7 @@
 package com.benbenlaw.castingtools.data;
 
 import com.benbenlaw.casting.item.CastingDataComponents;
-import com.benbenlaw.castingtools.block.CastingToolsBlocks;
+import com.benbenlaw.castingtools.block.CTBlocks;
 import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
@@ -26,8 +26,9 @@ public class CTLootTableProvider extends VanillaBlockLoot {
 
     @Override
     protected void generate() {
-        this.dropWithFluidComponent(CastingToolsBlocks.MODIFIER.get());
-        this.dropSelf(CastingToolsBlocks.OMNITHIUM_BLOCK.get());
+        this.dropWithFluidComponent(CTBlocks.MODIFIER.get());
+        this.dropWithFluidComponent(CTBlocks.UPGRADER.get());
+        this.dropSelf(CTBlocks.OMNITHIUM_BLOCK.get());
     }
 
 

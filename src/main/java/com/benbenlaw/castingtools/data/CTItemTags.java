@@ -1,7 +1,7 @@
 package com.benbenlaw.castingtools.data;
 
 import com.benbenlaw.castingtools.CastingTools;
-import com.benbenlaw.castingtools.block.CastingToolsBlocks;
+import com.benbenlaw.castingtools.block.CTBlocks;
 import com.benbenlaw.castingtools.fluids.CTFluids;
 import com.benbenlaw.castingtools.item.CTItems;
 import com.benbenlaw.castingtools.utils.CTTags;
@@ -53,8 +53,8 @@ public class CTItemTags extends ItemTagsProvider {
         tag(CTTags.Items.OMNITHIUM_NUGGET).add(CTItems.OMNITHIUM_NUGGET.get());
 
         //Blocks
-        tag(Tags.Items.STORAGE_BLOCKS).add(CastingToolsBlocks.OMNITHIUM_BLOCK.get().asItem());
-        tag(CTTags.Items.OMNITHIUM_BLOCK).add(CastingToolsBlocks.OMNITHIUM_BLOCK.get().asItem());
+        tag(Tags.Items.STORAGE_BLOCKS).add(CTBlocks.OMNITHIUM_BLOCK.get().asItem());
+        tag(CTTags.Items.OMNITHIUM_BLOCK).add(CTBlocks.OMNITHIUM_BLOCK.get().asItem());
 
         //Bucket
         tag(Tags.Items.BUCKETS).add(CTFluids.MOLTEN_OMNITHIUM.getBucket());

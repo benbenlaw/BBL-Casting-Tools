@@ -1,4 +1,4 @@
-// 26.1.2	2026-04-24T14:28:41.7185345	Tags for minecraft:block mod id casting
+// 26.1.2	2026-08-24T11:18:23.1946397	Tags for minecraft:block mod id casting
 9f5c884d8ad04491bc2908de3b9e92fc1b91518a data/c/tags/block/storage_blocks/omnithium.json
-33ce0b7713b4777c00a18c7b549f26904feee138 data/minecraft/tags/block/mineable/pickaxe.json
+3e4ca3d7adcbae600d29f4b371d331a873f4ea3c data/minecraft/tags/block/mineable/pickaxe.json
 9f5c884d8ad04491bc2908de3b9e92fc1b91518a data/minecraft/tags/block/needs_diamond_tool.json

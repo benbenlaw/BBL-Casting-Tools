@@ -11,13 +11,19 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Function;
 
-public class CastingToolsBlocks {
+public class CTBlocks {
 
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(CastingTools.MOD_ID);
 
 
     public static final DeferredBlock<Block> MODIFIER = registerBlock("modifier",
             properties -> new ModifierBlock(properties
+                    .strength(1.0F)
+                    .requiresCorrectToolForDrops()
+                    .noOcclusion()));
+
+    public static final DeferredBlock<Block> UPGRADER = registerBlock("upgrader",
+            properties -> new UpgraderBlock(properties
                     .strength(1.0F)
                     .requiresCorrectToolForDrops()
                     .noOcclusion()));

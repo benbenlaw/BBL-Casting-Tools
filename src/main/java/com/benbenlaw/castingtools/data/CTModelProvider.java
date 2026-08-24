@@ -2,7 +2,7 @@ package com.benbenlaw.castingtools.data;
 
 import com.benbenlaw.casting.block.custom.CastingBlock;
 import com.benbenlaw.castingtools.CastingTools;
-import com.benbenlaw.castingtools.block.CastingToolsBlocks;
+import com.benbenlaw.castingtools.block.CTBlocks;
 import com.benbenlaw.castingtools.fluids.CTFluids;
 import com.benbenlaw.castingtools.item.CTArmorMaterials;
 import com.benbenlaw.castingtools.item.CTItems;
@@ -44,8 +44,9 @@ public class CTModelProvider extends ModelProvider {
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
 
         //Blocks
-        createMachineBlock(CastingToolsBlocks.MODIFIER.get(), blockModels.blockStateOutput, blockModels.modelOutput);
-        blockModels.createTrivialCube(CastingToolsBlocks.OMNITHIUM_BLOCK.get());
+        createMachineBlock(CTBlocks.MODIFIER.get(), "modifier", blockModels.blockStateOutput, blockModels.modelOutput);
+        createMachineBlock(CTBlocks.UPGRADER.get(), "upgrader", blockModels.blockStateOutput, blockModels.modelOutput);
+        blockModels.createTrivialCube(CTBlocks.OMNITHIUM_BLOCK.get());
 
         //Items
         itemModels.generateFlatItem(CTItems.OMNITHIUM_INGOT.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
@@ -77,9 +78,9 @@ public class CTModelProvider extends ModelProvider {
 
     }
 
-    public void createMachineBlock(Block block, Consumer<BlockModelDefinitionGenerator> blockStateOutput, BiConsumer<Identifier, ModelInstance> modelOutput) {
-        TextureMapping idleTextureMapping = (new TextureMapping()).put(TextureSlot.TOP, new Material(CastingTools.identifier("block/modifier_top"))).put(TextureSlot.SIDE, new Material(CastingTools.identifier("block/modifier_side"))).put(TextureSlot.FRONT, TextureMapping.getBlockTexture(block, "_front"));
-        TextureMapping workingTextureMapping = (new TextureMapping()).put(TextureSlot.TOP, new Material(CastingTools.identifier("block/modifier_top"))).put(TextureSlot.SIDE, new Material(CastingTools.identifier("block/modifier_side"))).put(TextureSlot.FRONT, TextureMapping.getBlockTexture(block, "_front_working"));
+    public void createMachineBlock(Block block, String blockString, Consumer<BlockModelDefinitionGenerator> blockStateOutput, BiConsumer<Identifier, ModelInstance> modelOutput) {
+        TextureMapping idleTextureMapping = (new TextureMapping()).put(TextureSlot.TOP, new Material(CastingTools.identifier("block/" + blockString + "_top"))).put(TextureSlot.SIDE, new Material(CastingTools.identifier("block/" + blockString + "_side"))).put(TextureSlot.FRONT, TextureMapping.getBlockTexture(block, "_front"));
+        TextureMapping workingTextureMapping = (new TextureMapping()).put(TextureSlot.TOP, new Material(CastingTools.identifier("block/" + blockString + "_top"))).put(TextureSlot.SIDE, new Material(CastingTools.identifier("block/" + blockString + "_side"))).put(TextureSlot.FRONT, TextureMapping.getBlockTexture(block, "_front_working"));
 
         MultiVariant multivariant = plainVariant(ModelTemplates.CUBE_ORIENTABLE.create(block, idleTextureMapping, modelOutput));
         MultiVariant multivariant1 = plainVariant(ModelTemplates.CUBE_ORIENTABLE_VERTICAL.create(block, idleTextureMapping, modelOutput));

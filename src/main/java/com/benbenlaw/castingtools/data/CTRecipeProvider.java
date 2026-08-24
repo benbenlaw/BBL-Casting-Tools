@@ -6,7 +6,7 @@ import com.benbenlaw.casting.data.custom.MixingRecipeBuilder;
 import com.benbenlaw.casting.data.custom.SolidifierRecipeBuilder;
 import com.benbenlaw.casting.item.CastingItems;
 import com.benbenlaw.castingtools.CastingTools;
-import com.benbenlaw.castingtools.block.CastingToolsBlocks;
+import com.benbenlaw.castingtools.block.CTBlocks;
 import com.benbenlaw.castingtools.fluids.CTFluids;
 import com.benbenlaw.castingtools.item.CTItems;
 import com.benbenlaw.castingtools.utils.CTTags;
@@ -25,6 +25,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.crafting.SizedIngredient;
 import net.neoforged.neoforge.fluids.FluidStackTemplate;
 import net.neoforged.neoforge.fluids.crafting.FluidIngredient;
@@ -64,15 +65,26 @@ public class CTRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes() {
         //Reset
-        shapeless(RecipeCategory.MISC, CastingToolsBlocks.MODIFIER).requires(CastingToolsBlocks.MODIFIER).unlockedBy("has_modifier", has(CastingToolsBlocks.MODIFIER)).save(output, "castingtools:reset");
+        shapeless(RecipeCategory.MISC, CTBlocks.MODIFIER).requires(CTBlocks.MODIFIER).unlockedBy("has_modifier", has(CTBlocks.MODIFIER)).save(output, "castingtools:reset");
 
         //Modifier
-        shaped(RecipeCategory.MISC, CastingToolsBlocks.MODIFIER)
+        shaped(RecipeCategory.MISC, CTBlocks.MODIFIER)
                 .pattern("AAA")
                 .pattern("B B")
                 .pattern("AAA")
                 .define('A', CastingBlocks.BLACK_BRICKS)
                 .define('B', CastingBlocks.SOLIDIFIER)
+                .unlockedBy("has_clay", has(CastingItems.BLACK_BRICK))
+                .save(output);
+
+        //Upgrader
+        shaped(RecipeCategory.MISC, CTBlocks.UPGRADER)
+                .pattern("AAA")
+                .pattern("BCB")
+                .pattern("AAA")
+                .define('A', CastingBlocks.BLACK_BRICKS)
+                .define('B', Blocks.SMITHING_TABLE)
+                .define('C', CTBlocks.MODIFIER)
                 .unlockedBy("has_clay", has(CastingItems.BLACK_BRICK))
                 .save(output);
 
@@ -83,7 +95,7 @@ public class CTRecipeProvider extends RecipeProvider {
                 .pattern("AAA")
                 .define('A', CTItems.OMNITHIUM_INGOT)
                 .define('B', CTItems.OMNITHIUM_UPGRADE_SMITHING_TEMPLATE)
-                .define('C', CastingToolsBlocks.OMNITHIUM_BLOCK)
+                .define('C', CTBlocks.OMNITHIUM_BLOCK)
                 .unlockedBy("has_clay", has(CastingItems.BLACK_BRICK))
                 .save(output);
 
@@ -110,7 +122,7 @@ public class CTRecipeProvider extends RecipeProvider {
                         getFluidIngredient("molten_experience", 8000)
                 ));
 
-        simpleMeltingRecipe(List.of(new FluidStackTemplate(CTFluids.MOLTEN_OMNITHIUM.getFluid(), 810)), CastingToolsBlocks.OMNITHIUM_BLOCK,
+        simpleMeltingRecipe(List.of(new FluidStackTemplate(CTFluids.MOLTEN_OMNITHIUM.getFluid(), 810)), CTBlocks.OMNITHIUM_BLOCK,
                 "omnithium/block", ResourceType.STORAGE_BLOCKS, 1400);
 
         simpleMeltingRecipe(List.of(new FluidStackTemplate(CTFluids.MOLTEN_OMNITHIUM.getFluid(), 90)), CTItems.OMNITHIUM_INGOT,
@@ -119,7 +131,7 @@ public class CTRecipeProvider extends RecipeProvider {
         simpleMeltingRecipe(List.of(new FluidStackTemplate(CTFluids.MOLTEN_OMNITHIUM.getFluid(), 10)), CTItems.OMNITHIUM_NUGGET,
                 "omnithium/nugget", ResourceType.INGOTS, 1400);
 
-        simpleSolidifierRecipe(CastingToolsBlocks.OMNITHIUM_BLOCK, new SizedFluidIngredient(FluidIngredient.of(CTFluids.MOLTEN_OMNITHIUM.getFluid().getSource()), 810),
+        simpleSolidifierRecipe(CTBlocks.OMNITHIUM_BLOCK, new SizedFluidIngredient(FluidIngredient.of(CTFluids.MOLTEN_OMNITHIUM.getFluid().getSource()), 810),
                 CastingItems.BLOCK_MOLD, "omnithium/block", ResourceType.STORAGE_BLOCKS, 1400);
 
         simpleSolidifierRecipe(CTItems.OMNITHIUM_INGOT, new SizedFluidIngredient(FluidIngredient.of(CTFluids.MOLTEN_OMNITHIUM.getFluid().getSource()), 90),
@@ -128,7 +140,7 @@ public class CTRecipeProvider extends RecipeProvider {
         simpleSolidifierRecipe(CTItems.OMNITHIUM_NUGGET, new SizedFluidIngredient(FluidIngredient.of(CTFluids.MOLTEN_OMNITHIUM.getFluid().getSource()), 10),
                 CastingItems.NUGGET_MOLD, "omnithium/nugget", ResourceType.INGOTS, 1400);
 
-        nineBlockStorageRecipes(RecipeCategory.MISC, CTItems.OMNITHIUM_INGOT, RecipeCategory.MISC, CastingToolsBlocks.OMNITHIUM_BLOCK, "omnithium/block_from_ingots", "omnithium", "omnithium/ingots_from_block", "omnithium");
+        nineBlockStorageRecipes(RecipeCategory.MISC, CTItems.OMNITHIUM_INGOT, RecipeCategory.MISC, CTBlocks.OMNITHIUM_BLOCK, "omnithium/block_from_ingots", "omnithium", "omnithium/ingots_from_block", "omnithium");
         nineBlockStorageRecipes(RecipeCategory.MISC, CTItems.OMNITHIUM_NUGGET, RecipeCategory.MISC, CTItems.OMNITHIUM_INGOT, "omnithium/ingot_from_nuggets", "omnithium", "omnithium/nuggets_from_ingot", "omnithium");
 
 

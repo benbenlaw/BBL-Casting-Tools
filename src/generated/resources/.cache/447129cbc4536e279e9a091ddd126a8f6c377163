@@ -1,10 +1,12 @@
-// 26.1.2	2026-08-05T13:36:36.4197123	castingtools Recipes
+// 26.1.2	2026-08-24T11:18:23.1960775	castingtools Recipes
 4274a0bae05a513a1aff10333a300ea3b246971f data/castingtools/advancement/recipes/misc/modifier.json
 486070d2a60279155b8aa46f078bb3fac97b042a data/castingtools/advancement/recipes/misc/omnithium_upgrade_smithing_template.json
 3cea0b79537b5cd38602340c7b182baf09d7c492 data/castingtools/advancement/recipes/misc/reset.json
+91ded9d0af1aebf9c6eb2f78271291e6ad2c899e data/castingtools/advancement/recipes/misc/upgrader.json
 eb1e4d1ae9f4d30b265282275eb03c2f75f32242 data/castingtools/recipe/modifier.json
 1592572fa6b10851214d3504b6438be3923d10d0 data/castingtools/recipe/omnithium_upgrade_smithing_template.json
 53cc665bd3bf25da0f9ffdaf2e40ba436cf866b7 data/castingtools/recipe/reset.json
+386915c1589bc50dac38b2070ea144dd2525cb8e data/castingtools/recipe/upgrader.json
 eb36d1aaebd53f7b612776c64b8600abb785a966 data/casting/advancement/recipes/melting/melting/omnithium/block.json
 334a10e84065be5b84744bdc9870dbef0b14771c data/casting/advancement/recipes/melting/melting/omnithium/ingot.json
 bb1fbb0c92443fdbf835ecf01422444c19c9faa5 data/casting/advancement/recipes/melting/melting/omnithium/nugget.json

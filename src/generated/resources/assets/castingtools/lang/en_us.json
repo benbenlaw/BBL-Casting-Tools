@@ -2,6 +2,7 @@
   "block.castingtools.modifier": "Modifier",
   "block.castingtools.molten_omnithium": "Molten Omnithium",
   "block.castingtools.omnithium_block": "Omnithium Block",
+  "block.castingtools.upgrader": "Upgrader",
   "fluid.castingtools.molten_omnithium": "Molten Omnithium",
   "item.castingtools.molten_omnithium_bucket": "Omnithium Bucket",
   "item.castingtools.omnithium_axe": "Omnithium Axe",
@@ -95,6 +96,10 @@
   "modifier.castingtools.water_breathing": "Water Breathing",
   "modifier.castingtools.water_breathing.description": "Allows you to breathe underwater",
   "tooltip.castingtools.beheading": "Drops from %s when tool has beheading modifier",
+  "tooltip.castingtools.modifier.incompactible_modifier": "Incompatible Modifier",
+  "tooltip.castingtools.modifier.max_level": "Max Level Reached",
   "tooltip.castingtools.pulverizing": "Breaking %s when tool has the pulverizing modifier",
-  "tooltip.castingtools.treasure": "Breaking %s when tool has the treasure modifier"
+  "tooltip.castingtools.treasure": "Breaking %s when tool has the treasure modifier",
+  "tooltip.castingtools.upgrader.not_enough_experience": "Not Enough Experience",
+  "tooltip.castingtools.upgrader.not_enough_materials": "Not Enough Materials"
 }

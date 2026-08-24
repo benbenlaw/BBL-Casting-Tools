@@ -2,7 +2,7 @@ package com.benbenlaw.castingtools.intergration.jei;
 
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.castingtools.CastingTools;
-import com.benbenlaw.castingtools.block.CastingToolsBlocks;
+import com.benbenlaw.castingtools.block.CTBlocks;
 import com.benbenlaw.castingtools.intergration.custom.ModifierRecipe;
 import com.benbenlaw.castingtools.modifier.Modifier;
 import mezz.jei.api.constants.VanillaTypes;
@@ -53,7 +53,7 @@ public class ModifierRecipeCategory implements IRecipeCategory<ModifierRecipe> {
     }
 
     public ModifierRecipeCategory(IGuiHelper helper) {
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(CastingToolsBlocks.MODIFIER.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(CTBlocks.MODIFIER.get()));
     }
 
     @Override

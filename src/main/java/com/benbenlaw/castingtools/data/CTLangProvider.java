@@ -20,8 +20,15 @@ public class CTLangProvider extends LanguageProvider {
 
         //Blocks
         add("block.castingtools.modifier", "Modifier");
+        add("block.castingtools.upgrader", "Upgrader");
         add("block.castingtools.omnithium_block", "Omnithium Block");
         add("block.castingtools.molten_omnithium", "Molten Omnithium");
+
+        //Tooltip
+        add("tooltip.castingtools.modifier.incompactible_modifier", "Incompatible Modifier");
+        add("tooltip.castingtools.modifier.max_level", "Max Level Reached");
+        add("tooltip.castingtools.upgrader.not_enough_experience", "Not Enough Experience");
+        add("tooltip.castingtools.upgrader.not_enough_materials", "Not Enough Materials");
 
         //Items
         add("item.castingtools.omnithium_nugget", "Omnithium Nugget");

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "castingtools:block/upgrader_front",
+    "side": "castingtools:block/upgrader_side",
+    "top": "castingtools:block/upgrader_top"
+  }
+}

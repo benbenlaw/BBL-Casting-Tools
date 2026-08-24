@@ -46,7 +46,7 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
     }
 
     public ModifierMenu(int containerID, Inventory inventory, BlockPos blockPos, ContainerData data) {
-        super(CastingToolsMenuTypes.MODIFIER_MENU.get(), containerID, inventory, blockPos, 3);
+        super(CTMenuTypes.MODIFIER_MENU.get(), containerID, inventory, blockPos, 3);
         this.player = inventory.player;
         this.blockPos = blockPos;
         this.level = inventory.player.level();
@@ -130,7 +130,7 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
 
             if (ModifierUtils.hasConflict(toolStack, modifier)) {
                 ItemStack barrier = new ItemStack(Items.BARRIER);
-                barrier.set(DataComponents.CUSTOM_NAME, Component.literal("Incompatible Modifier")
+                barrier.set(DataComponents.CUSTOM_NAME, Component.translatable("tooltip.castingtools.modifier.incompactible_modifier")
                         .withStyle(ChatFormatting.RED));
 
                 if (!ItemStack.matches(currentOutput, barrier)) {
@@ -146,7 +146,7 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
 
             if (currentLevel >= maxLevel) {
                 ItemStack barrier = new ItemStack(Items.BARRIER);
-                barrier.set(DataComponents.CUSTOM_NAME, Component.literal("Max Level Reached")
+                barrier.set(DataComponents.CUSTOM_NAME, Component.translatable("tooltip.castingtools.modifier.max_level")
                         .withStyle(ChatFormatting.RED));
 
                 if (!ItemStack.matches(currentOutput, barrier)) {

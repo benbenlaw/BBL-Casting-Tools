@@ -9,6 +9,7 @@
   "max_enhanced_level": 10,
   "max_level": 5,
   "valid_items": [
-    "#castingtools:all_melee_weapons"
+    "#castingtools:all_melee_weapons",
+    "#castingtools:all_ranged_weapons"
   ]
 }

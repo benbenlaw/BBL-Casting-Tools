@@ -1,7 +1,7 @@
 package com.benbenlaw.castingtools.block;
 
 import com.benbenlaw.casting.block.custom.CastingBlock;
-import com.benbenlaw.castingtools.block.entity.ModifierBlockEntity;
+import com.benbenlaw.castingtools.block.entity.UpgraderBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
@@ -16,16 +16,16 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class ModifierBlock extends CastingBlock {
+public class UpgraderBlock extends CastingBlock {
 
-    public static final MapCodec<ModifierBlock> CODEC = simpleCodec(ModifierBlock::new);
+    public static final MapCodec<UpgraderBlock> CODEC = simpleCodec(UpgraderBlock::new);
 
     @Override
-    protected @NotNull MapCodec<ModifierBlock> codec() {
+    protected @NotNull MapCodec<UpgraderBlock> codec() {
         return CODEC;
     }
 
-    public ModifierBlock(Properties properties) {
+    public UpgraderBlock(Properties properties) {
         super(properties);
     }
 
@@ -33,7 +33,7 @@ public class ModifierBlock extends CastingBlock {
     protected @NotNull InteractionResult useWithoutItem(@NotNull BlockState state, Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull BlockHitResult hitResult) {
         if (!level.isClientSide()) {
             BlockEntity entity = level.getBlockEntity(pos);
-            if (entity instanceof ModifierBlockEntity entity1) {
+            if (entity instanceof UpgraderBlockEntity entity1) {
                 if (entity1.onPlayerUse(player, player.getUsedItemHand())) {
                     return InteractionResult.SUCCESS;
                 }
@@ -47,12 +47,12 @@ public class ModifierBlock extends CastingBlock {
 
     @Override
     public @Nullable BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
-        return new ModifierBlockEntity(pos, state);
+        return new UpgraderBlockEntity(pos, state);
     }
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(@NotNull Level level, @NotNull BlockState state, @NotNull BlockEntityType<T> blockEntityType) {
-        return createTickerHelper(blockEntityType, CTBlockEntities.MODIFIER_BLOCK_ENTITY.get(),
+        return createTickerHelper(blockEntityType, CTBlockEntities.UPGRADER_BLOCK_ENTITY.get(),
                 (thisLevel, thisPos, thisState, thisEntity) -> thisEntity.tick());
     }
 }

@@ -5,7 +5,7 @@ import com.benbenlaw.casting.item.CastingDataComponents;
 import com.benbenlaw.casting.item.FluidMoverItem;
 import com.benbenlaw.casting.item.util.FluidListComponent;
 import com.benbenlaw.castingtools.block.CTBlockEntities;
-import com.benbenlaw.castingtools.screen.ModifierMenu;
+import com.benbenlaw.castingtools.screen.UpgraderMenu;
 import com.benbenlaw.core.block.entity.SyncableBlockEntity;
 import com.benbenlaw.core.block.entity.handler.fluid.SyncableFluidHandler;
 import com.benbenlaw.core.block.entity.handler.item.SyncableItemHandler;
@@ -40,7 +40,7 @@ import org.jspecify.annotations.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModifierBlockEntity extends SyncableBlockEntity implements MenuProvider, FluidAccepting {
+public class UpgraderBlockEntity extends SyncableBlockEntity implements MenuProvider, FluidAccepting {
 
     private final SyncableItemHandler inventory = new SyncableItemHandler(this, 3, (i, stack) -> true, i -> i == 2);
     private final SyncableFluidHandler fluidInventory = new SyncableFluidHandler(this, 2, 16000, (i, stack) -> {
@@ -55,8 +55,8 @@ public class ModifierBlockEntity extends SyncableBlockEntity implements MenuProv
         return false;
     }, i -> i == 1);
 
-    public ModifierBlockEntity(BlockPos pos, BlockState state) {
-        super(CTBlockEntities.MODIFIER_BLOCK_ENTITY.get(), pos, state);
+    public UpgraderBlockEntity(BlockPos pos, BlockState state) {
+        super(CTBlockEntities.UPGRADER_BLOCK_ENTITY.get(), pos, state);
     }
 
     public void tick() {
@@ -73,7 +73,7 @@ public class ModifierBlockEntity extends SyncableBlockEntity implements MenuProv
                 int fluidAmount = 250;
                 if (player.totalExperience < xpToDrain) continue;
 
-                try (Transaction tx = Transaction.open(null)) {
+                try (Transaction tx = Transaction.openRoot()) {
                     int accepted = fluidInventory.insert(expResource, fluidAmount, tx);
 
                     if (accepted >= fluidAmount) {
@@ -93,7 +93,7 @@ public class ModifierBlockEntity extends SyncableBlockEntity implements MenuProv
             return FluidMoverItem.onBlockInteract(stack, fluidInventory, new int[]{1, 0}, new int[]{1, 0});
         }
 
-        try (Transaction tx = Transaction.open(null)) {
+        try (Transaction tx = Transaction.openRoot()) {
             boolean result = FluidUtil.interactWithFluidHandler(player, hand, this.worldPosition, fluidInventory, tx);
             if (result) {
                 tx.commit();
@@ -128,12 +128,12 @@ public class ModifierBlockEntity extends SyncableBlockEntity implements MenuProv
 
     @Override
     public @Nullable AbstractContainerMenu createMenu(int container, @NonNull Inventory inventory, @NonNull Player player) {
-        return new ModifierMenu(container, inventory, this.worldPosition, new SimpleContainerData(0));
+        return new UpgraderMenu(container, inventory, this.worldPosition, new SimpleContainerData(0));
     }
 
     @Override
     public @NonNull Component getDisplayName() {
-        return Component.translatable("block.castingtools.modifier");
+        return Component.translatable("block.castingtools.upgrader");
     }
 
     @Override

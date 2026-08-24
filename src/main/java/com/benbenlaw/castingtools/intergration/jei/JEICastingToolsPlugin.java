@@ -1,7 +1,7 @@
 package com.benbenlaw.castingtools.intergration.jei;
 
 import com.benbenlaw.castingtools.CastingTools;
-import com.benbenlaw.castingtools.block.CastingToolsBlocks;
+import com.benbenlaw.castingtools.block.CTBlocks;
 import com.benbenlaw.castingtools.event.client.ClientRecipeCache;
 import com.benbenlaw.castingtools.intergration.custom.ModifierCompatibilityRecipe;
 import com.benbenlaw.castingtools.intergration.custom.ModifierRecipe;
@@ -39,15 +39,15 @@ public class JEICastingToolsPlugin implements IModPlugin {
 
     @Override
     public void registerIngredientAliases(IIngredientAliasRegistration registration) {
-        registration.addAlias(CastingToolsBlocks.MODIFIER.toStack(), "Equipment Modifier");
+        registration.addAlias(CTBlocks.MODIFIER.toStack(), "Equipment Modifier");
     }
 
     @Override
     public void registerRecipeCatalysts(@NotNull IRecipeCatalystRegistration registration) {
-        registration.addCraftingStation(ModifierRecipeCategory.RECIPE_TYPE, CastingToolsBlocks.MODIFIER.toStack());
-        registration.addCraftingStation(BeheadingRecipeCategory.RECIPE_TYPE, CastingToolsBlocks.MODIFIER.toStack());
-        registration.addCraftingStation(TreasureRecipeCategory.RECIPE_TYPE, CastingToolsBlocks.MODIFIER.toStack());
-        registration.addCraftingStation(PulverizingRecipeCategory.RECIPE_TYPE, CastingToolsBlocks.MODIFIER.toStack());
+        registration.addCraftingStation(ModifierRecipeCategory.RECIPE_TYPE, CTBlocks.MODIFIER.toStack());
+        registration.addCraftingStation(BeheadingRecipeCategory.RECIPE_TYPE, CTBlocks.MODIFIER.toStack());
+        registration.addCraftingStation(TreasureRecipeCategory.RECIPE_TYPE, CTBlocks.MODIFIER.toStack());
+        registration.addCraftingStation(PulverizingRecipeCategory.RECIPE_TYPE, CTBlocks.MODIFIER.toStack());
     }
 
     @Override
@@ -74,7 +74,7 @@ public class JEICastingToolsPlugin implements IModPlugin {
 
         registration.addRecipes(ModifierRecipeCategory.RECIPE_TYPE, recipes);
 
-        registration.addIngredientInfo(new ItemStack(CastingToolsBlocks.MODIFIER), VanillaTypes.ITEM_STACK,
+        registration.addIngredientInfo(new ItemStack(CTBlocks.MODIFIER), VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.castingtools.modifier.information"));
 
         registration.addRecipes(BeheadingRecipeCategory.RECIPE_TYPE, ClientRecipeCache.getCachedBeheadingRecipes().stream().toList());

@@ -8,10 +8,17 @@ public class CastingToolsCapabilities {
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
 
         //Modifier
-        event.registerBlockEntity(Capabilities.Item.BLOCK, CastingToolsBlockEntities.MODIFIER_BLOCK_ENTITY.get(),
+        event.registerBlockEntity(Capabilities.Item.BLOCK, CTBlockEntities.MODIFIER_BLOCK_ENTITY.get(),
                 (blockEntity, side) -> blockEntity.getItemHandler());
 
-        event.registerBlockEntity(Capabilities.Fluid.BLOCK, CastingToolsBlockEntities.MODIFIER_BLOCK_ENTITY.get(),
+        event.registerBlockEntity(Capabilities.Fluid.BLOCK, CTBlockEntities.MODIFIER_BLOCK_ENTITY.get(),
+                (blockEntity, side) -> blockEntity.getFluidHandler());
+
+        //Upgrader
+        event.registerBlockEntity(Capabilities.Item.BLOCK, CTBlockEntities.UPGRADER_BLOCK_ENTITY.get(),
+                (blockEntity, side) -> blockEntity.getItemHandler());
+
+        event.registerBlockEntity(Capabilities.Fluid.BLOCK, CTBlockEntities.UPGRADER_BLOCK_ENTITY.get(),
                 (blockEntity, side) -> blockEntity.getFluidHandler());
 
     }

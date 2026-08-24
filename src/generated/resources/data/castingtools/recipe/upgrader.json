@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": "casting:black_bricks",
+    "B": "minecraft:smithing_table",
+    "C": "castingtools:modifier"
+  },
+  "pattern": [
+    "AAA",
+    "BCB",
+    "AAA"
+  ],
+  "result": {
+    "id": "castingtools:upgrader"
+  }
+}
