@@ -14,6 +14,6 @@ public class CTFluids {
 
     public static final FluidRegistryObject<FluidDeferredRegister.CoreFluidTypes, BaseFlowingFluid.Source, BaseFlowingFluid.Flowing, LiquidBlock, BucketItem> MOLTEN_OMNITHIUM = FLUIDS.register("molten_omnithium",
             renderProperties -> renderProperties.temperature(1000).texture(Core.identifier("block/liquid"),
-                    Core.identifier("block/liquid_flow")).tint(0x6EAEC1FF));
+                    Core.identifier("block/liquid_flow")).tint(0x6EAEC1FF).moveLikeLava());
 
 }
