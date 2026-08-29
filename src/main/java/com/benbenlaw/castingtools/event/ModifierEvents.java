@@ -110,14 +110,10 @@ public class ModifierEvents {
         Player player = event.getEntity();
         if (player.level().isClientSide()) return;
 
-        //handleAllInventoryModifiers(player, (modifier, stack, level) -> {
-        //    if (modifier instanceof StickyModifier) {
-        //        modifier.onPlayerTick(event, stack, modifier.getData(), level);
-        //    }
-        //});
+        handleAllInventoryModifiers(player, (modifier, stack, level) -> modifier.onPlayerEveryTick(event, stack, modifier.getData(), level));
 
         if (player.level().getGameTime() % 20 == 0) {
-            handleAllInventoryModifiers(player, (modifier, stack, level) -> modifier.onPlayerTick(event, stack, modifier.getData(), level));
+            handleAllInventoryModifiers(player, (modifier, stack, level) -> modifier.onPlayerLimitedTick(event, stack, modifier.getData(), level));
         }
     }
 

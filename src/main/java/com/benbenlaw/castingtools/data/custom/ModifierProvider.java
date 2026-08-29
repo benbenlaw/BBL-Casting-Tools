@@ -218,6 +218,7 @@ public class ModifierProvider implements DataProvider {
                     .validItem(tagToString(CTTags.Items.ALL_ARMORS.location()))
                     .ingredient("minecraft:nether_star", 4)
                     .fluid("casting:molten_netherite", 1620)
+                    .incompatibleModifier(CastingTools.identifier("jets"))
                     .save();
 
             // Soulbound
@@ -292,6 +293,13 @@ public class ModifierProvider implements DataProvider {
                     .associatedEnchantment(Identifier.withDefaultNamespace("infinity"))
                     .save();
 
+            //Jets
+            add(cachedOutput, futures, "jets", 3, 5, 8000)
+                    .validItem(tagToString(CTTags.Items.ALL_ARMORS.location()))
+                    .fluid("casting:molten_blaze", 450)
+                    .additionalValue(1.0)
+                    .incompatibleModifier(CastingTools.identifier("flight"))
+                    .save();
 
             return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
         });

@@ -1,13 +1,14 @@
-// 26.1.2	2026-08-24T11:18:23.199231	castingtools Modifiers
+// 26.1.2	2026-08-29T10:05:14.0702585	castingtools Modifiers
 9be7b355798f4710aefe8efa0149779e8e09a36a data/castingtools/modifier/beheading.json
 7b58d08a4932d4db5a465c3379ba307b54c10a03 data/castingtools/modifier/bouncy.json
 8358edb0ef27bdcc49fcdc63e05c7ba978f376ca data/castingtools/modifier/cobblestone_placer.json
 d45267c75f1b4e67e0e581b75d7bcfcaf70019fc data/castingtools/modifier/efficiency.json
 9e40b48a9cdf7bd19f97ae323eebbd6b92a6848d data/castingtools/modifier/excavation.json
-85cc5e0648dc6d5d8258028ff8001b7fe2bd5a52 data/castingtools/modifier/flight.json
+554d09cf1d07a9c059f03ce287b27db5ff61c8b6 data/castingtools/modifier/flight.json
 df73330fbfc552cdb3fe8d53ede94615b86469b8 data/castingtools/modifier/fortune.json
 ad3d1d04420ba9f0766fd8e803d0deb04b746115 data/castingtools/modifier/ignite.json
 fe1e3b8332ed157ae9a134c429ec85c467a2717f data/castingtools/modifier/infinity.json
+e68167eb07b6c73c07fd7e654dcd5bf86debcd02 data/castingtools/modifier/jets.json
 5f7fcc95155193226f8ed8db9ac4d2813aa90341 data/castingtools/modifier/knockback.json
 e8778596f82db4b01ce07daa02d28582dab84066 data/castingtools/modifier/lifesteal.json
 0f173b60fbe90d4fcc56fcad907c80e881d95c80 data/castingtools/modifier/lightning_strike.json

@@ -13,7 +13,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 public class FlightModifier extends Modifier {
 
     @Override
-    public void onPlayerTick(PlayerTickEvent.Post event, ItemStack stack, ModifierData data, int toolLevel) {
+    public void onPlayerLimitedTick(PlayerTickEvent.Post event, ItemStack stack, ModifierData data, int toolLevel) {
 
         Player player = event.getEntity();
         Level level = player.level();

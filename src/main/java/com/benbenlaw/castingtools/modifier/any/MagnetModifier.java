@@ -12,7 +12,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 public class MagnetModifier extends Modifier {
 
     @Override
-    public void onPlayerTick(PlayerTickEvent.Post event, ItemStack stack, ModifierData data, int toolLevel) {
+    public void onPlayerLimitedTick(PlayerTickEvent.Post event, ItemStack stack, ModifierData data, int toolLevel) {
         if (event.getEntity().level().isClientSide()) return;
         if (event.getEntity().gameMode() == GameType.SPECTATOR) return;
 

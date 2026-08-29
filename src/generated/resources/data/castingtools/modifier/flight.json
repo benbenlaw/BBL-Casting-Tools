@@ -4,6 +4,9 @@
   "experience_cost": 16000,
   "fluid": "casting:molten_netherite",
   "fluid_amount": 1620,
+  "incompatible_modifiers": [
+    "castingtools:jets"
+  ],
   "ingredient": "minecraft:nether_star",
   "ingredient_count": 4,
   "max_enhanced_level": 1,

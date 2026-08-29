@@ -52,6 +52,7 @@ public class ModifierRegistry {
     public static final DeferredHolder<Modifier, StickyModifier> STICKY = MODIFIERS.register("sticky", StickyModifier::new);
     public static final DeferredHolder<Modifier, FlightModifier> FLIGHT = MODIFIERS.register("flight", FlightModifier::new);
     public static final DeferredHolder<Modifier, RetaliationModifier> RETALIATION = MODIFIERS.register("retaliation", RetaliationModifier::new);
+    public static final DeferredHolder<Modifier, JetsModifier> JETS = MODIFIERS.register("jets", JetsModifier::new);
 
     //Weapon Modifiers
     public static final DeferredHolder<Modifier, IgniteModifier> IGNITE = MODIFIERS.register("ignite", IgniteModifier::new );

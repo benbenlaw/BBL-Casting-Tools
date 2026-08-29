@@ -1,0 +1,16 @@
+{
+  "additional_value": 1.0,
+  "description": "modifier.castingtools.jets.description",
+  "display_name": "modifier.castingtools.jets",
+  "experience_cost": 8000,
+  "fluid": "casting:molten_blaze",
+  "fluid_amount": 450,
+  "incompatible_modifiers": [
+    "castingtools:flight"
+  ],
+  "max_enhanced_level": 5,
+  "max_level": 3,
+  "valid_items": [
+    "#castingtools:all_armors"
+  ]
+}

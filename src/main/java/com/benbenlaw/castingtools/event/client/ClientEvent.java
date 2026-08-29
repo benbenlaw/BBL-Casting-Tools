@@ -5,20 +5,39 @@ import com.benbenlaw.castingtools.item.CTDataComponent;
 import com.benbenlaw.castingtools.item.ModifierComponent;
 import com.benbenlaw.castingtools.modifier.ModifierData;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
+import com.benbenlaw.castingtools.network.packet.JetJumpPacket;
 import com.benbenlaw.castingtools.utils.CTTags;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.client.network.ClientPacketDistributor;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.Objects;
 
 @EventBusSubscriber(modid = CastingTools.MOD_ID, value = Dist.CLIENT)
-public class TooltipEvent {
+public class ClientEvent {
+
+    private static boolean lastState = false;
+
+    @SubscribeEvent
+    public static void onPlayerJump(ClientTickEvent.Pre event) {
+
+        KeyMapping jumpKey = Minecraft.getInstance().options.keyJump;
+        boolean isJumping = jumpKey.isDown();
+
+        if (isJumping != lastState) {
+            ClientPacketDistributor.sendToServer(new JetJumpPacket(isJumping));
+            lastState = isJumping;
+        }
+    }
 
     @SubscribeEvent
     public static void onTooltipEvent(ItemTooltipEvent event) {

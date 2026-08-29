@@ -42,7 +42,8 @@ public abstract class Modifier {
     public void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event, ModifierData data, int toolLevel) {}
     public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event, ModifierData data, int toolLevel) {}
     public void onRightClickItem(PlayerInteractEvent.RightClickItem event, ModifierData data, int toolLevel) {}
-    public void onPlayerTick(PlayerTickEvent.Post event, ItemStack stack, ModifierData data, int toolLevel) {}
+    public void onPlayerLimitedTick(PlayerTickEvent.Post event, ItemStack stack, ModifierData data, int toolLevel) {}
+    public void onPlayerEveryTick(PlayerTickEvent.Post event, ItemStack stack, ModifierData data, int toolLevel) {}
     public void onPlayerDrops(LivingDropsEvent event, ItemStack stack, ModifierData data, int toolLevel, int slot) {}
     public void onPlayerDeath(LivingDeathEvent event, ItemStack stack, ModifierData data, int toolLevel, int slot) {}
     public void onPlayerClone(PlayerEvent.Clone event, ModifierData data, int toolLevel) {}
