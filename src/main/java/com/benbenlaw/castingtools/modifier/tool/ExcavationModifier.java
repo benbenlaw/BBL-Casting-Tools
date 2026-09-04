@@ -33,12 +33,13 @@ public class ExcavationModifier extends Modifier {
         Player player = (Player) event.getPlayer();
         Level level = player.level();
         ItemStack toolStack = player.getMainHandItem();
-        BlockEntity blockEntity = level.getBlockEntity(event.getPos());
 
         List<BlockPos> extraBlocks = getExtraBlocks(event.getPos(), player, level, event.getState(), toolLevel);
 
         for (BlockPos pos : extraBlocks) {
             BlockState state = level.getBlockState(pos);
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+
             Block.dropResources(state, level, pos, blockEntity, player, toolStack);
 
             boolean blockDestroyed = level.destroyBlock(pos, false);
