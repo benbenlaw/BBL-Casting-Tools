@@ -31,9 +31,11 @@ import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.transfer.fluid.FluidResource;
 import net.neoforged.neoforge.transfer.fluid.FluidStacksResourceHandler;
 import net.neoforged.neoforge.transfer.fluid.FluidUtil;
+import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.item.ItemStacksResourceHandler;
 import net.neoforged.neoforge.transfer.item.ItemUtil;
 import net.neoforged.neoforge.transfer.transaction.Transaction;
+import net.neoforged.neoforge.transfer.transaction.TransactionContext;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
 
@@ -120,6 +122,21 @@ public class UpgraderBlockEntity extends SyncableBlockEntity implements MenuProv
 
     public ItemStacksResourceHandler getItemHandler() {
         return inventory;
+    }
+
+    public ItemStacksResourceHandler getAutomationItemHandler() {
+        return new ItemStacksResourceHandler(3) {
+            @Override
+            public int extract(int index, ItemResource resource, int amount, TransactionContext tx) {
+                return 0;
+            }
+
+            @Override
+            public int insert(int index, ItemResource resource, int amount, TransactionContext tx) {
+                if (index == 2) return 0;
+                return inventory.insert(index, resource, amount, tx);
+            }
+        };
     }
 
     public FluidStacksResourceHandler getFluidHandler() {

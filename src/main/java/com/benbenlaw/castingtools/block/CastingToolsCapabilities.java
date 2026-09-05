@@ -9,14 +9,14 @@ public class CastingToolsCapabilities {
 
         //Modifier
         event.registerBlockEntity(Capabilities.Item.BLOCK, CTBlockEntities.MODIFIER_BLOCK_ENTITY.get(),
-                (blockEntity, side) -> blockEntity.getItemHandler());
+                (blockEntity, side) -> blockEntity.getAutomationItemHandler());
 
         event.registerBlockEntity(Capabilities.Fluid.BLOCK, CTBlockEntities.MODIFIER_BLOCK_ENTITY.get(),
                 (blockEntity, side) -> blockEntity.getFluidHandler());
 
         //Upgrader
         event.registerBlockEntity(Capabilities.Item.BLOCK, CTBlockEntities.UPGRADER_BLOCK_ENTITY.get(),
-                (blockEntity, side) -> blockEntity.getItemHandler());
+                (blockEntity, side) -> blockEntity.getAutomationItemHandler());
 
         event.registerBlockEntity(Capabilities.Fluid.BLOCK, CTBlockEntities.UPGRADER_BLOCK_ENTITY.get(),
                 (blockEntity, side) -> blockEntity.getFluidHandler());
