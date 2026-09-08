@@ -1,10 +1,11 @@
-// 26.1.2	2026-08-05T13:36:36.4210976	Tags for minecraft:item mod id castingtools
+// 26.1.2	2026-09-08T13:00:02.1934687	Tags for minecraft:item mod id castingtools
 db1e03703684ff6ecc870c39cf9dca92dce328d5 data/castingtools/tags/item/all_armors.json
 b72a9894bf3cfb2463a944c48380f815b57ff5e0 data/castingtools/tags/item/all_melee_weapons.json
 de75671f136ad29ecb1fee30fc8326bbb0cce33f data/castingtools/tags/item/all_ranged_weapons.json
 cc226d087fa5e9c99c8fa5d4b1c0826df7906d76 data/castingtools/tags/item/all_tools.json
 305ae9dd5e3b81ccfa33d881b60c94e2a07781e8 data/castingtools/tags/item/all_weapons.json
 5526943caa3cdf33a58311b55929bd82212877ea data/castingtools/tags/item/is_enhanceable.json
+35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/castingtools/tags/item/not_modifiable.json
 c0d75ebfaddcbe10bd11da1482614d3684d23cff data/c/tags/item/buckets.json
 74c62a40fc1c88c5b68f0298c90cd547e3a86ab4 data/c/tags/item/ingots.json
 74c62a40fc1c88c5b68f0298c90cd547e3a86ab4 data/c/tags/item/ingots/omnithium.json

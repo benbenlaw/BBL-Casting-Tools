@@ -99,6 +99,7 @@
   "tooltip.castingtools.beheading": "Drops from %s when tool has beheading modifier",
   "tooltip.castingtools.modifier.incompactible_modifier": "Incompatible Modifier",
   "tooltip.castingtools.modifier.max_level": "Max Level Reached",
+  "tooltip.castingtools.modifier.not_modifiable": "Cannot be Modified!",
   "tooltip.castingtools.pulverizing": "Breaking %s when tool has the pulverizing modifier",
   "tooltip.castingtools.treasure": "Breaking %s when tool has the treasure modifier",
   "tooltip.castingtools.upgrader.not_enough_experience": "Not Enough Experience",

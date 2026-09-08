@@ -8,6 +8,7 @@ import com.benbenlaw.castingtools.intergration.custom.ModifierRecipe;
 import com.benbenlaw.castingtools.modifier.Modifier;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import com.benbenlaw.castingtools.screen.ModifierScreen;
+import com.benbenlaw.castingtools.utils.CTTags;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
@@ -91,12 +92,14 @@ public class JEICastingToolsPlugin implements IModPlugin {
             for (TagKey<Item> tag : modifier.getValidTags()) {
                 BuiltInRegistries.ITEM.get(tag).ifPresent(holders -> {
                     for (Holder<Item> holder : holders) {
+                        if (holder.is(CTTags.Items.NOT_MODIFIABLE)) continue;
                         compatibleByItem.putIfAbsent(holder.value(), new ItemStack(holder.value()));
                     }
                 });
             }
 
             for (Item item : modifier.getValidItems()) {
+                if (BuiltInRegistries.ITEM.wrapAsHolder(item).is(CTTags.Items.NOT_MODIFIABLE)) continue;
                 compatibleByItem.putIfAbsent(item, new ItemStack(item));
             }
 

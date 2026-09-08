@@ -8,6 +8,7 @@ import com.benbenlaw.castingtools.utils.CTTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ItemTagsProvider;
 import org.jetbrains.annotations.NotNull;
@@ -22,6 +23,9 @@ public class CTItemTags extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
+
+        //Not Modifiable
+        tag(CTTags.Items.NOT_MODIFIABLE);
 
         //Tools
         tag(ItemTags.PICKAXES).add(CTItems.OMNITHIUM_PICKAXE.get());

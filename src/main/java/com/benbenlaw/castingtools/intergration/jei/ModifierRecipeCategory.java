@@ -5,6 +5,7 @@ import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.block.CTBlocks;
 import com.benbenlaw.castingtools.intergration.custom.ModifierRecipe;
 import com.benbenlaw.castingtools.modifier.Modifier;
+import com.benbenlaw.castingtools.utils.CTTags;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.ITooltipBuilder;
@@ -120,11 +121,15 @@ public class ModifierRecipeCategory implements IRecipeCategory<ModifierRecipe> {
 
         for (TagKey<Item> tag : recipe.modifier().getValidTags()) {
             for (Holder<Item> holder : Objects.requireNonNull(BuiltInRegistries.ITEM.get(tag).orElse(null))) {
+                if (holder.is(CTTags.Items.NOT_MODIFIABLE)) continue;
                 displayStacks.add(new ItemStack(holder.value()));
             }
         }
 
-        displayStacks.addAll(recipe.modifier().getValidItems().stream().map(ItemStack::new).toList());
+        displayStacks.addAll(recipe.modifier().getValidItems().stream()
+                .filter(item -> !BuiltInRegistries.ITEM.wrapAsHolder(item).is(CTTags.Items.NOT_MODIFIABLE))
+                .map(ItemStack::new)
+                .toList());
 
         builder.addSlot(RecipeIngredientRole.INPUT, 83, 12).addItemStacks(displayStacks);
     }

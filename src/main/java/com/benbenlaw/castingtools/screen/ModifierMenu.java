@@ -90,6 +90,19 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
             return;
         }
 
+        if (toolStack.is(CTTags.Items.NOT_MODIFIABLE)) {
+            ItemStack barrier = new ItemStack(Items.BARRIER);
+            barrier.set(DataComponents.CUSTOM_NAME, Component.translatable("tooltip.castingtools.modifier.not_modifiable")
+                    .withStyle(ChatFormatting.RED));
+
+            if (!ItemStack.matches(currentOutput, barrier)) {
+                blockEntity.getItemHandler().set(2, ItemResource.EMPTY, 0);
+                blockEntity.getItemHandler().set(2, ItemResource.of(barrier), 1);
+                this.broadcastChanges();
+            }
+            return;
+        }
+
         Modifier modifier = ModifierUtils.getMatchingModifier(toolStack, ingredientStack, FluidUtil.getStack(blockEntity.getFluidHandler(), 1));
 
         if (modifier == null || !modifier.isValid(toolStack)) {
