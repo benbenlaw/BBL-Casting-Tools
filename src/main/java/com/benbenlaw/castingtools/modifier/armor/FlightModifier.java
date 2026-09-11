@@ -24,12 +24,12 @@ public class FlightModifier extends Modifier {
                 ItemStack armorStack = player.getItemBySlot(slot);
 
                 var comp = armorStack.get(CTDataComponent.MODIFIER_COMPONENT);
-                if (comp != null) {
-                    isWorn = comp.modifiers().get(ModifierRegistry.FLIGHT.get().getId()) != null;
+                if (comp != null && comp.modifiers().get(ModifierRegistry.FLIGHT.get().getId()) != null) {
+                    isWorn = true;
+                    break;
                 }
             }
         }
-
 
         if (!player.isCreative() && !player.isSpectator() && isWorn) {
             player.addTag("casting_flight");
