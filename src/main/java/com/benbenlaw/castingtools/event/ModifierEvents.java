@@ -70,6 +70,17 @@ public class ModifierEvents {
             handleModifiers(attacker, (modifier, level) ->
                     modifier.onPostHit(event, modifier.getData(), level));
         }
+
+        LivingEntity victim = event.getEntity();
+        for (EquipmentSlot slot : EquipmentSlot.values()) {
+            if (slot.getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
+                ItemStack armorStack = victim.getItemBySlot(slot);
+                if (!armorStack.isEmpty()) {
+                    processStack(armorStack, (modifier, stack, level) ->
+                            modifier.onPostHit(event, modifier.getData(), level));
+                }
+            }
+        }
     }
 
     @SubscribeEvent
