@@ -30,7 +30,7 @@ public class ExcavationModifier extends Modifier {
 
     @Override
     public void onBlockBreak(BreakBlockEvent event, ModifierData data, int toolLevel) {
-        Player player = (Player) event.getPlayer();
+        Player player = event.getPlayer();
         Level level = player.level();
         ItemStack toolStack = player.getMainHandItem();
 
@@ -61,6 +61,7 @@ public class ExcavationModifier extends Modifier {
 
             BlockState state = level.getBlockState(pos);
             if (state.getDestroySpeed(level, pos) < 0) continue;
+            if (!player.hasCorrectToolForDrops(state, level, pos)) continue;
 
             float originHardness = originState.getDestroySpeed(level, origin);
             float targetHardness = state.getDestroySpeed(level, pos);

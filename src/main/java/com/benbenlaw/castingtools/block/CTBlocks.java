@@ -15,6 +15,7 @@ public class CTBlocks {
 
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(CastingTools.MOD_ID);
 
+    
 
     public static final DeferredBlock<Block> MODIFIER = registerBlock("modifier",
             properties -> new ModifierBlock(properties
