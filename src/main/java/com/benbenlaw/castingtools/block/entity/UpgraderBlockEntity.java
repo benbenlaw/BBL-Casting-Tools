@@ -71,8 +71,8 @@ public class UpgraderBlockEntity extends SyncableBlockEntity implements MenuProv
         for (Player player : players) {
             if (player.totalExperience > 0 && fluidInventory.getAmountAsInt(0) < fluidInventory.getCapacityAsInt(0, expResource)) {
 
-                int xpToDrain = 10;
-                int fluidAmount = 250;
+                int xpToDrain = 1;
+                int fluidAmount = 20;
                 if (player.totalExperience < xpToDrain) continue;
 
                 try (Transaction tx = Transaction.openRoot()) {
