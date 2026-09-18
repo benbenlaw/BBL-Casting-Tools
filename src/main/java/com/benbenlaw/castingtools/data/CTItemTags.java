@@ -27,6 +27,9 @@ public class CTItemTags extends ItemTagsProvider {
         //Not Modifiable
         tag(CTTags.Items.NOT_MODIFIABLE);
 
+        //Valid
+        tag(CTTags.Items.VALID_UPGRADER_ITEMS);
+
         //Tools
         tag(ItemTags.PICKAXES).add(CTItems.OMNITHIUM_PICKAXE.get());
         tag(ItemTags.SHOVELS).add(CTItems.OMNITHIUM_SHOVEL.get());

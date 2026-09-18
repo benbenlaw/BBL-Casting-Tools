@@ -26,6 +26,7 @@ public class CTTags {
         public static final TagKey<Item> OMNITHIUM_INGOT = tag("c", "ingots/omnithium");
         public static final TagKey<Item> OMNITHIUM_BLOCK = tag("c", "storage_blocks/omnithium");
 
+        public static final TagKey<Item> VALID_UPGRADER_ITEMS = tag(CastingTools.MOD_ID,  "valid_upgrader_items");
     }
 
     public static class Blocks extends CoreTags.Blocks {

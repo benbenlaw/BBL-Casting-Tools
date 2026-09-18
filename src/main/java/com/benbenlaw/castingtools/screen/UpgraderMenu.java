@@ -6,6 +6,7 @@ import com.benbenlaw.castingtools.config.CTServerConfig;
 import com.benbenlaw.castingtools.item.CTDataComponent;
 import com.benbenlaw.castingtools.item.ModifierComponent;
 import com.benbenlaw.castingtools.screen.util.UpgraderResultSlot;
+import com.benbenlaw.castingtools.utils.CTTags;
 import com.benbenlaw.core.block.entity.handler.fluid.SyncableFluidHandler;
 import com.benbenlaw.core.block.entity.handler.item.SyncableItemHandler;
 import com.benbenlaw.core.screen.SimpleAbstractContainerMenu;
@@ -226,8 +227,8 @@ public class UpgraderMenu extends SimpleAbstractContainerMenu {
                     .map(r -> (MeltingRecipe) r)
                     .filter(r -> r.output().stream().anyMatch(template -> FluidStack.isSameFluid(tankFluid, template)))
                     .sorted((a, b) -> {
-                        boolean aTiered = a.input().ingredient().items().anyMatch(h -> h.is(gemsTag) || h.is(ingotsTag));
-                        boolean bTiered = b.input().ingredient().items().anyMatch(h -> h.is(gemsTag) || h.is(ingotsTag));
+                        boolean aTiered = a.input().ingredient().items().anyMatch(h -> h.is(gemsTag) || h.is(ingotsTag)|| h.is(CTTags.Items.VALID_UPGRADER_ITEMS));
+                        boolean bTiered = b.input().ingredient().items().anyMatch(h -> h.is(gemsTag) || h.is(ingotsTag)|| h.is(CTTags.Items.VALID_UPGRADER_ITEMS));
                         return Boolean.compare(bTiered, aTiered);
                     })
                     .toList();
