@@ -16,10 +16,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
-import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
+import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.ArrowLooseEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
@@ -38,6 +35,15 @@ import java.util.function.BiConsumer;
 public class ModifierEvents {
 
     public static final Map<UUID, Direction> lastHitDirectionMap = new HashMap<>();
+
+    @SubscribeEvent
+    public static void onEntityDropExperience(LivingExperienceDropEvent event) {
+        if (event.getAttackingPlayer() instanceof LivingEntity attacker) {
+            handleModifiers(attacker, (modifier, level) ->
+                    modifier.onExperienceDropped(event, modifier.getData(), level));
+        }
+
+    }
 
     @SubscribeEvent
     public static void onLivingDamagePre(LivingDamageEvent.Pre event) {

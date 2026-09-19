@@ -66,8 +66,20 @@ public class UpgraderMenu extends SimpleAbstractContainerMenu {
 
         assert blockEntity != null;
 
-        this.addSlot(new InputSlot(blockEntity.getItemHandler(), blockEntity.getItemHandler()::set, 0, 63, 35));
-        this.addSlot(new InputSlot(blockEntity.getItemHandler(), blockEntity.getItemHandler()::set, 1, 98, 35).size(1));
+        this.addSlot(new InputSlot(blockEntity.getItemHandler(), blockEntity.getItemHandler()::set, 0, 63, 35) {
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return !stack.has(DataComponents.REPAIRABLE);
+            }
+        });
+
+        this.addSlot(new InputSlot(blockEntity.getItemHandler(), blockEntity.getItemHandler()::set, 1, 98, 35){
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return stack.has(DataComponents.REPAIRABLE);
+            }
+        });
+
         this.addSlot(new UpgraderResultSlot((SyncableItemHandler) blockEntity.getItemHandler(), (SyncableFluidHandler) blockEntity.getFluidHandler(),
                 (SyncableItemHandler) blockEntity.getItemHandler(), blockEntity.getItemHandler()::set, 2, 152, 35, this.level).size(1));
 

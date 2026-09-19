@@ -55,8 +55,19 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
 
         assert blockEntity != null;
 
-        this.addSlot(new InputSlot(blockEntity.getItemHandler(), blockEntity.getItemHandler()::set, 0, 63, 35));
-        this.addSlot(new InputSlot(blockEntity.getItemHandler(), blockEntity.getItemHandler()::set, 1, 98, 35).size(1));
+        this.addSlot(new InputSlot(blockEntity.getItemHandler(), blockEntity.getItemHandler()::set, 0, 63, 35) {
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return !ModifierUtils.hasAvailableModifier(stack);
+            }
+        });
+
+        this.addSlot(new InputSlot(blockEntity.getItemHandler(), blockEntity.getItemHandler()::set, 1, 98, 35) {
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return ModifierUtils.hasAvailableModifier(stack);
+            }
+        });
         this.addSlot(new ModifierResultSlot((SyncableItemHandler) blockEntity.getItemHandler(), (SyncableFluidHandler) blockEntity.getFluidHandler(), (SyncableItemHandler) blockEntity.getItemHandler(),
                 blockEntity.getItemHandler()::set, 2, 152, 35).size(1));
 

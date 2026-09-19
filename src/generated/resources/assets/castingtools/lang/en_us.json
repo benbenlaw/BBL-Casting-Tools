@@ -42,6 +42,7 @@
   "modifier.castingtools.efficiency.description": "Increases mining speed",
   "modifier.castingtools.excavation": "Excavation",
   "modifier.castingtools.excavation.description": "Increases the area of effect when mining, allowing you to mine multiple blocks at once",
+  "modifier.castingtools.experience_boost": "Experience Boost",
   "modifier.castingtools.flight": "Flight",
   "modifier.castingtools.flight.description": "Provides flight",
   "modifier.castingtools.fortune": "Fortune",

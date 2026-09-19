@@ -202,5 +202,21 @@ public class ModifierUtils {
         return false;
     }
 
+    public static boolean hasAvailableModifier(ItemStack stack) {
+        if (stack.isEmpty()) return false;
 
+        for (Modifier modifier : ModifierRegistry.MODIFIER_REGISTRY) {
+            if (!modifier.isValid(stack)) continue;
+            if (hasConflict(stack, modifier)) continue;
+
+            int currentLevel = getModifierLevel(stack, modifier);
+            int maxLevel = stack.is(CTTags.Items.ENHANCED) ? modifier.getMaxEnhancedLevel() : modifier.getMaxLevel();
+
+            if (currentLevel < maxLevel) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

@@ -43,6 +43,7 @@ public class ModifierRegistry {
     public static final DeferredHolder<Modifier, SoulboundModifier> SOULBOUND = MODIFIERS.register("soulbound", SoulboundModifier::new);
     public static final DeferredHolder<Modifier, MagnetModifier> MAGNET = MODIFIERS.register("magnet", MagnetModifier::new);
     public static final DeferredHolder<Modifier, BouncyModifier> BOUNCY = MODIFIERS.register("bouncy", BouncyModifier::new);
+    public static final DeferredHolder<Modifier, ExperienceBoostModifier> EXPERIENCE_BOOST = MODIFIERS.register("experience_boost", ExperienceBoostModifier::new);
 
     //Armor Modifiers
     public static final DeferredHolder<Modifier, ProtectionModifier> PROTECTION = MODIFIERS.register("protection", ProtectionModifier::new);

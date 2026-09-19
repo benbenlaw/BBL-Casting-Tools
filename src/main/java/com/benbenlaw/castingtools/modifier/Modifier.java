@@ -12,10 +12,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.crafting.SizedIngredient;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
-import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
+import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.ArrowLooseEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
@@ -51,6 +48,7 @@ public abstract class Modifier {
     public void onFalling(LivingFallEvent event, ItemStack stack, ModifierData data) {}
     public void modifyDrops(DropContext context, ModifierData data, int toolLevel) {}
     public void onBowFired(ArrowLooseEvent event, ModifierData data, int toolLevel) {}
+    public void onExperienceDropped(LivingExperienceDropEvent event, ModifierData data, int toolLevel) {}
     public boolean overridesLootTable(ItemStack stack, ModifierData data, int toolLevel) { return false; }
 
     public void setData(ModifierData data) {

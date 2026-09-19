@@ -301,6 +301,13 @@ public class ModifierProvider implements DataProvider {
                     .incompatibleModifier(CastingTools.identifier("flight"))
                     .save();
 
+            //Experience Boost
+            add(cachedOutput, futures, "experience_boost", 8, 12, 4000)
+                    .validItem(tagToString(CTTags.Items.ALL_TOOLS.location()))
+                    .ingredient("minecraft:experience_bottle", 16)
+                    .additionalValue(0.25)
+                    .save();
+
             return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
         });
     }
