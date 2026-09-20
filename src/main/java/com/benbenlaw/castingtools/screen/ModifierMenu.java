@@ -86,9 +86,21 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
         setupResult();
     }
 
+    private boolean updatingResult = false;
+
     private void setupResult() {
         if (this.level.isClientSide()) return;
+        if (this.updatingResult) return;
 
+        this.updatingResult = true;
+        try {
+            setupResult0();
+        } finally {
+            this.updatingResult = false;
+        }
+    }
+
+    private void setupResult0() {
         ItemStack ingredientStack = ItemUtil.getStack(blockEntity.getItemHandler(), 0);
         ItemStack toolStack = ItemUtil.getStack(blockEntity.getItemHandler(), 1);
         ItemStack currentOutput = ItemUtil.getStack(blockEntity.getItemHandler(), 2);
@@ -96,7 +108,6 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
         if (toolStack.isEmpty()) {
             if (!currentOutput.isEmpty()) {
                 blockEntity.getItemHandler().set(2, ItemResource.EMPTY, 0);
-                this.broadcastChanges();
             }
             return;
         }
@@ -109,7 +120,6 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
             if (!ItemStack.matches(currentOutput, barrier)) {
                 blockEntity.getItemHandler().set(2, ItemResource.EMPTY, 0);
                 blockEntity.getItemHandler().set(2, ItemResource.of(barrier), 1);
-                this.broadcastChanges();
             }
             return;
         }
@@ -119,7 +129,6 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
         if (modifier == null || !modifier.isValid(toolStack)) {
             if (!currentOutput.isEmpty()) {
                 blockEntity.getItemHandler().set(2, ItemResource.EMPTY, 0);
-                this.broadcastChanges();
             }
             return;
         }
@@ -159,7 +168,6 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
 
                 if (!ItemStack.matches(currentOutput, barrier)) {
                     blockEntity.getItemHandler().set(2, ItemResource.of(barrier), 1);
-                    this.broadcastChanges();
                 }
                 return;
             }
@@ -175,7 +183,6 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
 
                 if (!ItemStack.matches(currentOutput, barrier)) {
                     blockEntity.getItemHandler().set(2, ItemResource.of(barrier), 1);
-                    this.broadcastChanges();
                 }
                 return;
             }
@@ -186,13 +193,25 @@ public class ModifierMenu extends SimpleAbstractContainerMenu {
             if (!ItemStack.matches(currentOutput, result)) {
                 blockEntity.getItemHandler().set(2, ItemResource.EMPTY, 0);
                 blockEntity.getItemHandler().set(2, ItemResource.of(result), 1);
-                this.broadcastChanges();
                 blockEntity.setChanged();
             }
-        } else {
-            if (!currentOutput.isEmpty()) {
+        } else if (!hasExperience) {
+            ItemStack barrier = new ItemStack(Items.BARRIER);
+            barrier.set(DataComponents.CUSTOM_NAME, Component.translatable("tooltip.castingtools.modifier.not_enough_experience")
+                    .withStyle(ChatFormatting.RED));
+
+            if (!ItemStack.matches(currentOutput, barrier)) {
                 blockEntity.getItemHandler().set(2, ItemResource.EMPTY, 0);
-                this.broadcastChanges();
+                blockEntity.getItemHandler().set(2, ItemResource.of(barrier), 1);
+            }
+        } else {
+            ItemStack barrier = new ItemStack(Items.BARRIER);
+            barrier.set(DataComponents.CUSTOM_NAME, Component.translatable("tooltip.castingtools.modifier.not_enough_input")
+                    .withStyle(ChatFormatting.RED));
+
+            if (!ItemStack.matches(currentOutput, barrier)) {
+                blockEntity.getItemHandler().set(2, ItemResource.EMPTY, 0);
+                blockEntity.getItemHandler().set(2, ItemResource.of(barrier), 1);
             }
         }
     }

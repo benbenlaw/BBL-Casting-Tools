@@ -28,6 +28,9 @@ public class CTLangProvider extends LanguageProvider {
         add("tooltip.castingtools.modifier.incompactible_modifier", "Incompatible Modifier");
         add("tooltip.castingtools.modifier.max_level", "Max Level Reached");
         add("tooltip.castingtools.modifier.not_modifiable", "Cannot be Modified!");
+        add("tooltip.castingtools.modifier.not_enough_materials", "Not Enough Materials");
+        add("tooltip.castingtools.modifier.not_enough_experience", "Not Enough Experience");
+
         add("tooltip.castingtools.upgrader.not_enough_experience", "Not Enough Experience");
         add("tooltip.castingtools.upgrader.not_enough_materials", "Not Enough Materials");
 
