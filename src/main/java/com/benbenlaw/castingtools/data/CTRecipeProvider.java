@@ -89,7 +89,7 @@ public class CTRecipeProvider extends RecipeProvider {
                 .save(output);
 
         //Omnithium Template
-        shaped(RecipeCategory.MISC, CTItems.OMNITHIUM_UPGRADE_SMITHING_TEMPLATE)
+        shaped(RecipeCategory.MISC, CTItems.OMNITHIUM_UPGRADE_SMITHING_TEMPLATE, 2)
                 .pattern("ABA")
                 .pattern("ACA")
                 .pattern("AAA")

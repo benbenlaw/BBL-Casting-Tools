@@ -1,4 +1,4 @@
-package com.benbenlaw.castingtools.intergration.custom;
+package com.benbenlaw.castingtools.intergration.jei.custom;
 
 import com.benbenlaw.castingtools.modifier.Modifier;
 import net.minecraft.world.item.ItemStack;

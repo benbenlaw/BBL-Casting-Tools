@@ -90,7 +90,10 @@ dependencies {
     runtimeOnly("curse.maven:opolis-strainers-882351:8048828")
     //Ender IO
     runtimeOnly("curse.maven:ender-io-64578:8004141")
-
+    //AE2
+    implementation("curse.maven:applied-energistics-2-223794:8129795")
+    //Guide ME
+    implementation("curse.maven:guideme-1173950:8204880")
 }
 
 tasks.withType(ProcessResources).configureEach {

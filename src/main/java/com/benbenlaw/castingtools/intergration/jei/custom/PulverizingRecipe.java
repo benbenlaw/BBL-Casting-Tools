@@ -1,4 +1,4 @@
-package com.benbenlaw.castingtools.intergration.custom;
+package com.benbenlaw.castingtools.intergration.jei.custom;
 
 import com.benbenlaw.core.recipe.ChanceResult;
 import net.minecraft.world.level.block.Block;

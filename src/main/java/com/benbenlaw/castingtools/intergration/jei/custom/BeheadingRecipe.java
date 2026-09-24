@@ -1,4 +1,4 @@
-package com.benbenlaw.castingtools.intergration.custom;
+package com.benbenlaw.castingtools.intergration.jei.custom;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStackTemplate;

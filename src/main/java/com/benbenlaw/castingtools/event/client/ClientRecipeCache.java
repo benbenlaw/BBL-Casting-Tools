@@ -1,8 +1,8 @@
 package com.benbenlaw.castingtools.event.client;
 
-import com.benbenlaw.castingtools.intergration.custom.BeheadingRecipe;
-import com.benbenlaw.castingtools.intergration.custom.PulverizingRecipe;
-import com.benbenlaw.castingtools.intergration.custom.TreasureRecipe;
+import com.benbenlaw.castingtools.intergration.jei.custom.BeheadingRecipe;
+import com.benbenlaw.castingtools.intergration.jei.custom.PulverizingRecipe;
+import com.benbenlaw.castingtools.intergration.jei.custom.TreasureRecipe;
 import net.minecraft.resources.Identifier;
 
 import java.util.Collection;

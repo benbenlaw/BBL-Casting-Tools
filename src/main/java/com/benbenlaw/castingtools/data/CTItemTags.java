@@ -1,5 +1,9 @@
 package com.benbenlaw.castingtools.data;
 
+import appeng.core.definitions.AEBlocks;
+import appeng.core.definitions.AEItems;
+import appeng.core.definitions.AEParts;
+import appeng.parts.automation.AnnihilationPlanePart;
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.block.CTBlocks;
 import com.benbenlaw.castingtools.fluids.CTFluids;
@@ -25,7 +29,9 @@ public class CTItemTags extends ItemTagsProvider {
     protected void addTags(HolderLookup.@NotNull Provider provider) {
 
         //Not Modifiable
-        tag(CTTags.Items.NOT_MODIFIABLE);
+        tag(CTTags.Items.NOT_MODIFIABLE)
+                .addOptional(AEParts.ANNIHILATION_PLANE.get())
+        ;
 
         //Valid
         tag(CTTags.Items.VALID_UPGRADER_ITEMS);

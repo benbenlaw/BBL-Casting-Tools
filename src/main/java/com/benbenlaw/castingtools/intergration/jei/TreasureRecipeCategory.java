@@ -1,7 +1,7 @@
 package com.benbenlaw.castingtools.intergration.jei;
 
 import com.benbenlaw.castingtools.CastingTools;
-import com.benbenlaw.castingtools.intergration.custom.TreasureRecipe;
+import com.benbenlaw.castingtools.intergration.jei.custom.TreasureRecipe;
 import com.benbenlaw.core.recipe.ChanceResult;
 import com.benbenlaw.core.util.MouseUtil;
 import mezz.jei.api.constants.VanillaTypes;

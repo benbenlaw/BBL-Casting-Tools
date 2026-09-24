@@ -1,7 +1,7 @@
 package com.benbenlaw.castingtools.intergration.jei;
 
 import com.benbenlaw.castingtools.CastingTools;
-import com.benbenlaw.castingtools.intergration.custom.BeheadingRecipe;
+import com.benbenlaw.castingtools.intergration.jei.custom.BeheadingRecipe;
 import com.benbenlaw.core.util.MouseUtil;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;

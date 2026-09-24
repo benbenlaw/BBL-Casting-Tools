@@ -2,7 +2,7 @@ package com.benbenlaw.castingtools.intergration.jei;
 
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.castingtools.block.CTBlocks;
-import com.benbenlaw.castingtools.intergration.custom.ModifierCompatibilityRecipe;
+import com.benbenlaw.castingtools.intergration.jei.custom.ModifierCompatibilityRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;

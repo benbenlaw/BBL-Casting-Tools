@@ -3,7 +3,7 @@ package com.benbenlaw.castingtools.intergration.jei;
 import com.benbenlaw.casting.Casting;
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.block.CTBlocks;
-import com.benbenlaw.castingtools.intergration.custom.ModifierRecipe;
+import com.benbenlaw.castingtools.intergration.jei.custom.ModifierRecipe;
 import com.benbenlaw.castingtools.modifier.Modifier;
 import com.benbenlaw.castingtools.utils.CTTags;
 import mezz.jei.api.constants.VanillaTypes;
