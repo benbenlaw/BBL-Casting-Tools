@@ -23,6 +23,7 @@ public class CTBlockTags extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(CTBlocks.MODIFIER.get())
                 .add(CTBlocks.UPGRADER.get())
+                .add(CTBlocks.CONFIGURATOR.get())
                 .add(CTBlocks.OMNITHIUM_BLOCK.get())
         ;
 

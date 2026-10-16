@@ -21,6 +21,7 @@ public class CTLangProvider extends LanguageProvider {
         //Blocks
         add("block.castingtools.modifier", "Modifier");
         add("block.castingtools.upgrader", "Upgrader");
+        add("block.castingtools.configurator", "Configurator");
         add("block.castingtools.omnithium_block", "Omnithium Block");
         add("block.castingtools.molten_omnithium", "Molten Omnithium");
 
@@ -33,6 +34,11 @@ public class CTLangProvider extends LanguageProvider {
 
         add("tooltip.castingtools.upgrader.not_enough_experience", "Not Enough Experience");
         add("tooltip.castingtools.upgrader.not_enough_materials", "Not Enough Materials");
+
+        add("tooltip.castingtools.configurator.insert", "Insert a modified tool");
+        add("tooltip.castingtools.configurator.drag", "Drag to change the level, click the name to toggle");
+        add("tooltip.castingtools.configurator.off", "Disabled");
+        add("tooltip.castingtools.configurator.level", "Level %s / %s");
 
         //Items
         add("item.castingtools.omnithium_nugget", "Omnithium Nugget");

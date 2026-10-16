@@ -1,6 +1,7 @@
 package com.benbenlaw.castingtools.block;
 
 import com.benbenlaw.castingtools.CastingTools;
+import com.benbenlaw.castingtools.block.entity.ConfiguratorBlockEntity;
 import com.benbenlaw.castingtools.block.entity.ModifierBlockEntity;
 import com.benbenlaw.castingtools.block.entity.UpgraderBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -20,5 +21,9 @@ public class CTBlockEntities {
     public static final Supplier<BlockEntityType<UpgraderBlockEntity>> UPGRADER_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("upgrader_block_entity", () ->
                     new BlockEntityType<>(UpgraderBlockEntity::new, CTBlocks.UPGRADER.get()));
+
+    public static final Supplier<BlockEntityType<ConfiguratorBlockEntity>> CONFIGURATOR_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("configurator_block_entity", () ->
+                    new BlockEntityType<>(ConfiguratorBlockEntity::new, CTBlocks.CONFIGURATOR.get()));
 
 }

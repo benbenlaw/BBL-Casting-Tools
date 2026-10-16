@@ -16,4 +16,7 @@ public class CTMenuTypes {
 
     public static final DeferredHolder<MenuType<?>, MenuType<UpgraderMenu>> UPGRADER_MENU =
             MENUS.register("upgrader_menu", () -> IMenuTypeExtension.create(UpgraderMenu::new));
+
+    public static final DeferredHolder<MenuType<?>, MenuType<ConfiguratorMenu>> CONFIGURATOR_MENU =
+            MENUS.register("configurator_menu", () -> IMenuTypeExtension.create(ConfiguratorMenu::new));
 }

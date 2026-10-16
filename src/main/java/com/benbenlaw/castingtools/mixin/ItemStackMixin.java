@@ -50,11 +50,11 @@ public class ItemStackMixin {
         ModifierComponent comp = tool.get(CTDataComponent.MODIFIER_COMPONENT);
         if (comp == null) return;
 
-        if (!comp.modifiers().containsKey(UNBREAKING.get().getId())) return;
+        int levelValue = comp.activeLevel(UNBREAKING.get().getId());
+        if (levelValue <= 0) return;
 
         ModifierData modifier = Objects.requireNonNull(MODIFIER_REGISTRY.getValue(UNBREAKING.get().getId())).getData();
 
-        int levelValue = comp.modifiers().get(UNBREAKING.get().getId());
         float chance = levelValue * modifier.additionalValue().get().floatValue();
 
         RandomSource random = (level != null) ? level.getRandom() : RandomSource.create();

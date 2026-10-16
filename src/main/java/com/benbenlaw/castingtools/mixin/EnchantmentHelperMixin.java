@@ -43,7 +43,7 @@ public class EnchantmentHelperMixin {
 
         int modifierLevel = 0;
 
-        for (var entry : comp.modifiers().entrySet()) {
+        for (var entry : comp.activeModifiers().entrySet()) {
 
             Identifier id = entry.getKey();
             int level = entry.getValue();
@@ -89,7 +89,7 @@ public class EnchantmentHelperMixin {
 
         int modifierLevel = 0;
 
-        for (var entry : comp.modifiers().entrySet()) {
+        for (var entry : comp.activeModifiers().entrySet()) {
 
             Identifier id = entry.getKey();
             int level = entry.getValue();
@@ -136,7 +136,7 @@ public class EnchantmentHelperMixin {
             return;
         }
 
-        for (var entry : comp.modifiers().entrySet()) {
+        for (var entry : comp.activeModifiers().entrySet()) {
 
             Identifier id = entry.getKey();
             int level = entry.getValue();
@@ -180,7 +180,7 @@ public class EnchantmentHelperMixin {
 
         EnchantedItemInUse itemInUse = null;
 
-        for (var entry : comp.modifiers().entrySet()) {
+        for (var entry : comp.activeModifiers().entrySet()) {
 
             Identifier id = entry.getKey();
             int level = entry.getValue();

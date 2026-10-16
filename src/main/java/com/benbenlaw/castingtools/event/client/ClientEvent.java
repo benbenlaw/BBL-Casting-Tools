@@ -56,7 +56,8 @@ public class ClientEvent {
                 event.getToolTip().add(Component.literal("Modifiers:").withStyle(ChatFormatting.BLUE));
 
 
-                comp.modifiers().forEach((location, level) -> {
+                comp.modifiers().forEach((location, installed) -> {
+                    int level = comp.activeLevel(location);
                     ModifierData modifier = Objects.requireNonNull(ModifierRegistry.MODIFIER_REGISTRY.getValue(location)).getData();
 
                     if (modifier != null) {
@@ -64,7 +65,8 @@ public class ClientEvent {
 
                         event.getToolTip().add(Component.literal(" - ")
                                 .append(name.copy().withStyle(ChatFormatting.GOLD))
-                                .append(Component.literal(" " + level).withStyle(ChatFormatting.YELLOW)));
+                                .append(Component.literal(level == installed ? " " + level : " " + level + "/" + installed)
+                                        .withStyle(level == 0 ? ChatFormatting.DARK_GRAY : ChatFormatting.YELLOW)));
                     }
                 });
             } else {

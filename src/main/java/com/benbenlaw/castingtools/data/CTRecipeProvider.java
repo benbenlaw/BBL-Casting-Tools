@@ -88,6 +88,17 @@ public class CTRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_clay", has(CastingItems.BLACK_BRICK))
                 .save(output);
 
+        //Configurator
+        shaped(RecipeCategory.MISC, CTBlocks.CONFIGURATOR)
+                .pattern("AAA")
+                .pattern("BCB")
+                .pattern("AAA")
+                .define('A', CastingBlocks.BLACK_BRICKS)
+                .define('B', Items.REDSTONE)
+                .define('C', CTBlocks.MODIFIER)
+                .unlockedBy("has_clay", has(CastingItems.BLACK_BRICK))
+                .save(output);
+
         //Omnithium Template
         shaped(RecipeCategory.MISC, CTItems.OMNITHIUM_UPGRADE_SMITHING_TEMPLATE, 2)
                 .pattern("ABA")

@@ -1,6 +1,7 @@
 package com.benbenlaw.castingtools.network;
 
 import com.benbenlaw.castingtools.CastingTools;
+import com.benbenlaw.castingtools.network.packet.ConfiguratorLevelPacket;
 import com.benbenlaw.castingtools.network.packet.JetJumpPacket;
 import com.benbenlaw.castingtools.network.packet.ModifiersSyncPacket;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
@@ -17,5 +18,6 @@ public class CastingToolsNetworking {
 
         //Client to Server
         registrar.playToServer(JetJumpPacket.TYPE, JetJumpPacket.STREAM_CODEC, JetJumpPacket.HANDLER);
+        registrar.playToServer(ConfiguratorLevelPacket.TYPE, ConfiguratorLevelPacket.STREAM_CODEC, ConfiguratorLevelPacket.HANDLER);
     }
 }

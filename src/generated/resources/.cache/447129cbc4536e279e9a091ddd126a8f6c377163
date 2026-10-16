@@ -1,8 +1,10 @@
-// 26.1.2	2026-09-24T09:02:54.0081211	castingtools Recipes
+// 26.1.2	2026-10-16T08:41:46.4525473	castingtools Recipes
+2882c6f6c62dfa150520c4a4c5c9d3e80e01b0ab data/castingtools/advancement/recipes/misc/configurator.json
 4274a0bae05a513a1aff10333a300ea3b246971f data/castingtools/advancement/recipes/misc/modifier.json
 486070d2a60279155b8aa46f078bb3fac97b042a data/castingtools/advancement/recipes/misc/omnithium_upgrade_smithing_template.json
 3cea0b79537b5cd38602340c7b182baf09d7c492 data/castingtools/advancement/recipes/misc/reset.json
 91ded9d0af1aebf9c6eb2f78271291e6ad2c899e data/castingtools/advancement/recipes/misc/upgrader.json
+36fac8043f13059e20c26d10ca226fe00b6a6c77 data/castingtools/recipe/configurator.json
 eb1e4d1ae9f4d30b265282275eb03c2f75f32242 data/castingtools/recipe/modifier.json
 00eabbe77f106c00d38ebee0b67c773abb94366b data/castingtools/recipe/omnithium_upgrade_smithing_template.json
 53cc665bd3bf25da0f9ffdaf2e40ba436cf866b7 data/castingtools/recipe/reset.json

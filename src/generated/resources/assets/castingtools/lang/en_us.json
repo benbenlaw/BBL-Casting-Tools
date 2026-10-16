@@ -1,4 +1,5 @@
 {
+  "block.castingtools.configurator": "Configurator",
   "block.castingtools.modifier": "Modifier",
   "block.castingtools.molten_omnithium": "Molten Omnithium",
   "block.castingtools.omnithium_block": "Omnithium Block",
@@ -98,6 +99,10 @@
   "modifier.castingtools.water_breathing": "Water Breathing",
   "modifier.castingtools.water_breathing.description": "Allows you to breathe underwater",
   "tooltip.castingtools.beheading": "Drops from %s when tool has beheading modifier",
+  "tooltip.castingtools.configurator.drag": "Drag to change the level, click the name to toggle",
+  "tooltip.castingtools.configurator.insert": "Insert a modified tool",
+  "tooltip.castingtools.configurator.level": "Level %s / %s",
+  "tooltip.castingtools.configurator.off": "Disabled",
   "tooltip.castingtools.modifier.incompactible_modifier": "Incompatible Modifier",
   "tooltip.castingtools.modifier.max_level": "Max Level Reached",
   "tooltip.castingtools.modifier.not_enough_experience": "Not Enough Experience",

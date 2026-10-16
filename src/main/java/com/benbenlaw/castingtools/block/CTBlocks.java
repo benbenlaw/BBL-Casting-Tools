@@ -29,6 +29,12 @@ public class CTBlocks {
                     .requiresCorrectToolForDrops()
                     .noOcclusion()));
 
+    public static final DeferredBlock<Block> CONFIGURATOR = registerBlock("configurator",
+            properties -> new ConfiguratorBlock(properties
+                    .strength(1.0F)
+                    .requiresCorrectToolForDrops()
+                    .noOcclusion()));
+
     public static final DeferredBlock<Block> OMNITHIUM_BLOCK = registerBlock("omnithium_block",
             properties -> new Block(properties
                     .requiresCorrectToolForDrops()

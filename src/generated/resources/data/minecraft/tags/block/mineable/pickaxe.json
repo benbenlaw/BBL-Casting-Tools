@@ -2,6 +2,7 @@
   "values": [
     "castingtools:modifier",
     "castingtools:upgrader",
+    "castingtools:configurator",
     "castingtools:omnithium_block"
   ]
 }

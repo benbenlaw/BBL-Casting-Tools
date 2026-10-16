@@ -50,8 +50,8 @@ public class RenderHighlightEvent {
             ItemStack stack = player.getMainHandItem();
             if (stack.has(CTDataComponent.MODIFIER_COMPONENT.get())) {
                 ModifierComponent comp = stack.get(CTDataComponent.MODIFIER_COMPONENT.get());
-                if (comp != null && comp.modifiers().containsKey(ModifierRegistry.EXCAVATION.getId())) {
-                    int level = comp.modifiers().get(ModifierRegistry.EXCAVATION.getId());
+                int level = comp == null ? 0 : comp.activeLevel(ModifierRegistry.EXCAVATION.getId());
+                if (level > 0) {
 
                     VertexConsumer lineBuilder = buffer.getBuffer(RenderTypes.lines());
 

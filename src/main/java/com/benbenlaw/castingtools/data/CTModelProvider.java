@@ -46,6 +46,7 @@ public class CTModelProvider extends ModelProvider {
         //Blocks
         createMachineBlock(CTBlocks.MODIFIER.get(), "modifier", blockModels.blockStateOutput, blockModels.modelOutput);
         createMachineBlock(CTBlocks.UPGRADER.get(), "upgrader", blockModels.blockStateOutput, blockModels.modelOutput);
+        createMachineBlock(CTBlocks.CONFIGURATOR.get(), "configurator", blockModels.blockStateOutput, blockModels.modelOutput);
         blockModels.createTrivialCube(CTBlocks.OMNITHIUM_BLOCK.get());
 
         //Items

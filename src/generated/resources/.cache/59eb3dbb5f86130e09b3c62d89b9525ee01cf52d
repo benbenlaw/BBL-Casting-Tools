@@ -1,4 +1,5 @@
-// 26.1.2	2026-08-24T11:18:23.199231	Loot Tables
+// 26.1.2	2026-10-16T08:41:46.4545596	Loot Tables
+c5b231d191277ce98d2d8fd57dd28ba4ca72660c data/castingtools/loot_table/blocks/configurator.json
 1bf54a054399b3beab653484056f81302996a04c data/castingtools/loot_table/blocks/modifier.json
 5b38e18213ca6b8c882b18cadd70e9debdbcb2b6 data/castingtools/loot_table/blocks/omnithium_block.json
 fd1c097a2a8a25071d2db2f0adab95572ed2e8ff data/castingtools/loot_table/blocks/upgrader.json

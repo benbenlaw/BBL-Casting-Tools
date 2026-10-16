@@ -40,7 +40,7 @@ public class ModifierUtils {
         ItemStack fakeItemStack = tool.copy();
         ModifierComponent comp = tool.get(CTDataComponent.MODIFIER_COMPONENT);
         if (comp != null) {
-            comp.modifiers().forEach((key, modifierLevel) -> {
+            comp.activeModifiers().forEach((key, modifierLevel) -> {
                 Modifier modifier = ModifierRegistry.MODIFIER_REGISTRY.getValue(key);
                 if (modifier != null) {
                 //    modifier.onCalculateDrops(fakeItemStack, modifier.getData(), level, modifierLevel);
@@ -126,6 +126,11 @@ public class ModifierUtils {
         return 0;
     }
 
+    public static int getActiveModifierLevel(ItemStack stack, Modifier modifier) {
+        ModifierComponent comp = stack.get(CTDataComponent.MODIFIER_COMPONENT);
+        return comp == null ? 0 : comp.activeLevel(modifier.getId());
+    }
+
     public static Modifier getMatchingModifier(ItemStack toolStack, ItemStack ingredientStack, FluidStack tankFluid) {
 
         for (Modifier modifier : ModifierRegistry.MODIFIER_REGISTRY) {
@@ -174,7 +179,7 @@ public class ModifierUtils {
         ModifierComponent comp = stack.get(CTDataComponent.MODIFIER_COMPONENT);
         Map<Identifier, Integer> map = (comp == null) ? new HashMap<>() : new HashMap<>(comp.modifiers());
         map.put(modifier.getId(), level);
-        stack.set(CTDataComponent.MODIFIER_COMPONENT, new ModifierComponent(map));
+        stack.set(CTDataComponent.MODIFIER_COMPONENT, new ModifierComponent(map, comp == null ? Map.of() : comp.limits()));
     }
 
     public static boolean hasConflict(ItemStack stack, Modifier newModifier) {
@@ -197,7 +202,7 @@ public class ModifierUtils {
     public static boolean hasSoulbound(ItemStack stack) {
         ModifierComponent comp = stack.get(CTDataComponent.MODIFIER_COMPONENT);
         if (comp != null) {
-            return comp.modifiers().containsKey(ModifierRegistry.SOULBOUND.get().getId());
+            return comp.activeLevel(ModifierRegistry.SOULBOUND.get().getId()) > 0;
         }
         return false;
     }

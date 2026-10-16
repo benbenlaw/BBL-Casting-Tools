@@ -24,7 +24,7 @@ public class FlightModifier extends Modifier {
                 ItemStack armorStack = player.getItemBySlot(slot);
 
                 var comp = armorStack.get(CTDataComponent.MODIFIER_COMPONENT);
-                if (comp != null && comp.modifiers().get(ModifierRegistry.FLIGHT.get().getId()) != null) {
+                if (comp != null && comp.activeLevel(ModifierRegistry.FLIGHT.get().getId()) > 0) {
                     isWorn = true;
                     break;
                 }

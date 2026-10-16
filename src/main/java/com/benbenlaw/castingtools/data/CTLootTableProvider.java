@@ -28,6 +28,7 @@ public class CTLootTableProvider extends VanillaBlockLoot {
     protected void generate() {
         this.dropWithFluidComponent(CTBlocks.MODIFIER.get());
         this.dropWithFluidComponent(CTBlocks.UPGRADER.get());
+        this.dropSelf(CTBlocks.CONFIGURATOR.get());
         this.dropSelf(CTBlocks.OMNITHIUM_BLOCK.get());
     }
 

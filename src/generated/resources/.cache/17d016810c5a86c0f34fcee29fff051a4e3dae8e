@@ -1,8 +1,10 @@
-// 26.1.2	2026-08-24T11:31:12.0045029	Model Definitions - castingtools
+// 26.1.2	2026-10-16T08:41:46.4480176	Model Definitions - castingtools
+af738210a8ea3133659fd8d21ff80966b2203e02 assets/castingtools/blockstates/configurator.json
 ece0bfd32709fbc4eac6a180eeaac590a210301e assets/castingtools/blockstates/modifier.json
 31324d463b0e29990bb049bc7fc7845ebd57ab28 assets/castingtools/blockstates/molten_omnithium.json
 e658c667aa52abf9f4c155810ce0e2ea75c596fb assets/castingtools/blockstates/omnithium_block.json
 b4973907fe0c701dc0a924ee48c63a3e27fbb1ab assets/castingtools/blockstates/upgrader.json
+6580c1bd9f72998efa4a6b45eaec80abb2139c3c assets/castingtools/items/configurator.json
 707ea26c1b3684bbc3bfde839689fc562f277f27 assets/castingtools/items/modifier.json
 eab09b6cda149b28097258039028af760ff9882c assets/castingtools/items/molten_omnithium_bucket.json
 e9a4bda86c3f4b49881554fad706c4f9f5d031fe assets/castingtools/items/omnithium_axe.json
@@ -22,6 +24,10 @@ bd91ab2fd4837a1151e45a910c13cf62fa81f534 assets/castingtools/items/omnithium_pic
 95537c8d4cf6b64b3446e076739fb90137b1a1fd assets/castingtools/items/omnithium_sword.json
 84b5ce64753378ea8425bf1335ff8c5477b278b7 assets/castingtools/items/omnithium_upgrade_smithing_template.json
 457e65c97165bd909b13c5b19b55c9d5c934f13a assets/castingtools/items/upgrader.json
+9ddcc34cc5c8a2be22d8674635431248bce9e20d assets/castingtools/models/block/configurator.json
+ab46804a98573d5fd2a05463373ec000951778b7 assets/castingtools/models/block/configurator_vertical.json
+cf5ca96348f6dc978b2e92c91e27388f618e3ecd assets/castingtools/models/block/configurator_working.json
+146d607d789a13a6743f46cb8f88fb1189406eb6 assets/castingtools/models/block/configurator_working_vertical.json
 ebe3c01aaa372fcde6fc401102a0e94b74a06132 assets/castingtools/models/block/modifier.json
 36d398c76b3bf2a977ac5733e7549af1e2d63ad6 assets/castingtools/models/block/modifier_vertical.json
 0444b465b0a435a92818d9a88f23a42d6873b526 assets/castingtools/models/block/modifier_working.json

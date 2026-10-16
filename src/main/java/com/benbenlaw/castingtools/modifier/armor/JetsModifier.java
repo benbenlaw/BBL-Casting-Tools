@@ -35,9 +35,7 @@ public class JetsModifier extends Modifier {
 
                 var comp = armorStack.get(CTDataComponent.MODIFIER_COMPONENT);
                 if (comp != null) {
-                    if (comp.modifiers().get(ModifierRegistry.JETS.get().getId()) != null) {
-                        totalJetsLevel += comp.modifiers().get(ModifierRegistry.JETS.get().getId());
-                    }
+                    totalJetsLevel += comp.activeLevel(ModifierRegistry.JETS.get().getId());
                 }
             }
         }

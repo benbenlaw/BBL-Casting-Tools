@@ -29,10 +29,7 @@ public class SpeedModifier extends Modifier {
 
                 var comp = armorStack.get(CTDataComponent.MODIFIER_COMPONENT);
                 if (comp != null) {
-                    Integer level = comp.modifiers().get(ModifierRegistry.SPEED.get().getId());
-                    if (level != null) {
-                        totalSpeedLevel += level;
-                    }
+                    totalSpeedLevel += comp.activeLevel(ModifierRegistry.SPEED.get().getId());
                 }
             }
         }

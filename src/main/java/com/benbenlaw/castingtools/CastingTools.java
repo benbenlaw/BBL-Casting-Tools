@@ -14,6 +14,7 @@ import com.benbenlaw.castingtools.modifier.ModifierLoader;
 import com.benbenlaw.castingtools.modifier.ModifierRegistry;
 import com.benbenlaw.castingtools.network.CastingToolsNetworking;
 import com.benbenlaw.castingtools.screen.CTMenuTypes;
+import com.benbenlaw.castingtools.screen.ConfiguratorScreen;
 import com.benbenlaw.castingtools.screen.ModifierScreen;
 import com.benbenlaw.castingtools.screen.UpgraderScreen;
 import com.benbenlaw.castingtools.utils.BounceModifierHandler;
@@ -73,6 +74,7 @@ public class CastingTools {
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(CTMenuTypes.MODIFIER_MENU.get(), ModifierScreen::new);
             event.register(CTMenuTypes.UPGRADER_MENU.get(), UpgraderScreen::new);
+            event.register(CTMenuTypes.CONFIGURATOR_MENU.get(), ConfiguratorScreen::new);
         }
     }
 

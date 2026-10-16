@@ -203,7 +203,7 @@ public class ModifierEvents {
         ModifierComponent comp = stack.get(CTDataComponent.MODIFIER_COMPONENT);
         if (comp == null) return;
 
-        comp.modifiers().forEach((id, level) -> {
+        comp.activeModifiers().forEach((id, level) -> {
             Modifier logic = ModifierRegistry.MODIFIER_REGISTRY.getValue(id);
 
             if (logic != null) {
@@ -240,7 +240,7 @@ public class ModifierEvents {
 
         ModifierComponent comp = stack.get(CTDataComponent.MODIFIER_COMPONENT);
         if (comp != null) {
-            comp.modifiers().forEach((id, level) -> {
+            comp.activeModifiers().forEach((id, level) -> {
                 Modifier modifier = ModifierRegistry.MODIFIER_REGISTRY.getValue(id);
                 if (modifier != null) {
                     action.accept(modifier, stack, level);
