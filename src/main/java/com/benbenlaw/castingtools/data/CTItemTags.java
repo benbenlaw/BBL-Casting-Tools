@@ -1,9 +1,6 @@
 package com.benbenlaw.castingtools.data;
 
-import appeng.core.definitions.AEBlocks;
-import appeng.core.definitions.AEItems;
 import appeng.core.definitions.AEParts;
-import appeng.parts.automation.AnnihilationPlanePart;
 import com.benbenlaw.castingtools.CastingTools;
 import com.benbenlaw.castingtools.block.CTBlocks;
 import com.benbenlaw.castingtools.fluids.CTFluids;
@@ -12,7 +9,6 @@ import com.benbenlaw.castingtools.utils.CTTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ItemTagsProvider;
 import org.jetbrains.annotations.NotNull;

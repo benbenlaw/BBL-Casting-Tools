@@ -38,7 +38,18 @@ public class CTLangProvider extends LanguageProvider {
         add("tooltip.castingtools.configurator.insert", "Insert a modified tool");
         add("tooltip.castingtools.configurator.drag", "Drag to change the level, click the name to toggle");
         add("tooltip.castingtools.configurator.off", "Disabled");
+        add("tooltip.castingtools.configurator.settings", "Modifier Settings");
+        add("tooltip.castingtools.configurator.back", "Back");
+        add("tooltip.castingtools.configurator.toggle_key", "Toggle Key");
+        add("tooltip.castingtools.configurator.none", "None");
+        add("tooltip.castingtools.configurator.press_key", "Press a key to set");
+        add("tooltip.castingtools.configurator.mod_shift", "Shift");
+        add("tooltip.castingtools.configurator.mod_ctrl", "Ctrl");
+        add("tooltip.castingtools.configurator.mod_alt", "Alt");
+        add("tooltip.castingtools.configurator.toggled_on", "Enabled");
+        add("tooltip.castingtools.configurator.toggled_off", "Disabled");
         add("tooltip.castingtools.configurator.level", "Level %s / %s");
+
 
         //Items
         add("item.castingtools.omnithium_nugget", "Omnithium Nugget");

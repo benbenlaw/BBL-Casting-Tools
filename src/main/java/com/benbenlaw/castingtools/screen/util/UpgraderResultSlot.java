@@ -1,14 +1,10 @@
 package com.benbenlaw.castingtools.screen.util;
 
 import com.benbenlaw.castingtools.config.CTServerConfig;
-import com.benbenlaw.castingtools.item.CTDataComponent;
-import com.benbenlaw.castingtools.item.ModifierComponent;
 import com.benbenlaw.castingtools.screen.UpgraderMenu;
 import com.benbenlaw.core.block.entity.handler.fluid.SyncableFluidHandler;
 import com.benbenlaw.core.block.entity.handler.item.SyncableItemHandler;
 import com.benbenlaw.core.screen.util.slot.ResultSlot;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -20,8 +16,6 @@ import net.neoforged.neoforge.transfer.fluid.FluidUtil;
 import net.neoforged.neoforge.transfer.item.ItemResource;
 import net.neoforged.neoforge.transfer.item.ItemUtil;
 import net.neoforged.neoforge.transfer.transaction.Transaction;
-
-import java.util.Optional;
 
 public class UpgraderResultSlot extends ResultSlot {
 

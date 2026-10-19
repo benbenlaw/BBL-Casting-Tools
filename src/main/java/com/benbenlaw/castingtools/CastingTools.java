@@ -1,6 +1,5 @@
 package com.benbenlaw.castingtools;
 
-import com.benbenlaw.casting.config.CastingConfig;
 import com.benbenlaw.castingtools.block.CTBlockEntities;
 import com.benbenlaw.castingtools.block.CTBlocks;
 import com.benbenlaw.castingtools.block.CastingToolsCapabilities;

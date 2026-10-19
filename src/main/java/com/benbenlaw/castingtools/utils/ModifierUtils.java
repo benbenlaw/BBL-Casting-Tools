@@ -179,7 +179,7 @@ public class ModifierUtils {
         ModifierComponent comp = stack.get(CTDataComponent.MODIFIER_COMPONENT);
         Map<Identifier, Integer> map = (comp == null) ? new HashMap<>() : new HashMap<>(comp.modifiers());
         map.put(modifier.getId(), level);
-        stack.set(CTDataComponent.MODIFIER_COMPONENT, new ModifierComponent(map, comp == null ? Map.of() : comp.limits()));
+        stack.set(CTDataComponent.MODIFIER_COMPONENT, comp == null ? new ModifierComponent(map) : comp.withModifiers(map));
     }
 
     public static boolean hasConflict(ItemStack stack, Modifier newModifier) {

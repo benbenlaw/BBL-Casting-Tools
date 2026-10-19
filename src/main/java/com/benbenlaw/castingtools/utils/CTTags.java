@@ -11,7 +11,6 @@ public class CTTags {
     public static class Items extends CoreTags.Items {
 
         //Items
-
         public static final TagKey<Item> ENHANCED = tag(CastingTools.MOD_ID, "is_enhanceable");
         public static final TagKey<Item> NOT_MODIFIABLE = tag(CastingTools.MOD_ID, "not_modifiable");
 

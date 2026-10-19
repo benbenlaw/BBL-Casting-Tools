@@ -3,6 +3,7 @@ package com.benbenlaw.castingtools.screen;
 import com.benbenlaw.castingtools.block.entity.ConfiguratorBlockEntity;
 import com.benbenlaw.castingtools.item.CTDataComponent;
 import com.benbenlaw.castingtools.item.ModifierComponent;
+import com.benbenlaw.castingtools.utils.KeyCombo;
 import com.benbenlaw.core.screen.SimpleAbstractContainerMenu;
 import com.benbenlaw.core.screen.util.slot.InputSlot;
 import net.minecraft.core.BlockPos;
@@ -55,6 +56,22 @@ public class ConfiguratorMenu extends SimpleAbstractContainerMenu {
 
     public ItemStack getToolStack() {
         return this.slots.get(36).getItem();
+    }
+
+    public void setKeybind(Identifier modifierId, int keyCode) {
+        if (this.level.isClientSide()) return;
+        if (keyCode < 0 || KeyCombo.key(keyCode) > 512 || KeyCombo.modifiers(keyCode) != (keyCode >> 16)) return;
+
+        ItemStack tool = ItemUtil.getStack(blockEntity.getItemHandler(), 0);
+        ModifierComponent comp = tool.get(CTDataComponent.MODIFIER_COMPONENT);
+        if (comp == null || !comp.modifiers().containsKey(modifierId)) return;
+
+        ItemStack updated = tool.copy();
+        updated.set(CTDataComponent.MODIFIER_COMPONENT, comp.withKeybind(modifierId, keyCode));
+
+        blockEntity.getItemHandler().set(0, ItemResource.of(updated), 1);
+        blockEntity.setChanged();
+        this.broadcastChanges();
     }
 
     public void setActiveLevel(Identifier modifierId, int activeLevel) {

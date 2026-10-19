@@ -16,7 +16,6 @@ public class ModifierBuilder {
     private final String description;
     private final List<String> validItems = new ArrayList<>();
 
-    // String-based ingredient storage
     private String ingredientString;
     private int ingredientCount = 1;
 
@@ -45,14 +44,12 @@ public class ModifierBuilder {
         return this;
     }
 
-    // New String-based Ingredient method
     public ModifierBuilder ingredient(String itemOrTag, int count) {
         this.ingredientString = itemOrTag;
         this.ingredientCount = count;
         return this;
     }
 
-    // New String-based Fluid method
     public ModifierBuilder fluid(String fluidOrTag, int amount) {
         this.fluidString = fluidOrTag;
         this.fluidAmount = amount;
